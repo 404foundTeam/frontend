@@ -4,7 +4,7 @@ import styles from "../styles/Header.module.css";
 function Header() {
   return (
     <header>
-      <img src={logoImg} className={styles.logoImg}></img>
+      <img src={logoImg} className={styles.img}></img>
       <div className={styles.tags}>
         <a className={styles.text}>market BEE</a>
         <a>홍보</a>
