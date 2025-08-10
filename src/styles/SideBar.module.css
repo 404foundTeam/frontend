@@ -5,23 +5,47 @@
   background-color: #f6f6f6;
   border-radius: 30px;
 
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 121.2%;
+  letter-spacing: -0.025em; /* 또는 24px */
+
+  color: #acacac;
+
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 32px;
+  gap: 24px;
 
   position: fixed;
+  left: 8px;
   z-index: 10;
 }
 
 .container > :first-child {
-  margin-top: 29px;
+  margin-top: 12px;
+}
+
+.container > :last-child {
+  margin-bottom: 29px;
 }
 
 .box {
+  width: 118px;
+
+  padding: 20px 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 8px;
+}
+
+.box.select {
+  background: #ffe5a7;
+  opacity: 0.73;
+  border-radius: 18px;
 }
 
 .main {
@@ -42,16 +66,4 @@
 .map {
   width: 44px;
   height: 24px;
-}
-
-.text {
-  font-family: "Pretendard";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 20px;
-
-  line-height: 121.2%; /* 또는 24px */
-  letter-spacing: -0.025em;
-
-  color: #acacac;
 }
