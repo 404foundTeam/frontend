@@ -1,4 +1,4 @@
-.sidebar-container {
+.container {
   width: 160px;
   height: 526px;
 
@@ -14,35 +14,37 @@
   z-index: 10;
 }
 
-.sidebar-box {
+.container > :first-child {
+  margin-top: 29px;
+}
+
+.box {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.sidebar-img.main {
+.main {
   width: 42px;
   height: 40px;
-
-  margin-top: 29px;
 }
 
-.sidebar-img.picture {
+.picture {
   width: 41px;
   height: 37px;
 }
 
-.sidebar-img.cardnews {
+.cardnews {
   width: 40px;
   height: 40px;
 }
 
-.sidebar-img.map {
+.map {
   width: 44px;
   height: 24px;
 }
 
-.sidebar-text {
+.text {
   font-family: "Pretendard";
   font-style: normal;
   font-weight: 700;
