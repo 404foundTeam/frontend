@@ -1,10 +1,29 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import img01 from "../assets/welcome_img01.png";
 import img05 from "../assets/welcome_img05.png";
+import TextBox from "../components/TextBox";
+import WelcomeMap from "../components/WelcomoMap";
 import "../styles/WelcomePage.css";
 
 function WelcomePage() {
   const cardRefs = useRef([]);
+  const mapRef = useRef();
+  const [showMap, setShowMap] = useState(false);
+
+  const clickShowMap = () => {
+    setShowMap(true);
+  };
+
+  useEffect(() => {
+    mapRef.current?.focus();
+  }, [showMap]);
+
+  useEffect(() => {
+    // 새로고침 시 최상단 이동
+    window.onbeforeunload = function pushRefresh() {
+      window.scrollTo(0, 0);
+    };
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -28,66 +47,71 @@ function WelcomePage() {
   }, []);
 
   return (
-    <div className="container">
-      <div className="header-container">
-        <div className="header-box">
+    <div className="welcome-container">
+      {showMap && <WelcomeMap focusRef={mapRef} />}
+      <div className="welcome-header-container">
+        <div className="welcome-header-box">
           <div>
-            <h2 className="header-title">소상공인 마케팅</h2>
-            <div className="text">어렵고 복잡한 마케팅과 운영전략을 한번에</div>
+            <h1 className="header-title">소상공인 마케팅</h1>
+            <p className="text header">
+              어렵고 복잡한 마케팅과 운영전략을 한번에
+            </p>
           </div>
-          <img src={img01} className="header-img" />
+          <img src={img01} className="welcome-header-img" />
         </div>
-        <div className="bottom"></div>
+        <div className="welcome-header-bottom-box"></div>
       </div>
-      <div className="text-container">
-        <h2>소상공인을 위한 쉽고 빠른 플랫폼, market BEE</h2>
-        <p>
-          클릭 몇 번으로 가게 홍보에 필요한 모든 콘텐츠와 운영을 자동으로
-          관리해보세요
-        </p>
-      </div>
-      <div className="card-wrapper">
-        <div className="card report" ref={(el) => (cardRefs.current[0] = el)}>
-          <div className="right text-box">
-            <p className="mini">업장 자동 운영</p>
+      <TextBox />
+      <div className="welcome-card-wrapper">
+        <div
+          className="welcome-card report"
+          ref={(el) => (cardRefs.current[0] = el)}
+        >
+          <div className="welcome-text-box right">
+            <p className="report-mini-title">업장 자동 운영</p>
             <h1 className="card-title">스마트 리포트 생성</h1>
-            <p>어렵고 복잡한 마케팅과 운영전략을 한번에</p>
+            <p className="text card">
+              어렵고 복잡한 마케팅과 운영전략을 한번에
+            </p>
           </div>
-          <div className="right-box img-box"></div>
+          <div className="img-box right"></div>
         </div>
         <div
-          className="card marketing"
+          className="welcome-card marketing"
           ref={(el) => (cardRefs.current[1] = el)}
         >
-          <div className="left-box img-box"></div>
-          <div className="left text-box">
+          <div className="img-box left"></div>
+          <div className="welcome-text-box left">
             <h1 className="card-title">AI 마케팅</h1>
-            <p>어렵고 복잡한 마케팅과 운영전략을 한번에</p>
+            <p className="text card">
+              어렵고 복잡한 마케팅과 운영전략을 한번에
+            </p>
           </div>
         </div>
-        <div className="card sns" ref={(el) => (cardRefs.current[2] = el)}>
-          <div className="right text-box">
+        <div
+          className="welcome-card sns"
+          ref={(el) => (cardRefs.current[2] = el)}
+        >
+          <div className="welcome-text-box right">
             <h1 className="card-title">SNS 카드 생성</h1>
-            <p>어렵고 복잡한 마케팅과 운영전략을 한번에</p>
+            <p className="text card">
+              어렵고 복잡한 마케팅과 운영전략을 한번에
+            </p>
           </div>
-          <div className="right-box img-box"></div>
+          <div className="img-box right"></div>
         </div>
       </div>
-      <div className="text-container">
-        <h2>소상공인을 위한 쉽고 빠른 플랫폼, market BEE</h2>
-        <p>
+      <TextBox />
+      <div className="welcome-sign-map">
+        <h2 className="welcome-sign-title">업장 등록하기</h2>
+        <p className="text sign">
           클릭 몇 번으로 가게 홍보에 필요한 모든 콘텐츠와 운영을 자동으로
           관리해보세요
         </p>
-      </div>
-      <div className="sign-map">
-        <h2 className="sign-title">업장 등록하기</h2>
-        <p className="sign-content">
-          클릭 몇 번으로 가게 홍보에 필요한 모든 콘텐츠와 운영을 자동으로
-          관리해보세요
-        </p>
-        <img src={img05} />
-        <button>업장 검색</button>
+        <img src={img05} className="welcome-sign-img" />
+        <button onClick={clickShowMap} className="welcome-sign-button">
+          업장 검색
+        </button>
       </div>
     </div>
   );

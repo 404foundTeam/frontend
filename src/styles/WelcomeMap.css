@@ -1,0 +1,9 @@
+.map {
+  width: 1920px;
+  height: 2132px;
+
+  position: absolute;
+  z-index: 2;
+
+  background-color: aqua;
+}
