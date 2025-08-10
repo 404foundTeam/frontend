@@ -1,9 +1,114 @@
-.map {
+.map-container {
   width: 1920px;
   height: 2132px;
 
+  font-style: normal;
+
   position: absolute;
+  top: 3700px;
   z-index: 2;
 
-  background-color: aqua;
+  background-color: #ffffff;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 닫기 버튼 스타일 */
+.header-close-button {
+  position: absolute;
+  top: 41px;
+  left: 1779px;
+}
+
+.header-close-button .close-button-img {
+  width: 60px;
+  height: 60px;
+}
+
+.map-header {
+  margin-top: 90px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 16px;
+}
+
+.map-header .header-title {
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 60px;
+  letter-spacing: -0.025em;
+
+  color: #413738;
+}
+
+.map-header .header-content {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: -0.025em;
+
+  color: #797979;
+}
+
+.search-box {
+  margin-top: 80px;
+}
+
+.map-header-search {
+  width: 1128px;
+  height: 66px;
+  padding-left: 32px;
+
+  box-sizing: border-box;
+
+  border: 3px solid #febf22;
+  border-radius: 24px;
+  position: relative;
+
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: -0.025em;
+
+  color: #797979;
+
+  /* 서치박스 아이콘 스타일 */
+  background-image: url("../assets/search.png");
+  background-repeat: no-repeat;
+  background-position: calc(100% - 32px) center;
+  background-size: 25px 25px;
+}
+
+.map-box {
+  width: 1240px;
+  height: 1215px;
+  margin-top: 64px;
+
+  background-color: black;
+}
+
+.map-button {
+  width: 816px;
+  height: 135px;
+  margin-top: 87px;
+
+  border: none;
+  border-radius: 60px;
+  background-color: #e2d7d7;
+
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 48px;
+
+  color: #ffffff;
+}
+
+/* 선택 스타일 */
+.map-button.select {
+  background-color: #6d3737;
 }

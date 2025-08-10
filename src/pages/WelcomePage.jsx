@@ -13,6 +13,9 @@ function WelcomePage() {
   const clickShowMap = () => {
     setShowMap(true);
   };
+  const clickHideMap = () => {
+    setShowMap(false);
+  };
 
   useEffect(() => {
     mapRef.current?.focus();
@@ -48,7 +51,8 @@ function WelcomePage() {
 
   return (
     <div className="welcome-container">
-      {showMap && <WelcomeMap focusRef={mapRef} />}
+      <WelcomeMap onClick={clickHideMap} />
+      {/* {showMap && <WelcomeMap focusRef={mapRef} onClick={clickHideMap} />} */}
       <div className="welcome-header-container">
         <div className="welcome-header-box">
           <div>
