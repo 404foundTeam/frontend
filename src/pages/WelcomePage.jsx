@@ -68,7 +68,7 @@ function WelcomePage() {
           ref={(el) => (cardRefs.current[0] = el)}
         >
           <div className="welcome-text-box right">
-            <p className="report-mini-title">업장 자동 운영</p>
+            <p className="mini-title">업장 자동 운영</p>
             <h1 className="card-title">스마트 리포트 생성</h1>
             <p className="text card">
               어렵고 복잡한 마케팅과 운영전략을 한번에
@@ -82,6 +82,7 @@ function WelcomePage() {
         >
           <div className="img-box left"></div>
           <div className="welcome-text-box left">
+            <p className="mini-title">업장 자동 운영</p>
             <h1 className="card-title">AI 마케팅</h1>
             <p className="text card">
               어렵고 복잡한 마케팅과 운영전략을 한번에
@@ -93,6 +94,7 @@ function WelcomePage() {
           ref={(el) => (cardRefs.current[2] = el)}
         >
           <div className="welcome-text-box right">
+            <p className="mini-title">업장 자동 운영</p>
             <h1 className="card-title">SNS 카드 생성</h1>
             <p className="text card">
               어렵고 복잡한 마케팅과 운영전략을 한번에
