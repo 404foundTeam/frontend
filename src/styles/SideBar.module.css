@@ -46,6 +46,12 @@
   background: #ffe5a7;
   opacity: 0.73;
   border-radius: 18px;
+
+  color: black;
+}
+
+.box.box.select img {
+  filter: grayscale(100%) brightness(0) invert(0);
 }
 
 .main {
