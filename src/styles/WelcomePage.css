@@ -50,9 +50,11 @@
 .text.header {
   margin-top: 16px;
 }
+
 .text.card {
   margin-top: 24px;
 }
+
 .text.sign {
   margin-top: 56px;
 }
@@ -138,6 +140,7 @@
 
   margin-bottom: 25px;
 }
+
 .welcome-card-wrapper .welcome-card .card-title {
   font-weight: 700;
   font-size: 70px;
@@ -206,4 +209,21 @@
   margin-bottom: 75px;
   background: #6d3737;
   border-radius: 73px;
+
+  cursor: pointer;
+}
+
+/* 버튼 호버 애니메이션 */
+.welcome-sign-button:hover {
+  background: #8b4b4b;
+
+  transform: scale(1.04);
+  box-shadow: 0 4px 15px rgba(109, 55, 55, 0.5);
+
+  /* transition: transform 0.6s ease; */
+  /* transition: box-shadow 0.6s ease; */
+  /* transition: transform 0.6s ease, box-shadow 0.6s ease; */
+
+  transition: background-color 0.6s ease, transform 0.6s ease,
+    box-shadow 0.6s ease;
 }
