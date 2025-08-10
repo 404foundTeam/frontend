@@ -4,6 +4,9 @@ import camera from "../assets/sidebar/camera.ico";
 import carnews from "../assets/sidebar/cardnews.ico";
 import map from "../assets/sidebar/map.ico";
 
+// svg는 나중에 하는 걸로...
+// import { ReactComponent as MainIcon } from "../assets/sidebar/main.svg";
+
 function SideBar() {
   const show = false;
 
@@ -14,7 +17,7 @@ function SideBar() {
         <p className={styles.text}>메인페이지</p>
       </div>
       <div className={`${styles.box} ${show ? styles.select : ""}`}>
-        <img src={camera} className={styles.picture} />
+        <img src={camera} className={styles.camera} />
         <p className={styles.text}>사진 가이드</p>
       </div>
       <div className={`${styles.box} ${show ? styles.select : ""}`}>
