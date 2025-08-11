@@ -2,17 +2,16 @@
   width: 1920px;
   height: 2132px;
 
-  font-style: normal;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   position: absolute;
   top: 3700px;
   z-index: 2;
 
   background-color: #ffffff;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  font-style: normal;
 }
 
 /* 닫기 버튼 스타일 */
@@ -20,6 +19,8 @@
   position: absolute;
   top: 41px;
   left: 1779px;
+
+  cursor: pointer;
 }
 
 .header-close-button .close-button-img {
@@ -28,13 +29,12 @@
 }
 
 .map-header {
-  margin-top: 90px;
-
   display: flex;
   flex-direction: column;
   align-items: center;
-
   gap: 16px;
+
+  margin-top: 90px;
 }
 
 .map-header .header-title {
@@ -55,20 +55,89 @@
   color: #797979;
 }
 
-.search-box {
-  margin-top: 80px;
+.map-box {
+  width: 1240px;
+  height: 1215px;
+
+  margin-top: 64px;
 }
 
-.map-header-search {
-  width: 1128px;
-  height: 66px;
-  padding-left: 32px;
+.map {
+  width: 100%;
+  height: 533px;
 
-  box-sizing: border-box;
+  background-color: #d9d9d9;
+}
 
-  border: 3px solid #febf22;
-  border-radius: 24px;
-  position: relative;
+/* 업장 검색 결과 리스트 */
+.search-list-title {
+  height: 99px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+
+  background-color: #febf22;
+
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 36px;
+  letter-spacing: -0.025em;
+
+  color: #ffffff;
+}
+
+.list-title-ico {
+  width: 25px;
+  height: 13px;
+}
+
+/* 업장 목록 */
+.search-list {
+  border: 3px solid #d9d9d9;
+}
+
+.search-list-box {
+  height: 148px;
+
+  display: flex;
+  align-items: center;
+  gap: 58px;
+
+  border-bottom: 3px solid #d9d9d9;
+}
+
+.search-list-box:last-child {
+  border-bottom: none;
+}
+
+.search-list-box.select {
+  background: rgba(255, 229, 167, 0.2);
+}
+
+.search-list-box.select .store-info h1 {
+  color: #febf22;
+}
+
+.list-box-ico {
+  width: 51px;
+  height: 64px;
+
+  margin-left: 62px;
+}
+
+.store-info h1 {
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 36px;
+  letter-spacing: -0.025em;
+
+  color: #413738;
+}
+
+.store-info p {
+  margin-top: 8px;
 
   font-weight: 500;
   font-size: 16px;
@@ -76,25 +145,13 @@
   letter-spacing: -0.025em;
 
   color: #797979;
-
-  /* 서치박스 아이콘 스타일 */
-  background-image: url("../assets/search.png");
-  background-repeat: no-repeat;
-  background-position: calc(100% - 32px) center;
-  background-size: 25px 25px;
 }
 
-.map-box {
-  width: 1240px;
-  height: 1215px;
-  margin-top: 64px;
-
-  background-color: black;
-}
-
+/* 등록 버튼 */
 .map-button {
   width: 816px;
   height: 135px;
+
   margin-top: 87px;
 
   border: none;
@@ -106,6 +163,16 @@
   line-height: 48px;
 
   color: #ffffff;
+  cursor: pointer;
+}
+
+.map-button:hover {
+  background: #8b4b4b;
+  transform: scale(1.04);
+  box-shadow: 0 4px 15px rgba(109, 55, 55, 0.5);
+
+  transition: background-color 0.6s ease, transform 0.6s ease,
+    box-shadow 0.6s ease;
 }
 
 /* 선택 스타일 */

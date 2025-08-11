@@ -51,8 +51,8 @@ function WelcomePage() {
 
   return (
     <div className="welcome-container">
-      <WelcomeMap onClick={clickHideMap} />
-      {/* {showMap && <WelcomeMap focusRef={mapRef} onClick={clickHideMap} />} */}
+      {/* <WelcomeMap onClick={clickHideMap} /> */}
+      {showMap && <WelcomeMap focusRef={mapRef} onClick={clickHideMap} />}
       <div className="welcome-header-container">
         <div className="welcome-header-box">
           <div>
