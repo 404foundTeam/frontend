@@ -1,0 +1,11 @@
+.cardnews-banner {
+  width: 1920px;
+  height: 212px;
+  display: flex;
+  background-color: #fffaed;
+}
+
+.banner-img {
+  width: 146px;
+  height: 133px;
+}
