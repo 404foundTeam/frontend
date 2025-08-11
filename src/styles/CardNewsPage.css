@@ -1,11 +1,173 @@
 .cardnews-banner {
   width: 1920px;
   height: 212px;
-  display: flex;
+
   background-color: #fffaed;
+
+  font-style: normal;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
 }
 
 .banner-img {
   width: 146px;
   height: 133px;
+}
+
+.banner-title {
+  margin-left: 24px;
+
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 76px;
+
+  color: #febf22;
+}
+
+.banner-content {
+  margin-top: 30px;
+
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 36px;
+
+  color: #717171;
+}
+
+.cardnews-box {
+  margin-left: 359px;
+  margin-top: 71px;
+}
+
+.cardnews-box-header {
+  display: flex;
+  gap: 5px;
+}
+
+.cardnews-box-ico {
+  width: 41px;
+  height: 41px;
+}
+
+.cardnews-box-title {
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 36px;
+  letter-spacing: -0.025em;
+
+  color: #6d3737;
+}
+
+.select-boxs {
+  margin-top: 49px;
+  margin-left: 114px;
+
+  display: flex;
+  gap: 280px;
+}
+
+.select-box {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.select-boxs .box {
+  width: 44px;
+  height: 42px;
+
+  border: 4px solid #d9d9d9;
+}
+
+.select-box .box.select {
+  border: none;
+  background-color: #febf22;
+}
+
+.select-box-title {
+  font-weight: 500;
+  font-size: 19px;
+  line-height: 23px;
+  letter-spacing: -0.025em;
+
+  color: #717171;
+}
+
+.cardnews-text {
+  margin-top: 60px;
+}
+
+.cardnews-text-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.cardnews-text-input {
+  width: 1058px;
+
+  margin-left: 45px;
+  margin-top: 70px;
+  padding: 28px;
+
+  border: 5px solid #d9d9d9;
+  border-radius: 10px;
+
+  font-weight: 500;
+  font-size: 19px;
+  line-height: 23px;
+  letter-spacing: -0.025em;
+
+  color: #717171;
+}
+
+.cardnews-text-input:focus {
+  border: 5px solid #febf22;
+  outline: none;
+  color: black;
+}
+
+.text-button {
+  width: 235px;
+  height: 56px;
+
+  margin-top: 39px;
+  margin-left: 473px;
+
+  border: none;
+  border-radius: 10px;
+  background-color: #e2d7d7;
+
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 26px;
+  letter-spacing: -0.025em;
+
+  color: #7c7c7c;
+}
+
+.cardnews-text-result-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.text-result-show {
+  width: 1058px;
+  height: 212px;
+
+  margin-left: 40px;
+  margin-top: 28px;
+  padding: 28px;
+
+  border: 5px solid #d9d9d9;
+  border-radius: 10px;
+
+  font-weight: 500;
+  font-size: 19px;
+  line-height: 28px;
+  letter-spacing: -0.025em;
+
+  color: #717171;
 }
