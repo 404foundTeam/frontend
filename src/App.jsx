@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-import Page from "./pages/Page";
 import Layout from "./pages/Layout";
+import SideBar from "./components/SideBar";
 
 function App() {
   return (
@@ -9,7 +9,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route index element={<Page />} />
+            <Route index element={<SideBar />} />
           </Route>
         </Routes>
       </BrowserRouter>
