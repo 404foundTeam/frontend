@@ -1,0 +1,201 @@
+/* 페이지 전체 배경 스타일 */
+.welcome-container {
+  width: 1920px;
+  height: 864px;
+  position: relative;
+
+  font-style: normal;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 229, 167, 0.2) 0%,
+    rgba(255, 241, 208, 0.2) 50.96%,
+    rgba(255, 255, 255, 0.2) 100%
+  );
+}
+
+/* 페이지 헤더 스타일 */
+.welcome-header-container {
+  width: 100%;
+  height: 864px;
+}
+
+.welcome-header-box {
+  padding-top: 160px;
+  padding-left: 215px;
+}
+
+.welcome-header-box .header-title {
+  font-weight: 600;
+  font-size: 80px;
+  line-height: 95px;
+  letter-spacing: -0.025em;
+  color: #413738;
+}
+
+/* p 태그 공통 스타일 */
+.text {
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 36px;
+  letter-spacing: -0.025em;
+  color: #797979;
+}
+
+/* p 태그 여백 스타일(헤더, 카드, 사인맵) */
+.text.header {
+  margin-top: 16px;
+}
+
+.text.card {
+  margin-top: 24px;
+}
+
+.text.sign {
+  margin-top: 56px;
+}
+
+/* 헤더 이미지 스타일 */
+.welcome-header-img {
+  width: 839px;
+  height: 630px;
+  position: absolute;
+  left: 961px;
+  bottom: 72px;
+  z-index: 1;
+}
+
+/* 헤더 바닥 박스 스타일 */
+.welcome-header-bottom-box {
+  width: 100%;
+  height: 72px;
+  position: absolute;
+  bottom: 0;
+  background-color: #febf22;
+}
+
+/* 페이지 카드 래퍼 스타일 */
+.welcome-card-wrapper {
+  background: rgba(255, 229, 167, 0.2);
+}
+
+/* 카드 내부 스타일 및 애니메이션 */
+.welcome-card-wrapper .welcome-card {
+  width: 100%;
+  height: 994px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  opacity: 0;
+  transform: translateY(80px);
+  transition: opacity 2s ease-out, transform 2s ease-out;
+}
+
+/* 카드 애니메이션 */
+.welcome-card-wrapper .welcome-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translateZ(0);
+  }
+}
+
+/* 카드 내부 텍스트 위치 조정 */
+.welcome-text-box {
+  margin-bottom: 452px;
+}
+
+.welcome-text-box.right {
+  margin-left: 215px;
+}
+
+.welcome-text-box.left {
+  margin-right: 215px;
+}
+
+/* 카드 내부 텍스트 스타일 */
+.mini-title {
+  font-weight: 800;
+  font-size: 20px;
+  line-height: 24px;
+  color: #febf22;
+  margin-bottom: 25px;
+}
+
+.welcome-card-wrapper .welcome-card .card-title {
+  font-weight: 700;
+  font-size: 70px;
+  line-height: 84px;
+  color: #6d3737;
+  margin-bottom: 7px;
+}
+
+/* 카드 내부 이미지 크기 및 위치 조정 */
+.welcome-card-wrapper .welcome-card .img-box {
+  width: 840px;
+  height: 760px;
+  background: #eeeeee;
+}
+
+.welcome-card-wrapper .welcome-card .img-box.right {
+  margin-right: 159px;
+}
+
+.welcome-card-wrapper .welcome-card .img-box.left {
+  margin-left: 215px;
+}
+
+/* 페이지 사인맵 스타일 */
+.welcome-sign-map {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(109, 55, 55, 0.2);
+}
+
+.welcome-sign-title {
+  font-weight: 600;
+  font-size: 50px;
+  line-height: 60px;
+  letter-spacing: -0.025em;
+  color: #413738;
+  margin-top: 130px;
+}
+
+.welcome-sign-img {
+  width: 368px;
+  height: 341px;
+  margin-top: 160px;
+}
+
+.welcome-sign-button {
+  width: 593px;
+  height: 93px;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 48px;
+  letter-spacing: -0.025em;
+  color: #ffffff;
+  margin-top: 116px;
+  margin-bottom: 75px;
+  background: #6d3737;
+  border-radius: 73px;
+  border: none;
+  cursor: pointer;
+}
+
+/* 버튼 호버 애니메이션 */
+.welcome-sign-button:hover {
+  background: #8b4b4b;
+  transform: scale(1.04);
+  transition: background-color 0.6s ease, transform 0.6s ease,
+    box-shadow 0.6s ease;
+}

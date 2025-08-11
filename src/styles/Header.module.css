@@ -1,16 +1,14 @@
 header {
   width: 1920px;
   height: 72px;
+  position: relative;
 
-  font-family: "Pretendard";
   font-style: normal;
   font-weight: 500;
-  font-size: 20px;
+  font-size: 26px;
   line-height: 24px;
   letter-spacing: -0.025em;
-
   color: #333333;
-  position: relative;
 }
 
 header .tags {
@@ -24,7 +22,6 @@ header .tags {
 header .img {
   width: 75px;
   height: 54px;
-
   position: absolute;
   top: 3px;
   left: 205px;
@@ -35,7 +32,6 @@ header .text {
 }
 
 header .my {
-  /* 맨 오른쪽으로 */
-  margin-left: auto;
+  margin-left: auto; /* 맨 오른쪽으로 */
   padding-right: 205px;
 }
