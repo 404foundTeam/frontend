@@ -129,6 +129,15 @@
   color: #7c7c7c;
 }
 
+.cardnews-text-button.select {
+  color: #6d3737;
+  background-color: #febf22;
+}
+.cardnews-text-result-button.select {
+  color: #6d3737;
+  background-color: #febf22;
+}
+
 .cardnews-text-result-box {
   display: flex;
   flex-direction: column;
@@ -151,6 +160,10 @@
   letter-spacing: -0.025em;
 
   color: #717171;
+}
+
+.text-result-show.select {
+  border: 5px solid #febf22;
 }
 
 .templete-list {
@@ -315,6 +328,17 @@
 
   margin-top: 13px;
 
-  background-color: #d8b384;
   border-radius: 10px;
+}
+
+.color.color1 {
+  background-color: #d8b384;
+}
+
+.color.color2 {
+  background-color: #525252;
+}
+
+.color.color3 {
+  background-color: #ff8f00;
 }

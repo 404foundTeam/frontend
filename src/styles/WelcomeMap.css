@@ -116,7 +116,7 @@
 }
 
 .search-list-box.select {
-  background: rgba(255, 229, 167, 0.2);
+  background-color: rgba(255, 229, 167, 0.2);
 }
 
 .search-list-box.select .store-info h1 {
@@ -166,11 +166,10 @@
   line-height: 48px;
 
   color: #ffffff;
-  /* cursor: pointer; */
 }
 
 .map-button.select:hover {
-  background: #8b4b4b;
+  background-color: #8b4b4b;
   transform: scale(1.04);
 
   transition: background-color 0.6s ease, transform 0.6s ease,
