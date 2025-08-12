@@ -1,12 +1,10 @@
 import { Outlet } from "react-router-dom";
-import Header from "../components/Header";
 import SideBar from "../components/SideBar";
 
-function CameraLayout() {
+function CardNewsLayout() {
   return (
     <>
-      <Header />
-      <SideBar isCamera={true} />
+      <SideBar isCard={true} />
       <main>
         <Outlet />
       </main>
@@ -14,4 +12,4 @@ function CameraLayout() {
   );
 }
 
-export default CameraLayout;
+export default CardNewsLayout;

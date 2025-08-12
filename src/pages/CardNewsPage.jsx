@@ -1,9 +1,8 @@
+import { useRef, useState } from "react";
 import "../styles/CardNewsPage.css";
-
 import SideBar from "../components/SideBar";
 import bannerImg from "../assets/cardnews/banner_img.png";
 import CardNewsHeader from "../components/CardNewsHeader";
-import { useRef, useState } from "react";
 
 function CardNewsPage() {
   // 인풋 접근
@@ -26,7 +25,6 @@ function CardNewsPage() {
 
   return (
     <>
-      <SideBar isCard={true} />
       <div className="cardnews-banner">
         <img src={bannerImg} className="banner-img" />
         <h1 className="banner-title">어웨이 커피</h1>
