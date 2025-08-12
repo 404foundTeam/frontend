@@ -1,0 +1,18 @@
+.container {
+  display: flex;
+  gap: 5px;
+}
+
+.ico {
+  width: 41px;
+  height: 41px;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 36px;
+  letter-spacing: -0.025em;
+
+  color: #6d3737;
+}
