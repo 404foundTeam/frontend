@@ -29,6 +29,7 @@
 
 .banner-content {
   margin-top: 30px;
+  margin-left: 8px;
 
   font-weight: 500;
   font-size: 30px;
@@ -40,6 +41,25 @@
 .cardnews-box {
   margin-top: 71px;
   margin-left: 359px;
+}
+
+.cardnews-box-header {
+  display: flex;
+  gap: 5px;
+}
+
+.cardnews-box-ico {
+  width: 41px;
+  height: 41px;
+}
+
+.cardnews-box-title {
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 36px;
+  letter-spacing: -0.025em;
+
+  color: #6d3737;
 }
 
 .select-boxs {
@@ -54,6 +74,14 @@
   display: flex;
   align-items: center;
   gap: 30px;
+
+  cursor: pointer;
+}
+
+.select-box:hover {
+  transform: scale(1.07);
+
+  transition: transform 0.6s ease;
 }
 
 .select-boxs .box {
@@ -64,6 +92,9 @@
 }
 
 .select-box .box.select {
+  width: 52px;
+  height: 50px;
+
   border: none;
   background-color: #febf22;
 }
@@ -129,10 +160,7 @@
   color: #7c7c7c;
 }
 
-.cardnews-text-button.select {
-  color: #6d3737;
-  background-color: #febf22;
-}
+.cardnews-text-button.select,
 .cardnews-text-result-button.select {
   color: #6d3737;
   background-color: #febf22;
@@ -186,8 +214,27 @@
   text-align: center;
 
   position: relative;
+
+  cursor: pointer;
 }
 
+.templete-list .templete-box:hover {
+  transform: scale(1.04);
+
+  transition: transform 0.6s ease;
+}
+
+.templete-list .templete-box.select {
+  background-color: #fffaed;
+
+  border: 5px solid #febf22;
+  transform: scale(1.04);
+}
+
+.templete-list .templete-box.select .store-name,
+.templete-list .templete-box.select .store-content {
+  background-color: #febf22;
+}
 .templete-box .templete-text {
   position: absolute;
 
@@ -223,7 +270,7 @@
   background-color: #ededed;
 }
 
-.templete-box .store-content {
+.templete-list .templete-box .store-content {
   width: 251px;
   height: 188px;
 
@@ -271,6 +318,7 @@
   height: 42px;
 
   background-color: #e2d7d7;
+  border: none;
   border-radius: 10px;
 
   font-weight: 600;
@@ -279,6 +327,17 @@
   letter-spacing: -0.025em;
 
   color: #7c7c7c;
+}
+
+.upload.select {
+  color: #6d3737;
+  background-color: #febf22;
+
+  cursor: pointer;
+}
+
+.cardnews-them {
+  margin-bottom: 199px;
 }
 
 .them-list {
@@ -301,15 +360,27 @@
 }
 
 .them-box .color-box {
-  /* width: 288px; */
-  /* height: 170px; */
-
   margin-top: 16px;
   padding: 25px 15px 19px;
 
   background-color: #f6f6f6;
   border: 5px solid #acacac;
   border-radius: 10px;
+
+  cursor: pointer;
+}
+
+.them-box .color-box:hover {
+  transform: scale(1.03);
+
+  transition: transform 0.6s ease;
+}
+
+.them-box .color-box.select {
+  background-color: #fffaed;
+  transform: scale(1.03);
+
+  border: 5px solid #febf22;
 }
 
 .color-box p {
@@ -341,4 +412,24 @@
 
 .color.color3 {
   background-color: #ff8f00;
+}
+
+.cardnews-button {
+  width: 330px;
+  height: 78px;
+
+  /* margin-top: 199px; */
+  margin-left: 793px;
+  margin-bottom: 180px;
+
+  border: none;
+  border-radius: 10px;
+  background-color: #febf22;
+
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 36px;
+  letter-spacing: -0.025em;
+
+  color: #6d3737;
 }

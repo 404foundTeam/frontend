@@ -14,7 +14,7 @@ function WelcomeMap({ focusRef, onClick }) {
   const container = useRef(null);
 
   useEffect(() => {
-    const position = new kakao.maps.LatLng(35.114513, 129.039346);
+    const position = new kakao.maps.LatLng(37.2757, 127.116);
     const options = {
       center: position,
       level: 3,
@@ -32,7 +32,6 @@ function WelcomeMap({ focusRef, onClick }) {
       <div className="header-close-button" onClick={onClick}>
         <img src={close} className="close-button-img" />
       </div>
-      {/* map-header 컴포넌트 or input 컴포넌트 */}
       <div className="map-header">
         <h2 className="header-title">업장 찾기</h2>
         <p className="header-content">

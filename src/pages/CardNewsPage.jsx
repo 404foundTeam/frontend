@@ -1,11 +1,14 @@
+import { useRef, useState } from "react";
 import "../styles/CardNewsPage.css";
-
 import SideBar from "../components/SideBar";
 import bannerImg from "../assets/cardnews/banner_img.png";
 import CardNewsHeader from "../components/CardNewsHeader";
-import { useState } from "react";
 
 function CardNewsPage() {
+  // 인풋 접근
+  const fileInput01 = useRef();
+  const fileInput02 = useRef();
+
   const [text, setText] = useState("");
   const [showTest, setShowText] =
     useState(`창가 쪽에서 안쪽으로 찍으면 자연광이 인물과 공간을 부드럽게
@@ -14,12 +17,14 @@ function CardNewsPage() {
             세로사진은 4:5 비율이 SNS에서 가장 반응이 좋아요. 오전 10시~오후 3시
             사이가 가장 자연광이 예쁘게 들어오는 시간이기 때문에 이 시간대에
             사진을 촬영하는 것을 추천해요.`);
+  // useState("");
   const [category, setCategory] = useState("");
+  const [templete, setTemplete] = useState("");
   const [ratio, setRatio] = useState("");
+  const [them, setThem] = useState("");
 
   return (
     <>
-      <SideBar isCard={true} />
       <div className="cardnews-banner">
         <img src={bannerImg} className="banner-img" />
         <h1 className="banner-title">어웨이 커피</h1>
@@ -100,25 +105,56 @@ function CardNewsPage() {
       <div className="cardnews-box cardnews-templete">
         <CardNewsHeader text="원하는 템플릿을 선택해주세요." />
         <div className="templete-list">
-          <div className="templete-box">
+          <div
+            className={`templete-box ${templete === "box1" ? "select" : ""}`}
+            onClick={() => {
+              setTemplete("box1");
+            }}
+          >
             <div className="store-name">업장 이름</div>
             <div className="store-content">본문</div>
           </div>
           <div className="templete-img-box">
-            <div className="templete-box">
+            <div
+              className={`templete-box ${templete === "box2" ? "select" : ""}`}
+              onClick={() => {
+                setTemplete("box2");
+              }}
+            >
               <div className="templete-text bottom">이미지</div>
               <div className="store-name bottom">업장 이름</div>
               <div className="store-content bottom">본문</div>
             </div>
-            <input type="file" className="upload"></input>
+            <input type="file" style={{ display: "none" }} ref={fileInput01} />
+            <button
+              className={`upload ${templete === "box2" ? "select" : ""}`}
+              onClick={() => {
+                if (templete === "box2") fileInput01.current.click();
+              }}
+            >
+              이미지 업로드
+            </button>
           </div>
           <div className="templete-img-box">
-            <div className="templete-box">
+            <div
+              className={`templete-box ${templete === "box3" ? "select" : ""}`}
+              onClick={() => {
+                setTemplete("box3");
+              }}
+            >
               <div className="templete-text right">이미지</div>
               <div className="store-name right">업장 이름</div>
               <div className="store-content right">본문</div>
             </div>
-            <input type="file" className="upload"></input>
+            <input type="file" style={{ display: "none" }} ref={fileInput02} />
+            <button
+              className={`upload ${templete === "box3" ? "select" : ""}`}
+              onClick={() => {
+                if (templete === "box3") fileInput02.current.click();
+              }}
+            >
+              이미지 업로드
+            </button>
           </div>
         </div>
       </div>
@@ -159,7 +195,12 @@ function CardNewsPage() {
         <div className="them-list">
           <div className="them-box">
             <p>따뜻하고 편안한 분위기</p>
-            <div className="color-box">
+            <div
+              className={`color-box ${them === "color1" ? "select" : ""}`}
+              onClick={() => {
+                setThem("color1");
+              }}
+            >
               <p>빙그레 Bold체</p>
               <p>배경 색상 #D8B384</p>
               <div className="color color1"></div>
@@ -167,7 +208,12 @@ function CardNewsPage() {
           </div>
           <div className="them-box">
             <p>깔끔하고 모던한 분위기</p>
-            <div className="color-box">
+            <div
+              className={`color-box ${them === "color2" ? "select" : ""}`}
+              onClick={() => {
+                setThem("color2");
+              }}
+            >
               <p>프리텐다드 Black체</p>
               <p>배경 색상 #525252</p>
               <div className="color color2"></div>
@@ -175,7 +221,12 @@ function CardNewsPage() {
           </div>
           <div className="them-box">
             <p>활기차고 밝은 분위기</p>
-            <div className="color-box">
+            <div
+              className={`color-box ${them === "color3" ? "select" : ""}`}
+              onClick={() => {
+                setThem("color3");
+              }}
+            >
               <p>Gmarket Sans체</p>
               <p>배경 색상 #FF8F00</p>
               <div className="color color3"></div>
@@ -183,6 +234,9 @@ function CardNewsPage() {
           </div>
         </div>
       </div>
+      {category && showTest && templete && ratio && them && (
+        <button className="cardnews-button">완료</button>
+      )}
     </>
   );
 }
