@@ -1,0 +1,36 @@
+.container {
+  position: relative;
+
+  font-style: normal;
+}
+
+.box {
+  width: 1920px;
+  height: 635px;
+
+  background-color: #fffaed;
+}
+
+.loadingBox {
+  position: absolute;
+  top: 139px;
+  left: 759px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 121px;
+}
+
+.loadingImg {
+  width: 423px;
+  height: 423px;
+}
+
+.textBox {
+  text-align: center;
+}
+
+.store {
+  color: #febf22;
+}

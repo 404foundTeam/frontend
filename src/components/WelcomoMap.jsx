@@ -14,7 +14,7 @@ function WelcomeMap({ focusRef, onClick }) {
   const container = useRef(null);
 
   useEffect(() => {
-    const position = new kakao.maps.LatLng(35.114513, 129.039346);
+    const position = new kakao.maps.LatLng(37.2757, 127.116);
     const options = {
       center: position,
       level: 3,
