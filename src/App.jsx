@@ -1,11 +1,16 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-import Layout from "./pages/Layout";
+import Layout from "./layouts/Layout";
 import ScrollToTop from "./utils/ScrollToTop";
 import WelcomePage from "./pages/WelcomePage";
 import CardNewsPage from "./pages/CardNewsPage";
-import Loading from "./components/Loading";
-import CardNewsResult from "./components/CardNewsResult";
+import CardNewsResultPage from "./pages/CardNewsResultPage";
+import CameraLayout from "./layouts/CameraLayout";
+import CameraPage from "./pages/CameraPage";
+import CardNewsLayout from "./layouts/CardNewsLayout";
+import CameraResultPage from "./pages/CameraResultPage";
+import MapLayout from "./layouts/MapLayout";
+import MapCoaPage from "./pages/MapCoaPage";
 
 function App() {
   return (
@@ -13,11 +18,20 @@ function App() {
       <BrowserRouter>
         <ScrollToTop />
         <Routes>
+          {/* 웰컴, 메인, 마이, 홍보, 카드 */}
           <Route path="/" element={<Layout />}>
             <Route index element={<WelcomePage />} />
-            <Route path="/cardnews" element={<CardNewsPage />} />
-            <Route path="/cardnews/loading" element={<Loading />} />
-            <Route path="/cardnews/result" element={<CardNewsResult />} />
+            <Route path="cardnews" element={<CardNewsLayout />}>
+              <Route index element={<CardNewsPage />} />
+              <Route path="result" element={<CardNewsResultPage />} />
+            </Route>
+            <Route path="camera" element={<CameraLayout />}>
+              <Route index element={<CameraPage />} />
+              <Route path="result" element={<CameraResultPage />} />
+            </Route>
+            <Route path="map" element={<MapLayout />}>
+              <Route path="coalition" element={<MapCoaPage />} />
+            </Route>
           </Route>
         </Routes>
       </BrowserRouter>
