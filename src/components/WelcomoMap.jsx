@@ -32,7 +32,6 @@ function WelcomeMap({ focusRef, onClick }) {
       <div className="header-close-button" onClick={onClick}>
         <img src={close} className="close-button-img" />
       </div>
-      {/* map-header 컴포넌트 or input 컴포넌트 */}
       <div className="map-header">
         <h2 className="header-title">업장 찾기</h2>
         <p className="header-content">

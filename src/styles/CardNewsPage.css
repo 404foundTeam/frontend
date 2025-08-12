@@ -322,6 +322,10 @@
   cursor: pointer;
 }
 
+.cardnews-them {
+  margin-bottom: 199px;
+}
+
 .them-list {
   margin-top: 70px;
   margin-left: 50px;
@@ -392,7 +396,7 @@
   width: 330px;
   height: 78px;
 
-  margin-top: 199px;
+  /* margin-top: 199px; */
   margin-left: 793px;
   margin-bottom: 180px;
 
