@@ -1,6 +1,7 @@
 .container {
   width: 100%;
   height: 489px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,17 +9,18 @@
 }
 
 .title {
-  font-weight: 700;
   font-size: 40px;
   line-height: 48px;
+  font-weight: 700;
   color: #413738;
 }
 
 .content {
   margin-top: 24px;
-  font-weight: 500;
+
   font-size: 30px;
   line-height: 36px;
+  font-weight: 500;
   letter-spacing: -0.025em;
   color: #797979;
 }
