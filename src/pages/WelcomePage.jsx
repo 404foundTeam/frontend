@@ -4,6 +4,7 @@ import img05 from "../assets/welcome_img05.png";
 import TextBox from "../components/TextBox";
 import WelcomeMap from "../components/WelcomoMap";
 import "../styles/WelcomePage.css";
+import Blur from "../components/Blur";
 
 function WelcomePage() {
   const cardRefs = useRef([]);
@@ -52,6 +53,7 @@ function WelcomePage() {
   return (
     <div className="welcome-container">
       {/* <WelcomeMap onClick={clickHideMap} /> */}
+      {showMap && <Blur />}
       {showMap && <WelcomeMap focusRef={mapRef} onClick={clickHideMap} />}
       <div className="welcome-header-container">
         <div className="welcome-header-box">
@@ -65,49 +67,51 @@ function WelcomePage() {
         </div>
         <div className="welcome-header-bottom-box"></div>
       </div>
-      <TextBox />
-      <div className="welcome-card-wrapper">
-        <div
-          className="welcome-card report"
-          ref={(el) => (cardRefs.current[0] = el)}
-        >
-          <div className="welcome-text-box right">
-            <p className="mini-title">업장 자동 운영</p>
-            <h1 className="card-title">스마트 리포트 생성</h1>
-            <p className="text card">
-              어렵고 복잡한 마케팅과 운영전략을 한번에
-            </p>
+      <div className="welcome-content-container">
+        <TextBox />
+        <div className="welcome-card-wrapper">
+          <div
+            className="welcome-card report"
+            ref={(el) => (cardRefs.current[0] = el)}
+          >
+            <div className="welcome-text-box right">
+              <p className="mini-title">업장 자동 운영</p>
+              <h1 className="card-title">스마트 리포트 생성</h1>
+              <p className="text card">
+                어렵고 복잡한 마케팅과 운영전략을 한번에
+              </p>
+            </div>
+            <div className="img-box right"></div>
           </div>
-          <div className="img-box right"></div>
-        </div>
-        <div
-          className="welcome-card marketing"
-          ref={(el) => (cardRefs.current[1] = el)}
-        >
-          <div className="img-box left"></div>
-          <div className="welcome-text-box left">
-            <p className="mini-title">업장 자동 운영</p>
-            <h1 className="card-title">AI 마케팅</h1>
-            <p className="text card">
-              어렵고 복잡한 마케팅과 운영전략을 한번에
-            </p>
+          <div
+            className="welcome-card marketing"
+            ref={(el) => (cardRefs.current[1] = el)}
+          >
+            <div className="img-box left"></div>
+            <div className="welcome-text-box left">
+              <p className="mini-title">업장 자동 운영</p>
+              <h1 className="card-title">AI 마케팅</h1>
+              <p className="text card">
+                어렵고 복잡한 마케팅과 운영전략을 한번에
+              </p>
+            </div>
+          </div>
+          <div
+            className="welcome-card sns"
+            ref={(el) => (cardRefs.current[2] = el)}
+          >
+            <div className="welcome-text-box right">
+              <p className="mini-title">업장 자동 운영</p>
+              <h1 className="card-title">SNS 카드 생성</h1>
+              <p className="text card">
+                어렵고 복잡한 마케팅과 운영전략을 한번에
+              </p>
+            </div>
+            <div className="img-box right"></div>
           </div>
         </div>
-        <div
-          className="welcome-card sns"
-          ref={(el) => (cardRefs.current[2] = el)}
-        >
-          <div className="welcome-text-box right">
-            <p className="mini-title">업장 자동 운영</p>
-            <h1 className="card-title">SNS 카드 생성</h1>
-            <p className="text card">
-              어렵고 복잡한 마케팅과 운영전략을 한번에
-            </p>
-          </div>
-          <div className="img-box right"></div>
-        </div>
+        <TextBox />
       </div>
-      <TextBox />
       <div className="welcome-sign-map">
         <h2 className="welcome-sign-title">업장 등록하기</h2>
         <p className="text sign">
