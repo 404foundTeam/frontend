@@ -1,5 +1,5 @@
 import "../styles/MapCoaPage.css";
-import img from "../assets/image.png";
+import img from "../assets/group.png";
 
 function MapCoaPage() {
   return (
