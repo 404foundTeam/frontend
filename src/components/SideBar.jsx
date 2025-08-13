@@ -1,8 +1,8 @@
 import styles from "../styles/SideBar.module.css";
-import main from "../assets/sidebar/main.ico";
-import camera from "../assets/sidebar/camera.ico";
-import carnews from "../assets/sidebar/cardnews.ico";
-import map from "../assets/sidebar/map.ico";
+import main from "../assets/sidebar/main.png";
+import camera from "../assets/sidebar/camera.png";
+import carnews from "../assets/sidebar/cardnews.png";
+import map from "../assets/sidebar/map.png";
 
 // svg는 나중에 하는 걸로...
 // import { ReactComponent as MainIcon } from "../assets/sidebar/main.svg";

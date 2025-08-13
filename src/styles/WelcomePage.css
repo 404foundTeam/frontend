@@ -3,14 +3,13 @@
   width: 1920px;
   height: 864px;
   position: relative;
-
-  font-style: normal;
 }
 
 /* 페이지 헤더 스타일 */
 .welcome-header-container {
   width: 100%;
   height: 864px;
+  position: relative;
 
   background: linear-gradient(
     180deg,
@@ -21,6 +20,8 @@
 }
 
 .welcome-header-box {
+  position: relative;
+
   padding-top: 160px;
   padding-left: 215px;
 }
@@ -30,52 +31,48 @@
   font-size: 80px;
   line-height: 95px;
   letter-spacing: -0.025em;
+
   color: #413738;
 }
 
-/* p 태그 공통 스타일 */
+/* 헤더, 사인맵 p 태그 공통 스타일 */
 .text {
   font-weight: 500;
   font-size: 30px;
   line-height: 36px;
   letter-spacing: -0.025em;
+
   color: #797979;
 }
 
-/* p 태그 여백 스타일(헤더, 카드, 사인맵) */
-.text.header {
+.header.text {
   margin-top: 16px;
 }
 
-.text.card {
-  margin-top: 24px;
-}
-
-.text.sign {
-  margin-top: 56px;
-}
-
 /* 헤더 이미지 스타일 */
-.welcome-header-img {
+.welcome-header-box .welcome-header-img {
   width: 839px;
   height: 630px;
   position: absolute;
   left: 961px;
   bottom: 72px;
-  z-index: 1;
+  z-index: 10;
 }
 
 /* 헤더 바닥 박스 스타일 */
-.welcome-header-bottom-box {
+.welcome-header-container .welcome-header-bottom-box {
   width: 100%;
   height: 72px;
   position: absolute;
   bottom: 0;
+
   background-color: #febf22;
 }
 
-/* 페이지 컨텐츠 배경 스타일 */
-.welcome-content-container {
+/* 페이지 카드 래퍼 배경 스타일 */
+.welcome-card-wrapper {
+  display: block;
+
   background: linear-gradient(
     180deg,
     #ffffff 2.4%,
@@ -88,6 +85,7 @@
 .welcome-card-wrapper .welcome-card {
   width: 100%;
   height: 994px;
+
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -97,111 +95,214 @@
   transition: opacity 2s ease-out, transform 2s ease-out;
 }
 
-/* 카드 애니메이션 */
 .welcome-card-wrapper .welcome-card.visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-@keyframes fadein {
-  from {
-    opacity: 0;
-    transform: translate3d(0, 100%, 0);
-  }
-  to {
-    opacity: 1;
-    transform: translateZ(0);
-  }
-}
-
 /* 카드 내부 텍스트 위치 조정 */
-.welcome-text-box {
+.welcome-card .welcome-text-box {
   margin-bottom: 452px;
 }
 
-.welcome-text-box.right {
-  margin-left: 215px;
+.welcome-card .welcome-text-box.right {
+  margin-left: 171px;
 }
 
-.welcome-text-box.left {
+.welcome-card .welcome-text-box.left {
   margin-right: 215px;
 }
 
 /* 카드 내부 텍스트 스타일 */
-.mini-title {
-  font-weight: 800;
-  font-size: 20px;
-  line-height: 24px;
-  color: #febf22;
+.welcome-text-box .mini-title {
   margin-bottom: 25px;
+  font-weight: 600;
+  font-size: 25px;
+  line-height: 30px;
+
+  color: #febf22;
 }
 
-.welcome-card-wrapper .welcome-card .card-title {
+.welcome-text-box .card-title {
+  margin-bottom: 7px;
   font-weight: 700;
   font-size: 70px;
   line-height: 84px;
+
   color: #6d3737;
-  margin-bottom: 7px;
 }
 
-/* 카드 내부 이미지 크기 및 위치 조정 */
-.welcome-card-wrapper .welcome-card .img-box {
+.welcome-text-box .card-content {
+  margin-top: 53px;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 40px;
+  letter-spacing: -0.025em;
+
+  color: #797979;
+}
+
+/* 스마트 리포트 스타일 */
+.welcome-card.report .report-img {
+  width: 813px;
+  position: absolute;
+  top: 112px;
+  right: 190px;
+}
+
+/* 마케팅 박스 스타일 */
+.welcome-card .marketing-boxs {
   width: 840px;
   height: 760px;
-  background-color: #eeeeee;
-}
 
-.welcome-card-wrapper .welcome-card .img-box.right {
-  margin-right: 159px;
-}
-
-.welcome-card-wrapper .welcome-card .img-box.left {
-  margin-left: 215px;
-}
-
-/* 페이지 사인맵 스타일 */
-.welcome-sign-map {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+.welcome-card .marketing-boxs.left {
+  margin-left: 215px;
+}
+
+.marketing-boxs .marketing-box {
+  width: 689px;
+  height: 114px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+
+  background-color: #febf22;
+  border-radius: 10px;
+
+  filter: drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.1));
+}
+
+.marketing-box2 {
+  opacity: 0.8;
+}
+
+.marketing-box3 {
+  opacity: 0.6;
+}
+
+.marketing-box4 {
+  opacity: 0.4;
+}
+
+/* 마케팅 박스 내부 텍스트 스타일 */
+.marketing-box .marketing-box-title {
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 36px;
+
+  color: #6d3737;
+}
+
+.marketing-box .marketing-box-content {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  letter-spacing: -0.025em;
+
+  color: #717171;
+}
+
+/* 카드 뉴스 박스 스타일 */
+.welcome-card .cards-box {
+  width: 840px;
+  height: 760px;
+  position: relative;
+
+  display: flex;
+}
+
+.welcome-card .cards-box.right {
+  margin-right: 159px;
+}
+
+/* 카드 뉴스 겹치게 */
+.welcome-card .cards-box .card-img {
+  width: 423px;
+  height: 533px;
+  position: absolute;
+
+  border-radius: 35px;
+}
+
+.card-img:nth-child(1) {
+  top: -28px;
+  left: 96px;
+  z-index: 3;
+}
+.card-img:nth-child(2) {
+  top: -51px;
+  left: 206px;
+  z-index: 2;
+}
+.card-img:nth-child(3) {
+  top: -77px;
+  left: 305px;
+  z-index: 1;
+}
+
+/* 페이지 사인맵 스타일 */
+.welcome-container .welcome-sign-map {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
   background-color: rgba(109, 55, 55, 0.2);
 }
 
-.welcome-sign-title {
+.welcome-sign-map .welcome-sign-title {
   font-weight: 600;
   font-size: 50px;
   line-height: 60px;
   letter-spacing: -0.025em;
+
   color: #413738;
+
   margin-top: 130px;
 }
 
-.welcome-sign-img {
+.welcome-sign-map .sign.text {
+  margin-top: 56px;
+}
+
+.welcome-sign-map .welcome-sign-img {
   width: 368px;
   height: 341px;
+
   margin-top: 160px;
 }
 
-.welcome-sign-button {
+.welcome-sign-map .welcome-sign-button {
   width: 593px;
   height: 93px;
+
   font-weight: 700;
   font-size: 40px;
   line-height: 48px;
   letter-spacing: -0.025em;
   color: #ffffff;
-  margin-top: 116px;
-  margin-bottom: 75px;
+
   background-color: #6d3737;
   border-radius: 73px;
   border: none;
+
   cursor: pointer;
+
+  transition: background-color 0.6s ease, transform 0.6s ease,
+    box-shadow 0.6s ease;
 }
 
 /* 버튼 호버 애니메이션 */
-.welcome-sign-button:hover {
+.welcome-sign-map .welcome-sign-button:hover {
   background-color: #8b4b4b;
   transform: scale(1.04);
-  transition: background-color 0.6s ease, transform 0.6s ease,
-    box-shadow 0.6s ease;
 }
