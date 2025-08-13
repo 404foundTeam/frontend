@@ -22,6 +22,7 @@ function WelcomePage() {
     setShowMap(false);
   };
 
+  // 포커스
   useEffect(() => {
     mapRef.current?.focus();
   }, [showMap]);
