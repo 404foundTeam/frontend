@@ -6,7 +6,7 @@
   margin-top: 274px;
 
   background-color: #f6f6f6;
-  border-radius: 30px;
+  border-radius: 40px;
 
   font-family: "Pretendard";
   font-style: normal;
@@ -54,9 +54,9 @@
   color: black;
 }
 
-.box.box.select img {
-  filter: grayscale(100%) brightness(0) invert(0);
-}
+/* .box.select img {
+  
+} */
 
 .main {
   width: 42px;

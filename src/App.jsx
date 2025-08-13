@@ -11,6 +11,7 @@ import CardNewsLayout from "./layouts/CardNewsLayout";
 import CameraResultPage from "./pages/CameraResultPage";
 import MapLayout from "./layouts/MapLayout";
 import MapCoaPage from "./pages/MapCoaPage";
+import MapCoaListPage from "./pages/MapCoaListPage";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
             </Route>
             <Route path="map" element={<MapLayout />}>
               <Route path="coalition" element={<MapCoaPage />} />
+              <Route path="coalition/list" element={<MapCoaListPage />} />
             </Route>
           </Route>
         </Routes>

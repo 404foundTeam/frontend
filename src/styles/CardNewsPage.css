@@ -1,13 +1,14 @@
+/* 카드뉴스 배너 */
 .cardnews-banner {
   width: 1920px;
   height: 212px;
-
-  background-color: #fffaed;
 
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 4px;
+
+  background-color: #fffaed;
 
   font-style: normal;
 }
@@ -18,26 +19,27 @@
 }
 
 .banner-title {
-  margin-left: 24px;
-
   font-weight: 700;
   font-size: 64px;
   line-height: 76px;
 
   color: #febf22;
+
+  margin-left: 24px;
 }
 
 .banner-content {
-  margin-top: 30px;
-  margin-left: 8px;
-
   font-weight: 500;
   font-size: 30px;
   line-height: 36px;
 
   color: #717171;
+
+  margin-top: 30px;
+  margin-left: 8px;
 }
 
+/* 카드뉴스 박스 */
 .cardnews-box {
   margin-top: 71px;
   margin-left: 359px;
@@ -62,15 +64,16 @@
   color: #6d3737;
 }
 
-.select-boxs {
-  margin-top: 49px;
-  margin-left: 114px;
-
+/* 선택 박스 */
+.cardnews-box .select-boxs {
   display: flex;
   gap: 280px;
+
+  margin-top: 49px;
+  margin-left: 114px;
 }
 
-.select-box {
+.cardnews-box .select-box {
   display: flex;
   align-items: center;
   gap: 30px;
@@ -78,20 +81,19 @@
   cursor: pointer;
 }
 
-.select-box:hover {
+.cardnews-box .select-box:hover {
   transform: scale(1.07);
-
   transition: transform 0.6s ease;
 }
 
-.select-boxs .box {
+.cardnews-box .select-boxs .box {
   width: 44px;
   height: 42px;
 
   border: 4px solid #d9d9d9;
 }
 
-.select-box .box.select {
+.cardnews-box .select-box .box.select {
   width: 52px;
   height: 50px;
 
@@ -99,7 +101,7 @@
   background-color: #febf22;
 }
 
-.select-box-title {
+.cardnews-box .select-box-title {
   font-weight: 500;
   font-size: 19px;
   line-height: 23px;
@@ -108,6 +110,7 @@
   color: #717171;
 }
 
+/* 카드뉴스 텍스트 영역 */
 .cardnews-text {
   margin-top: 60px;
 }
@@ -117,12 +120,12 @@
   flex-direction: column;
 }
 
-.cardnews-text-input {
+.cardnews-text-box .cardnews-text-input {
   width: 1058px;
+  padding: 28px;
 
   margin-top: 70px;
   margin-left: 45px;
-  padding: 28px;
 
   border: 5px solid #d9d9d9;
   border-radius: 10px;
@@ -135,13 +138,17 @@
   color: #717171;
 }
 
-.cardnews-text-input:focus {
+.cardnews-text-box .cardnews-text-input.select {
+  border: 5px solid #febf22;
+}
+
+.cardnews-text-box .cardnews-text-input:focus {
   border: 5px solid #febf22;
   outline: none;
   color: black;
 }
 
-.text-button {
+.cardnews-box .text-button {
   width: 235px;
   height: 56px;
 
@@ -158,12 +165,16 @@
   letter-spacing: -0.025em;
 
   color: #7c7c7c;
+
+  cursor: auto;
 }
 
-.cardnews-text-button.select,
+.cardnews-text-box .cardnews-text-button.select,
 .cardnews-text-result-button.select {
   color: #6d3737;
   background-color: #febf22;
+
+  cursor: pointer;
 }
 
 .cardnews-text-result-box {
@@ -174,10 +185,10 @@
 .text-result-show {
   width: 1058px;
   height: 212px;
+  padding: 28px;
 
   margin-top: 28px;
   margin-left: 40px;
-  padding: 28px;
 
   border: 5px solid #d9d9d9;
   border-radius: 10px;
@@ -194,39 +205,35 @@
   border: 5px solid #febf22;
 }
 
+/* 템플릿 리스트 */
 .templete-list {
-  margin-top: 87px;
-  margin-left: 40px;
-
   display: flex;
   gap: 140px;
+
+  margin-top: 87px;
+  margin-left: 40px;
 }
 
 .templete-list .templete-box {
   width: 300px;
   height: 300px;
 
-  background-color: #cfcfcf;
+  position: relative;
+  text-align: center;
+  cursor: pointer;
 
+  background-color: #cfcfcf;
   border: 5px solid #acacac;
   border-radius: 10px;
-
-  text-align: center;
-
-  position: relative;
-
-  cursor: pointer;
 }
 
 .templete-list .templete-box:hover {
   transform: scale(1.04);
-
   transition: transform 0.6s ease;
 }
 
 .templete-list .templete-box.select {
   background-color: #fffaed;
-
   border: 5px solid #febf22;
   transform: scale(1.04);
 }
@@ -235,6 +242,7 @@
 .templete-list .templete-box.select .store-content {
   background-color: #febf22;
 }
+
 .templete-box .templete-text {
   position: absolute;
 
@@ -256,10 +264,10 @@
   left: 44px;
 }
 
+/* 스토어 박스 */
 .store-name {
   width: 106px;
   height: 35px;
-
   line-height: 35px;
   background-color: #ededed;
 }
@@ -273,15 +281,14 @@
 .templete-list .templete-box .store-content {
   width: 251px;
   height: 188px;
+  line-height: 188px;
+  background-color: #ededed;
 
   margin-top: 22px;
   margin-left: 24px;
-
-  line-height: 188px;
-  background-color: #ededed;
 }
 
-.templete-list .templete-img-box {
+.templete-img-box {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -296,7 +303,6 @@
 .templete-img-box .templete-box .store-content.bottom {
   width: 263px;
   height: 76px;
-
   line-height: 76px;
 }
 
@@ -308,11 +314,11 @@
 .templete-img-box .templete-box .store-content.right {
   width: 106px;
   height: 219px;
-
-  margin-left: 176px;
   line-height: 219px;
+  margin-left: 176px;
 }
 
+/* 업로드 버튼 */
 .upload {
   width: 158px;
   height: 42px;
@@ -336,16 +342,17 @@
   cursor: pointer;
 }
 
+/* 카드뉴스 테마 */
 .cardnews-them {
   margin-bottom: 199px;
 }
 
 .them-list {
-  margin-top: 70px;
-  margin-left: 50px;
-
   display: flex;
   gap: 98px;
+
+  margin-top: 70px;
+  margin-left: 50px;
 }
 
 .them-box p {
@@ -360,8 +367,8 @@
 }
 
 .them-box .color-box {
-  margin-top: 16px;
   padding: 25px 15px 19px;
+  margin-top: 16px;
 
   background-color: #f6f6f6;
   border: 5px solid #acacac;
@@ -372,14 +379,12 @@
 
 .them-box .color-box:hover {
   transform: scale(1.03);
-
   transition: transform 0.6s ease;
 }
 
 .them-box .color-box.select {
   background-color: #fffaed;
   transform: scale(1.03);
-
   border: 5px solid #febf22;
 }
 
@@ -398,7 +403,6 @@
   height: 72px;
 
   margin-top: 13px;
-
   border-radius: 10px;
 }
 
@@ -414,11 +418,11 @@
   background-color: #ff8f00;
 }
 
+/* 카드뉴스 버튼 */
 .cardnews-button {
   width: 330px;
   height: 78px;
 
-  /* margin-top: 199px; */
   margin-left: 793px;
   margin-bottom: 180px;
 
