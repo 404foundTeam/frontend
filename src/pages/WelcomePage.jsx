@@ -15,6 +15,26 @@ function WelcomePage() {
   const mapRef = useRef();
   const [showMap, setShowMap] = useState(false);
 
+  const marketingBoxes = [
+    {
+      title: "오후 3시 전 음료 사이즈업 무료",
+      content:
+        "오후 3시에 방문 고객이 적어 방문 고객을 유도하기 위한 사이즈업 이벤트 어떠세요?",
+    },
+    {
+      title: "아메이카노 1+1 이벤트",
+      content: "아메리카노 1+1 이벤트 어떠세요?",
+    },
+    {
+      title: "신규 방문객 대상 캠페인",
+      content: "신규 방문객 대상 아메리카노 10% 할인 이벤트 어떠세요?",
+    },
+    {
+      title: "축제와 함께 달콤한 디저트 할인",
+      content: "축제를 같이 즐길 달콤한 디저트 30% 할인 이벤트 어떠세요?",
+    },
+  ];
+
   const clickShowMap = () => {
     setShowMap(true);
   };
@@ -93,35 +113,12 @@ function WelcomePage() {
           ref={(el) => (cardRefs.current[1] = el)}
         >
           <div className="marketing-boxs left">
-            <div className="marketing-box marketing-box1">
-              <h1 className="marketing-box-title">
-                오후 3시 전 음료 사이즈업 무료
-              </h1>
-              <p className="marketing-box-content">
-                오후 3시에 방문 고객이 적어 방문 고객을 유도하기 위한 사이즈업
-                이벤트 어떠세요?
-              </p>
-            </div>
-            <div className="marketing-box marketing-box2">
-              <h1 className="marketing-box-title">아메이카노 1+1 이벤트</h1>
-              <p className="marketing-box-content">
-                아메리카노 1+1 이벤트 어떠세요?
-              </p>
-            </div>
-            <div className="marketing-box marketing-box3">
-              <h1 className="marketing-box-title">신규 방문객 대상 캠페인</h1>
-              <p className="marketing-box-content">
-                신규 방문객 대상 아메리카노 10% 할인 이벤트 어떠세요?
-              </p>
-            </div>
-            <div className="marketing-box marketing-box4">
-              <h1 className="marketing-box-title">
-                축제와 함께 달콤한 디저트 할인
-              </h1>
-              <p className="marketing-box-content">
-                축제를 같이 즐길 달콤한 디저트 30% 할인 이벤트 어떠세요?
-              </p>
-            </div>
+            {marketingBoxes.map((item, index) => (
+              <div className="marketing-box" key={index}>
+                <h1 className="marketing-box-title">{item.title}</h1>
+                <p className="marketing-box-content">{item.content}</p>
+              </div>
+            ))}
           </div>
           <div className="welcome-text-box left">
             <p className="mini-title">업장 홍보</p>
@@ -148,9 +145,9 @@ function WelcomePage() {
             </p>
           </div>
           <div className="cards-box right">
-            <img src={cardImg01} className="card-img card-img01" />
-            <img src={cardImg02} className="card-img card-img02" />
-            <img src={cardImg03} className="card-img card-img03" />
+            <img src={cardImg01} className="card-img" />
+            <img src={cardImg02} className="card-img" />
+            <img src={cardImg03} className="card-img" />
           </div>
         </div>
       </div>
