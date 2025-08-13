@@ -33,7 +33,10 @@ function MyScrap() {
   const totalPages = Math.ceil(dummyData.length / itemsPerPage);
 
   return (
-    <>
+    <><div className={styles.header}>
+        <h1 className={styles.mainTitle}>My Content</h1>
+        <p className={styles.subtitle}>내가 만든 카드뉴스를 한 눈에 관리해보세요</p>
+      </div>
       <div className={styles.cardGrid}>
         {currentItems.map((item) => (
           // 3. 이제 key={item.id}는 항상 고유한 값을 가집니다.
