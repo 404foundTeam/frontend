@@ -1,0 +1,48 @@
+.cardGrid {
+  margin-left: 10%;
+  margin-right: 10%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3개의 열 */
+  gap: 1rem;
+  justify-items: center;
+}
+
+
+.card {
+  
+  overflow: hidden;
+}
+
+.cardImage {
+  width: 390px;
+  height: 380px;
+  object-fit: cover;
+}
+
+.cardTitle {
+  text-align: center;
+  color: #797979;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  gap: 1rem; 
+}
+
+/* 페이지 버튼 기본 스타일 (선택되지 않은 상태) */
+.pageButton {
+  padding: 8px 14px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #797979; 
+}
+
+/* 활성화된(선택된) 페이지 버튼 스타일 */
+.pageButton.active {
+  color: #FEBF22; 
+  font-weight: 700;
+}

@@ -1,0 +1,11 @@
+
+.layoutContainer {
+  display: flex; /* 자식 요소들을 가로로 배치 */
+}
+
+.mainContent {
+  width: 1920px;
+  height: 495px;
+  margin-left: 300px;
+  background-color: #fffaed;
+}
