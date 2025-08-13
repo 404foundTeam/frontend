@@ -1,3 +1,4 @@
+import "../styles/MapBanner.css";
 import "../styles/MapCoaPage.css";
 import img from "../assets/group.png";
 import SelectHeader from "../components/SelectHeader";

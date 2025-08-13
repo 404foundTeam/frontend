@@ -1,0 +1,44 @@
+.coa-list-container {
+  margin-top: 43px;
+  margin-left: 268px;
+}
+
+.coa-list-container h1 {
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 48px;
+  letter-spacing: -0.025em;
+
+  color: #413738;
+}
+
+.coa-list-container h1 span {
+  color: #febf22;
+}
+
+.store-name {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 29px;
+  letter-spacing: -0.025em;
+
+  color: #febf22;
+}
+
+.store-add {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  letter-spacing: -0.025em;
+
+  color: #797979;
+}
+
+.coa-list-container .text-box .date {
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 29px;
+  letter-spacing: -0.025em;
+
+  color: #797979;
+}
