@@ -1,0 +1,35 @@
+.coa-banner {
+  width: 1920px;
+  height: 198px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fffaed;
+}
+
+.coa-banner img {
+  width: 170px;
+  height: 170px;
+}
+
+.coa-banner .banner-title {
+  margin-left: 24px;
+
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 76px;
+
+  color: #febf22;
+}
+
+.coa-banner .banner-content {
+  margin-top: 30px;
+  margin-left: 8px;
+
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 36px;
+
+  color: #717171;
+}

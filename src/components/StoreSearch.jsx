@@ -1,6 +1,6 @@
 import styles from "../styles/StoreSearch.module.css";
 
-function StoreSearch({ focusRef, placeholder, value, onChange }) {
+function StoreSearch({ focusRef, placeholder, value, onChange, onKeyDown }) {
   return (
     <div className={styles.container}>
       <input
@@ -10,6 +10,7 @@ function StoreSearch({ focusRef, placeholder, value, onChange }) {
         placeholder={placeholder}
         value={value}
         onChange={onChange}
+        onKeyDown={onKeyDown}
       />
     </div>
   );

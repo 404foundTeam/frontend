@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import "../styles/CardNewsPage.css";
 import SideBar from "../components/SideBar";
 import bannerImg from "../assets/cardnews/banner_img.png";
-import CardNewsHeader from "../components/CardNewsHeader";
+import SelectHeader from "../components/SelectHeader";
 
 function CardNewsPage() {
   // 인풋 접근
@@ -33,7 +33,7 @@ function CardNewsPage() {
         </p>
       </div>
       <div className="cardnews-box cardnews-category">
-        <CardNewsHeader text="어떤 SNS 카드 뉴스를 만들까요?" />
+        <SelectHeader text="어떤 SNS 카드 뉴스를 만들까요?" />
         <div className="select-boxs">
           <div
             className="select-box noti"
@@ -67,10 +67,10 @@ function CardNewsPage() {
         </div>
       </div>
       <div className="cardnews-box cardnews-text">
-        <CardNewsHeader text="SNS 카드 뉴스에 넣고 싶은 텍스트를 입력하세요." />
+        <SelectHeader text="SNS 카드 뉴스에 넣고 싶은 텍스트를 입력하세요." />
         <div className="cardnews-text-box">
           <input
-            className="cardnews-text-input"
+            className={`cardnews-text-input ${text ? "select" : ""}`}
             type="text"
             placeholder="텍스트를 입력하세요."
             value={text}
@@ -88,7 +88,7 @@ function CardNewsPage() {
         </div>
       </div>
       <div className="cardnews-box cardnews-text-reulst">
-        <CardNewsHeader text="변환 결과" />
+        <SelectHeader text="변환 결과" />
         <div className="cardnews-text-result-box">
           <div className={`text-result-show ${showTest ? "select" : ""}`}>
             {showTest}
@@ -103,7 +103,7 @@ function CardNewsPage() {
         </div>
       </div>
       <div className="cardnews-box cardnews-templete">
-        <CardNewsHeader text="원하는 템플릿을 선택해주세요." />
+        <SelectHeader text="원하는 템플릿을 선택해주세요." />
         <div className="templete-list">
           <div
             className={`templete-box ${templete === "box1" ? "select" : ""}`}
@@ -159,7 +159,7 @@ function CardNewsPage() {
         </div>
       </div>
       <div className="cardnews-box cardnews-ratio">
-        <CardNewsHeader text="원하는 비율을 선택해주세요." />
+        <SelectHeader text="원하는 비율을 선택해주세요." />
         <div className="select-boxs">
           <div
             className="select-box normal"
@@ -191,7 +191,7 @@ function CardNewsPage() {
         </div>
       </div>
       <div className="cardnews-box cardnews-them">
-        <CardNewsHeader text="원하는 테마를 선택해주세요." />
+        <SelectHeader text="원하는 테마를 선택해주세요." />
         <div className="them-list">
           <div className="them-box">
             <p>따뜻하고 편안한 분위기</p>
