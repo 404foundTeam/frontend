@@ -54,12 +54,12 @@
   height: 278px;
 
   top: 327px;
-  right: 753px;
+  right: 800px;
 
   /* animation: wave-animation1 4s linear infinite,
     wave-animation2 4s linear infinite; */
 
-  animation: wave-animation1 4s linear infinite alternate;
+  animation: wave-animation1 5s linear infinite alternate;
 }
 
 @keyframes wave-animation1 {
@@ -128,9 +128,9 @@
   height: 211px;
 
   top: 504px;
-  right: 600px;
+  right: 724px;
 
-  animation: wave-animation3 6s linear infinite alternate;
+  animation: wave-animation3 7s linear infinite alternate;
 }
 
 @keyframes wave-animation3 {
