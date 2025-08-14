@@ -6,6 +6,7 @@
   z-index: 4;
 
   margin-left: 135px;
+  border-radius: 30px;
 
   display: flex;
   flex-direction: column;
@@ -98,6 +99,10 @@
 
 /* 업장 목록 */
 .search-list {
+  height: 600px;
+  overflow: hidden;
+  overflow-y: scroll;
+
   border: 3px solid #d9d9d9;
 }
 
@@ -166,10 +171,15 @@
   line-height: 48px;
 
   color: #ffffff;
+
+  cursor: auto;
 }
 
 .map-button.select:hover {
   background-color: #8b4b4b;
+
+  cursor: pointer;
+
   transform: scale(1.04);
 
   transition: background-color 0.6s ease, transform 0.6s ease,

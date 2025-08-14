@@ -15,36 +15,58 @@ function WelcomeMap({ focusRef, onClick }) {
   const markerRef = useRef(null); // 현재 마커 저장
 
   // 업장 리스트 (위도, 경도 포함)
-  const storeList = [
+  const item = [
     {
+      placeId: "1578211725",
       name: "모퉁이 꽃집",
-      address:
+      roadAddress:
         "경기 용인시 기흥구 기흥역로58번길 78 기흥역더샵오피스텔 201동 112호",
-      lat: 37.2735,
-      lng: 127.1177,
+      longitude: 127.1177,
+      latitude: 37.2735,
     },
     {
+      placeId: "1578211725",
       name: "진 부엉이꼬마김밥 기흥점",
-      address: "경기 용인시 기흥구 기흥역로63 힐스테이트 상가 1층 302동 108호",
-      lat: 37.2745,
-      lng: 127.1185,
+      roadAddress:
+        "경기 용인시 기흥구 기흥역로63 힐스테이트 상가 1층 302동 108호",
+      longitude: 127.1185,
+      latitude: 37.2745,
     },
     {
+      placeId: "1578211725",
       name: "어웨이 커피",
-      address: "경기 용인시 기흥구 기흥역로 9 108호 어웨이커피",
-      lat: 37.2747,
-      lng: 127.1154,
+      roadAddress: "경기 용인시 기흥구 기흥역로 9 108호 어웨이커피",
+      longitude: 127.1154,
+      latitude: 37.2747,
     },
     {
+      placeId: "1578211725",
       name: "구갈대지서점",
-      address: "경기 용인시 기흥구 구갈로72번길 10 낙원상가 108호",
-      lat: 37.2807,
-      lng: 127.1124,
+      roadAddress: "경기 용인시 기흥구 구갈로72번길 10 낙원상가 108호",
+      longitude: 127.1124,
+      latitude: 37.2807,
+    },
+    {
+      placeId: "13595342",
+      name: "성산식당",
+      roadAddress: "경기 용인시 기흥구 구갈로72번길 27-1",
+      longitude: 127.114587717426,
+      latitude: 37.2809227902893,
+    },
+    {
+      placeId: "1578211725",
+      name: "여수에서온나진국밥 용인기흥구청점",
+      roadAddress: "경기 용인시 기흥구 구갈로72번길 31",
+      longitude: 127.11500261541231,
+      latitude: 37.2808818411709,
     },
   ];
 
   useEffect(() => {
-    const centerPos = new kakao.maps.LatLng(storeList[0].lat, storeList[0].lng);
+    const centerPos = new kakao.maps.LatLng(
+      item[0].latitude,
+      item[0].longitude
+    );
     const options = {
       center: centerPos,
       level: 3,
@@ -53,8 +75,11 @@ function WelcomeMap({ focusRef, onClick }) {
     mapRef.current = map;
 
     // 마커 여러 개 생성
-    storeList.forEach((store) => {
-      const markerPosition = new kakao.maps.LatLng(store.lat, store.lng);
+    item.forEach((store) => {
+      const markerPosition = new kakao.maps.LatLng(
+        store.latitude,
+        store.longitude
+      );
       // 마커 이미지
       const imageSize = new kakao.maps.Size(24, 35); // 이미지 크기
       const imageOption = { offset: new kakao.maps.Point(12, 35) }; // 마커 중심 좌표
@@ -88,6 +113,8 @@ function WelcomeMap({ focusRef, onClick }) {
         const coords = new kakao.maps.LatLng(result[0].y, result[0].x);
         console.log(result);
         console.log(result[0].address_name); // 도로명 주소
+        console.log(result[0].x); // 경도, x좌표
+        console.log(result[0].y); // 위도, y좌표
 
         mapRef.current.setCenter(coords);
 
@@ -151,19 +178,21 @@ function WelcomeMap({ focusRef, onClick }) {
             <img src={listTitle} className="list-title-ico" />
           </div>
           <div className="search-list">
-            {storeList.map((store, idx) => (
-              <div className="search-list-box" key={idx}>
+            {item.map((store) => (
+              <div className="search-list-box" key={store.placeId}>
                 <img src={listIcon} className="list-box-ico" />
                 <div className="store-info">
                   <h1>{store.name}</h1>
-                  <p>{store.address}</p>
+                  <p>{store.roadAddress}</p>
                 </div>
               </div>
             ))}
           </div>
         </div>
       </div>
-      <button className="map-button select">업장 등록</button>
+      <div>
+        <button className="map-button">업장 등록</button>
+      </div>
     </div>
   );
 }
