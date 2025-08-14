@@ -49,7 +49,7 @@
   color: #717171;
 }
 
-.content {
+.coa-container .content {
   margin-top: 60px;
 }
 
@@ -114,7 +114,7 @@
   cursor: pointer;
 }
 
-.date {
+.coa-container .date {
   margin-bottom: 199px;
 }
 

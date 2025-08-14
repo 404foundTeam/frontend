@@ -265,14 +265,11 @@
 }
 
 /* 스토어 박스 */
-.store-name {
+.templete-list .templete-box .store-name {
   width: 106px;
   height: 35px;
   line-height: 35px;
-  background-color: #ededed;
-}
 
-.templete-list .templete-box .store-name {
   margin-top: 27px;
   margin-left: 23px;
   background-color: #ededed;
