@@ -29,9 +29,7 @@
   height: 60px;
 }
 
-.map-header {
-  margin-top: 90px;
-
+.map-container .map-header {
   display: flex;
   flex-direction: column;
   align-items: center;

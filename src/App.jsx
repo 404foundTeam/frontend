@@ -12,6 +12,7 @@ import CameraResultPage from "./pages/CameraResultPage";
 import MapLayout from "./layouts/MapLayout";
 import MapCoaPage from "./pages/MapCoaPage";
 import MapCoaListPage from "./pages/MapCoaListPage";
+import MapPage from "./pages/MapPage";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
               <Route path="result" element={<CameraResultPage />} />
             </Route>
             <Route path="map" element={<MapLayout />}>
+              <Route index element={<MapPage />} />
               <Route path="coalition" element={<MapCoaPage />} />
               <Route path="coalition/list" element={<MapCoaListPage />} />
             </Route>
