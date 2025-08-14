@@ -88,6 +88,8 @@ function WelcomeMap({ focusRef, onClick }) {
         const coords = new kakao.maps.LatLng(result[0].y, result[0].x);
         console.log(result);
         console.log(result[0].address_name); // 도로명 주소
+        console.log(result[0].x); // 경도, x좌표
+        console.log(result[0].y); // 위도, y좌표
 
         mapRef.current.setCenter(coords);
 

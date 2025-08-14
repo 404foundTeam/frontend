@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-
 import reportImg from "../assets/welcome/report_img.png";
 import cardImg01 from "../assets/welcome/card_img01.png";
 import cardImg02 from "../assets/welcome/card_img02.png";
@@ -82,12 +81,18 @@ function WelcomePage() {
       <div className="welcome-header-container">
         <div className="welcome-header-box">
           <div>
-            <h1 className="header-title">소상공인 마케팅</h1>
+            <h1 className="header-title">
+              소상공인을 위한
+              <br />
+              스마트한 마케팅 플랫폼
+            </h1>
             <p className="header text">
               어렵고 복잡한 마케팅과 운영전략을 한번에
             </p>
           </div>
-          {/* 이미지 들어갈 자리 */}
+          <di className="header-img bee"></di>
+          <di className="header-img bee"></di>
+          <di className="header-img hive"></di>
         </div>
         <div className="welcome-header-bottom-box"></div>
       </div>
@@ -97,6 +102,7 @@ function WelcomePage() {
           className="welcome-card report"
           ref={(el) => (cardRefs.current[0] = el)}
         >
+          <div className="line-top"></div>
           <div className="welcome-text-box right">
             <p className="mini-title">업장 운영 전략</p>
             <h1 className="card-title">스마트 리포트 생성</h1>
@@ -149,6 +155,7 @@ function WelcomePage() {
             <img src={cardImg02} className="card-img" />
             <img src={cardImg03} className="card-img" />
           </div>
+          <div className="line-bottom"></div>
         </div>
       </div>
       <TextBox />
