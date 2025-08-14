@@ -7,7 +7,7 @@ function CardNewsResultPage() {
   const chance = 1;
 
   return (
-    <>
+    <div className="cardnews-container">
       {/* <Loading /> */}
       <div className="result-container">
         <div className="top-box"></div>
@@ -23,7 +23,7 @@ function CardNewsResultPage() {
           </p>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

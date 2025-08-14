@@ -1,7 +1,8 @@
 /* 페이지 전체 배경 스타일 */
 .welcome-container {
   width: 1920px;
-  height: 864px;
+  min-height: 864px;
+  /* height: 864px; */
   position: relative;
 }
 

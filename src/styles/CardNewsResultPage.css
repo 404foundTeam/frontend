@@ -1,3 +1,7 @@
+.cardnews-container {
+  min-height: 1092px;
+}
+
 .result-container {
   position: relative;
 

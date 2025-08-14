@@ -3,7 +3,7 @@ import styles from "../styles/Header.module.css";
 
 function Header() {
   return (
-    <header>
+    <header className={styles.header}>
       <img src={logoImg} className={styles.img}></img>
       <div className={styles.tags}>
         <a className={styles.text}>market BEE</a>
