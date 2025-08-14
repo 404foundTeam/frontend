@@ -4,7 +4,7 @@ import "../styles/MapPage.css";
 function MapPage() {
   return (
     <>
-      <div className="map-header">
+      <div className="map-page-header">
         <h2 className="map-header-title">업장 찾기</h2>
         <p className="map-header-content">
           업장을 검색해서 제휴를 요청해보세요.
