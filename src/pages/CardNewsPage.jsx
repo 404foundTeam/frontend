@@ -5,19 +5,18 @@ import bannerImg from "../assets/cardnews/banner_img.png";
 import SelectHeader from "../components/SelectHeader";
 
 function CardNewsPage() {
+  const textInv = `창가 쪽에서 안쪽으로 찍으면 자연광이 인물과 공간을 부드럽게
+            비춥니다. 역광보다는 측광·순광이 좋아요. 나무, 초록 식물, 따뜻한
+            조명이 있으면 사진 분위기가 한층 좋아질거에요. 가로사진은 3:2 비율,
+            세로사진은 4:5 비율이 SNS에서 가장 반응이 좋아요. 오전 10시~오후 3시
+            사이가 가장 자연광이 예쁘게 들어오는 시간이기 때문에 이 시간대에
+            사진을 촬영하는 것을 추천해요.`;
+
   // 인풋 접근
   const fileInput01 = useRef();
   const fileInput02 = useRef();
 
   const [text, setText] = useState("");
-  const [showTest, setShowText] =
-    useState(`창가 쪽에서 안쪽으로 찍으면 자연광이 인물과 공간을 부드럽게
-            비춥니다. 역광보다는 측광·순광이 좋아요. 나무, 초록 식물, 따뜻한
-            조명이 있으면 사진 분위기가 한층 좋아질거에요. 가로사진은 3:2 비율,
-            세로사진은 4:5 비율이 SNS에서 가장 반응이 좋아요. 오전 10시~오후 3시
-            사이가 가장 자연광이 예쁘게 들어오는 시간이기 때문에 이 시간대에
-            사진을 촬영하는 것을 추천해요.`);
-  // useState("");
   const [category, setCategory] = useState("");
   const [templete, setTemplete] = useState("");
   const [ratio, setRatio] = useState("");
@@ -90,12 +89,12 @@ function CardNewsPage() {
       <div className="cardnews-box cardnews-text-reulst">
         <SelectHeader text="변환 결과" />
         <div className="cardnews-text-result-box">
-          <div className={`text-result-show ${showTest ? "select" : ""}`}>
-            {showTest}
+          <div className={`text-result-show ${textInv ? "select" : ""}`}>
+            {textInv}
           </div>
           <button
             className={`text-button cardnews-text-result-button ${
-              showTest ? "select" : ""
+              textInv ? "select" : ""
             }`}
           >
             재생성하기
@@ -234,7 +233,7 @@ function CardNewsPage() {
           </div>
         </div>
       </div>
-      {category && showTest && templete && ratio && them && (
+      {category && textInv && templete && ratio && them && (
         <button className="cardnews-button">완료</button>
       )}
     </>

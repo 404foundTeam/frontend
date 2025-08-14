@@ -14,12 +14,16 @@
 .loadingBox {
   position: absolute;
   top: 139px;
-  left: 578px;
+  left: 575px;
 
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 121px;
+}
+
+.loadingBox.cardnews {
+  left: 620px;
 }
 
 .loadingImg {

@@ -4,10 +4,12 @@ import "../styles/CardNewsResultPage.css";
 import img from "../assets/show.png";
 
 function CardNewsResultPage() {
+  const chance = 1;
+
   return (
     <>
-      <Loading />
-      {/* <div className="result-container">
+      {/* <Loading /> */}
+      <div className="result-container">
         <div className="top-box"></div>
         <div className="result-box">
           <img src={img} className="result-img" />
@@ -17,10 +19,10 @@ function CardNewsResultPage() {
             <button className="new">새로 만들기</button>
           </div>
           <p>
-            이번 달 무료 횟수 <span>1회</span> 남았어요.
+            이번 달 무료 횟수 <span>{chance}회</span> 남았어요.
           </p>
         </div>
-      </div> */}
+      </div>
     </>
   );
 }
