@@ -1,15 +1,15 @@
 .map-container {
   width: 1650px;
   height: 2132px;
-
-  margin-left: 135px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
   position: absolute;
   top: 3700px;
   z-index: 4;
+
+  margin-left: 135px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   background-color: #ffffff;
   font-style: normal;
@@ -34,8 +34,6 @@
   flex-direction: column;
   align-items: center;
   gap: 16px;
-
-  margin-top: 90px;
 }
 
 .map-header .header-title {
@@ -81,14 +79,14 @@
   justify-content: center;
   gap: 24px;
 
-  background-color: #febf22;
-
   font-weight: 700;
   font-size: 30px;
   line-height: 36px;
   letter-spacing: -0.025em;
 
   color: #ffffff;
+
+  background-color: #febf22;
 }
 
 .list-title-ico {

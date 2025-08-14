@@ -1,7 +1,6 @@
-header {
+.header {
   width: 1920px;
   height: 72px;
-  position: relative;
 
   font-style: normal;
   font-weight: 500;

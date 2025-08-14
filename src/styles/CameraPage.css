@@ -1,7 +1,7 @@
 .camera-container {
-  padding-top: 190px;
-  padding-left: 452px;
-  padding-right: 452px;
+  position: absolute;
+  top: 262px;
+  left: 452px;
 
   display: flex;
   flex-direction: column;
@@ -24,7 +24,6 @@
   font-size: 30px;
   line-height: 36px;
   letter-spacing: -0.025em;
-
   color: #797979;
 
   cursor: pointer;
@@ -56,7 +55,6 @@
   font-size: 25px;
   line-height: 30px;
   letter-spacing: -0.025em;
-
   color: #6d3737;
 }
 

@@ -36,11 +36,11 @@
 }
 
 .textBox p {
-  color: #797979;
-
   font-size: 30px;
   line-height: 50px;
   letter-spacing: -0.025em;
+
+  color: #797979;
 }
 
 .store {

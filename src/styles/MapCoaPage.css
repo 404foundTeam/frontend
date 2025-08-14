@@ -1,6 +1,11 @@
 .coa-container {
   margin-top: 71px;
   margin-left: 359px;
+  padding-bottom: 199px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
 }
 
 .coa-container .select-boxs {
@@ -47,10 +52,6 @@
   letter-spacing: -0.025em;
 
   color: #717171;
-}
-
-.coa-container .content {
-  margin-top: 60px;
 }
 
 .content .content-text-box {

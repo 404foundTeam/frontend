@@ -1,5 +1,9 @@
 .camera-result-container {
-  padding-top: 176px;
+  position: absolute;
+  top: 262px;
+  left: 451px;
+
+  padding-bottom: 199px;
 
   display: flex;
   flex-direction: column;
@@ -16,9 +20,6 @@
 }
 
 .camera-result-container .guide-box {
-  padding-left: 62px;
-  padding-bottom: 199px;
-
   display: flex;
   flex-direction: column;
 }
@@ -28,7 +29,6 @@
   font-size: 30px;
   line-height: 36px;
   letter-spacing: -0.025em;
-
   color: #6d3737;
 }
 
@@ -38,15 +38,13 @@
 
 .guide-box div {
   width: 1047px;
-
   margin-top: 10px;
   padding: 27px 23px;
 
   font-weight: 400;
   font-size: 25px;
-  line-height: 34px; /* 또는 136% */
+  line-height: 34px;
   letter-spacing: -0.025em;
-
   color: #6d3737;
 
   border: 2px solid #acacac;
@@ -60,9 +58,7 @@
   font-size: 25px;
   line-height: 17px;
   letter-spacing: -0.025em;
-
   text-align: center;
-
   color: #6d3737;
 }
 
