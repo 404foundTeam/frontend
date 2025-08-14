@@ -23,7 +23,7 @@ function CardNewsPage() {
   const [them, setThem] = useState("");
 
   return (
-    <>
+    <div className="cardnews-container">
       <div className="cardnews-banner">
         <img src={bannerImg} className="banner-img" />
         <h1 className="banner-title">어웨이 커피</h1>
@@ -236,7 +236,7 @@ function CardNewsPage() {
       {category && textInv && templete && ratio && them && (
         <button className="cardnews-button">완료</button>
       )}
-    </>
+    </div>
   );
 }
 

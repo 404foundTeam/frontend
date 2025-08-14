@@ -1,5 +1,9 @@
 .camera-result-container {
-  padding-top: 176px;
+  position: absolute;
+  top: 262px;
+  left: 451px;
+
+  padding-bottom: 199px;
 
   display: flex;
   flex-direction: column;
@@ -16,8 +20,7 @@
 }
 
 .camera-result-container .guide-box {
-  padding-left: 62px;
-  padding-bottom: 199px;
+  /* padding-left: 62px; */
 
   display: flex;
   flex-direction: column;

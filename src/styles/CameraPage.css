@@ -1,7 +1,7 @@
 .camera-container {
-  padding-top: 190px;
-  padding-left: 452px;
-  padding-right: 452px;
+  position: absolute;
+  top: 262px;
+  left: 452px;
 
   display: flex;
   flex-direction: column;

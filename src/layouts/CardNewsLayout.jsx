@@ -5,9 +5,9 @@ function CardNewsLayout() {
   return (
     <>
       <SideBar isCard={true} />
-      <main>
+      <>
         <Outlet />
-      </main>
+      </>
     </>
   );
 }
