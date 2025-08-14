@@ -30,13 +30,11 @@
   height: 60px;
 }
 
-.map-header {
+.map-container .map-header {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 16px;
-
-  margin-top: 90px;
 }
 
 .map-header .header-title {
@@ -82,14 +80,14 @@
   justify-content: center;
   gap: 24px;
 
-  background-color: #febf22;
-
   font-weight: 700;
   font-size: 30px;
   line-height: 36px;
   letter-spacing: -0.025em;
 
   color: #ffffff;
+
+  background-color: #febf22;
 }
 
 .list-title-ico {
@@ -144,7 +142,7 @@
   color: #413738;
 }
 
-.store-info p {
+.search-list-box .store-info p {
   margin-top: 8px;
 
   font-weight: 500;

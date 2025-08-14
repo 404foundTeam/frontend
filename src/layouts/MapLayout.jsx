@@ -5,9 +5,9 @@ function MapLayout() {
   return (
     <>
       <SideBar isMap={true} />
-      <main>
+      <>
         <Outlet />
-      </main>
+      </>
     </>
   );
 }
