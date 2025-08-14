@@ -1,9 +1,17 @@
 .container {
   width: 160px;
   height: 526px;
+  position: fixed;
+  left: 8px;
+  z-index: 10;
 
   margin-left: 40px;
   margin-top: 274px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
 
   background-color: #f6f6f6;
   border-radius: 40px;
@@ -13,18 +21,9 @@
   font-weight: 700;
   font-size: 20px;
   line-height: 121.2%;
-  letter-spacing: -0.025em; /* 또는 24px */
+  letter-spacing: -0.025em;
 
   color: #acacac;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 24px;
-
-  position: fixed;
-  left: 8px;
-  z-index: 10;
 }
 
 .container > :first-child {
@@ -53,10 +52,6 @@
 
   color: black;
 }
-
-/* .box.select img {
-  
-} */
 
 .main {
   width: 42px;
