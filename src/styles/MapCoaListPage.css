@@ -1,6 +1,11 @@
 .coa-list-container {
   margin-top: 43px;
   margin-left: 268px;
+  padding-bottom: 199px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 66px;
 }
 
 .coa-list-container h1 {
@@ -16,7 +21,35 @@
   color: #febf22;
 }
 
-.store-name {
+.coa-list-container .coa-list {
+  margin-top: 25px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 47px;
+}
+
+.my-coa-box {
+  display: flex;
+  align-items: center;
+  gap: 83px;
+}
+
+.my-coa-box .text-box {
+  width: 1099px;
+
+  padding: 39px 38px 20px 39px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background-color: #ffffff;
+  box-shadow: 0px 4px 12px 1px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.store-info .store-name {
   font-weight: 600;
   font-size: 24px;
   line-height: 29px;
@@ -25,7 +58,7 @@
   color: #febf22;
 }
 
-.store-add {
+.store-info .store-add {
   font-weight: 500;
   font-size: 18px;
   line-height: 21px;
@@ -41,4 +74,101 @@
   letter-spacing: -0.025em;
 
   color: #797979;
+}
+
+.my-coa-box button {
+  width: 214px;
+  height: 51px;
+
+  border-radius: 10px;
+
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 30px;
+  letter-spacing: -0.025em;
+}
+
+.my-coa-box button.discon {
+  background-color: #797979;
+
+  color: #ffffff;
+}
+
+.my-coa-box button.con {
+  background-color: #febf22;
+
+  color: #6d3737;
+}
+
+.from-coa-box {
+  width: 1438px;
+
+  padding: 39px 62px 20px 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background-color: #ffffff;
+  box-shadow: 0px 4px 12px 1px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.from-coa-box .button-box {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 21px;
+  letter-spacing: -0.025em;
+
+  display: flex;
+  gap: 24px;
+}
+
+.from-coa-box .button-box button {
+  width: 64px;
+  height: 36px;
+  left: 1491px;
+
+  border-radius: 10px;
+}
+
+.from-coa-box .button-box button.acc {
+  background-color: #6d3737;
+
+  color: #febf22;
+}
+
+.from-coa-box .button-box button.ref {
+  background-color: #797979;
+
+  color: #ffffff;
+}
+
+.to-coa-box {
+  width: 1438px;
+
+  padding: 39px 62px 20px 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background-color: #ffffff;
+  box-shadow: 0px 4px 12px 1px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.to-coa-box button {
+  width: 183px;
+  height: 36px;
+
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 21px;
+  letter-spacing: -0.025em;
+
+  color: #ffffff;
+
+  background: #797979;
+  border-radius: 10px;
 }

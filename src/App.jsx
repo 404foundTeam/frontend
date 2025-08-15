@@ -12,12 +12,20 @@ import CameraResultPage from "./pages/CameraResultPage";
 import MapLayout from "./layouts/MapLayout";
 import MapCoaPage from "./pages/MapCoaPage";
 import MapCoaListPage from "./pages/MapCoaListPage";
+import { useEffect } from "react";
 import MyPage from "./pages/MyPage";
 import MyLayout from "./layouts/MyLayout";
 
 
 
 function App() {
+  // 새로고침 시 최상단 이동
+  useEffect(() => {
+    window.onbeforeunload = function pushRefresh() {
+      window.scrollTo(0, 0);
+    };
+  }, []);
+
   return (
     <>
       <BrowserRouter>
