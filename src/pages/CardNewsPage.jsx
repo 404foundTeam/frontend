@@ -20,6 +20,7 @@ function CardNewsPage() {
   const [templete, setTemplete] = useState("");
   const [ratio, setRatio] = useState("");
   const [them, setThem] = useState("");
+  // const [cardData, setCardDate] = useState(null);
 
   return (
     <div className="cardnews-container">
@@ -37,7 +38,7 @@ function CardNewsPage() {
             <div
               className="select-box noti"
               onClick={() => {
-                setCategory("noti");
+                setCategory(category === "noti" ? "" : "noti");
               }}
             >
               <div
@@ -48,7 +49,7 @@ function CardNewsPage() {
             <div
               className="select-box new"
               onClick={() => {
-                setCategory("new");
+                setCategory(category === "new" ? "" : "new");
               }}
             >
               <div
@@ -59,7 +60,7 @@ function CardNewsPage() {
             <div
               className="select-box intro"
               onClick={() => {
-                setCategory("intro");
+                setCategory(category === "intro" ? "" : "intro");
               }}
             >
               <div
@@ -111,7 +112,7 @@ function CardNewsPage() {
             <div
               className={`templete-box ${templete === "box1" ? "select" : ""}`}
               onClick={() => {
-                setTemplete("box1");
+                setTemplete(templete === "box1" ? "" : "box1");
               }}
             >
               <div className="store-name">업장 이름</div>
@@ -123,7 +124,7 @@ function CardNewsPage() {
                   templete === "box2" ? "select" : ""
                 }`}
                 onClick={() => {
-                  setTemplete("box2");
+                  setTemplete(templete === "box2" ? "" : "box2");
                 }}
               >
                 <div className="templete-text bottom">이미지</div>
@@ -150,7 +151,7 @@ function CardNewsPage() {
                   templete === "box3" ? "select" : ""
                 }`}
                 onClick={() => {
-                  setTemplete("box3");
+                  setTemplete(templete === "box3" ? "" : "box3");
                 }}
               >
                 <div className="templete-text right">이미지</div>
@@ -179,7 +180,7 @@ function CardNewsPage() {
             <div
               className="select-box normal"
               onClick={() => {
-                setRatio("nor");
+                setRatio(ratio === "nor" ? "" : "nor");
               }}
             >
               <div className={`box ${ratio === "nor" ? "select" : ""}`}></div>
@@ -188,7 +189,7 @@ function CardNewsPage() {
             <div
               className="select-box hor"
               onClick={() => {
-                setRatio("hor");
+                setRatio(ratio === "hor" ? "" : "hor");
               }}
             >
               <div className={`box ${ratio === "hor" ? "select" : ""}`}></div>
@@ -197,7 +198,7 @@ function CardNewsPage() {
             <div
               className="select-box ver"
               onClick={() => {
-                setRatio("ver");
+                setRatio(ratio === "ver" ? "" : "ver");
               }}
             >
               <div className={`box ${ratio === "ver" ? "select" : ""}`}></div>
@@ -213,7 +214,7 @@ function CardNewsPage() {
               <div
                 className={`color-box ${them === "color1" ? "select" : ""}`}
                 onClick={() => {
-                  setThem("color1");
+                  setThem(them === "color1" ? "" : "color1");
                 }}
               >
                 <p>빙그레 Bold체</p>
@@ -226,7 +227,7 @@ function CardNewsPage() {
               <div
                 className={`color-box ${them === "color2" ? "select" : ""}`}
                 onClick={() => {
-                  setThem("color2");
+                  setThem(them === "color2" ? "" : "color2");
                 }}
               >
                 <p>프리텐다드 Black체</p>
@@ -239,7 +240,7 @@ function CardNewsPage() {
               <div
                 className={`color-box ${them === "color3" ? "select" : ""}`}
                 onClick={() => {
-                  setThem("color3");
+                  setThem(them === "color3" ? "" : "color3");
                 }}
               >
                 <p>Gmarket Sans체</p>
