@@ -9,15 +9,20 @@ import StoreSearch from "./StoreSearch";
 const { kakao } = window;
 
 function WelcomeMap({ focusRef, onClick }) {
+  // 업장 등록, 요청 데이터
+  const [selectStore, setSelectStore] = useState(null);
+
   const [search, setSearch] = useState("");
+  const [isClick, setIsClick] = useState(false);
+
   const container = useRef(null);
   const mapRef = useRef(null); // 지도 객체 저장
   const markerRef = useRef(null); // 현재 마커 저장
 
-  // 업장 리스트 (위도, 경도 포함)
+  // 업장 리스트 (위도, 경도 포함) - 가게 목록, 응답 데이터
   const item = [
     {
-      placeId: "1578211725",
+      placeId: "1578223725",
       name: "모퉁이 꽃집",
       roadAddress:
         "경기 용인시 기흥구 기흥역로58번길 78 기흥역더샵오피스텔 201동 112호",
@@ -25,7 +30,7 @@ function WelcomeMap({ focusRef, onClick }) {
       latitude: 37.2735,
     },
     {
-      placeId: "1578211725",
+      placeId: "1578211235",
       name: "진 부엉이꼬마김밥 기흥점",
       roadAddress:
         "경기 용인시 기흥구 기흥역로63 힐스테이트 상가 1층 302동 108호",
@@ -33,14 +38,14 @@ function WelcomeMap({ focusRef, onClick }) {
       latitude: 37.2745,
     },
     {
-      placeId: "1578211725",
+      placeId: "12378211725",
       name: "어웨이 커피",
       roadAddress: "경기 용인시 기흥구 기흥역로 9 108호 어웨이커피",
       longitude: 127.1154,
       latitude: 37.2747,
     },
     {
-      placeId: "1578211725",
+      placeId: "1578216425",
       name: "구갈대지서점",
       roadAddress: "경기 용인시 기흥구 구갈로72번길 10 낙원상가 108호",
       longitude: 127.1124,
@@ -179,7 +184,21 @@ function WelcomeMap({ focusRef, onClick }) {
           </div>
           <div className="search-list">
             {item.map((store) => (
-              <div className="search-list-box" key={store.placeId}>
+              <div
+                className={`search-list-box ${
+                  selectStore?.placeId === store.placeId ? "select" : ""
+                }`}
+                key={store.placeId}
+                onClick={(e) => {
+                  if (e.currentTarget.className.includes("select")) {
+                    setSelectStore(null);
+                    setIsClick(false);
+                  } else {
+                    setSelectStore(store);
+                    setIsClick(true);
+                  }
+                }}
+              >
                 <img src={listIcon} className="list-box-ico" />
                 <div className="store-info">
                   <h1>{store.name}</h1>
@@ -191,7 +210,9 @@ function WelcomeMap({ focusRef, onClick }) {
         </div>
       </div>
       <div>
-        <button className="map-button">업장 등록</button>
+        <button className={`map-button ${isClick ? "select" : ""}`}>
+          업장 등록
+        </button>
       </div>
     </div>
   );
