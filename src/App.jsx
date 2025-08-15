@@ -10,6 +10,7 @@ import CameraPage from "./pages/CameraPage";
 import CardNewsLayout from "./layouts/CardNewsLayout";
 import CameraResultPage from "./pages/CameraResultPage";
 import MapLayout from "./layouts/MapLayout";
+import MapPage from "./pages/MapPage";
 import MapCoaPage from "./pages/MapCoaPage";
 import MapCoaListPage from "./pages/MapCoaListPage";
 import { useEffect } from "react";
