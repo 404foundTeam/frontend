@@ -90,9 +90,9 @@ function WelcomePage() {
               어렵고 복잡한 마케팅과 운영전략을 한번에
             </p>
           </div>
-          <di className="header-img bee"></di>
-          <di className="header-img bee"></di>
-          <di className="header-img hive"></di>
+          <div className="header-img bee"></div>
+          <div className="header-img bee"></div>
+          <div className="header-img hive"></div>
         </div>
         <div className="welcome-header-bottom-box"></div>
       </div>
