@@ -1,5 +1,6 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "../styles/CardNewsPage.css";
+import Ex1 from "../assets/ex1.png";
 import bannerImg from "../assets/cardnews/banner_img.png";
 import SelectHeader from "../components/SelectHeader";
 
@@ -22,7 +23,35 @@ function CardNewsPage() {
   const [them, setThem] = useState("");
   // const [cardData, setCardDate] = useState(null);
 
+  // const canvasRef = useRef(null);
+
+  // useEffect(() => {
+  //   const canvas = canvasRef.current;
+  //   const ctx = canvas.getContext("2d");
+  //   console.log(1);
+
+  //   // 이미지 로드
+  //   const image = new Image();
+  //   image.src = Ex1; // 이미지 경로를 설정하세요.
+  //   console.log(2);
+  //   console.log(image);
+  //   image.onload = () => {
+  //     console.log(3);
+  //     // 이미지 렌더링
+  //     ctx.drawImage(image, 100, 100, 500, 350); // (이미지 객체, x, y, 너비, 높이)
+
+  //     // 텍스트 스타일 설정
+  //     ctx.font = "20px Arial";
+  //     ctx.fillStyle = "red";
+
+  //     // 텍스트 렌더링
+  //     ctx.fillText("Hello, Canvas!", 500, 300); // (텍스트 내용, x, y)
+  //   };
+  //   console.log(4);
+  // }, []);
+
   return (
+    // <canvas ref={canvasRef} width={800} height={500} />
     <div className="cardnews-container">
       <div className="cardnews-banner">
         <img src={bannerImg} className="banner-img" />

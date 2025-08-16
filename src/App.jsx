@@ -16,8 +16,6 @@ import { useEffect } from "react";
 import MyPage from "./pages/MyPage";
 import MyLayout from "./layouts/MyLayout";
 
-
-
 function App() {
   // 새로고침 시 최상단 이동
   useEffect(() => {
