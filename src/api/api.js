@@ -20,6 +20,20 @@ export const matchStore = async (store) => {
   return res.data;
 };
 
+// 카드 뉴스 페이지
+
+/* 
+/api/v1/sns-cards/generate	POST
+/api/v1/sns-cards/templates	GET
+/api/v1/sns-cards/upload	POST
+/api/v1/sns-cards	POST
+/api/v1/sns-cards/{cardId}/download	GET
+*/
+export const generateText = async ({ type, userText }) => {
+  const res = await api.post("/sns-cards", { type, userText });
+  return res.data;
+};
+
 /*
 /api/v1/main	GET
 	
@@ -31,11 +45,6 @@ export const matchStore = async (store) => {
 /api/v1/calendar/events/delete/{eventId}	DELETE
 /api/v1/external/festivals	GET
 
-/api/v1/sns-cards/generate	POST
-/api/v1/sns-cards/templates	GET
-/api/v1/sns-cards/upload	POST
-/api/v1/sns-cards	POST
-/api/v1/sns-cards/{cardId}/download	GET
 	
 /api/v1/picture/upload	POST
 /api/v1/picture/review	GET
