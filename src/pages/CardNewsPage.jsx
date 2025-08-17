@@ -20,7 +20,7 @@ function CardNewsPage() {
 
   const [type, setType] = useState("");
   const [userText, setUserText] = useState("");
-  const [generatedText, setGeneratedText] = useState(null); // textInv를 대체
+  // const [generatedText, setGeneratedText] = useState(null); // textInv를 대체
 
   const [templete, setTemplete] = useState("");
   const [ratio, setRatio] = useState("");

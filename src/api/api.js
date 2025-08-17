@@ -23,14 +23,14 @@ export const matchStore = async (store) => {
 // 카드 뉴스 페이지
 
 /* 
-/api/v1/sns-cards/generate	POST
 /api/v1/sns-cards/templates	GET
 /api/v1/sns-cards/upload	POST
 /api/v1/sns-cards	POST
 /api/v1/sns-cards/{cardId}/download	GET
 */
+// /api/v1/sns-cards/generate	POST
 export const generateText = async ({ type, userText }) => {
-  const res = await api.post("/sns-cards", { type, userText });
+  const res = await api.post("/sns-cards/generate", { type, userText });
   return res.data;
 };
 
