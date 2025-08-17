@@ -1,7 +1,21 @@
+import { useEffect, useRef } from "react";
 import StoreSearch from "../components/StoreSearch";
 import "../styles/MapPage.css";
 
+const { kakao } = window;
+
 function MapPage() {
+  const container = useRef(null);
+
+  useEffect(() => {
+    const options = {
+      center: new kakao.maps.LatLng(33.450701, 126.570667),
+      level: 3,
+    };
+
+    const map = new kakao.maps.Map(container.current, options);
+  }, []);
+
   return (
     <>
       <div className="map-page-header">
@@ -47,7 +61,13 @@ function MapPage() {
             </p>
           </div>
         </div>
-        <div className="coa-map-box"></div>
+        <div className="coa-map-box">
+          <div
+            className="map"
+            ref={container}
+            style={{ width: "100%", height: "100%" }}
+          ></div>
+        </div>
       </div>
       <div className="go-my-coa">
         <button className="go-my-coa-button">나의 제휴 보러가기</button>
