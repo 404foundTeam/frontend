@@ -1,6 +1,6 @@
 import { create } from "zustand";
 // uuid 전역 상태 관리
-const storeUuid = create((set) => ({
+const useStoreUuid = create((set) => ({
   storeUuid: null,
   isNew: null,
   storeName: null,
@@ -8,4 +8,4 @@ const storeUuid = create((set) => ({
     set({ storeUuid, isNew, storeName }),
 }));
 
-export default storeUuid;
+export default useStoreUuid;
