@@ -1,12 +1,9 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import "../styles/CardNewsPage.css";
-import Ex1 from "../assets/ex1.png";
 import bannerImg from "../assets/cardnews/banner_img.png";
 import SelectHeader from "../components/SelectHeader";
-import { generateText } from "../api/api";
 
 function CardNewsPage() {
-  // generatedText 임시 데이터
   const textInv = `창가 쪽에서 안쪽으로 찍으면 자연광이 인물과 공간을 부드럽게
             비춥니다. 역광보다는 측광·순광이 좋아요. 나무, 초록 식물, 따뜻한
             조명이 있으면 사진 분위기가 한층 좋아질거에요. 가로사진은 3:2 비율,
@@ -18,54 +15,14 @@ function CardNewsPage() {
   const fileInput01 = useRef();
   const fileInput02 = useRef();
 
-  const [type, setType] = useState("");
-  const [userText, setUserText] = useState("");
-  // const [generatedText, setGeneratedText] = useState(null); // textInv를 대체
-
+  const [text, setText] = useState("");
+  const [category, setCategory] = useState("");
   const [templete, setTemplete] = useState("");
   const [ratio, setRatio] = useState("");
   const [them, setThem] = useState("");
   // const [cardData, setCardDate] = useState(null);
 
-  // const canvasRef = useRef(null);
-
-  // useEffect(() => {
-  //   const canvas = canvasRef.current;
-  //   const ctx = canvas.getContext("2d");
-  //   console.log(1);
-
-  //   // 이미지 로드
-  //   const image = new Image();
-  //   image.src = Ex1; // 이미지 경로를 설정하세요.
-  //   console.log(2);
-  //   console.log(image);
-  //   image.onload = () => {
-  //     console.log(3);
-  //     // 이미지 렌더링
-  //     ctx.drawImage(image, 100, 100, 500, 350); // (이미지 객체, x, y, 너비, 높이)
-
-  //     // 텍스트 스타일 설정
-  //     ctx.font = "20px Arial";
-  //     ctx.fillStyle = "red";
-
-  //     // 텍스트 렌더링
-  //     ctx.fillText("Hello, Canvas!", 500, 300); // (텍스트 내용, x, y)
-  //   };
-  //   console.log(4);
-  // }, []);
-
-  const getGenerateText = async () => {
-    try {
-      const getText = await generateText({ type, userText });
-      setGeneratedText(getText);
-    } catch (error) {
-      console.log("데이터 요청 실패", error);
-      alert("텍스트 변환에 실패했습니다.");
-    }
-  };
-
   return (
-    // <canvas ref={canvasRef} width={800} height={500} />
     <div className="cardnews-container">
       <div className="cardnews-banner">
         <img src={bannerImg} className="banner-img" />
@@ -75,37 +32,39 @@ function CardNewsPage() {
         </p>
       </div>
       <div className="cardnews-box-container">
-        <div className="cardnews-box cardnews-type">
+        <div className="cardnews-box cardnews-category">
           <SelectHeader text="어떤 SNS 카드 뉴스를 만들까요?" />
           <div className="select-boxs">
             <div
-              className="select-box notice"
+              className="select-box noti"
               onClick={() => {
-                setType(type === "notice" ? "" : "notice");
-              }}
-            >
-              <div className={`box ${type === "notice" ? "select" : ""}`}></div>
-              <p className="select-box-title">공지</p>
-            </div>
-            <div
-              className="select-box product_promo"
-              onClick={() => {
-                setType(type === "product_promo" ? "" : "product_promo");
+                setCategory(category === "noti" ? "" : "noti");
               }}
             >
               <div
-                className={`box ${type === "product_promo" ? "select" : ""}`}
+                className={`box ${category === "noti" ? "select" : ""}`}
+              ></div>
+              <p className="select-box-title">공지</p>
+            </div>
+            <div
+              className="select-box new"
+              onClick={() => {
+                setCategory(category === "new" ? "" : "new");
+              }}
+            >
+              <div
+                className={`box ${category === "new" ? "select" : ""}`}
               ></div>
               <p className="select-box-title">신제품 홍보</p>
             </div>
             <div
-              className="select-box store_intro"
+              className="select-box intro"
               onClick={() => {
-                setType(type === "store_intro" ? "" : "store_intro");
+                setCategory(category === "intro" ? "" : "intro");
               }}
             >
               <div
-                className={`box ${type === "store_intro" ? "select" : ""}`}
+                className={`box ${category === "intro" ? "select" : ""}`}
               ></div>
               <p className="select-box-title">매장 소개</p>
             </div>
@@ -115,19 +74,18 @@ function CardNewsPage() {
           <SelectHeader text="SNS 카드 뉴스에 넣고 싶은 텍스트를 입력하세요." />
           <div className="cardnews-text-box">
             <input
-              className={`cardnews-text-input ${userText ? "select" : ""}`}
+              className={`cardnews-text-input ${text ? "select" : ""}`}
               type="text"
               placeholder="텍스트를 입력하세요."
-              value={userText}
+              value={text}
               onChange={(e) => {
-                setUserText(e.target.value);
+                setText(e.target.value);
               }}
             />
             <button
               className={`text-button cardnews-text-button ${
-                userText ? "select" : ""
+                text ? "select" : ""
               }`}
-              onClick={getGenerateText}
             >
               문구 생성
             </button>
@@ -293,7 +251,7 @@ function CardNewsPage() {
           </div>
         </div>
       </div>
-      {type && textInv && templete && ratio && them && (
+      {category && textInv && templete && ratio && them && (
         <button className="cardnews-button">완료</button>
       )}
     </div>
