@@ -14,6 +14,8 @@ import MapPage from "./pages/MapPage";
 import MapCoaPage from "./pages/MapCoaPage";
 import MapCoaListPage from "./pages/MapCoaListPage";
 import { useEffect } from "react";
+import MyPage from "./pages/MyPage";
+import MyLayout from "./layouts/MyLayout";
 
 function App() {
   // 새로고침 시 최상단 이동
@@ -40,9 +42,11 @@ function App() {
               <Route path="result" element={<CameraResultPage />} />
             </Route>
             <Route path="map" element={<MapLayout />}>
-              <Route index element={<MapPage />} />
               <Route path="coalition" element={<MapCoaPage />} />
               <Route path="coalition/list" element={<MapCoaListPage />} />
+            </Route>
+            <Route path="mypage" element={<MyLayout />}>
+              <Route index element={<MyPage />} />
             </Route>
           </Route>
         </Routes>
