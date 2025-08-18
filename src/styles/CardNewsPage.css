@@ -310,29 +310,6 @@
   margin-left: 176px;
 }
 
-/* 업로드 버튼 */
-.upload {
-  width: 158px;
-  height: 42px;
-
-  border: none;
-  border-radius: 10px;
-  background-color: #e2d7d7;
-
-  font-weight: 600;
-  font-size: 18px;
-  line-height: 21px;
-  letter-spacing: -0.025em;
-
-  color: #7c7c7c;
-}
-
-.upload.select {
-  background-color: #febf22;
-  color: #6d3737;
-  cursor: pointer;
-}
-
 /* 카드뉴스 테마 */
 .them-list {
   margin-top: 70px;
@@ -342,65 +319,26 @@
   gap: 98px;
 }
 
-.them-box p {
+.them-box div {
+  width: 288px;
+  height: 63px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   text-align: center;
+  border: 5px solid #acacac;
+  border-radius: 10px;
 
   font-weight: 800;
   font-size: 18px;
   line-height: 21px;
   letter-spacing: -0.025em;
 
-  color: #6d3737;
-}
-
-.them-box .color-box {
-  padding: 25px 15px 19px;
-  margin-top: 16px;
-
   background-color: #f6f6f6;
-  border: 5px solid #acacac;
-  border-radius: 10px;
-
-  cursor: pointer;
-}
-.them-box .color-box:hover {
-  transform: scale(1.03);
-  transition: transform 0.6s ease;
-}
-
-.them-box .color-box.select {
-  background-color: #fffaed;
-  border: 5px solid #febf22;
-  transform: scale(1.03);
-}
-.color-box p {
-  text-align: center;
-
-  font-weight: 600;
-  font-size: 18px;
-  line-height: 21px;
-  letter-spacing: -0.025em;
 
   color: #6d3737;
-}
-
-.color-box .color {
-  width: 258px;
-  height: 72px;
-  margin-top: 13px;
-  border-radius: 10px;
-}
-
-.color.color1 {
-  background-color: #d8b384;
-}
-
-.color.color2 {
-  background-color: #525252;
-}
-
-.color.color3 {
-  background-color: #ff8f00;
 }
 
 /* 카드뉴스 버튼 */

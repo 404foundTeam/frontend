@@ -1,6 +1,5 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import "../styles/CardNewsPage.css";
-import Ex1 from "../assets/ex1.png";
 import bannerImg from "../assets/cardnews/banner_img.png";
 import SelectHeader from "../components/SelectHeader";
 import { generateText } from "../api/api";
@@ -14,11 +13,8 @@ function CardNewsPage() {
             사이가 가장 자연광이 예쁘게 들어오는 시간이기 때문에 이 시간대에
             사진을 촬영하는 것을 추천해요.`;
 
-  // 인풋 접근
-  const fileInput01 = useRef();
-  const fileInput02 = useRef();
-
   const [type, setType] = useState("");
+  const [menu, setMenu] = useState("");
   const [userText, setUserText] = useState("");
   // const [generatedText, setGeneratedText] = useState(null); // textInv를 대체
 
@@ -26,33 +22,6 @@ function CardNewsPage() {
   const [ratio, setRatio] = useState("");
   const [them, setThem] = useState("");
   // const [cardData, setCardDate] = useState(null);
-
-  // const canvasRef = useRef(null);
-
-  // useEffect(() => {
-  //   const canvas = canvasRef.current;
-  //   const ctx = canvas.getContext("2d");
-  //   console.log(1);
-
-  //   // 이미지 로드
-  //   const image = new Image();
-  //   image.src = Ex1; // 이미지 경로를 설정하세요.
-  //   console.log(2);
-  //   console.log(image);
-  //   image.onload = () => {
-  //     console.log(3);
-  //     // 이미지 렌더링
-  //     ctx.drawImage(image, 100, 100, 500, 350); // (이미지 객체, x, y, 너비, 높이)
-
-  //     // 텍스트 스타일 설정
-  //     ctx.font = "20px Arial";
-  //     ctx.fillStyle = "red";
-
-  //     // 텍스트 렌더링
-  //     ctx.fillText("Hello, Canvas!", 500, 300); // (텍스트 내용, x, y)
-  //   };
-  //   console.log(4);
-  // }, []);
 
   const getGenerateText = async () => {
     try {
@@ -65,7 +34,6 @@ function CardNewsPage() {
   };
 
   return (
-    // <canvas ref={canvasRef} width={800} height={500} />
     <div className="cardnews-container">
       <div className="cardnews-banner">
         <img src={bannerImg} className="banner-img" />
@@ -111,6 +79,20 @@ function CardNewsPage() {
             </div>
           </div>
         </div>
+        {(type === "notice" || type === "store_intro") && (
+          <div className="cardnews-box cardnews-text-box">
+            <SelectHeader text="카드뉴스에 넣고 싶은 메뉴 이름을 입력해주세요." />
+            <input
+              className={`cardnews-text-input ${menu ? "select" : ""}`}
+              type="text"
+              placeholder="텍스트를 입력하세요."
+              value={menu}
+              onChange={(e) => {
+                setMenu(e.target.value);
+              }}
+            />
+          </div>
+        )}
         <div className="cardnews-box cardnews-text">
           <SelectHeader text="SNS 카드 뉴스에 넣고 싶은 텍스트를 입력하세요." />
           <div className="cardnews-text-box">
@@ -173,19 +155,6 @@ function CardNewsPage() {
                 <div className="store-name bottom">업장 이름</div>
                 <div className="store-content bottom">본문</div>
               </div>
-              <input
-                type="file"
-                style={{ display: "none" }}
-                ref={fileInput01}
-              />
-              <button
-                className={`upload ${templete === "box2" ? "select" : ""}`}
-                onClick={() => {
-                  if (templete === "box2") fileInput01.current.click();
-                }}
-              >
-                이미지 업로드
-              </button>
             </div>
             <div className="templete-img-box">
               <div
@@ -200,19 +169,6 @@ function CardNewsPage() {
                 <div className="store-name right">업장 이름</div>
                 <div className="store-content right">본문</div>
               </div>
-              <input
-                type="file"
-                style={{ display: "none" }}
-                ref={fileInput02}
-              />
-              <button
-                className={`upload ${templete === "box3" ? "select" : ""}`}
-                onClick={() => {
-                  if (templete === "box3") fileInput02.current.click();
-                }}
-              >
-                이미지 업로드
-              </button>
             </div>
           </div>
         </div>
@@ -252,43 +208,13 @@ function CardNewsPage() {
           <SelectHeader text="원하는 테마를 선택해주세요." />
           <div className="them-list">
             <div className="them-box">
-              <p>따뜻하고 편안한 분위기</p>
-              <div
-                className={`color-box ${them === "color1" ? "select" : ""}`}
-                onClick={() => {
-                  setThem(them === "color1" ? "" : "color1");
-                }}
-              >
-                <p>빙그레 Bold체</p>
-                <p>배경 색상 #D8B384</p>
-                <div className="color color1"></div>
-              </div>
+              <div>따뜻하고 편안한 분위기</div>
             </div>
             <div className="them-box">
-              <p>깔끔하고 모던한 분위기</p>
-              <div
-                className={`color-box ${them === "color2" ? "select" : ""}`}
-                onClick={() => {
-                  setThem(them === "color2" ? "" : "color2");
-                }}
-              >
-                <p>프리텐다드 Black체</p>
-                <p>배경 색상 #525252</p>
-                <div className="color color2"></div>
-              </div>
+              <div>깔끔하고 모던한 분위기</div>
             </div>
             <div className="them-box">
-              <p>활기차고 밝은 분위기</p>
-              <div
-                className={`color-box ${them === "color3" ? "select" : ""}`}
-                onClick={() => {
-                  setThem(them === "color3" ? "" : "color3");
-                }}
-              >
-                <p>Gmarket Sans체</p>
-                <p>배경 색상 #FF8F00</p>
-                <div className="color color3"></div>
-              </div>
+              <div>활기차고 밝은 분위기</div>
             </div>
           </div>
         </div>
