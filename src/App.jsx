@@ -42,6 +42,7 @@ function App() {
               <Route path="result" element={<CameraResultPage />} />
             </Route>
             <Route path="map" element={<MapLayout />}>
+              <Route index element={<MapPage />} />
               <Route path="coalition" element={<MapCoaPage />} />
               <Route path="coalition/list" element={<MapCoaListPage />} />
             </Route>
