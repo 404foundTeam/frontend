@@ -5,17 +5,20 @@ import listIcon from "../assets/welcomeMap/marker_icon.png";
 import selectMarkerImg from "../assets/welcomeMap/select_marker.png";
 import "../styles/WelcomeMap.css";
 import StoreSearch from "./StoreSearch";
+// import { fetchStoresByCoord, matchStore } from "../api/api";
 
 const { kakao } = window;
 
 function WelcomeMap({ focusRef, onClick }) {
-  // 업장 등록, 요청 데이터
-  const [selectStore, setSelectStore] = useState(null);
-
   const [search, setSearch] = useState("");
   const [isClick, setIsClick] = useState(false);
 
-  const container = useRef(null);
+  // 업장 리스트 데이터 - get
+  // const [stores, setStores] = useState(null);
+  // 업장 등록, 요청 데이터 - post
+  const [selectStore, setSelectStore] = useState(null);
+
+  const container = useRef(null); // 지도 담을 곳
   const mapRef = useRef(null); // 지도 객체 저장
   const markerRef = useRef(null); // 현재 마커 저장
 
@@ -109,10 +112,8 @@ function WelcomeMap({ focusRef, onClick }) {
 
   const searchAddr = (address) => {
     if (!address.trim()) return;
-    console.log("kakao1");
     const geocoder = new kakao.maps.services.Geocoder();
-    console.log("kakao2");
-    console.log(geocoder);
+    // ✨함수 안에서 api를 사용해야 함으로 function 앞에 async 추가 필요
     geocoder.addressSearch(address, function (result, status) {
       if (status === kakao.maps.services.Status.OK) {
         const coords = new kakao.maps.LatLng(result[0].y, result[0].x);
@@ -142,8 +143,29 @@ function WelcomeMap({ focusRef, onClick }) {
       } else {
         alert("오류 발생");
       }
+
+      // try {
+      //   const storeList = await fetchStoresByCoord(result[0].x, result[0].y);
+      //   setStores(storeList);
+      //   console.log("리스트 데이터", result);
+      // } catch (error) {
+      //   console.log("요청 에러", error);
+      //   alert("데이터 요청에 실패했습니다.");
+      // }
     });
   };
+
+  // const postStoreInfo = async () => {
+  //   if (!selectStore) return;
+
+  //   try {
+  //     const result = await matchStore(selectStore);
+  //     console.log("업장 등록", result);
+  //   } catch (error) {
+  //     console.log("업장 등록 실패", error);
+  //     alert("업장 등록에 실패했습니다.");
+  //   }
+  // };
 
   const onChange = (e) => {
     setSearch(e.target.value);
@@ -210,7 +232,10 @@ function WelcomeMap({ focusRef, onClick }) {
         </div>
       </div>
       <div>
-        <button className={`map-button ${isClick ? "select" : ""}`}>
+        <button
+          className={`map-button ${isClick ? "select" : ""}`}
+          // onClick={postStoreInfo}
+        >
           업장 등록
         </button>
       </div>

@@ -1,0 +1,30 @@
+/* src/pages/MyPage.module.css */
+.container {
+  padding: 2rem;
+  width: 100%;
+}
+
+.tabContainer {
+  display: flex;
+  border-bottom: 2px solid #eee;
+  margin-bottom: 1rem;
+}
+
+.tabButton {
+  padding: 10px 20px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  color: #ACACAC;
+}
+
+.tabButton.active {
+  color: #FEBF22; /* 선택된 탭만 노란색으로 설정 */
+  border-bottom: 6px solid #FEBF22; /* 밑줄 색상도 노란색으로 유지 */
+}
+
+.content {
+  padding: 1rem 0;
+}

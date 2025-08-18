@@ -25,7 +25,7 @@ function MapCoaPage() {
             <div
               className="select-box inter"
               onClick={() => {
-                setGoal("inter");
+                setGoal(goal === "inter" ? "" : "inter");
               }}
             >
               <div className={`box ${goal === "inter" ? "select" : ""}`}></div>
@@ -34,7 +34,7 @@ function MapCoaPage() {
             <div
               className="select-box fest"
               onClick={() => {
-                setGoal("fest");
+                setGoal(goal === "fest" ? "" : "fest");
               }}
             >
               <div className={`box ${goal === "fest" ? "select" : ""}`}></div>
@@ -43,7 +43,7 @@ function MapCoaPage() {
             <div
               className="select-box part"
               onClick={() => {
-                setGoal("part");
+                setGoal(goal === "part" ? "" : "part");
               }}
             >
               <div className={`box ${goal === "part" ? "select" : ""}`}></div>
@@ -78,16 +78,16 @@ function MapCoaPage() {
             <div
               className="select-box seven"
               onClick={() => {
-                setDate("sevent");
+                setDate(date === "seven" ? "" : "seven");
               }}
             >
-              <div className={`box ${date === "sevent" ? "select" : ""}`}></div>
+              <div className={`box ${date === "seven" ? "select" : ""}`}></div>
               <p className="select-box-title">7일</p>
             </div>
             <div
               className="select-box thrid"
               onClick={() => {
-                setDate("third");
+                setDate(date === "third" ? "" : "third");
               }}
             >
               <div className={`box ${date === "third" ? "select" : ""}`}></div>
@@ -96,7 +96,7 @@ function MapCoaPage() {
             <div
               className="select-box six"
               onClick={() => {
-                setDate("six");
+                setDate(date === "six" ? "" : "six");
               }}
             >
               <div className={`box ${date === "six" ? "select" : ""}`}></div>
