@@ -10,6 +10,7 @@ import CameraPage from "./pages/CameraPage";
 import CardNewsLayout from "./layouts/CardNewsLayout";
 import CameraResultPage from "./pages/CameraResultPage";
 import MapLayout from "./layouts/MapLayout";
+import MapPage from "./pages/MapPage";
 import MapCoaPage from "./pages/MapCoaPage";
 import MapCoaListPage from "./pages/MapCoaListPage";
 import { useEffect } from "react";
@@ -41,6 +42,7 @@ function App() {
               <Route path="result" element={<CameraResultPage />} />
             </Route>
             <Route path="map" element={<MapLayout />}>
+              <Route index element={<MapPage />} />
               <Route path="coalition" element={<MapCoaPage />} />
               <Route path="coalition/list" element={<MapCoaListPage />} />
             </Route>
