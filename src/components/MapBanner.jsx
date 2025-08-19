@@ -1,7 +1,7 @@
 import img from "../assets/group.png";
-import styles from "../styles/MapBanner.module.css";
+import styles from "../styles/map/MapBanner.module.css";
 
-function CoaBanner() {
+function MapBanner() {
   return (
     <>
       <div className={styles.banner}>
@@ -15,4 +15,4 @@ function CoaBanner() {
   );
 }
 
-export default CoaBanner;
+export default MapBanner;

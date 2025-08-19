@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import dragImg from "../assets/camera/drag_img.png";
-import styles from "../styles/CameraPage.module.css";
+import styles from "../styles/camera/CameraPage.module.css";
 
 function CameraPage() {
   const imgInput = useRef();

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../styles/CardNewsPage.css";
+import "../styles/cardnews/CardNewsPage.css";
 import bannerImg from "../assets/cardnews/banner_img.png";
 import SelectHeader from "../components/SelectHeader";
 import { generateText } from "../api/api";

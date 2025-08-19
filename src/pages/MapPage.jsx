@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import StoreSearch from "../components/StoreSearch";
-import "../styles/MapPage.css";
+import "../styles/map/MapPage.css";
 
 const { kakao } = window;
 

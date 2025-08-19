@@ -1,5 +1,5 @@
-import styles from "../styles/MapCoaListPage.module.css";
-import CoaBanner from "../components/CoaBanner";
+import styles from "../styles/map/MapCoaListPage.module.css";
+import CoaBanner from "../components/MapBanner";
 
 function MapCoaListPage() {
   const myCoaList = [

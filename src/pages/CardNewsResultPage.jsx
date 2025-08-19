@@ -1,6 +1,6 @@
 import Loading from "../components/Loading";
 import Ex1 from "../assets/image02.png";
-import "../styles/CardNewsResultPage.css";
+import "../styles/cardnews/CardNewsResultPage.css";
 
 // import img from "../assets/show.png";
 import { useEffect, useRef } from "react";
