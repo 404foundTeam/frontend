@@ -1,6 +1,103 @@
-.footer {
+footer {
   width: 1920px;
   height: 306px;
 
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+
   background-color: #f9f9f9;
+}
+
+.header {
+  width: 1490px;
+  height: 69px;
+  position: relative;
+
+  padding-top: 14px;
+
+  border-bottom: 1px solid #e3e3e3;
+
+  display: flex;
+}
+
+.header .logo img {
+  width: 74px;
+  height: 54px;
+  position: absolute;
+}
+
+.logoText {
+  padding-top: 20px;
+  padding-left: 60px;
+
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: -0.025em;
+
+  color: #febf22;
+}
+
+.header .headerBox {
+  padding-top: 20px;
+  padding-left: 481px;
+
+  display: flex;
+  gap: 125px;
+
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 130%;
+  letter-spacing: -0.025em;
+
+  color: #797979;
+}
+
+.content {
+  padding-top: 16px;
+  padding-left: 6px;
+
+  display: flex;
+  gap: 8px;
+
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 120%;
+  /* 또는 18px */
+  letter-spacing: -0.025em;
+
+  color: #acacac;
+}
+
+.contentBox {
+  padding-left: 374px;
+
+  display: flex;
+  gap: 84px;
+}
+
+.aboutContent {
+  display: flex;
+  flex-direction: column;
+
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 150%;
+  /* 또는 26px */
+  letter-spacing: -0.025em;
+
+  color: #797979;
+}
+
+.footer {
+  padding-top: 18px;
+
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+  letter-spacing: -0.025em;
+
+  color: #acacac;
 }

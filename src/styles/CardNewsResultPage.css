@@ -28,9 +28,11 @@
   gap: 78px;
 }
 
+/* 비율마다 변경 */
 .result-box .result-img {
   width: 520px;
-  height: 520px;
+  /* height: 520px; */
+  height: 650px;
 }
 
 .button-container {
