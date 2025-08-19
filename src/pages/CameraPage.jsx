@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import dragImg from "../assets/drag_img.png";
-import "../styles/CameraPage.css";
+import styles from "../styles/CameraPage.module.css";
 
 function CameraPage() {
   const imgInput = useRef();
@@ -17,10 +17,10 @@ function CameraPage() {
 
   return (
     <>
-      <div className="camera-container">
+      <div className={styles.container}>
         {/* onDragOver 드래그 허용 */}
         <div
-          className={`camera-show ${preview ? "select" : ""}`}
+          className={`${styles.show} ${preview ? styles.select : ""}`}
           onClick={() => {
             imgInput.current.click();
           }}
@@ -37,12 +37,12 @@ function CameraPage() {
             />
           ) : (
             <>
-              <img src={dragImg} className="drag-img" />
+              <img src={dragImg} className={styles.dragImg} />
               드래그 해서 가져오기
             </>
           )}
         </div>
-        <div className="camera-button-box">
+        <div className={styles.buttonBox}>
           <input
             type="file"
             style={{ display: "none" }}
@@ -50,14 +50,14 @@ function CameraPage() {
             onChange={(e) => handleFile(e.target.files[0])}
           />
           <button
-            className="camera-img"
+            className={styles.img}
             onClick={() => {
               imgInput.current.click();
             }}
           >
             이미지 불러오기
           </button>
-          <button className="camera-fin">완료</button>
+          <button className={styles.finish}>완료</button>
         </div>
       </div>
     </>

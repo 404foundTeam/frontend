@@ -1,8 +1,7 @@
-import "../styles/MapBanner.css";
 import "../styles/MapCoaPage.css";
-import img from "../assets/group.png";
 import SelectHeader from "../components/SelectHeader";
 import { useState } from "react";
+import CoaBanner from "../components/CoaBanner";
 
 function MapCoaPage() {
   const [text, setText] = useState("");
@@ -11,13 +10,7 @@ function MapCoaPage() {
 
   return (
     <>
-      <div className="coa-banner">
-        <img src={img} />
-        <h1 className="banner-title">어웨이 커피</h1>
-        <p className="banner-content">
-          를 위한 SNS 카드 뉴스를 만들어드릴게요.
-        </p>
-      </div>
+      <CoaBanner />
       <div className="coa-container">
         <div className="goal">
           <SelectHeader text={"제휴맺는 목적이 무엇인가요?"} />

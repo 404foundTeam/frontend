@@ -1,6 +1,5 @@
-import "../styles/MapBanner.css";
-import "../styles/MapCoaListPage.css";
-import img from "../assets/group.png";
+import styles from "../styles/MapCoaListPage.module.css";
+import CoaBanner from "../components/CoaBanner";
 
 function MapCoaListPage() {
   const myCoaList = [
@@ -43,66 +42,60 @@ function MapCoaListPage() {
 
   return (
     <>
-      <div className="coa-banner">
-        <img src={img} />
-        <h1 className="banner-title">어웨이 커피</h1>
-        <p className="banner-content">
-          를 위한 SNS 카드 뉴스를 만들어드릴게요.
-        </p>
-      </div>
-      <div className="coa-list-container">
-        <div className="my-coa">
+      <CoaBanner />
+      <div className={styles.container}>
+        <div>
           <h1>
             <span>어웨이 커피</span>님과 제휴 맺은 업체
           </h1>
-          <div className="coa-list my-coa-list">
+          <div className={`${styles.coaList} ${styles.myCoaList}`}>
             {myCoaList.map((store) => (
-              <div className="my-coa-box">
-                <div className="text-box">
-                  <div className="store-info">
-                    <p className="store-name">{store.storeName}</p>
-                    <p className="store-add">{store.storeAddress}</p>
+              <div className={styles.myCoaBox}>
+                <div className={styles.text}>
+                  <div className={styles.info}>
+                    <p className={styles.name}>{store.storeName}</p>
+                    <p className={styles.add}>{store.storeAddress}</p>
                   </div>
-                  <div className="date">{store.date}</div>
+                  <div className={styles.date}>{store.date}</div>
                 </div>
                 {store.isPartner ? (
-                  <button className="discon">제휴 끊기</button>
+                  <button className={styles.discon}>제휴 끊기</button>
                 ) : (
-                  <button className="con">제휴 다시 맺기</button>
+                  <button className={styles.con}>제휴 다시 맺기</button>
                 )}
               </div>
             ))}
           </div>
         </div>
-        <div className="from-coa">
+        <div>
           <h1>
             <span>어웨이 커피</span>님께 제휴 요청한 업체
           </h1>
-          <div className="coa-list from-coa-list">
+          <div className={`${styles.coaList} ${styles.fromCoaList}`}>
             {fromCoaList.map((store) => (
-              <div className="from-coa-box">
-                <div className="store-info">
-                  <p className="store-name">{store.storeName}</p>
-                  <p className="store-add">{store.storeAddress}</p>
+              <div className={styles.fromCoaBox}>
+                <div className={styles.info}>
+                  <p className={styles.name}>{store.storeName}</p>
+                  <p className={styles.add}>{store.storeAddress}</p>
                 </div>
-                <div className="button-box">
-                  <button className="acc">맺기</button>
-                  <button className="ref">거절</button>
+                <div className={styles.buttonBox}>
+                  <button className={styles.acc}>맺기</button>
+                  <button className={styles.ref}>거절</button>
                 </div>
               </div>
             ))}
           </div>
         </div>
-        <div className="to-coa">
+        <div>
           <h1>
             <span>어웨이 커피</span>님이 제휴 요청한 업체
           </h1>
-          <div className="coa-list to-coa-list">
+          <div className={`${styles.coaList} ${styles.toCoaList}`}>
             {toCoaList.map((store) => (
-              <div className="to-coa-box">
-                <div className="store-info">
-                  <p className="store-name">{store.storeName}</p>
-                  <p className="store-add">{store.storeAddress}</p>
+              <div className={styles.toCoaBox}>
+                <div className={styles.info}>
+                  <p className={styles.name}>{store.storeName}</p>
+                  <p className={styles.add}>{store.storeAddress}</p>
                 </div>
                 <button>맺기 대기중</button>
               </div>
