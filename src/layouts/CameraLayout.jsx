@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 import SideBar from "../components/SideBar";
 import styles from "../styles/CameraLayout.module.css";
-import camera from "../assets/camera.png";
+import camera from "../assets/camera/camera.png";
 
 function CameraLayout() {
   return (

@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import dragImg from "../assets/drag_img.png";
+import dragImg from "../assets/camera/drag_img.png";
 import styles from "../styles/CameraPage.module.css";
 
 function CameraPage() {
