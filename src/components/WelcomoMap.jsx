@@ -7,7 +7,7 @@ import "../styles/WelcomeMap.css";
 import StoreSearch from "./StoreSearch";
 // import { fetchStoresByCoord, matchStore } from "../api/api";
 
-const { kakao } = window;
+// const { kakao } = window;
 
 function WelcomeMap({ focusRef, onClick }) {
   const [search, setSearch] = useState("");
@@ -71,7 +71,8 @@ function WelcomeMap({ focusRef, onClick }) {
   ];
 
   useEffect(() => {
-    const centerPos = new kakao.maps.LatLng(
+    if (window.kakao && window.kakao.maps){
+    const centerPos = new window.kakao.maps.LatLng(
       item[0].latitude,
       item[0].longitude
     );
@@ -79,44 +80,44 @@ function WelcomeMap({ focusRef, onClick }) {
       center: centerPos,
       level: 3,
     };
-    const map = new kakao.maps.Map(container.current, options);
+    const map = new window.kakao.maps.Map(container.current, options);
     mapRef.current = map;
 
     // 마커 여러 개 생성
     item.forEach((store) => {
-      const markerPosition = new kakao.maps.LatLng(
+      const markerPosition = new window.kakao.maps.LatLng(
         store.latitude,
         store.longitude
       );
       // 마커 이미지
-      const imageSize = new kakao.maps.Size(24, 35); // 이미지 크기
-      const imageOption = { offset: new kakao.maps.Point(12, 35) }; // 마커 중심 좌표
-      const markerImage = new kakao.maps.MarkerImage(
+      const imageSize = new window.kakao.maps.Size(24, 35); // 이미지 크기
+      const imageOption = { offset: new window.kakao.maps.Point(12, 35) }; // 마커 중심 좌표
+      const markerImage = new window.kakao.maps.MarkerImage(
         selectMarkerImg,
         imageSize,
         imageOption
       );
 
-      const marker = new kakao.maps.Marker({
+      const marker = new window.kakao.maps.Marker({
         position: markerPosition,
         image: markerImage, // 커스텀 마커 이미지 적용
       });
       marker.setMap(map);
 
       // 마커 클릭 이벤트
-      kakao.maps.event.addListener(marker, "click", function () {
+      window.kakao.maps.event.addListener(marker, "click", function () {
         alert(`${store.name} 클릭됨`);
       });
     });
+  }
   }, []);
 
   const searchAddr = (address) => {
     if (!address.trim()) return;
-    const geocoder = new kakao.maps.services.Geocoder();
-    // ✨함수 안에서 api를 사용해야 함으로 function 앞에 async 추가 필요
+    const geocoder = new window.kakao.maps.services.Geocoder();
     geocoder.addressSearch(address, function (result, status) {
-      if (status === kakao.maps.services.Status.OK) {
-        const coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+      if (status === window.kakao.maps.services.Status.OK) {
+        const coords = new window.kakao.maps.LatLng(result[0].y, result[0].x);
         console.log(result);
         console.log(result[0].address_name); // 도로명 주소
         console.log(result[0].x); // 경도, x좌표
@@ -126,15 +127,15 @@ function WelcomeMap({ focusRef, onClick }) {
 
         if (markerRef.current) markerRef.current.setMap(null);
 
-        const imageSize = new kakao.maps.Size(24, 35);
-        const imageOption = { offset: new kakao.maps.Point(12, 35) };
-        const markerImage = new kakao.maps.MarkerImage(
+        const imageSize = new window.kakao.maps.Size(24, 35);
+        const imageOption = { offset: new window.kakao.maps.Point(12, 35) };
+        const markerImage = new window.kakao.maps.MarkerImage(
           selectMarkerImg,
           imageSize,
           imageOption
         );
 
-        const marker = new kakao.maps.Marker({
+        const marker = new window.kakao.maps.Marker({
           position: coords,
           image: markerImage,
         });

@@ -1,11 +1,52 @@
+.bannerWrapper {
+  margin-left: -300px;
+  background-color: #E2D7D7; 
+}
 
+.banner {
+  margin-left: 200px;
+  padding: 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 970px;
+
+}
+
+.userName {
+  color: #413738;
+  font-weight: bold;
+  font-size: 40px;
+}
+
+.userAddress {
+  font-weight: 500; /* medium */
+  font-size: 20px;
+  color: #797979;
+}
+
+.reregisterButton {
+  background-color: #6D3737;
+  color: white;
+  padding: 12px 25px; 
+  font-size: 1rem; 
+  font-weight: bold; 
+
+  border-radius: 8px; 
+  border: none; 
+  cursor: pointer; 
+  transition: opacity 0.2s; 
+}
+
+.reregisterButton:hover {
+  opacity: 0.9;
+}
 .layoutContainer {
   display: flex; /* 자식 요소들을 가로로 배치 */
 }
 
 .mainContent {
   width: 1920px;
-  height: 495px;
+  /* height: 495px; 나중에 수정 */
   margin-left: 300px;
-  background-color: #fffaed;
 }
