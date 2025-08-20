@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import Loading from "../components/Loading";
-import Ex1 from "../assets/test/image07.png";
+import Ex1 from "../assets/test/image03.png";
 import "../styles/cardnews/CardNewsResultPage.css";
 // import img from "../assets/show.png";
 
@@ -36,8 +36,8 @@ function CardNewsResultPage() {
     const imgData = {
       url: Ex1,
       text: "여름 휴가 안내 🌞  \n8월 20일부터 23일까지 휴무입니다. \n20일부터 20일부터 20일 부터 20일 부터",
-      ratio: "RATIO_3_2", // SQUARE_1_1, RATIO_2_3, RATIO_3_2
-      template: "T1_TEXT_ONLY", //  T1_TEXT_ONLY, T2_TEXT_BOTTOM, T3_TEXT_RIGHT
+      ratio: "SQUARE_1_1", // SQUARE_1_1, RATIO_2_3, RATIO_3_2
+      template: "T3_TEXT_RIGHT", //  T1_TEXT_ONLY, T2_TEXT_BOTTOM, T3_TEXT_RIGHT
     };
 
     const canvas = canvasRef.current;
