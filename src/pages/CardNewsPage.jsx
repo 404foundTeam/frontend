@@ -13,19 +13,18 @@ function CardNewsPage() {
             사이가 가장 자연광이 예쁘게 들어오는 시간이기 때문에 이 시간대에
             사진을 촬영하는 것을 추천해요.`;
 
-  const [type, setType] = useState("");
-  const [menu, setMenu] = useState("");
+  const [cardType, setCardType] = useState("");
+  const [menuName, setMenuName] = useState("");
   const [userText, setUserText] = useState("");
   // const [generatedText, setGeneratedText] = useState(null); // textInv를 대체
-
-  const [templete, setTemplete] = useState("");
+  const [template, setTemplate] = useState("");
   const [ratio, setRatio] = useState("");
-  const [them, setThem] = useState("");
+  const [theme, setTheme] = useState("");
   // const [cardData, setCardDate] = useState(null);
 
   const getGenerateText = async () => {
     try {
-      const getText = await generateText({ type, userText });
+      const getText = await generateText({ cardType, userText });
       setGeneratedText(getText);
     } catch (error) {
       console.log("데이터 요청 실패", error);
@@ -49,46 +48,52 @@ function CardNewsPage() {
             <div
               className="select-box notice"
               onClick={() => {
-                setType(type === "notice" ? "" : "notice");
+                setCardType(cardType === "NOTICE" ? "" : "NOTICE");
               }}
             >
-              <div className={`box ${type === "notice" ? "select" : ""}`}></div>
+              <div
+                className={`box ${cardType === "NOTICE" ? "select" : ""}`}
+              ></div>
               <p className="select-box-title">공지</p>
             </div>
             <div
               className="select-box product_promo"
               onClick={() => {
-                setType(type === "product_promo" ? "" : "product_promo");
+                setCardType(
+                  cardType === "PRODUCT_PROMO" ? "" : "PRODUCT_PROMO"
+                );
               }}
             >
               <div
-                className={`box ${type === "product_promo" ? "select" : ""}`}
+                className={`box ${
+                  cardType === "PRODUCT_PROMO" ? "select" : ""
+                }`}
               ></div>
               <p className="select-box-title">신제품 홍보</p>
             </div>
             <div
               className="select-box store_intro"
               onClick={() => {
-                setType(type === "store_intro" ? "" : "store_intro");
+                setCardType(cardType === "STORE_INTRO" ? "" : "STORE_INTRO");
               }}
             >
               <div
-                className={`box ${type === "store_intro" ? "select" : ""}`}
+                className={`box ${cardType === "STORE_INTRO" ? "select" : ""}`}
               ></div>
               <p className="select-box-title">매장 소개</p>
             </div>
           </div>
         </div>
-        {(type === "notice" || type === "store_intro") && (
+        {(cardType === "NOTICE" || cardType === "STORE_INTRO") && (
           <div className="cardnews-box cardnews-text-box">
             <SelectHeader text="카드뉴스에 넣고 싶은 메뉴 이름을 입력해주세요." />
             <input
-              className={`cardnews-text-input ${menu ? "select" : ""}`}
+              className={`cardnews-text-input ${menuName ? "select" : ""}`}
               type="text"
               placeholder="텍스트를 입력하세요."
-              value={menu}
+              value={menuName}
               onChange={(e) => {
-                setMenu(e.target.value);
+                setMenuName(e.target.value);
               }}
             />
           </div>
@@ -130,44 +135,45 @@ function CardNewsPage() {
             </button>
           </div>
         </div>
-        <div className="cardnews-box cardnews-templete">
+        <div className="cardnews-box cardnews-template">
           <SelectHeader text="원하는 템플릿을 선택해주세요." />
-          <div className="templete-list">
+          <p>* 회색 배경은 AI가 텍스트로 만든 이미지입니다.</p>
+          <div className="template-list">
             <div
-              className={`templete-box ${templete === "box1" ? "select" : ""}`}
+              className={`template-box ${template === "box1" ? "select" : ""}`}
               onClick={() => {
-                setTemplete(templete === "box1" ? "" : "box1");
+                setTemplate(template === "T1_TEXT_ONLY" ? "" : "box1");
               }}
             >
               <div className="store-name">업장 이름</div>
-              <div className="store-content">본문</div>
+              <div className="store-content">생성된 텍스트</div>
             </div>
-            <div className="templete-img-box">
+            <div className="template-img-box">
               <div
-                className={`templete-box ${
-                  templete === "box2" ? "select" : ""
+                className={`template-box ${
+                  template === "box2" ? "select" : ""
                 }`}
                 onClick={() => {
-                  setTemplete(templete === "box2" ? "" : "box2");
+                  setTemplate(template === "T2_TEXT_BOTTOM" ? "" : "box2");
                 }}
               >
-                <div className="templete-text bottom">이미지</div>
+                <div className="template-text bottom">이미지</div>
                 <div className="store-name bottom">업장 이름</div>
-                <div className="store-content bottom">본문</div>
+                <div className="store-content bottom">생성된 텍스트</div>
               </div>
             </div>
-            <div className="templete-img-box">
+            <div className="template-img-box">
               <div
-                className={`templete-box ${
-                  templete === "box3" ? "select" : ""
+                className={`template-box ${
+                  template === "box3" ? "select" : ""
                 }`}
                 onClick={() => {
-                  setTemplete(templete === "box3" ? "" : "box3");
+                  setTemplate(template === "T3_TEXT_RIGHT" ? "" : "box3");
                 }}
               >
-                <div className="templete-text right">이미지</div>
+                <div className="template-text right">이미지</div>
                 <div className="store-name right">업장 이름</div>
-                <div className="store-content right">본문</div>
+                <div className="store-content right">생성된 텍스트</div>
               </div>
             </div>
           </div>
@@ -178,48 +184,69 @@ function CardNewsPage() {
             <div
               className="select-box normal"
               onClick={() => {
-                setRatio(ratio === "nor" ? "" : "nor");
+                setRatio(ratio === "SQUARE_1_1" ? "" : "SQUARE_1_1");
               }}
             >
-              <div className={`box ${ratio === "nor" ? "select" : ""}`}></div>
+              <div
+                className={`box ${ratio === "SQUARE_1_1" ? "select" : ""}`}
+              ></div>
               <p className="select-box-title">1:1 비율</p>
             </div>
             <div
               className="select-box hor"
               onClick={() => {
-                setRatio(ratio === "hor" ? "" : "hor");
+                setRatio(ratio === "RATIO_2_3" ? "" : "RATIO_2_3");
               }}
             >
-              <div className={`box ${ratio === "hor" ? "select" : ""}`}></div>
+              <div
+                className={`box ${ratio === "RATIO_2_3" ? "select" : ""}`}
+              ></div>
               <p className="select-box-title">4:5 비율(가로)</p>
             </div>
             <div
               className="select-box ver"
               onClick={() => {
-                setRatio(ratio === "ver" ? "" : "ver");
+                setRatio(ratio === "RATIO_3_2" ? "" : "RATIO_3_2");
               }}
             >
-              <div className={`box ${ratio === "ver" ? "select" : ""}`}></div>
+              <div
+                className={`box ${ratio === "RATIO_3_2" ? "select" : ""}`}
+              ></div>
               <p className="select-box-title">4:5 비율(세로)</p>
             </div>
           </div>
         </div>
-        <div className="cardnews-box cardnews-them">
+        <div className="cardnews-box cardnews-theme">
           <SelectHeader text="원하는 테마를 선택해주세요." />
-          <div className="them-list">
-            <div className="them-box">
-              <div>따뜻하고 편안한 분위기</div>
+          <div className="theme-list">
+            <div
+              className={`theme-box ${theme === "WARM" ? "select" : ""}`}
+              onClick={() => {
+                setTheme("WARM");
+              }}
+            >
+              따뜻하고 편안한 분위기
             </div>
-            <div className="them-box">
-              <div>깔끔하고 모던한 분위기</div>
+            <div
+              className={`theme-box ${theme === "MODERN" ? "select" : ""}`}
+              onClick={() => {
+                setTheme("MODERN");
+              }}
+            >
+              깔끔하고 모던한 분위기
             </div>
-            <div className="them-box">
-              <div>활기차고 밝은 분위기</div>
+            <div
+              className={`theme-box ${theme === "BRIGHT" ? "select" : ""}`}
+              onClick={() => {
+                setTheme("BRIGHT");
+              }}
+            >
+              활기차고 밝은 분위기
             </div>
           </div>
         </div>
       </div>
-      {type && textInv && templete && ratio && them && (
+      {cardType && textInv && template && ratio && theme && (
         <button className="cardnews-button">완료</button>
       )}
     </div>
