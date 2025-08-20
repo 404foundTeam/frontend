@@ -1,27 +1,50 @@
 import { useEffect, useRef, useState } from "react";
 import Loading from "../components/Loading";
-import Ex1 from "../assets/test/image03.png";
+import Ex1 from "../assets/test/image10.png";
 import "../styles/cardnews/CardNewsResultPage.css";
 // import img from "../assets/show.png";
 
 function drawWrappedText(ctx, text, x, y, maxWidth, lineHeight) {
+  // 왼쪽 정렬
+  ctx.textAlign = "left";
+  // ctx.textBaseline = "top";
   const words = text.split(" ");
   let line = "";
+  const lines = [];
 
   for (let n = 0; n < words.length; n++) {
     const testLine = line + words[n] + " ";
     const metrics = ctx.measureText(testLine);
-    const testWidth = metrics.width;
 
-    if (testWidth > maxWidth && n > 0) {
-      ctx.fillText(line, x, y);
+    if (metrics.width > maxWidth && n > 0) {
+      lines.push(line.trim());
       line = words[n] + " ";
-      y += lineHeight;
     } else {
       line = testLine;
     }
   }
-  ctx.fillText(line, x, y); // 마지막 줄 출력
+  lines.push(line.trim());
+
+  // 줄마다 lineHeight 적용
+  for (let i = 0; i < lines.length; i++) {
+    ctx.fillText(lines[i], x, y + i * lineHeight);
+  }
+}
+
+function drawRoundedRect(ctx, x, y, width, height, radius, fillStyle) {
+  ctx.beginPath();
+  ctx.moveTo(x + radius, y);
+  ctx.lineTo(x + width - radius, y);
+  ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+  ctx.lineTo(x + width, y + height - radius);
+  ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+  ctx.lineTo(x + radius, y + height);
+  ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+  ctx.lineTo(x, y + radius);
+  ctx.quadraticCurveTo(x, y, x + radius, y);
+  ctx.closePath();
+  ctx.fillStyle = fillStyle;
+  ctx.fill();
 }
 
 function CardNewsResultPage() {
@@ -35,16 +58,20 @@ function CardNewsResultPage() {
   useEffect(() => {
     const imgData = {
       url: Ex1,
-      text: "여름 휴가 안내 🌞  \n8월 20일부터 23일까지 휴무입니다. \n20일부터 20일부터 20일 부터 20일 부터",
+      // "추석 연휴에도 정상 영업합니다.\n 가족과 함께 특별한 시간을 보내세요!"
+      // "부드럽고 고소한 까눌레와 휘낭시에!\n 특별한 날, 소중한 분께 완벽한 선물이 됩니다."
+      // "깔끔한 인테리어와 아늑한 룸, 편리한 주차 공간까지!\n 편안한 시간을 만끽하세요."
+      text: "부드럽고 고소한 까눌레와 휘낭시에!\n 특별한 날, 소중한 분께 완벽한 선물이 됩니다.",
       ratio: "SQUARE_1_1", // SQUARE_1_1, RATIO_2_3, RATIO_3_2
-      template: "T3_TEXT_RIGHT", //  T1_TEXT_ONLY, T2_TEXT_BOTTOM, T3_TEXT_RIGHT
+      template: "T1_TEXT_ONLY", //  T1_TEXT_ONLY, T2_TEXT_BOTTOM, T3_TEXT_RIGHT
     };
 
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
     // 텍스트 위치 x-y(넓이,높이)
-    // (300-350/450/600(570/70),180-830/920(800/70), 600-200/300(400/70))
-    // 270-370/470(600,70), ,160-1050/1140/1230(800/70)
+    // 280-360/530/700(550, 60), 180-810/890(800,60), 625-200/400(350,60)
+    // 260-480/630/750(600, 60), 230-1040/1140(650,60), 600-320/480(450,60)
+    // 290-320/480/620(830, 60), 360-850/940(600,60), 850-250/430(400,60)
 
     // 이미지 로드
     const image = new Image();
@@ -74,7 +101,9 @@ function CardNewsResultPage() {
       }
 
       const lines = imgData.text.split("\n");
-      const position = [760, 900, 990];
+      const position = [200, 400, 700];
+
+      drawRoundedRect(ctx, 590, 140, 370, 500, 40, "rgba(255,255,255,0.4)");
 
       // 텍스트 스타일 설정
       ctx.font = "700 45px Inter";
@@ -82,7 +111,7 @@ function CardNewsResultPage() {
 
       // 텍스트 그리기
       lines.forEach((line, i) => {
-        drawWrappedText(ctx, line, 340, position[i], 800, 70);
+        drawWrappedText(ctx, line, 625, position[i], 350, 60);
         // ctx.fillText(line, 300, position[i]);
       });
 
