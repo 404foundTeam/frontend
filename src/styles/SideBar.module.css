@@ -1,30 +1,27 @@
 .container {
   width: 160px;
   height: 526px;
+  position: fixed;
+  left: 8px;
+  z-index: 10;
 
-  margin-left: 40px;
-  margin-top: 274px;
-
-  background-color: #f6f6f6;
-  border-radius: 30px;
-
-  font-family: "Pretendard";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 121.2%;
-  letter-spacing: -0.025em; /* 또는 24px */
-
-  color: #acacac;
+  margin-left: 42px;
+  margin-top: 238px;
 
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 24px;
 
-  position: fixed;
-  left: 8px;
-  z-index: 10;
+  background-color: #f6f6f6;
+  border-radius: 40px;
+
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 121.2%;
+  letter-spacing: -0.025em;
 }
 
 .container > :first-child {
@@ -46,16 +43,18 @@
   gap: 8px;
 }
 
+.box .text {
+  color: #acacac;
+}
+
 .box.select {
   background-color: #ffe5a7;
   opacity: 0.73;
   border-radius: 18px;
-
-  color: black;
 }
 
-.box.box.select img {
-  filter: grayscale(100%) brightness(0) invert(0);
+.box.select .text {
+  color: black;
 }
 
 .main {

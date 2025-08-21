@@ -7,7 +7,9 @@ function CardNewsLoadingPage({ isCamera = false }) {
     <div className={styles.container}>
       <SideBar isCard={true} />
       <div className={styles.box}></div>
-      <div className={styles.loadingBox}>
+      <div
+        className={`${styles.loadingBox} ${!isCamera ? styles.cardnews : ""}`}
+      >
         <img src={loadingImg} className={styles.loadingImg} />
         <div className={styles.textBox}>
           <p className={styles.wait}>잠시만 기다려주세요...</p>

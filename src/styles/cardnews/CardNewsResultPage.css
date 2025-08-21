@@ -1,3 +1,7 @@
+.cardnews-container {
+  min-height: 1092px;
+}
+
 .result-container {
   position: relative;
 
@@ -24,9 +28,18 @@
   gap: 78px;
 }
 
+/* 비율마다 변경 */
 .result-box .result-img {
   width: 520px;
+  height: 520px;
+}
+.result-box .result-img.ratio23 {
+  width: 520px;
   height: 650px;
+}
+.result-box .result-img.ratio32 {
+  width: 650px;
+  height: 520px;
 }
 
 .button-container {

@@ -1,13 +1,13 @@
-.camera-container {
-  padding-top: 190px;
-  padding-left: 452px;
-  padding-right: 452px;
+.container {
+  position: absolute;
+  top: 262px;
+  left: 452px;
 
   display: flex;
   flex-direction: column;
 }
 
-.camera-container .camera-show {
+.container .show {
   width: 1018px;
   height: 396px;
 
@@ -24,23 +24,21 @@
   font-size: 30px;
   line-height: 36px;
   letter-spacing: -0.025em;
-
   color: #797979;
 
   cursor: pointer;
 }
 
-.camera-show.select {
+.show.select {
   background-color: #febf22;
-  /* border: 6px solid #febf22; */
 }
 
-.camera-show .drag-img {
+.show .dragImg {
   width: 102px;
   height: 102px;
 }
 
-.camera-button-box {
+.buttonBox {
   margin-top: 32px;
 
   display: flex;
@@ -48,7 +46,7 @@
   gap: 137px;
 }
 
-.camera-button-box button {
+.buttonBox button {
   width: 214px;
   height: 51px;
 
@@ -56,14 +54,13 @@
   font-size: 25px;
   line-height: 30px;
   letter-spacing: -0.025em;
-
   color: #6d3737;
 }
 
-.camera-button-box .camera-img {
+.buttonBox .img {
   background-color: #ffe5a7;
 }
 
-.camera-button-box .camera-fin {
+.buttonBox .finish {
   background-color: #febf22;
 }

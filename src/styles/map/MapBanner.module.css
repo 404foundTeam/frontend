@@ -1,4 +1,4 @@
-.coa-header-container {
+.banner {
   width: 1920px;
   height: 198px;
 
@@ -8,12 +8,12 @@
   background-color: #fffaed;
 }
 
-.coa-header-container img {
+.banner img {
   width: 170px;
   height: 170px;
 }
 
-.banner-title {
+.banner .title {
   margin-left: 24px;
 
   font-weight: 700;
@@ -23,7 +23,7 @@
   color: #febf22;
 }
 
-.banner-content {
+.banner .content {
   margin-top: 30px;
   margin-left: 8px;
 

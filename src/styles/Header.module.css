@@ -1,7 +1,6 @@
-header {
+.header {
   width: 1920px;
   height: 72px;
-  position: relative;
 
   font-style: normal;
   font-weight: 500;
@@ -11,15 +10,7 @@ header {
   color: #333333;
 }
 
-header .tags {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  gap: 80px;
-  padding-left: 264px;
-}
-
-header .img {
+.header .img {
   width: 75px;
   height: 54px;
   position: absolute;
@@ -27,11 +18,23 @@ header .img {
   left: 205px;
 }
 
-header .text {
+.header .tags {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 80px;
+  padding-left: 264px;
+}
+
+.header .text {
   color: #febf22;
 }
 
-header .my {
+.header .tags .link {
+  color: #333333;
+}
+
+.header .my {
   margin-left: auto; /* 맨 오른쪽으로 */
   padding-right: 205px;
 }
