@@ -1,8 +1,11 @@
 import { useRef, useState } from "react";
 import dragImg from "../assets/camera/drag_img.png";
 import styles from "../styles/camera/CameraPage.module.css";
+import { Link, useNavigate } from "react-router-dom";
 
 function CameraPage() {
+  const navigate = useNavigate();
+
   const imgInput = useRef();
   const [preview, setPreview] = useState(null);
 
@@ -13,6 +16,10 @@ function CameraPage() {
       setPreview(e.target.result);
     };
     render.readAsDataURL(file);
+  };
+
+  const goToResult = () => {
+    navigate("/camera/result");
   };
 
   return (
@@ -57,7 +64,9 @@ function CameraPage() {
           >
             이미지 불러오기
           </button>
-          <button className={styles.finish}>완료</button>
+          <button className={styles.finish} onClick={goToResult}>
+            완료
+          </button>
         </div>
       </div>
     </>
