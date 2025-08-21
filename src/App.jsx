@@ -18,6 +18,8 @@ import MyPage from "./pages/MyPage";
 import MyLayout from "./layouts/MyLayout";
 import MainPage from "./pages/MainPage";
 import MainLayout from "./layouts/MainLayout";
+import MarketingPage from "./pages/MarketingPage";
+import MarketingLayout from "./layouts/MarketingLayout";
 
 function App() {
   // 새로고침 시 최상단 이동
@@ -53,6 +55,9 @@ function App() {
             </Route>
             <Route path="main" element={<MainLayout />}>
               <Route index element={<MainPage />} />
+            </Route>
+            <Route path="marketing" element={<MarketingLayout />}>
+              <Route index element={<MarketingPage />} />
             </Route>
           </Route>
         </Routes>
