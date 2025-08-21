@@ -5,23 +5,13 @@ import listIcon from "../assets/welcomeMap/marker_icon.png";
 import selectMarkerImg from "../assets/welcomeMap/select_marker.png";
 import "../styles/WelcomeMap.css";
 import StoreSearch from "./StoreSearch";
-// import { fetchStoresByCoord, matchStore } from "../api/index.js";
+import useUuidStore from "../store/useUuidStore";
+import { fetchStoresByCoord, matchStore } from "../api/index.js";
 
 const { kakao } = window;
 
 function WelcomeMap({ focusRef, onClick }) {
-  const [search, setSearch] = useState("");
-  const [isClick, setIsClick] = useState(false);
-
-  // 업장 리스트 데이터 - get
-  const [stores, setStores] = useState(null);
-  // 업장 등록, 요청 데이터 - post
-  const [selectStore, setSelectStore] = useState(null);
-
-  const container = useRef(null); // 지도 담을 곳
-  const mapRef = useRef(null); // 지도 객체 저장
-  const markerRef = useRef(null); // 현재 마커 저장
-
+  const setUuid = useUuidStore((state) => state.setUuid);
   // 업장 리스트 (위도, 경도 포함) - 가게 목록, 응답 데이터
   const item = [
     {
@@ -70,6 +60,18 @@ function WelcomeMap({ focusRef, onClick }) {
     },
   ];
 
+  const [search, setSearch] = useState("");
+  const [isClick, setIsClick] = useState(false);
+
+  // 업장 리스트 데이터 - get
+  const [stores, setStores] = useState(item);
+  // 업장 등록, 요청 데이터 - post
+  const [selectStore, setSelectStore] = useState(null);
+
+  const container = useRef(null); // 지도 담을 곳
+  const mapRef = useRef(null); // 지도 객체 저장
+  const markerRef = useRef(null); // 현재 마커 저장
+
   useEffect(() => {
     // 맵 생성 api 적용시 분리
     const centerPos = new kakao.maps.LatLng(37.2756, 127.116);
@@ -81,7 +83,8 @@ function WelcomeMap({ focusRef, onClick }) {
     mapRef.current = map;
 
     // 마커 여러 개 생성 api 적용시 의존성 추가
-    item.forEach((store) => {
+    if (!stores) return;
+    stores.forEach((store) => {
       // if (!stores) return;
       // 이전 마커 제거
       // if (markerRef.current) {
@@ -118,7 +121,7 @@ function WelcomeMap({ focusRef, onClick }) {
     if (!address.trim()) return;
     const geocoder = new kakao.maps.services.Geocoder();
     // ✨함수 안에서 api를 사용해야 함으로 function 앞에 async 추가 필요
-    geocoder.addressSearch(address, function (result, status) {
+    geocoder.addressSearch(address, async function (result, status) {
       if (status === kakao.maps.services.Status.OK) {
         const coords = new kakao.maps.LatLng(result[0].y, result[0].x);
         console.log(result);
@@ -148,28 +151,29 @@ function WelcomeMap({ focusRef, onClick }) {
         alert("오류 발생");
       }
 
-      // try {
-      //   const storeList = await fetchStoresByCoord(result[0].x, result[0].y);
-      //   setStores(storeList);
-      //   console.log("리스트 데이터", result);
-      // } catch (error) {
-      //   console.log("요청 에러", error);
-      //   alert("데이터 요청에 실패했습니다.");
-      // }
+      try {
+        const storeList = await fetchStoresByCoord(result[0].x, result[0].y);
+        setStores(storeList.data);
+        console.log("리스트 데이터", result);
+      } catch (error) {
+        console.log("요청 에러", error);
+        alert("데이터 요청에 실패했습니다.");
+      }
     });
   };
 
-  // const postStoreInfo = async () => {
-  //   if (!selectStore) return;
+  const postStoreInfo = async () => {
+    if (!selectStore) return;
 
-  //   try {
-  //     const result = await matchStore(selectStore);
-  //     console.log("업장 등록", result);
-  //   } catch (error) {
-  //     console.log("업장 등록 실패", error);
-  //     alert("업장 등록에 실패했습니다.");
-  //   }
-  // };
+    try {
+      const result = await matchStore(selectStore);
+      setUuid(result.data);
+      console.log("업장 등록", result);
+    } catch (error) {
+      console.log("업장 등록 실패", error);
+      alert("업장 등록에 실패했습니다.");
+    }
+  };
 
   const onChange = (e) => {
     setSearch(e.target.value);
@@ -208,39 +212,39 @@ function WelcomeMap({ focusRef, onClick }) {
             업장 검색 결과
             <img src={listTitle} className="list-title-ico" />
           </div>
-          {/* {stores && ( */}
-          <div className="search-list">
-            {item.map((store) => (
-              <div
-                className={`search-list-box ${
-                  selectStore?.placeId === store.placeId ? "select" : ""
-                }`}
-                key={store.placeId}
-                onClick={(e) => {
-                  if (e.currentTarget.className.includes("select")) {
-                    setSelectStore(null);
-                    setIsClick(false);
-                  } else {
-                    setSelectStore(store);
-                    setIsClick(true);
-                  }
-                }}
-              >
-                <img src={listIcon} className="list-box-ico" />
-                <div className="store-info">
-                  <h1>{store.name}</h1>
-                  <p>{store.roadAddress}</p>
+          {stores && (
+            <div className="search-list">
+              {stores.map((store) => (
+                <div
+                  className={`search-list-box ${
+                    selectStore?.placeId === store.placeId ? "select" : ""
+                  }`}
+                  key={store.placeId}
+                  onClick={(e) => {
+                    if (e.currentTarget.className.includes("select")) {
+                      setSelectStore(null);
+                      setIsClick(false);
+                    } else {
+                      setSelectStore(store);
+                      setIsClick(true);
+                    }
+                  }}
+                >
+                  <img src={listIcon} className="list-box-ico" />
+                  <div className="store-info">
+                    <h1>{store.name}</h1>
+                    <p>{store.roadAddress}</p>
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
-          {/* )} */}
+              ))}
+            </div>
+          )}
         </div>
       </div>
       <div>
         <button
           className={`map-button ${isClick ? "select" : ""}`}
-          // onClick={postStoreInfo}
+          onClick={postStoreInfo}
         >
           업장 등록
         </button>

@@ -5,9 +5,23 @@ const BASE_URL = "https://localhost:8080/api/v1";
 const api = axios.create({
   baseURL: BASE_URL,
   headers: {
-    "Content-Type": "application/json",
+    "Content-Type": "application/json", // 데이터 형식
+    "Access-Control-Allow-Origin": "*", // 모든 출처 허용
   },
 });
+
+// 헤더에 넣기1
+// api.interceptors.response.use((response) => {
+//   if (response.config.url.includes("/stores/match")) {
+//     const { storeUuid, storeName, isNew } = response.data;
+
+//     api.defaults.headers.common["Store-UUID"] = storeUuid;
+//     api.defaults.headers.common["Store-NAME"] = storeName;
+//     api.defaults.headers.common["Store-ISNEW"] = isNew;
+//   }
+
+//   return response;
+// });
 
 // 웰컴 페이지
 // 가게 목록 조회
@@ -18,6 +32,14 @@ export const fetchStoresByCoord = async (x, y) => {
 // 업장 등록
 export const matchStore = async (store) => {
   const res = await api.post("/stores/match", store);
+
+  // 헤더에 넣기2
+  // const { storeUuid, storeName, isNew } = res.data;
+
+  // api.defaults.headers.common["Store-UUID"] = storeUuid;
+  // api.defaults.headers.common["Store-NAME"] = storeName;
+  // api.defaults.headers.common["Store-ISNEW"] = isNew;
+
   return res.data;
 };
 

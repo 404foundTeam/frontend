@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import Loading from "../components/Loading";
 import Ex1 from "../assets/test/image10.png";
 import "../styles/cardnews/CardNewsResultPage.css";
+import useTextStore from "../store/useTextStore";
+import useCardStore from "../store/useCardStore";
 // import img from "../assets/show.png";
 
 function drawWrappedText(ctx, text, x, y, maxWidth, lineHeight) {
@@ -48,9 +50,11 @@ function drawRoundedRect(ctx, x, y, width, height, radius, fillStyle) {
 }
 
 function CardNewsResultPage() {
+  const generatedText = useTextStore((state) => state.generatedText);
+  const imgData = useCardStore((state) => state);
+  const remainingFreeCount = 1;
   // 이미지 박스 크기 스타일
   const [box, setBox] = useState("");
-  const chance = 1;
 
   const canvasRef = useRef(null);
   const resultImgRef = useRef(null);
@@ -135,7 +139,7 @@ function CardNewsResultPage() {
             <button className="new">새로 만들기</button>
           </div>
           <p>
-            이번 달 무료 횟수 <span>{chance}회</span> 남았어요.
+            이번 달 무료 횟수 <span>{remainingFreeCount}회</span> 남았어요.
           </p>
         </div>
       </div>
