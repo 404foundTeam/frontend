@@ -1,7 +1,7 @@
 import { create } from "zustand";
 // uuid 전역 상태 관리
 const useUuidStore = create((set) => ({
-  storeUuid: null,
+  storeUuid: "어웨이커피",
   isNew: null,
   storeName: null,
   setUuid: ({ storeUuid, isNew, storeName }) =>

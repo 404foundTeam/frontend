@@ -1,11 +1,11 @@
-import { useEffect, useRef, useState } from "react";
+import { use, useEffect, useRef, useState } from "react";
 import close from "../assets/welcomeMap/close.png";
 import listTitle from "../assets/welcomeMap/list.png";
 import listIcon from "../assets/welcomeMap/marker_icon.png";
 import selectMarkerImg from "../assets/welcomeMap/select_marker.png";
 import "../styles/WelcomeMap.css";
 import StoreSearch from "./StoreSearch";
-// import { fetchStoresByCoord, matchStore } from "../api/api";
+// import { fetchStoresByCoord, matchStore } from "../api/index.js";
 
 const { kakao } = window;
 
@@ -14,7 +14,7 @@ function WelcomeMap({ focusRef, onClick }) {
   const [isClick, setIsClick] = useState(false);
 
   // 업장 리스트 데이터 - get
-  // const [stores, setStores] = useState(null);
+  const [stores, setStores] = useState(null);
   // 업장 등록, 요청 데이터 - post
   const [selectStore, setSelectStore] = useState(null);
 
@@ -71,10 +71,8 @@ function WelcomeMap({ focusRef, onClick }) {
   ];
 
   useEffect(() => {
-    const centerPos = new kakao.maps.LatLng(
-      item[0].latitude,
-      item[0].longitude
-    );
+    // 맵 생성 api 적용시 분리
+    const centerPos = new kakao.maps.LatLng(37.2756, 127.116);
     const options = {
       center: centerPos,
       level: 3,
@@ -82,8 +80,14 @@ function WelcomeMap({ focusRef, onClick }) {
     const map = new kakao.maps.Map(container.current, options);
     mapRef.current = map;
 
-    // 마커 여러 개 생성
+    // 마커 여러 개 생성 api 적용시 의존성 추가
     item.forEach((store) => {
+      // if (!stores) return;
+      // 이전 마커 제거
+      // if (markerRef.current) {
+      //   markerRef.current.forEach((m) => m.setMap(null));
+      // }
+
       const markerPosition = new kakao.maps.LatLng(
         store.latitude,
         store.longitude
@@ -204,6 +208,7 @@ function WelcomeMap({ focusRef, onClick }) {
             업장 검색 결과
             <img src={listTitle} className="list-title-ico" />
           </div>
+          {/* {stores && ( */}
           <div className="search-list">
             {item.map((store) => (
               <div
@@ -229,6 +234,7 @@ function WelcomeMap({ focusRef, onClick }) {
               </div>
             ))}
           </div>
+          {/* )} */}
         </div>
       </div>
       <div>

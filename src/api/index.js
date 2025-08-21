@@ -10,11 +10,12 @@ const api = axios.create({
 });
 
 // 웰컴 페이지
+// 가게 목록 조회
 export const fetchStoresByCoord = async (x, y) => {
   const res = await api.get("/stores/search-by-coord", { params: { x, y } });
   return res.data;
 };
-
+// 업장 등록
 export const matchStore = async (store) => {
   const res = await api.post("/stores/match", store);
   return res.data;
@@ -23,7 +24,6 @@ export const matchStore = async (store) => {
 // 카드 뉴스 페이지
 
 /* 
-/api/v1/sns-cards/templates	GET
 /api/v1/sns-cards/upload	POST
 /api/v1/sns-cards	POST
 /api/v1/sns-cards/{cardId}/download	GET
@@ -31,6 +31,28 @@ export const matchStore = async (store) => {
 // /api/v1/sns-cards/generate	POST
 export const generateText = async ({ type, userText }) => {
   const res = await api.post("/sns-cards/generate", { type, userText });
+  return res.data;
+};
+
+// /api/v1/sns-cards/background POST
+export const backgroundImg = async ({
+  storeName,
+  cardType,
+  menuName,
+  generatedText,
+  template,
+  ratio,
+  theme,
+}) => {
+  const res = await api.post("/sns-cards/background", {
+    storeName,
+    cardType,
+    menuName,
+    generatedText,
+    template,
+    ratio,
+    theme,
+  });
   return res.data;
 };
 

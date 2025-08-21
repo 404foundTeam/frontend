@@ -2,7 +2,7 @@ import { useState } from "react";
 import "../styles/cardnews/CardNewsPage.css";
 import bannerImg from "../assets/cardnews/banner_img.png";
 import SelectHeader from "../components/SelectHeader";
-import { generateText } from "../api/api";
+import { generateText } from "../api/index.js";
 
 function CardNewsPage() {
   // generatedText 임시 데이터
