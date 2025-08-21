@@ -58,6 +58,7 @@ export const generateText = async ({ type, userText }) => {
 
 // /api/v1/sns-cards/background POST
 export const backgroundImg = async ({
+  storeUuid,
   storeName,
   cardType,
   menuName,
@@ -67,6 +68,7 @@ export const backgroundImg = async ({
   theme,
 }) => {
   const res = await api.post("/sns-cards/background", {
+    storeUuid,
     storeName,
     cardType,
     menuName,

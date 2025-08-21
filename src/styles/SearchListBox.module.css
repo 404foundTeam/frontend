@@ -1,0 +1,50 @@
+.list {
+  height: 148px;
+
+  display: flex;
+  align-items: center;
+  gap: 58px;
+
+  border-bottom: 3px solid #d9d9d9;
+
+  cursor: pointer;
+}
+
+.list:last-child {
+  border-bottom: none;
+}
+
+.list.select {
+  background-color: rgba(255, 229, 167, 0.2);
+}
+
+.list.select .store h1 {
+  color: #febf22;
+}
+
+.icon {
+  width: 51px;
+  height: 64px;
+
+  margin-left: 62px;
+}
+
+.store .name {
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 36px;
+  letter-spacing: -0.025em;
+
+  color: #413738;
+}
+
+.store .addr {
+  margin-top: 8px;
+
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: -0.025em;
+
+  color: #797979;
+}

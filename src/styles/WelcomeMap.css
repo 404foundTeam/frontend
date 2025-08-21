@@ -105,57 +105,6 @@
   border: 3px solid #d9d9d9;
 }
 
-.search-list-box {
-  height: 148px;
-
-  display: flex;
-  align-items: center;
-  gap: 58px;
-
-  border-bottom: 3px solid #d9d9d9;
-
-  cursor: pointer;
-}
-
-.search-list-box:last-child {
-  border-bottom: none;
-}
-
-.search-list-box.select {
-  background-color: rgba(255, 229, 167, 0.2);
-}
-
-.search-list-box.select .store-info h1 {
-  color: #febf22;
-}
-
-.list-box-ico {
-  width: 51px;
-  height: 64px;
-
-  margin-left: 62px;
-}
-
-.store-info h1 {
-  font-weight: 700;
-  font-size: 30px;
-  line-height: 36px;
-  letter-spacing: -0.025em;
-
-  color: #413738;
-}
-
-.search-list-box .store-info p {
-  margin-top: 8px;
-
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 19px;
-  letter-spacing: -0.025em;
-
-  color: #797979;
-}
-
 /* 등록 버튼 */
 .map-button {
   width: 816px;

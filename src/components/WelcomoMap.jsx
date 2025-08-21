@@ -1,12 +1,12 @@
 import { use, useEffect, useRef, useState } from "react";
 import close from "../assets/welcomeMap/close.png";
 import listTitle from "../assets/welcomeMap/list.png";
-import listIcon from "../assets/welcomeMap/marker_icon.png";
 import selectMarkerImg from "../assets/welcomeMap/select_marker.png";
 import "../styles/WelcomeMap.css";
 import StoreSearch from "./StoreSearch";
 import useUuidStore from "../store/useUuidStore";
 import { fetchStoresByCoord, matchStore } from "../api/index.js";
+import SearchListBox from "./SearchListBox.jsx";
 
 const { kakao } = window;
 
@@ -153,7 +153,7 @@ function WelcomeMap({ focusRef, onClick }) {
 
       try {
         const storeList = await fetchStoresByCoord(result[0].x, result[0].y);
-        setStores(storeList.data);
+        setStores(storeList.data.items);
         console.log("리스트 데이터", result);
       } catch (error) {
         console.log("요청 에러", error);
@@ -215,27 +215,22 @@ function WelcomeMap({ focusRef, onClick }) {
           {stores && (
             <div className="search-list">
               {stores.map((store) => (
-                <div
-                  className={`search-list-box ${
-                    selectStore?.placeId === store.placeId ? "select" : ""
-                  }`}
-                  key={store.placeId}
-                  onClick={(e) => {
-                    if (e.currentTarget.className.includes("select")) {
-                      setSelectStore(null);
-                      setIsClick(false);
-                    } else {
-                      setSelectStore(store);
-                      setIsClick(true);
-                    }
-                  }}
-                >
-                  <img src={listIcon} className="list-box-ico" />
-                  <div className="store-info">
-                    <h1>{store.name}</h1>
-                    <p>{store.roadAddress}</p>
-                  </div>
-                </div>
+                <>
+                  <SearchListBox
+                    key={store.placeId}
+                    store={store}
+                    isSelected={selectStore?.placeId === store.placeId}
+                    onClick={(e) => {
+                      if (e.currentTarget.className.includes("select")) {
+                        setSelectStore(null);
+                        setIsClick(false);
+                      } else {
+                        setSelectStore(store);
+                        setIsClick(true);
+                      }
+                    }}
+                  />
+                </>
               ))}
             </div>
           )}

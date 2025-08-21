@@ -175,7 +175,6 @@ function CardNewsPage() {
                 setTemplate(template === "T1_TEXT_ONLY" ? "" : "T1_TEXT_ONLY");
               }}
             >
-              <div className="store-name">업장 이름</div>
               <div className="store-content">생성된 텍스트</div>
             </div>
             <div className="template-img-box">
@@ -190,7 +189,6 @@ function CardNewsPage() {
                 }}
               >
                 <div className="template-text bottom">이미지</div>
-                <div className="store-name bottom">업장 이름</div>
                 <div className="store-content bottom">생성된 텍스트</div>
               </div>
             </div>
@@ -206,7 +204,6 @@ function CardNewsPage() {
                 }}
               >
                 <div className="template-text right">이미지</div>
-                <div className="store-name right">업장 이름</div>
                 <div className="store-content right">생성된 텍스트</div>
               </div>
             </div>
