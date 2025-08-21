@@ -204,7 +204,8 @@
 
 /* 템플릿 리스트 */
 .template-list {
-  margin-top: 87px;
+  margin-top: 16px;
+  /* margin-top: 87px; */
   margin-left: 40px;
 
   display: flex;
@@ -262,21 +263,19 @@
 }
 
 /* 스토어 박스 */
-.template-list .template-box .store-name {
-  width: 106px;
-  height: 35px;
-  line-height: 35px;
-  margin-top: 27px;
-  margin-left: 23px;
-  background-color: #ededed;
-}
-
 .template-list .template-box .store-content {
   width: 251px;
   height: 188px;
+
+  font-weight: 600;
+  font-size: 28px;
   line-height: 188px;
-  margin-top: 22px;
-  margin-left: 24px;
+  letter-spacing: -0.025em;
+
+  color: #6d3737;
+
+  margin: 56px 24px;
+
   background-color: #ededed;
 }
 
@@ -288,25 +287,20 @@
   gap: 39px;
 }
 
-.template-img-box .template-box .store-name.bottom {
-  margin-top: 138px;
-}
-
 .template-img-box .template-box .store-content.bottom {
   width: 263px;
   height: 76px;
-  line-height: 76px;
-}
 
-.template-img-box .template-box .store-name.right {
-  margin-top: 10px;
-  margin-left: 176px;
+  margin-top: 190px;
+
+  line-height: 76px;
 }
 
 .template-img-box .template-box .store-content.right {
   width: 106px;
   height: 219px;
   line-height: 219px;
+
   margin-left: 176px;
 }
 
