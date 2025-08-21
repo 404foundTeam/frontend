@@ -1,0 +1,74 @@
+/* src/styles/SmartReport.module.css */
+
+.pageContainer {
+  min-height: 100vh;
+}
+
+/* --- 탭 네비게이션 --- */
+.tabNav {
+  display: flex;
+  gap: 1rem;
+  border-bottom: 1px solid #EAE1CF;
+  margin-left: 8%;
+}
+
+.tabButton {
+  padding: 15px 10px;
+  border: none;
+  background-color: transparent;
+  font-size: 30px;
+  font-weight: 600;
+  color: #ACACAC;
+  cursor: pointer;
+  position: relative;
+  border-bottom: 4px solid transparent;
+}
+
+.tabButton.active {
+  color: #6D3737;
+  border-bottom: 10px solid #FEBF22;
+}
+
+/* --- 콘텐츠 공통 --- */
+.contentContainer {
+}
+
+/* --- ReportContent 스타일 --- */
+.reportHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+.dashboardGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+.actionButtons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.updateButton, .posButton {
+  padding: 12px 30px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.updateButton {
+  background-color: #FEBF22;
+  border: none;
+}
+.posButton {
+  background-color: #EAE1CF;
+  border: none;
+}
+
+/* --- MarketingContent 스타일 --- */
+.marketingLayout {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+}

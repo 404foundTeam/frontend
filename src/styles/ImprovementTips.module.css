@@ -1,0 +1,38 @@
+/* src/styles/ImprovementTips.module.css */
+
+.tipsContainer {
+  max-width: 1200px; /* 부모 컨테이너 너비와 맞추는 것이 좋습니다. */
+  width: 100%;
+  margin: 2rem auto; /* 위아래, 그리고 중앙 정렬 */
+  padding: 2rem;
+  font-family: sans-serif;
+}
+
+.tipsHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.tipIcon {
+  width: 60px; /* 아이콘 크기 */
+  height: 60px;
+}
+
+.tipsTitle {
+  font-size: 35px;
+  font-weight: bold;
+  color: #6D3737;
+  margin: 0;
+}
+
+.tipsText {
+  font-size: 25px;
+  font-weight: bold;
+  color: #413738;
+  line-height: 2; /* 줄 간격을 넉넉하게 */
+
+  /* ✅ 백엔드 데이터의 줄바꿈(\n)을 그대로 화면에 표시해주는 중요한 속성입니다. */
+  white-space: pre-wrap; 
+}

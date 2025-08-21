@@ -12,12 +12,12 @@
 .banner {
   background-color: #FFE5A7; /* 이미지와 유사한 배경색 */
   border-radius: 20px;
-  padding: 130px;
+  padding: 150px;
   margin-bottom: 2rem;
   position: relative; /* 일러스트 위치 조정을 위한 기준 */
-  overflow: hidden;
   width: 100vw;   /* 뷰포트 전체 너비 */
   margin-left: calc(-50vw + 50%); /* 부모 컨테이너 패딩/마진을 무시하고 화면 전체에 맞춤 */
+  border-bottom-left-radius: 500px; 
 }
 .bannerContentWrapper {
     display: flex;
@@ -35,7 +35,7 @@
   font-size: 45px;
   font-weight: bold;
   color: #413738;
-  line-height: 1.5;
+  line-height: 2;
   margin: 0 0 15px 0;
 }
 
@@ -46,10 +46,10 @@
 
 .illustration {
   position: absolute;
-  width: 600px; /* 일러스트 크기 조절 */
-  left: -110px;
-  bottom: -540px; /* 아래로 내려서 겹치게 배치 */
-  z-index: 1;
+  width: 700px; /* 일러스트 크기 조절 */
+  left: -130px;
+  bottom: -600px; /* 아래로 내려서 겹치게 배치 */
+  transform: rotate(-10deg)
 }
 
 .buttonGrid {
