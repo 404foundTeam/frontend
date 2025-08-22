@@ -7,9 +7,9 @@ function Header() {
     <header className={styles.header}>
       <img src={logoImg} className={styles.img}></img>
       <div className={styles.tags}>
-        <NavLinkLink to="/main" className={styles.text}>
+        <NavLink to="/main" className={styles.text}>
           market BEE
-        </NavLinkLink>
+        </NavLink>
         <NavLink to="/marketing" className={styles.link}>
           홍보
         </NavLink>
