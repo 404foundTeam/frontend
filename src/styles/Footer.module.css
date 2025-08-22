@@ -1,6 +1,9 @@
 footer {
-  width: 1920px;
+  width: 100%;
+  max-width: 1440px;
   height: 306px;
+
+  margin: 0 auto;
 
   display: flex;
   flex-direction: column;
@@ -11,7 +14,6 @@ footer {
 }
 
 .header {
-  width: 1490px;
   height: 69px;
   position: relative;
 

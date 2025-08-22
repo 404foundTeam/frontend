@@ -1,9 +1,12 @@
 /* 페이지 전체 배경 스타일 */
 .welcome-container {
-  width: 1920px;
+  width: 100%;
+  max-width: 1920px;
   min-height: 864px;
   /* height: 864px; */
   position: relative;
+
+  margin: 0 auto;
 }
 
 /* 페이지 헤더 스타일 */
@@ -21,14 +24,19 @@
 }
 
 .welcome-header-box {
+  width: 1440px;
   position: relative;
 
-  padding-top: 160px;
-  padding-left: 215px;
+  margin: 0 auto;
 }
 
 .welcome-header-box .header-title {
-  font-weight: 600;
+  width: 577px;
+
+  padding-top: 108px;
+  padding-left: 32px;
+
+  font-weight: 700;
   font-size: 64px;
   line-height: 95px;
   letter-spacing: -0.025em;
@@ -166,14 +174,17 @@
 }
 
 .welcome-header-box .hive {
-  width: 805px;
+  width: 855px;
   height: 599px;
 
-  top: 123px;
+  top: 61px;
   right: 0;
   z-index: 1;
 
   background-image: url("../assets/welcome//welcome_hive.png");
+  background-size: contain;
+  background-position: right center;
+  background-repeat: no-repeat;
 }
 
 /* 헤더, 사인맵 p 태그 공통 스타일 */
@@ -187,17 +198,10 @@
 }
 
 .header.text {
-  margin-top: 42px;
-}
+  width: 515px;
 
-/* 헤더 이미지 스타일 */
-.welcome-header-box .welcome-header-img {
-  width: 839px;
-  height: 630px;
-  position: absolute;
-  left: 961px;
-  bottom: 72px;
-  z-index: 10;
+  padding-top: 67px;
+  padding-left: 32px;
 }
 
 /* 헤더 바닥 박스 스타일 */
@@ -212,6 +216,10 @@
 
 /* 페이지 카드 래퍼 배경 스타일 */
 .welcome-card-wrapper {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+
   display: block;
 
   background: linear-gradient(
@@ -224,33 +232,24 @@
 
 /* 카드 내부 스타일 및 애니메이션 */
 .welcome-card-wrapper .welcome-card {
-  width: 100%;
-  height: 994px;
-
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+  align-items: flex-start;
+  justify-content: center;
 
   opacity: 0;
   transform: translateY(80px);
   transition: opacity 2s ease-out, transform 2s ease-out;
 }
 
-.line-top {
-  width: 1481px;
+.line {
+  width: 100%;
+  max-width: 1440px;
+
+  margin: 0 auto;
   position: absolute;
   top: 0;
-  left: 219px;
 
   border-top: 3px solid #d9d9d9;
-}
-
-.line-bottom {
-  width: 1481px;
-  position: absolute;
-  left: 219px;
-
-  border-bottom: 3px solid #d9d9d9;
 }
 
 .welcome-card-wrapper .welcome-card.visible {
@@ -258,61 +257,30 @@
   transform: translateY(0);
 }
 
-.welcome-card.marketing {
-  position: relative;
-}
-
-.welcome-card .marketing-boxs.left {
-  position: absolute;
-  top: 0;
-
-  margin-top: 42px;
-  margin-left: 215px;
-}
-
-/* 카드 내부 텍스트 위치 조정 */
-.welcome-card .welcome-text-box {
-  margin-bottom: 452px;
-}
-
-.welcome-card .welcome-text-box.right {
-  margin-left: 171px;
-}
-
-.welcome-card .welcome-text-box.left {
-  position: absolute;
-  top: 242px;
-  right: 15px;
-
-  margin-top: 42px;
-  margin-right: 215px;
-}
-
 /* 카드 내부 텍스트 스타일 */
 .welcome-text-box .mini-title {
-  margin-bottom: 25px;
   font-weight: 600;
-  font-size: 30px;
+  font-size: 25px;
   line-height: 30px;
 
   color: #febf22;
 }
 
 .welcome-text-box .card-title {
-  margin-bottom: 7px;
+  padding-top: 20px;
 
   font-weight: 700;
-  font-size: 70px;
-  line-height: 84px;
+  font-size: 60px;
+  line-height: 78px;
 
   color: #6d3737;
 }
 
 .welcome-text-box .card-content {
-  margin-top: 53px;
+  padding-top: 59px;
 
   font-weight: 500;
-  font-size: 24px;
+  font-size: 20px;
   line-height: 40px;
   letter-spacing: -0.025em;
 
@@ -320,14 +288,35 @@
 }
 
 /* 스마트 리포트 스타일 */
-.welcome-card.report .report-img {
-  width: 813px;
-  position: absolute;
-  top: 112px;
-  right: 190px;
+.welcome-card.report {
+  height: 660px;
 }
 
-/* 마케팅 박스 스타일 */
+/* 텍스트 위치 조정 */
+.welcome-card .welcome-text-box.report {
+  padding-top: 199px;
+  margin-left: 122px;
+}
+
+.welcome-card .welcome-text-box.report .card-title {
+  font-size: 65px;
+}
+
+.welcome-card.report .report-img {
+  width: 574px;
+
+  padding-top: 108px;
+  padding-right: 80px;
+}
+
+/* 마케팅 스타일 */
+.welcome-card.marketing {
+  height: 800px;
+
+  padding-top: 216px;
+}
+
+/* 마케팅 내부 박스 스타일 */
 .welcome-card .marketing-boxs {
   width: 840px;
   height: 760px;
@@ -337,10 +326,6 @@
   align-items: center;
   justify-content: center;
   gap: 14px;
-}
-
-.welcome-card .marketing-boxs.left {
-  margin-left: 215px;
 }
 
 .marketing-boxs .marketing-box {
@@ -370,7 +355,7 @@
   opacity: 0.4;
 }
 
-/* 마케팅 박스 내부 텍스트 스타일 */
+/* 마케팅 내부 박스 텍스트 스타일 */
 .marketing-box .marketing-box-title {
   font-weight: 700;
   font-size: 30px;
@@ -388,8 +373,12 @@
   color: #717171;
 }
 
-/* 카드 뉴스 박스 스타일 */
-.welcome-card .cards-box {
+.welcome-card .welcome-text-box.marketing {
+  padding-top: 194px;
+}
+
+/* 카드 뉴스 스타일 */
+.welcome-card .card-img-box {
   width: 840px;
   height: 760px;
   position: relative;
@@ -397,13 +386,26 @@
   display: flex;
 }
 
-.welcome-card .cards-box.right {
-  margin-right: 159px;
+.welcome-card .welcome-text-box.sns {
+  margin-left: 122px;
+}
+
+.welcome-card .card-img-box {
+  padding-left: 20px;
 }
 
 /* 카드 뉴스 겹치게 */
-.welcome-card .cards-box .card-img {
-  width: 423px;
+
+.welcome-card.sns {
+  padding-top: 199px;
+}
+
+.welcome-card.sns .welcome-text-box .card-content {
+  width: 548px;
+}
+
+.welcome-card .card-img-box .card-img {
+  width: 402px;
   height: 533px;
   position: absolute;
 
@@ -411,23 +413,26 @@
 }
 
 .card-img:nth-child(1) {
-  top: -28px;
-  left: 96px;
   z-index: 3;
 }
 .card-img:nth-child(2) {
-  top: -51px;
-  left: 206px;
+  left: 124px;
   z-index: 2;
 }
 .card-img:nth-child(3) {
-  top: -77px;
-  left: 305px;
+  left: 213px;
   z-index: 1;
+}
+
+.welcome-card.sns .line {
+  bottom: 0;
+  top: auto;
 }
 
 /* 페이지 사인맵 스타일 */
 .welcome-container .welcome-sign-map {
+  height: 813px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -436,25 +441,32 @@
 }
 
 .welcome-sign-map .welcome-sign-title {
-  margin-top: 130px;
+  padding-top: 68px;
 
   font-weight: 600;
-  font-size: 50px;
-  line-height: 60px;
+  font-size: 40px;
+  line-height: 48px;
   letter-spacing: -0.025em;
 
   color: #413738;
 }
 
 .welcome-sign-map .sign.text {
-  margin-top: 56px;
+  padding-top: 32px;
+
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 36px;
+  letter-spacing: -0.025em;
+
+  color: #797979;
 }
 
 .welcome-sign-map .welcome-sign-img {
-  width: 368px;
-  height: 341px;
+  width: 283px;
+  height: 283px;
 
-  margin-top: 120px;
+  padding-top: 76px;
 }
 
 .welcome-sign-map .welcome-sign-button {
