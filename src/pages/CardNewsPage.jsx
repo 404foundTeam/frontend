@@ -6,8 +6,11 @@ import { backgroundImg, generateText } from "../api/index.js";
 import useUuidStore from "../store/useUuidStore.js";
 import useCardStore from "../store/useCardStore.js";
 import useTextStore from "../store/useTextStore.js";
+import { useNavigate } from "react-router-dom";
 
 function CardNewsPage() {
+  const navigate = useNavigate();
+
   const storeUuid = useUuidStore((state) => state.storeUuid);
   const storeName = useUuidStore((state) => state.storeName);
   const setText = useTextStore((state) => state.setText);
@@ -55,6 +58,8 @@ function CardNewsPage() {
     } catch (error) {
       console.log(error);
     }
+
+    navigate("/cardnews/result");
   };
 
   return (
