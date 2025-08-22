@@ -170,7 +170,7 @@ function WelcomePage() {
         <h2 className="welcome-sign-title">업장 등록하기</h2>
         <p className="sign text">
           클릭 몇 번으로 가게 홍보에 필요한 모든 콘텐츠와 운영을 자동으로
-          관리해보세요
+          관리해보세요.
         </p>
         <img src={mapImg} className="welcome-sign-img" />
         <button onClick={clickShowMap} className="welcome-sign-button">
