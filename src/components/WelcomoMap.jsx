@@ -169,11 +169,14 @@ function WelcomeMap({ focusRef, onClick }) {
         console.log("요청 에러", error);
         alert("데이터 요청에 실패했습니다.");
       }
+      console.log(3);
     });
   };
 
   const postStoreInfo = async () => {
+
     console.log("post1");
+
     if (!selectStore) return;
 
     try {
