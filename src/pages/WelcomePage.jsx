@@ -10,9 +10,10 @@ import "../styles/WelcomePage.css";
 import Blur from "../components/Blur";
 
 function WelcomePage() {
+  const [showMap, setShowMap] = useState(false);
+
   const cardRefs = useRef([]);
   const mapRef = useRef();
-  const [showMap, setShowMap] = useState(false);
 
   const marketingBoxes = [
     {

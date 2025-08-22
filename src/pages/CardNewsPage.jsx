@@ -6,8 +6,11 @@ import { backgroundImg, generateText } from "../api/index.js";
 import useUuidStore from "../store/useUuidStore.js";
 import useCardStore from "../store/useCardStore.js";
 import useTextStore from "../store/useTextStore.js";
+import { useNavigate } from "react-router-dom";
 
 function CardNewsPage() {
+  const navigate = useNavigate();
+
   const storeUuid = useUuidStore((state) => state.storeUuid);
   const storeName = useUuidStore((state) => state.storeName);
   const setText = useTextStore((state) => state.setText);
@@ -55,6 +58,8 @@ function CardNewsPage() {
     } catch (error) {
       console.log(error);
     }
+
+    navigate("/cardnews/result");
   };
 
   return (
@@ -253,7 +258,7 @@ function CardNewsPage() {
             <div
               className={`theme-box ${theme === "WARM" ? "select" : ""}`}
               onClick={() => {
-                setTheme("WARM");
+                setTheme(theme === "WARM" ? "" : "WARM");
               }}
             >
               따뜻하고 편안한 분위기
@@ -261,7 +266,7 @@ function CardNewsPage() {
             <div
               className={`theme-box ${theme === "MODERN" ? "select" : ""}`}
               onClick={() => {
-                setTheme("MODERN");
+                setTheme(theme === "MODERN" ? "" : "MODERN");
               }}
             >
               깔끔하고 모던한 분위기
@@ -269,7 +274,7 @@ function CardNewsPage() {
             <div
               className={`theme-box ${theme === "BRIGHT" ? "select" : ""}`}
               onClick={() => {
-                setTheme("BRIGHT");
+                setTheme(theme === "BRIGHT" ? "" : "BRIGHT");
               }}
             >
               활기차고 밝은 분위기
