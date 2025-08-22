@@ -1,6 +1,9 @@
 .map-page-header {
-  width: 1920px;
+  width: 100%;
+  max-width: 1440px;
   height: 495px;
+
+  margin: 0 auto;
 
   display: flex;
   flex-direction: column;
@@ -61,11 +64,13 @@
 }
 
 .coa-map-container {
+  width: 100%;
+
   /* -148px */
   margin-top: -118px;
-  margin-left: 272px;
 
   display: flex;
+  justify-content: center;
   gap: 50px;
 }
 
@@ -115,19 +120,25 @@
 }
 
 .coa-map-container .coa-map-box {
-  width: 1135px;
+  width: 860px;
   height: 545px;
 
   background-color: #797979;
 }
 
+.go-my-coa {
+  width: 100%;
+
+  padding-top: 28px;
+  padding-bottom: 199px;
+
+  display: flex;
+  justify-content: center;
+}
+
 .go-my-coa-button {
   width: 272px;
   height: 51px;
-
-  margin-top: 28px;
-  margin-left: 1488px;
-  margin-bottom: 199px;
 
   font-weight: 700;
   font-size: 25px;

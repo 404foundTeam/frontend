@@ -1,6 +1,9 @@
 .banner {
-  width: 1920px;
+  width: 100%;
+  max-width: 1440px;
   height: 198px;
+
+  margin: 0 auto;
 
   display: flex;
   justify-content: center;

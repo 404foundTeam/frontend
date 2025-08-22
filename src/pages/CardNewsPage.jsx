@@ -19,22 +19,20 @@ function CardNewsPage() {
   const [cardType, setCardType] = useState("");
   const [menuName, setMenuName] = useState("");
   const [userText, setUserText] = useState("");
-  const [generatedText, setGeneratedText] =
-    useState(`창가 쪽에서 안쪽으로 찍으면 자연광이 인물과 공간을 부드럽게
-            비춥니다. 역광보다는 측광·순광이 좋아요. 나무, 초록 식물, 따뜻한
-            조명이 있으면 사진 분위기가 한층 좋아질거에요. 가로사진은 3:2 비율,
-            세로사진은 4:5 비율이 SNS에서 가장 반응이 좋아요. 오전 10시~오후 3시
-            사이가 가장 자연광이 예쁘게 들어오는 시간이기 때문에 이 시간대에
-            사진을 촬영하는 것을 추천해요.`);
+  const [generatedText, setGeneratedText] = useState("");
   const [template, setTemplate] = useState("");
   const [ratio, setRatio] = useState("");
   const [theme, setTheme] = useState("");
 
   const getGenerateText = async () => {
+    console.log("text1");
     try {
-      const getText = await generateText({ cardType, userText });
-      setGeneratedText(getText.data);
-      setText({ generatedText: getText.data });
+      console.log(cardType);
+      console.log(userText);
+      const getText = await generateText({ type: cardType, userText });
+      console.log(getText);
+      setGeneratedText(getText.generatedText);
+      setText(getText.generatedText);
     } catch (error) {
       console.log("데이터 요청 실패", error);
       alert("텍스트 변환에 실패했습니다.");
@@ -258,7 +256,7 @@ function CardNewsPage() {
             <div
               className={`theme-box ${theme === "WARM" ? "select" : ""}`}
               onClick={() => {
-                setTheme("WARM");
+                setTheme(theme === "WARM" ? "" : "WARM");
               }}
             >
               따뜻하고 편안한 분위기
@@ -266,7 +264,7 @@ function CardNewsPage() {
             <div
               className={`theme-box ${theme === "MODERN" ? "select" : ""}`}
               onClick={() => {
-                setTheme("MODERN");
+                setTheme(theme === "MODERN" ? "" : "MODERN");
               }}
             >
               깔끔하고 모던한 분위기
@@ -274,7 +272,7 @@ function CardNewsPage() {
             <div
               className={`theme-box ${theme === "BRIGHT" ? "select" : ""}`}
               onClick={() => {
-                setTheme("BRIGHT");
+                setTheme(theme === "BRIGHT" ? "" : "BRIGHT");
               }}
             >
               활기차고 밝은 분위기

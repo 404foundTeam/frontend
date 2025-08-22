@@ -1,5 +1,5 @@
 .list {
-  height: 148px;
+  height: 113px;
 
   display: flex;
   align-items: center;
@@ -23,15 +23,15 @@
 }
 
 .icon {
-  width: 51px;
-  height: 64px;
+  width: 39px;
+  height: 49px;
 
   margin-left: 62px;
 }
 
 .store .name {
   font-weight: 700;
-  font-size: 30px;
+  font-size: 20px;
   line-height: 36px;
   letter-spacing: -0.025em;
 

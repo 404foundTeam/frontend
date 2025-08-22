@@ -12,7 +12,7 @@ function SearchListBox({ store, isSelected, onClick }) {
     >
       <img src={listIcon} className={styles.icon} />
       <div className={styles.store}>
-        <h1 className={styles.name}>{store.name}</h1>
+        <h1 className={styles.name}>{store.placeName}</h1>
         <p className={styles.addr}>{store.roadAddress}</p>
       </div>
     </div>

@@ -1,6 +1,9 @@
 .container {
   width: 100%;
+  max-width: 1440px;
   height: 489px;
+
+  margin: 0 auto;
 
   display: flex;
   flex-direction: column;
@@ -9,6 +12,8 @@
 }
 
 .title {
+  max-width: 764px;
+
   font-size: 40px;
   line-height: 48px;
   font-weight: 700;
