@@ -104,9 +104,6 @@
   margin-top: 1rem;
 }
 
-.keywordSection {
-  /* margin-top: 1.5rem; */ /* 이제 rightColumn의 gap이 간격을 관리합니다. */
-}
 
 .keywordSection h3 {
   font-size: 30px;

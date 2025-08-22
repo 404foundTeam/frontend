@@ -11,9 +11,11 @@ import ImprovementTips from './ImprovementTips';
 import { useState } from 'react'; // useState import
 import FileUploadModal from './FileUploadModal'; // 1. 모달 컴포넌트 import
 import Blur from './Blur'; // 블러 효과 컴포넌트 import
+import useUuidStore from "../store/useUuidStore";
 
 
 function ReportContent() {
+  const storeName = useUuidStore((state) => state.storeName);
       const [isModalOpen, setIsModalOpen] = useState(false);
   return (
     <>
@@ -27,7 +29,7 @@ function ReportContent() {
       <div className={styles.leftColumn}>
         <div className={styles.reportHeader}>
           <div className={styles.headerText}>
-            <h2><span className={styles.storeName}>어웨이 커피</span>님의 스마트 리포트</h2>
+            <h2><span className={styles.storeName}>{storeName}</span>님의 스마트 리포트</h2>
             <p>이번달 스마트 리포트를 확인해보세요!</p>
           </div>
           <img src={illustration} alt="리포트 일러스트" className={styles.headerIllustration} />

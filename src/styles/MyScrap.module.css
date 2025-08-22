@@ -68,3 +68,15 @@ color: #413738
   color: #FEBF22; 
   font-weight: 700;
 }
+
+.emptyMessage {
+  grid-column: 1 / -1;
+  text-align: center; 
+  
+  font-size: 20px;   
+  font-weight: 700;    /* 글자를 굵게(bold) 만듭니다. */
+
+  /* 기타 스타일 */
+  color: #797979;
+  padding: 150px 0; /* 위아래로 충분한 여백을 줍니다. */
+}
