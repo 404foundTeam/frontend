@@ -1,0 +1,130 @@
+/* src/styles/ReportContent.module.css */
+
+/* --- 전체 페이지 레이아웃 --- */
+.pageWrapper {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+}
+
+.pageLayout {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  padding: 2rem;
+  background-color: #FFE5A7;
+  border-bottom-left-radius: 500px; 
+}
+
+/* --- 왼쪽 컬럼 스타일 --- */
+.leftColumn {
+  flex: 1;
+  top: 2rem;
+}
+
+/* --- 오른쪽 컬럼 스타일 --- */
+.rightColumn {
+  flex: 1.5;
+}
+
+/* --- 헤더 스타일 --- */
+.reportHeader {
+  margin-left: 30%;
+  padding: 20px;
+}
+.headerText h2 {
+  font-size: 20px;
+  color: #413738;
+  line-height: 1.4;
+}
+
+/* ✅ '어웨이 커피' 부분만 강조하기 위한 스타일 */
+.storeName {
+  color: #6D3737;
+  font-size: 40px;
+}
+
+.headerText p {
+  font-size: 1.1rem;
+  color: #717171;
+  margin-top: 1rem;
+}
+.headerIllustration {
+  width: 100%;
+  max-width: 1100px;
+  margin-top: 2rem;
+  transform: translate(-50px, 100px); 
+}
+
+/* --- 2x2 그리드 레이아웃 --- */
+.dashboardGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); 
+  gap: 1.2rem;
+}
+
+/* --- 작아진 카드 공통 스타일 --- */
+.card {
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  height: 250px;
+}
+
+/* --- 하단 버튼 --- */
+.actionButtons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  justify-content: flex-start;
+  margin-left: 300px;
+}
+.updateButton, .posButton {
+  padding: 12px 30px;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  width: 180px; /* 버튼의 너비를 180px로 고정합니다. (값 조절 가능) */
+}
+.updateButton {
+  background-color: #FEBF22;
+  color: #6D3737;
+}
+.posButton {
+  background-color: #FEBF22;
+  color: #6D3737;
+}
+
+
+@media (max-width: 1024px) {
+  .pageLayout {
+    flex-direction: column;
+  }
+
+  .leftColumn {
+    position: static;
+    width: 100%;
+  }
+
+  .rightColumn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboardGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    height: auto;
+  }
+
+  .headerText h2 {
+    font-size: 1.8rem;
+  }
+}

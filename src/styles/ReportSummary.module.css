@@ -1,0 +1,20 @@
+/* src/styles/ReportSummary.module.css */
+
+.summaryContainer {
+  text-align: center; /* 모든 텍스트를 중앙 정렬합니다. */
+  padding: 4rem 1rem; /* 위아래로 넉넉한 여백을 줍니다. */
+}
+
+.title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #6D3737; /* 이미지와 유사한 갈색 */
+  margin: 0 0 1rem 0; /* 제목과 설명 사이의 간격 */
+}
+
+.description {
+  font-size: 1rem;
+  color: #797979; /* 회색 */
+  line-height: 1.7; /* 줄 간격 */
+  margin: 0;
+}
