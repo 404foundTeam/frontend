@@ -118,6 +118,7 @@ function WelcomeMap({ focusRef, onClick }) {
   }, []);
 
   const searchAddr = (address) => {
+    console.log(1);
     if (!address.trim()) return;
     const geocoder = new kakao.maps.services.Geocoder();
     // ✨함수 안에서 api를 사용해야 함으로 function 앞에 async 추가 필요
@@ -150,7 +151,7 @@ function WelcomeMap({ focusRef, onClick }) {
       } else {
         alert("오류 발생");
       }
-
+      console.log(2);
       try {
         const storeList = await fetchStoresByCoord(result[0].x, result[0].y);
         setStores(storeList.data.items);
@@ -159,10 +160,12 @@ function WelcomeMap({ focusRef, onClick }) {
         console.log("요청 에러", error);
         alert("데이터 요청에 실패했습니다.");
       }
+      console.log(3);
     });
   };
 
   const postStoreInfo = async () => {
+    console.log(4);
     if (!selectStore) return;
 
     try {
