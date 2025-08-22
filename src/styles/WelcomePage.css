@@ -431,7 +431,11 @@
 
 /* 페이지 사인맵 스타일 */
 .welcome-container .welcome-sign-map {
+  width: 100%;
+  max-width: 1440px;
   height: 813px;
+
+  margin: 0 auto;
 
   display: flex;
   flex-direction: column;
