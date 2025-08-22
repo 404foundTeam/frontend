@@ -4,9 +4,10 @@ import styles from "../styles/Header.module.css";
 
 function Header() {
   return (
-    <header className={styles.header}>
+    <header>
       <img src={logoImg} className={styles.img}></img>
       <div className={styles.tags}>
+
         <NavLink to="/main" className={styles.text}>
           market BEE
         </NavLink>
@@ -17,7 +18,7 @@ function Header() {
           스마트 리포트
         </NavLink>
         <NavLink to="/my" className={`${styles.my} ${styles.link}`}>
-          MY
+          마이페이지
         </NavLink>
       </div>
     </header>

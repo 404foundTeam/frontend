@@ -1,6 +1,9 @@
 .container {
-  margin-top: 43px;
-  margin-left: 268px;
+  width: 100%;
+  max-width: 1440px;
+
+  margin: 0 auto;
+  padding-top: 43px;
   padding-bottom: 199px;
 
   display: flex;
@@ -30,6 +33,8 @@
 }
 
 .myCoaBox {
+  width: 1182px;
+
   display: flex;
   align-items: center;
   gap: 83px;
@@ -101,7 +106,7 @@
 }
 
 .fromCoaBox {
-  width: 1438px;
+  width: 1206px;
 
   padding: 39px 62px 20px 40px;
 
@@ -145,7 +150,7 @@
 }
 
 .toCoaBox {
-  width: 1438px;
+  width: 1206px;
 
   padding: 39px 62px 20px 40px;
 

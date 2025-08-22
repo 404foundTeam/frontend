@@ -6,7 +6,7 @@ import camera from "../assets/camera/camera.png";
 function CameraLayout() {
   return (
     <>
-      <SideBar isCamera={true} />
+      {/* <SideBar isCamera={true} /> */}
       <div className={styles.container}>
         <div className={styles.header}>
           <img src={camera} className={styles.img} />
