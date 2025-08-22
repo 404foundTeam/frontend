@@ -50,6 +50,7 @@ function drawRoundedRect(ctx, x, y, width, height, radius, fillStyle) {
 }
 
 function CardNewsResultPage() {
+  console.log(generatedText);
   const generatedText = useTextStore((state) => state.generatedText);
   const imgData = useCardStore((state) => state);
   const remainingFreeCount = 1;

@@ -3,14 +3,13 @@
 import { Outlet, Link } from "react-router-dom";
 import SideBar from "../components/SideBar";
 import styles from "../styles/MainLayout.module.css";
-import cardNewsPreview from "../assets/mainpage/image.png"; 
+import cardNewsPreview from "../assets/mainpage/image.png";
 
 function MainLayout() {
   return (
     <div className={styles.layoutContainer}>
       <SideBar isMain={true} />
       <main className={styles.mainContent}>
-        
         {/* --- 배너 코드 --- */}
         <div className={styles.welcomeBanner}>
           <div className={styles.bannerText}>
@@ -41,7 +40,11 @@ function MainLayout() {
             </Link>
           </div>
           <div className={styles.bannerImageContainer}>
-            <img src={cardNewsPreview} alt="Card News Preview" className={styles.bannerImage} />
+            <img
+              src={cardNewsPreview}
+              alt="Card News Preview"
+              className={styles.bannerImage}
+            />
           </div>
         </div>
         {/* --- 배너 코드 끝 --- */}
