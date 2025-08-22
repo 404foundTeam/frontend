@@ -1,0 +1,60 @@
+/* src/styles/MarketingPage.module.css */
+
+.pageContainer {
+  max-width: 1500px;
+  margin-left: 15%;
+  padding: 5rem 2rem;
+  font-family: sans-serif;
+}
+
+.section {
+  display: flex;
+  align-items: center;
+  gap: 4rem; /* 텍스트와 이미지 사이 간격 */
+  margin-bottom: 6rem; /* 섹션과 섹션 사이 간격 */
+}
+
+/* 텍스트가 오른쪽에 오는 레이아웃을 위한 클래스 */
+.section.layoutRight {
+  flex-direction: row-reverse; /* 이 속성 하나로 텍스트와 이미지 순서를 바꿉니다. */
+}
+
+.textContainer {
+  flex: 1; /* 남는 공간을 모두 차지 */
+  text-align: left;
+}
+
+.imageContainer {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sectionTitle {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #413738;
+  line-height: 1.4;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+
+.sectionDescription {
+  font-size: 1.1rem;
+  color: #797979;
+  white-space: pre-wrap;
+}
+
+.sectionImage {
+  max-width: 90%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* 마지막 '지도 이용 제휴' 섹션을 위한 스타일 */
+.centeredSection {
+  text-align: center;
+  padding: 4rem 0;
+}

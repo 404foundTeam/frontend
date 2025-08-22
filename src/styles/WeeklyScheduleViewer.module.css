@@ -1,0 +1,114 @@
+/* src/styles/WeeklyScheduleViewer.module.css */
+
+.container {
+  max-width: 1400px;
+margin-left: 15%;  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  font-family: sans-serif;
+}
+
+/* --- 상단: 주간 캘린더 --- */
+.weekViewer {
+  padding-bottom: 20px;
+  border-bottom: 1px solid #EAE1CF;
+}
+
+.monthTitle {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #6D3737;
+  margin-bottom: 20px;
+}
+
+.dayHeaders, .dates {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(80px, 1fr)); /* 7개의 동일한 컬럼 */
+  text-align: center;
+}
+
+.dayHeader {
+  font-size: 0.9rem;
+  color: #ACACAC;
+  padding-bottom: 10px;
+  font-weight: 500;
+}
+
+.dayHeader.sunday {
+  color: #FF6E20; /* 일요일 텍스트 색상 */
+}
+
+.dateCell {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #6D3737;
+}
+
+/* --- 하단: 일정 목록 --- */
+.scheduleListSection {
+  padding-top: 20px;
+}
+
+.promoText {
+  font-size: 0.95rem;
+  color: #797979;
+  margin-bottom: 25px;
+}
+
+.eventList {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.eventItem {
+  display: flex;
+  align-items: flex-start; /* 불렛과 텍스트 상단 정렬 */
+  gap: 15px;
+}
+
+.bullet {
+  width: 10px;
+  height: 10px;
+  background-color: #FEBF22; /* 노란색 불렛 */
+  border-radius: 50%;
+  margin-top: 8px; /* 텍스트와의 세로 위치 조절 */
+  flex-shrink: 0;
+}
+
+.eventDetails {
+  display: flex;
+  flex-direction: column;
+}
+
+.eventDate {
+  font-size: 0.9rem;
+  color: #888;
+  margin: 0 0 5px 0;
+}
+
+.eventTitle {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #797979;
+  margin: 0 0 5px 0;
+}
+
+.eventDescription {
+  font-size: 0.9rem;
+  color: #797979;
+  margin: 0;
+}
+
+.eventTitle {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #797979;
+  margin: 0 0 5px 0;
+}
+
+/* ✅ 가장 가까운 일정 제목에 적용될 스타일 */
+.closestEventTitle {
+  color: #FEBF22; /* 읽기 좋은 어두운 노란색/주황색 계열 */
+}

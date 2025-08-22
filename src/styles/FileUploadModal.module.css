@@ -1,0 +1,185 @@
+/* src/styles/FileUploadModal.module.css */
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background-color: white;
+  padding: 30px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 600px;
+  position: relative;
+}
+
+
+
+.closeButton {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.modalContent h2 {
+  font-size: 30px;
+  font-weight: bold;
+  margin: 0 0 20px 0;
+  color: #6D3737;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 20px;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.fileTabs {
+  display: flex;
+}
+.tab1 {
+    font-size: 15px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+.tab {
+  padding: 10px 20px;
+  border: 1px solid #ccc;
+  background-color: #FEBF22;
+  color: #6D3737;
+  font-weight: bold;
+  font-size: 15px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.tab.active {
+  background-color: #FEBF22;
+  border-color: #FEBF22;
+}
+
+.resetButton {
+  background-color: #E2D7D7;
+  color: #6D3737;
+  font-weight: bold;
+  font-size: 18px;
+  padding: 8px 15px;
+  border-radius: 5px;
+  width: 150px;
+  margin-bottom: 10px;
+}
+.fileInfo {
+  text-align: right;
+  font-size: 15px;
+  font-weight: bold;
+  color: #6D3737;
+  padding-bottom: 20px;
+}
+
+.dropzone {
+  border: 2px dashed #ccc;
+  border-radius: 10px;
+  padding: 80px;
+  text-align: center;
+  cursor: pointer;
+  background-color: #D9D9D9;
+  transition: border-color 0.2s;
+}
+.dropzone.dragActive {
+  border-color: #007aff;
+}
+.dropzoneContent .xlsIcon {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #2E7D32;
+  margin-bottom: 10px;
+}
+
+.note {
+  font-size: 15px;
+  color: #413738;
+  margin-top: 10px;
+  margin-bottom: 50px;
+}
+
+.actionButtons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 30px;
+  border-top: 1px solid #eee;
+  padding-top: 20px;
+}
+
+.uploadButton, .cancelButton {
+  padding: 12px 30px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+  width: 150px;
+}
+.uploadButton {
+  background-color: #FEBF22;
+  color: #6D3737;
+  font-weight: bold;
+  border: none;
+}
+.cancelButton {
+  background-color: #E2D7D7;
+  font-weight: bold;
+  color: #6D3737;
+  border: none;
+}
+
+/* src/styles/FileUploadModal.module.css */
+
+/* --- 아래 스타일들을 추가하세요 --- */
+
+.fileList {
+  margin-top: 15px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.fileItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  border-bottom: 1px solid #eee;
+}
+.fileItem:last-child {
+  border-bottom: none;
+}
+
+.fileName {
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.removeButton {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #888;
+  cursor: pointer;
+}

@@ -1,0 +1,133 @@
+/* src/styles/SalesSummary.module.css (전체 교체) */
+
+/* 전체 너비 배경을 담당 */
+.summaryContainer {
+  background-color: #E2D7D7;
+  padding: 100px;
+  margin-top: 2rem;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+}
+
+/* 실제 콘텐츠를 중앙에 배치하고 컬럼 레이아웃을 담당 */
+.contentWrapper {
+  display: flex;
+  gap: 2rem;
+  max-width: 1400px; /* 콘텐츠의 최대 너비 */
+  margin: 0 auto; /* 중앙 정렬 */
+  padding: 0 2rem; /* 좌우 여백 */
+}
+
+.leftColumn {
+  flex: 1;
+}
+
+.rightColumn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; /* 오른쪽 컬럼 내부 카드/키워드 간격 */
+}
+
+.title {
+  font-size: 45px;
+  color: #6D3737;
+  margin-bottom: 1rem;
+}
+
+.salesInfo {
+  list-style-type: none;
+  font-size: 25px;
+  line-height: 1.8;
+  margin-bottom: 40px;
+}
+
+.salesInfo strong {
+  font-weight: bold;
+}
+
+.menuLists {
+  display: flex;
+  align-items: center;
+  font-size: 25px;
+}
+
+.menuList {
+  flex: 1;
+}
+
+.menuList h3 {
+  font-size: 35px;
+  font-weight: bold;
+  margin-bottom: 0.8rem;
+  color: #6D3737;
+}
+
+.menuList ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  line-height: 1.7;
+}
+
+.swapIcon {
+  width: 2px;
+  height: 170px;
+  margin-left: -100px; 
+  margin-right: 60px;
+  /* 오른쪽 목록과의 간격을 1.5rem으로 늘립니다. */
+}
+
+.ratingCard {
+  background-color: white;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.ratingHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+}
+.ratingHeader p {
+  margin: 0;
+  color: #333333;
+}
+.ratingHeader span {
+  font-size: 35px;
+  color: #FEBF22;
+}
+
+.chartContainer {
+  margin-top: 1rem;
+}
+
+.keywordSection {
+  /* margin-top: 1.5rem; */ /* 이제 rightColumn의 gap이 간격을 관리합니다. */
+}
+
+.keywordSection h3 {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #6D3737;
+}
+
+.keywordPills {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.pill {
+  background-color: #6D3737;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 30px;
+  font-size: 20px;
+  width: 120px; 
+  display: flex;
+  justify-content: center;
+  align-items: center;     /* 세로 중앙 */
+}
