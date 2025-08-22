@@ -258,7 +258,7 @@ function CardNewsPage() {
             <div
               className={`theme-box ${theme === "WARM" ? "select" : ""}`}
               onClick={() => {
-                setTheme("WARM");
+                setTheme(theme === "WARM" ? "" : "WARM");
               }}
             >
               따뜻하고 편안한 분위기
@@ -266,7 +266,7 @@ function CardNewsPage() {
             <div
               className={`theme-box ${theme === "MODERN" ? "select" : ""}`}
               onClick={() => {
-                setTheme("MODERN");
+                setTheme(theme === "MODERN" ? "" : "MODERN");
               }}
             >
               깔끔하고 모던한 분위기
@@ -274,7 +274,7 @@ function CardNewsPage() {
             <div
               className={`theme-box ${theme === "BRIGHT" ? "select" : ""}`}
               onClick={() => {
-                setTheme("BRIGHT");
+                setTheme(theme === "BRIGHT" ? "" : "BRIGHT");
               }}
             >
               활기차고 밝은 분위기

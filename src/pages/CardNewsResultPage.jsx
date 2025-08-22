@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import Loading from "../components/Loading";
-import Ex1 from "../assets/test/image10.png";
+import Ex1 from "../assets/test/image03.png";
 import "../styles/cardnews/CardNewsResultPage.css";
 import useTextStore from "../store/useTextStore";
 import useCardStore from "../store/useCardStore";
@@ -65,17 +65,13 @@ function CardNewsResultPage() {
       // "추석 연휴에도 정상 영업합니다.\n 가족과 함께 특별한 시간을 보내세요!"
       // "부드럽고 고소한 까눌레와 휘낭시에!\n 특별한 날, 소중한 분께 완벽한 선물이 됩니다."
       // "깔끔한 인테리어와 아늑한 룸, 편리한 주차 공간까지!\n 편안한 시간을 만끽하세요."
-      text: "부드럽고 고소한 까눌레와 휘낭시에!\n 특별한 날, 소중한 분께 완벽한 선물이 됩니다.",
+      text: "추석 연휴에도 정상 영업합니다.\n 가족과 함께 특별한 시간을 보내세요!",
       ratio: "SQUARE_1_1", // SQUARE_1_1, RATIO_2_3, RATIO_3_2
       template: "T1_TEXT_ONLY", //  T1_TEXT_ONLY, T2_TEXT_BOTTOM, T3_TEXT_RIGHT
     };
 
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
-    // 텍스트 위치 x-y(넓이,높이)
-    // 280-360/530/700(550, 60), 180-810/890(800,60), 625-200/400(350,60)
-    // 260-480/630/750(600, 60), 230-1040/1140(650,60), 600-320/480(450,60)
-    // 290-320/480/620(830, 60), 360-850/940(600,60), 850-250/430(400,60)
 
     // 이미지 로드
     const image = new Image();
@@ -88,7 +84,7 @@ function CardNewsResultPage() {
           canvas.width = 1024;
           canvas.height = 1024;
           setBox("");
-          ctx.drawImage(image, 0, 0, 1024, 1024); // (이미지 객체, x, y, 너비, 높이) 1:1
+          ctx.drawImage(image, 0, 0, 1024, 1024); // (이미지 객체, x, y, 너비, 높이)
           break;
         case "RATIO_2_3":
           canvas.width = 1080;
@@ -104,10 +100,18 @@ function CardNewsResultPage() {
           break;
       }
 
+      // 텍스트 위치 x-y(넓이,높이)
+      // 280-360/530/700(550, 60), 180-810/890(800,60), 625-200/400(350,60)
+      // 260-480/630/750(600, 60), 230-1040/1140(650,60), 600-320/480(450,60)
+      // 290-320/480/620(830, 60), 360-850/940(600,60), 850-250/430(400,60)
+
+      // x/y/넓이/높이(230)
+      //240/260/550/400, 140/710/800/300, 585/110/400/500
+
       const lines = imgData.text.split("\n");
       const position = [200, 400, 700];
-
-      drawRoundedRect(ctx, 590, 140, 370, 500, 40, "rgba(255,255,255,0.4)");
+      // 590, 140, 370, 500, 40,
+      drawRoundedRect(ctx, 585, 110, 400, 500, 60, "rgba(255,255,255,0.8)");
 
       // 텍스트 스타일 설정
       ctx.font = "700 45px Inter";
