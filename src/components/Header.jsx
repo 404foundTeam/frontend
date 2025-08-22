@@ -1,3 +1,4 @@
+import { Link, NavLink } from "react-router-dom";
 import logoImg from "../assets/logo.png";
 import styles from "../styles/Header.module.css";
 
@@ -6,10 +7,12 @@ function Header() {
     <header className={styles.header}>
       <img src={logoImg} className={styles.img}></img>
       <div className={styles.tags}>
-        <a className={styles.text}>market BEE</a>
-        <a>홍보</a>
-        <a>스마트 리포트</a>
-        <a className={styles.my}>MY</a>
+        <Link className={styles.text}>market BEE</Link>
+        <NavLink className={styles.link}>홍보</NavLink>
+        <NavLink className={styles.link}>스마트 리포트</NavLink>
+        <NavLink to="/mypage" className={`${styles.my} ${styles.link}`}>
+          MY
+        </NavLink>
       </div>
     </header>
   );

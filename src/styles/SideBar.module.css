@@ -22,8 +22,6 @@
   font-size: 20px;
   line-height: 121.2%;
   letter-spacing: -0.025em;
-
-  color: #acacac;
 }
 
 .container > :first-child {
@@ -45,11 +43,17 @@
   gap: 8px;
 }
 
+.box .text {
+  color: #acacac;
+}
+
 .box.select {
   background-color: #ffe5a7;
   opacity: 0.73;
   border-radius: 18px;
+}
 
+.box.select .text {
   color: black;
 }
 

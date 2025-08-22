@@ -1,21 +1,21 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { useEffect } from "react";
 import "./App.css";
-import Layout from "./layouts/Layout";
 import ScrollToTop from "./utils/ScrollToTop";
+import Layout from "./layouts/Layout";
+import MyLayout from "./layouts/MyLayout";
+import CardNewsLayout from "./layouts/CardNewsLayout";
+import CameraLayout from "./layouts/CameraLayout";
+import MapLayout from "./layouts/MapLayout";
 import WelcomePage from "./pages/WelcomePage";
+import MyPage from "./pages/MyPage";
 import CardNewsPage from "./pages/CardNewsPage";
 import CardNewsResultPage from "./pages/CardNewsResultPage";
-import CameraLayout from "./layouts/CameraLayout";
 import CameraPage from "./pages/CameraPage";
-import CardNewsLayout from "./layouts/CardNewsLayout";
 import CameraResultPage from "./pages/CameraResultPage";
-import MapLayout from "./layouts/MapLayout";
 import MapPage from "./pages/MapPage";
 import MapCoaPage from "./pages/MapCoaPage";
 import MapCoaListPage from "./pages/MapCoaListPage";
-import { useEffect } from "react";
-import MyPage from "./pages/MyPage";
-import MyLayout from "./layouts/MyLayout";
 import MainPage from "./pages/MainPage";
 import MainLayout from "./layouts/MainLayout";
 import MarketingPage from "./pages/MarketingPage";
@@ -40,6 +40,7 @@ function App() {
           {/* 웰컴, 메인, 마이, 홍보, 카드 */}
           <Route path="/" element={<Layout />}>
             <Route index element={<WelcomePage />} />
+           
             <Route path="cardnews" element={<CardNewsLayout />}>
               <Route index element={<CardNewsPage />} />
               <Route path="result" element={<CardNewsResultPage />} />

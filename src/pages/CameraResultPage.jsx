@@ -1,5 +1,5 @@
 import Loading from "../components/Loading";
-import "../styles/CameraResultPage.css";
+import "../styles/camera/CameraResultPage.css";
 import img from "../assets/ex1.png";
 
 function CameraResultPage() {

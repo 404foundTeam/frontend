@@ -1,7 +1,7 @@
-import styles from "../styles/CardNewsHeader.module.css";
+import styles from "../styles/cardnews/SelectHeader.module.css";
 import categoryImg from "../assets/cardnews/category.png";
 
-function CardNewsHeader({ text }) {
+function SelectHeader({ text }) {
   return (
     <>
       <div className={styles.container}>
@@ -12,4 +12,4 @@ function CardNewsHeader({ text }) {
   );
 }
 
-export default CardNewsHeader;
+export default SelectHeader;

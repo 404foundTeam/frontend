@@ -1,0 +1,142 @@
+.map-page-header {
+  width: 1920px;
+  height: 495px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+
+  background-color: #fffaed;
+}
+
+.map-page-header .map-header-title {
+  margin-top: 48px;
+
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 48px;
+  letter-spacing: -0.025em;
+
+  color: #413738;
+}
+
+.map-page-header .map-header-content {
+  padding-bottom: 32px;
+
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: -0.025em;
+
+  color: #797979;
+}
+
+.map-page-header .map-header-button-box {
+  margin-top: 9px;
+  margin-right: 884px;
+
+  display: flex;
+  gap: 11px;
+}
+
+.map-page-header .map-header-button-box .select {
+  background-color: #6d3737;
+}
+
+.map-page-header .map-header-button-box button {
+  width: 71px;
+  height: 35px;
+
+  border-radius: 10px;
+
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: -0.025em;
+
+  color: #ffffff;
+
+  background-color: #acacac;
+}
+
+.coa-map-container {
+  /* -148px */
+  margin-top: -118px;
+  margin-left: 272px;
+
+  display: flex;
+  gap: 50px;
+}
+
+.coa-map-container .coa-map-list {
+  width: 303px;
+  height: 545px;
+
+  overflow: hidden;
+  overflow-y: scroll;
+
+  background-color: #ffffff;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.coa-map-list .coa-map-list-box {
+  /* width: 269px; */
+  /* height: 45px; */
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 28px 18px 43px;
+  gap: 11px;
+
+  border: 2px solid #d9d9d9;
+}
+
+.coa-map-list .coa-map-list-box .store-name {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 21px;
+  letter-spacing: -0.025em;
+
+  color: #6d3737;
+}
+
+.coa-map-list .coa-map-list-box .store-add {
+  width: 232px;
+  text-align: left;
+
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: -0.025em;
+
+  color: #717171;
+}
+
+.coa-map-container .coa-map-box {
+  width: 1135px;
+  height: 545px;
+
+  background-color: #797979;
+}
+
+.go-my-coa-button {
+  width: 272px;
+  height: 51px;
+
+  margin-top: 28px;
+  margin-left: 1488px;
+  margin-bottom: 199px;
+
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 30px;
+  letter-spacing: -0.025em;
+
+  color: #6d3737;
+
+  border-radius: 10px;
+
+  background-color: #febf22;
+}
