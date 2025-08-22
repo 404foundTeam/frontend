@@ -58,7 +58,7 @@
 }
 
 /* 벌 애니메이션 */
-.bee:nth-child(2) {
+.bee:nth-child(3) {
   width: 273px;
   height: 278px;
 
@@ -132,7 +132,7 @@
   }
 }
 
-.bee:nth-child(3) {
+.bee:nth-child(4) {
   width: 205px;
   height: 211px;
 

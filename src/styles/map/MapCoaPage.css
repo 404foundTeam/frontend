@@ -1,11 +1,18 @@
 .coa-container {
-  margin-top: 71px;
-  margin-left: 359px;
-  padding-bottom: 199px;
+  width: 100%;
+  max-width: 1440px;
+
+  margin: 0 auto;
+
+  padding-top: 53px;
 
   display: flex;
   flex-direction: column;
   gap: 60px;
+}
+
+.coa-container > div {
+  width: 1215px;
 }
 
 .coa-container .select-boxs {
@@ -13,7 +20,7 @@
   margin-left: 114px;
 
   display: flex;
-  gap: 280px;
+  gap: 200px;
 }
 
 .coa-container .select-box {
@@ -123,8 +130,7 @@
   width: 330px;
   height: 78px;
 
-  margin-left: 793px;
-  margin-bottom: 180px;
+  margin: 0 auto 199px;
 
   border: none;
   border-radius: 10px;

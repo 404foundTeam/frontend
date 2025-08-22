@@ -48,13 +48,14 @@
 }
 
 .button-container button {
-  height: 70px;
+  width: 228px;
+  height: 53px;
 
   border: none;
   border-radius: 10px;
 
   font-weight: 700;
-  font-size: 30px;
+  font-size: 25px;
   line-height: 36px;
   letter-spacing: -0.025em;
 

@@ -1,9 +1,5 @@
 .camera-result-container {
-  position: absolute;
-  top: 262px;
-  left: 451px;
-
-  padding-bottom: 199px;
+  margin-top: 35px;
 
   display: flex;
   flex-direction: column;

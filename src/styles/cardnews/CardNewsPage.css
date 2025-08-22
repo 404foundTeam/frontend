@@ -1,7 +1,10 @@
 /* 카드뉴스 배너 */
 .cardnews-banner {
-  width: 1920px;
+  width: 100%;
+  max-width: 1440px;
   height: 198px;
+
+  margin: 0 auto;
 
   display: flex;
   align-items: center;
@@ -40,12 +43,14 @@
 
 /* 카드뉴스 박스 */
 .cardnews-box-container {
-  margin-top: 71px;
-  margin-left: 359px;
+  width: 100%;
+
   padding-bottom: 199px;
 
   display: flex;
   flex-direction: column;
+  align-items: center;
+
   gap: 60px;
 }
 
@@ -69,6 +74,9 @@
 }
 
 /* 선택 박스 */
+.cardnews-box-container .cardnews-box {
+  width: 1215px;
+}
 .cardnews-box .select-boxs {
   margin-top: 49px;
   margin-left: 114px;
@@ -110,6 +118,11 @@
   letter-spacing: -0.025em;
 
   color: #717171;
+}
+
+/* 타입 스타일 */
+.cardnews-box-container .cardnews-type {
+  padding-top: 78px;
 }
 
 /* 카드뉴스 텍스트 영역 */
@@ -203,9 +216,14 @@
 }
 
 /* 템플릿 리스트 */
+
+.cardnews-box-container .cardnews-template p {
+  padding-top: 28px;
+  padding-left: 50px;
+}
+
 .template-list {
-  margin-top: 16px;
-  /* margin-top: 87px; */
+  margin-top: 8px;
   margin-left: 40px;
 
   display: flex;
@@ -231,6 +249,7 @@
 }
 
 .template-list .template-box.select {
+  font-size: 30px;
   background-color: #fffaed;
   border: 5px solid #febf22;
   transform: scale(1.04);
@@ -253,12 +272,12 @@
 }
 
 .template-box .template-text.bottom {
-  top: 78px;
+  top: 108px;
   left: 111px;
 }
 
 .template-box .template-text.right {
-  top: 130px;
+  top: 135px;
   left: 44px;
 }
 
@@ -268,7 +287,7 @@
   height: 188px;
 
   font-weight: 600;
-  font-size: 28px;
+  font-size: 20px;
   line-height: 188px;
   letter-spacing: -0.025em;
 
@@ -297,7 +316,7 @@
 }
 
 .template-img-box .template-box .store-content.right {
-  width: 106px;
+  width: 114px;
   height: 219px;
   line-height: 219px;
 
@@ -349,12 +368,17 @@
 }
 
 /* 카드뉴스 버튼 */
+.cardnews-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .cardnews-button {
   width: 330px;
   height: 78px;
 
-  margin-left: 793px;
-  margin-bottom: 180px;
+  margin-bottom: 199px;
 
   border: none;
   border-radius: 10px;
