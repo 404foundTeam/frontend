@@ -1,0 +1,66 @@
+/* src/styles/MarketingContent.module.css */
+
+.container {
+  max-width: 1000px;
+  margin: 2rem auto; /* 페이지 중앙 정렬 */
+  padding: 1rem;
+  font-family: sans-serif;
+}
+
+.pageSubtitle {
+  text-align: center;
+  font-size: 20px;
+  color: #797979;
+  margin-bottom: 5.5rem; /* 제목과 목록 사이 간격 */
+}
+
+.eventList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* 카드 사이의 간격 */
+}
+
+.eventCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #FEBF22; /* 노란색/주황색 배경 */
+  padding: 40px 45px;
+  border-radius: 12px;
+  text-align: left;
+}
+
+.eventText {
+  /* 텍스트 영역 */
+}
+
+.eventTitle {
+  font-size: 30px;
+  font-weight: bold;
+  color: #6D3737;
+  margin: 0 0 5px 0;
+}
+
+.eventDesc {
+  font-size: 20px;
+  color: #717171;
+  margin: 0;
+}
+
+.deleteButton {
+  background-color: #6D3737; /* 어두운 갈색 */
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 40px;
+  font-weight: bold;
+  font-size: 20px;
+  cursor: pointer;
+  flex-shrink: 0; /* 버튼 크기가 줄어들지 않도록 설정 */
+  margin-left: 20px;
+  transition: background-color 0.2s;
+}
+
+.deleteButton:hover {
+    background-color: #572c2c; /* 호버 시 더 진한 색 */
+}

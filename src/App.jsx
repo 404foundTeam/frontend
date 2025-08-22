@@ -16,6 +16,13 @@ import CameraResultPage from "./pages/CameraResultPage";
 import MapPage from "./pages/MapPage";
 import MapCoaPage from "./pages/MapCoaPage";
 import MapCoaListPage from "./pages/MapCoaListPage";
+import MainPage from "./pages/MainPage";
+import MainLayout from "./layouts/MainLayout";
+import MarketingPage from "./pages/MarketingPage";
+import MarketingLayout from "./layouts/MarketingLayout";
+import SmartReportLayout from "./layouts/SmartReportLayout";
+import SmartReportPage from "./pages/SmartReportPage";
+
 
 function App() {
   // 새로고침 시 최상단 이동
@@ -33,9 +40,7 @@ function App() {
           {/* 웰컴, 메인, 마이, 홍보, 카드 */}
           <Route path="/" element={<Layout />}>
             <Route index element={<WelcomePage />} />
-            <Route path="mypage" element={<MyLayout />}>
-              <Route index element={<MyPage />} />
-            </Route>
+           
             <Route path="cardnews" element={<CardNewsLayout />}>
               <Route index element={<CardNewsPage />} />
               <Route path="result" element={<CardNewsResultPage />} />
@@ -48,6 +53,18 @@ function App() {
               <Route index element={<MapPage />} />
               <Route path="coalition" element={<MapCoaPage />} />
               <Route path="coalition/list" element={<MapCoaListPage />} />
+            </Route>
+            <Route path="my" element={<MyLayout />}>
+              <Route index element={<MyPage />} />
+            </Route>
+            <Route path="main" element={<MainLayout />}>
+              <Route index element={<MainPage />} />
+            </Route>
+            <Route path="marketing" element={<MarketingLayout />}>
+              <Route index element={<MarketingPage />} />
+            </Route>
+            <Route path="smartreport" element={<SmartReportLayout />}>
+              <Route index element={<SmartReportPage />} />
             </Route>
           </Route>
         </Routes>
