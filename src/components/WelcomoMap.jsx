@@ -121,6 +121,7 @@ function WelcomeMap({ focusRef, onClick }) {
   }, []);
 
   const searchAddr = (address) => {
+    console.log(1);
     if (!address.trim()) return;
 
     const geocoder = new window.kakao.maps.services.Geocoder();
@@ -155,9 +156,10 @@ function WelcomeMap({ focusRef, onClick }) {
       } else {
         alert("오류 발생");
       }
-
+      console.log(2);
       try {
         const storeList = await fetchStoresByCoord(result[0].x, result[0].y);
+        console.log(storeList);
         setStores(storeList.data.items);
         console.log("리스트 데이터", result);
       } catch (error) {
