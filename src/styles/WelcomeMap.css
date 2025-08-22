@@ -18,9 +18,8 @@
 
 /* 닫기 버튼 스타일 */
 .header-close-button {
-  /* position: absolute; */
-  top: 41px;
-  left: 1540px;
+  padding-top: 20px;
+  padding-left: 900px;
 
   cursor: pointer;
 }
