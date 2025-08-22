@@ -7,16 +7,19 @@ import StoreSearch from "./StoreSearch";
 import useUuidStore from "../store/useUuidStore";
 import { fetchStoresByCoord, matchStore } from "../api/index.js";
 import SearchListBox from "./SearchListBox.jsx";
+import { Colors } from "chart.js";
+import { useNavigate } from "react-router-dom";
 
 // const { kakao } = window;
 
 function WelcomeMap({ focusRef, onClick }) {
+  const navigate = useNavigate();
   const setUuid = useUuidStore((state) => state.setUuid);
   // 업장 리스트 (위도, 경도 포함) - 가게 목록, 응답 데이터
   const item = [
     {
       placeId: "1578223725",
-      name: "모퉁이 꽃집",
+      placeName: "모퉁이 꽃집",
       roadAddress:
         "경기 용인시 기흥구 기흥역로58번길 78 기흥역더샵오피스텔 201동 112호",
       longitude: 127.1177,
@@ -24,7 +27,7 @@ function WelcomeMap({ focusRef, onClick }) {
     },
     {
       placeId: "1578211235",
-      name: "진 부엉이꼬마김밥 기흥점",
+      placeName: "진 부엉이꼬마김밥 기흥점",
       roadAddress:
         "경기 용인시 기흥구 기흥역로63 힐스테이트 상가 1층 302동 108호",
       longitude: 127.1185,
@@ -32,28 +35,28 @@ function WelcomeMap({ focusRef, onClick }) {
     },
     {
       placeId: "12378211725",
-      name: "어웨이 커피",
+      placeName: "어웨이 커피",
       roadAddress: "경기 용인시 기흥구 기흥역로 9 108호 어웨이커피",
       longitude: 127.1154,
       latitude: 37.2747,
     },
     {
       placeId: "1578216425",
-      name: "구갈대지서점",
+      placeName: "구갈대지서점",
       roadAddress: "경기 용인시 기흥구 구갈로72번길 10 낙원상가 108호",
       longitude: 127.1124,
       latitude: 37.2807,
     },
     {
       placeId: "13595342",
-      name: "성산식당",
+      placeName: "성산식당",
       roadAddress: "경기 용인시 기흥구 구갈로72번길 27-1",
       longitude: 127.114587717426,
       latitude: 37.2809227902893,
     },
     {
       placeId: "1578211725",
-      name: "여수에서온나진국밥 용인기흥구청점",
+      placeName: "여수에서온나진국밥 용인기흥구청점",
       roadAddress: "경기 용인시 기흥구 구갈로72번길 31",
       longitude: 127.11500261541231,
       latitude: 37.2808818411709,
@@ -121,6 +124,7 @@ function WelcomeMap({ focusRef, onClick }) {
   }, []);
 
   const searchAddr = (address) => {
+    console.log(1);
     if (!address.trim()) return;
 
     const geocoder = new window.kakao.maps.services.Geocoder();
@@ -155,25 +159,33 @@ function WelcomeMap({ focusRef, onClick }) {
       } else {
         alert("오류 발생");
       }
-
+      console.log(2);
       try {
         const storeList = await fetchStoresByCoord(result[0].x, result[0].y);
-        setStores(storeList.data.items);
+        console.log(storeList);
+        setStores(storeList.items);
         console.log("리스트 데이터", result);
       } catch (error) {
         console.log("요청 에러", error);
         alert("데이터 요청에 실패했습니다.");
       }
+      console.log(3);
     });
   };
 
   const postStoreInfo = async () => {
+
+    console.log("post1");
+
     if (!selectStore) return;
 
     try {
+      console.log("post2");
       const result = await matchStore(selectStore);
-      setUuid(result.data);
+      console.log(result);
+      setUuid(result);
       console.log("업장 등록", result);
+      navigate("/main");
     } catch (error) {
       console.log("업장 등록 실패", error);
       alert("업장 등록에 실패했습니다.");
