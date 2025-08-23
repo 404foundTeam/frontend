@@ -4,7 +4,7 @@ import axios from 'axios';
 import styles from "../styles/MyCalendar.module.css";
 import useUuidStore from "../store/useUuidStore";
 
-const API_BASE_URL = 'http://13.209.239.240:8080';
+const API_BASE_URL = 'http://13.209.239.240';
 
 const formatDate = (date) => {
   const year = date.getFullYear();

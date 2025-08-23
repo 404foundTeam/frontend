@@ -25,7 +25,7 @@ function MyScrap() {
       setIsLoading(true);
       setError(null);
       try {
-        const response = await axios.get('http://13.209.239.240:8080/api/v1/sns-cards/final', {
+        const response = await axios.get('http://13.209.239.240/api/v1/sns-cards/final', {
           params: {
             storeUuid: storeUuid,
             page: currentPage - 1,

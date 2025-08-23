@@ -1,16 +1,16 @@
 /* src/styles/MarketingPage.module.css */
 
 .pageContainer {
-  max-width: 1500px;
-  margin-left: 15%;
-  padding: 5rem 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 5rem 6rem;
   font-family: sans-serif;
 }
 
 .section {
   display: flex;
   align-items: center;
-  gap: 4rem; /* 텍스트와 이미지 사이 간격 */
+  gap: -10px; /* 텍스트와 이미지 사이 간격 */
   margin-bottom: 6rem; /* 섹션과 섹션 사이 간격 */
 }
 
@@ -21,7 +21,7 @@
 
 .textContainer {
   flex: 1; /* 남는 공간을 모두 차지 */
-  text-align: left;
+  text-align: center;
 }
 
 .imageContainer {
@@ -32,7 +32,7 @@
 }
 
 .sectionTitle {
-  font-size: 2.5rem;
+  font-size: 30px;
   font-weight: bold;
   color: #413738;
   line-height: 1.4;
@@ -41,7 +41,7 @@
 }
 
 .sectionDescription {
-  font-size: 1.1rem;
+  font-size: 15px;
   color: #797979;
   white-space: pre-wrap;
 }

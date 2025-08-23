@@ -13,9 +13,9 @@
 .contentWrapper {
   display: flex;
   gap: 2rem;
-  max-width: 1400px; /* 콘텐츠의 최대 너비 */
+  max-width: 1200px; /* 콘텐츠의 최대 너비 */
   margin: 0 auto; /* 중앙 정렬 */
-  padding: 0 2rem; /* 좌우 여백 */
+  padding: 0 1rem; /* 좌우 여백 */
 }
 
 .leftColumn {
@@ -30,14 +30,14 @@
 }
 
 .title {
-  font-size: 45px;
+  font-size: 40px;
   color: #6D3737;
   margin-bottom: 1rem;
 }
 
 .salesInfo {
   list-style-type: none;
-  font-size: 25px;
+  font-size: 20px;
   line-height: 1.8;
   margin-bottom: 40px;
 }
@@ -49,7 +49,7 @@
 .menuLists {
   display: flex;
   align-items: center;
-  font-size: 25px;
+  font-size: 20px;
 }
 
 .menuList {
@@ -57,7 +57,7 @@
 }
 
 .menuList h3 {
-  font-size: 35px;
+  font-size: 30px;
   font-weight: bold;
   margin-bottom: 0.8rem;
   color: #6D3737;
@@ -73,9 +73,8 @@
 .swapIcon {
   width: 2px;
   height: 170px;
-  margin-left: -100px; 
-  margin-right: 60px;
-  /* 오른쪽 목록과의 간격을 1.5rem으로 늘립니다. */
+  margin-left: -10px; 
+  margin-right: 50px;
 }
 
 .ratingCard {

@@ -1,4 +1,5 @@
 // src/components/ReportContent.jsx
+
 import styles from "../styles/ReportContent.module.css";
 import TimePattern from "./TimePattern";
 import DayPattern from "./DayPattern";
@@ -15,28 +16,22 @@ import useUuidStore from "../store/useUuidStore";
 function ReportContent() {
   const storeName = useUuidStore((state) => state.storeName);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <>
-      {/* 3. isModalOpen이 true일 때 모달과 블러를 표시 */}
       {isModalOpen && <Blur />}
       {isModalOpen && <FileUploadModal onClose={() => setIsModalOpen(false)} />}
-      <div className={styles.pageWrapper}>
+      <div className={styles.backgroundWrapper}> {/* 배경색 담당 */}
+      <div className={styles.reportContainer}>
         <div className={styles.pageLayout}>
           {/* --- 왼쪽 컬럼: 헤더 --- */}
           <div className={styles.leftColumn}>
             <div className={styles.reportHeader}>
               <div className={styles.headerText}>
-                <h2>
-                  <span className={styles.storeName}>{storeName}</span>님의
-                  스마트 리포트
-                </h2>
+                <h2><span className={styles.storeName}>{storeName}</span>님의 스마트 리포트</h2>
                 <p>이번달 스마트 리포트를 확인해보세요!</p>
               </div>
-              <img
-                src={illustration}
-                alt="리포트 일러스트"
-                className={styles.headerIllustration}
-              />
+              <img src={illustration} alt="리포트 일러스트" className={styles.headerIllustration} />
             </div>
           </div>
 
@@ -49,22 +44,21 @@ function ReportContent() {
               <TotalVisitors />
             </div>
             <div className={styles.actionButtons}>
-              <button
-                className={styles.updateButton}
-                onClick={() => setIsModalOpen(true)}
-              >
+
+              <button className={styles.updateButton} onClick={() => setIsModalOpen(true)}>
                 데이터 업데이트
               </button>
               <button className={styles.posButton}>포스 연동</button>
             </div>
           </div>
         </div>
-        <div>
+        <div className={styles.summarySection}>
           <SalesSummary />
         </div>
-        <div>
+        <div className={styles.tipsSection}>
           <ImprovementTips />
         </div>
+      </div>
       </div>
     </>
   );

@@ -1,6 +1,6 @@
 .dashboardGrid {
   display: grid;
-  grid-template-columns: repeat(2, 600px);
+  grid-template-columns: repeat(2, 480px);
   justify-content: center;
   gap: 2rem;
   padding: 2rem;
@@ -10,8 +10,8 @@
 .card {
   background-color: white;
   padding: 25px;
-  border-radius: 20px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border-radius: 50px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .cardTitle {
