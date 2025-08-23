@@ -5,6 +5,7 @@ import useUuidStore from "../../store/useUuidStore";
 import "../../styles/welcome/WelcomeMap.css";
 import close from "../../assets/welcomeMap/close.png";
 import listTitle from "../../assets/welcomeMap/list.png";
+import MarkerImg from "../../assets/welcomeMap/marker.png";
 import selectMarkerImg from "../../assets/welcomeMap/select_marker.png";
 import StoreSearch from "./StoreSearch";
 import SearchList from "./SearchList.jsx";
@@ -103,7 +104,7 @@ function WelcomeMap({ focusRef, onClick }) {
         const imageSize = new window.kakao.maps.Size(24, 35); // 이미지 크기
         const imageOption = { offset: new window.kakao.maps.Point(12, 35) }; // 마커 중심 좌표
         const markerImage = new window.kakao.maps.MarkerImage(
-          selectMarkerImg,
+          MarkerImg,
           imageSize,
           imageOption
         );

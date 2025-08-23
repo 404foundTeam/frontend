@@ -8,6 +8,7 @@ import useUuidStore from "../store/useUuidStore.js";
 import useCardStore from "../store/useCardStore.js";
 import useTextStore from "../store/useTextStore.js";
 import SelectBox from "../components/cardnews/SelectBox.jsx";
+import Loading from "../components/Loading.jsx";
 
 function CardNewsPage() {
   const navigate = useNavigate();
@@ -17,6 +18,7 @@ function CardNewsPage() {
   const setText = useTextStore((state) => state.setText);
   const setCard = useCardStore((state) => state.setCard);
 
+  const [isLoading, setIsLoading] = useState(true);
   const [cardType, setCardType] = useState("");
   const [menuName, setMenuName] = useState("");
   const [userText, setUserText] = useState("");
@@ -42,6 +44,9 @@ function CardNewsPage() {
 
   const postCardNews = async () => {
     console.log(1);
+
+    console.log("이미지 POST!");
+
     const cardData = {
       storeUuid,
       storeName,
@@ -52,16 +57,23 @@ function CardNewsPage() {
       ratio,
       theme,
     };
+
     console.log(2);
+    console.log(cardData);
     try {
-      console.log(3);
+      console.log("trying...");
+
       const getCard = await backgroundImg(cardData);
+      console.log(getCard);
       setCard(getCard.data);
+      navigate("/cardnews/result");
     } catch (error) {
       console.log(error);
     }
+    // TypeError: Cannot destructure property 'url' of 'undefined' as it is undefined.
+    // if (isLoading) return <Loading />;
 
-    navigate("/cardnews/result");
+    console.log("finish");
   };
 
   return (

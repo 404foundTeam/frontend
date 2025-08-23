@@ -7,7 +7,7 @@ function SelectBox({ value, selected, onClick, label }) {
         className={`${styles.container} ${styles[value] || ""}`}
         onClick={onClick}
       >
-        <div className={`${styles.box} ${selected ? "select" : ""}`}></div>
+        <div className={`${styles.box} ${selected ? styles.select : ""}`}></div>
         <p className={styles.title}>{label}</p>
       </div>
     </>

@@ -2,9 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import "../styles/cardnews/CardNewsResultPage.css";
 import Ex1 from "../assets/test/image03.png";
 import Loading from "../components/Loading";
-// import useTextStore from "../store/useTextStore";
-// import useCardStore from "../store/useCardStore";
-// import img from "../assets/show.png";
+import useTextStore from "../store/useTextStore";
+import useCardStore from "../store/useCardStore";
 
 function drawWrappedText(ctx, text, x, y, maxWidth, lineHeight) {
   // 왼쪽 정렬
@@ -50,8 +49,9 @@ function drawRoundedRect(ctx, x, y, width, height, radius, fillStyle) {
 }
 
 function CardNewsResultPage() {
-  // console.log(generatedText);
-  // const generatedText = useTextStore((state) => state.generatedText);
+  console.log("resultPage");
+  const generatedText = useTextStore((state) => state.generatedText);
+  console.log(generatedText);
   // const imgData = useCardStore((state) => state);
   const remainingFreeCount = 1;
   // 이미지 박스 크기 스타일

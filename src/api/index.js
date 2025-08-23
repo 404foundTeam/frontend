@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const BASE_URL = "http://13.209.239.240/api/v1";
-// const BASE_URL = "https://localhost:8080/api/v1";
+// const BASE_URL = "http://13.209.239.240:8080/api/v1";
 
 const api = axios.create({
   baseURL: BASE_URL,
@@ -33,6 +33,7 @@ export const fetchStoresByCoord = async (x, y) => {
 // 업장 등록
 export const matchStore = async (store) => {
   const res = await api.post("/stores/match", store);
+  return res.data;
 
   // 헤더에 넣기2
   // const { storeUuid, storeName, isNew } = res.data;
@@ -40,8 +41,6 @@ export const matchStore = async (store) => {
   // api.defaults.headers.common["Store-UUID"] = storeUuid;
   // api.defaults.headers.common["Store-NAME"] = storeName;
   // api.defaults.headers.common["Store-ISNEW"] = isNew;
-
-  return res.data;
 };
 
 // 카드 뉴스 페이지
