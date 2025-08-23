@@ -1,0 +1,34 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+
+  cursor: pointer;
+}
+
+.container:hover {
+  transform: scale(1.07);
+  transition: transform 0.6s ease;
+}
+
+.box {
+  width: 35px;
+  height: 35px;
+  border: 4px solid #d9d9d9;
+}
+
+.box.select {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-color: #febf22;
+}
+
+.title {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  letter-spacing: -0.025em;
+
+  color: #717171;
+}

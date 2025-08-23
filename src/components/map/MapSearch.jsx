@@ -1,6 +1,6 @@
-import styles from "../../styles/welcome/StoreSearch.module.css";
+import styles from "../../styles/map/MapSearch.module.css";
 
-function StoreSearch({ focusRef, placeholder, value, onChange, onKeyDown }) {
+function MapSearch({ focusRef, placeholder, value, onChange, onKeyDown }) {
   return (
     <div className={styles.container}>
       <input
@@ -16,4 +16,4 @@ function StoreSearch({ focusRef, placeholder, value, onChange, onKeyDown }) {
   );
 }
 
-export default StoreSearch;
+export default MapSearch;

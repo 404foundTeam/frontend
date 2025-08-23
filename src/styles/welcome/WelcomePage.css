@@ -66,7 +66,7 @@
   right: 0;
   z-index: 2;
 
-  background-image: url("../assets/welcome/welcome_bee.png");
+  background-image: url("../../assets/welcome/welcome_bee.png");
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -162,7 +162,7 @@
   right: 0;
   z-index: 1;
 
-  background-image: url("../assets/welcome//welcome_hive.png");
+  background-image: url("../../assets/welcome//welcome_hive.png");
   background-size: contain;
   background-position: right center;
   background-repeat: no-repeat;

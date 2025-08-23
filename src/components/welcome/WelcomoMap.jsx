@@ -2,12 +2,12 @@ import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { fetchStoresByCoord, matchStore } from "../../api/index.js";
 import useUuidStore from "../../store/useUuidStore";
-import "../../styles/WelcomeMap.css";
+import "../../styles/welcome/WelcomeMap.css";
 import close from "../../assets/welcomeMap/close.png";
 import listTitle from "../../assets/welcomeMap/list.png";
 import selectMarkerImg from "../../assets/welcomeMap/select_marker.png";
 import StoreSearch from "./StoreSearch";
-import SearchListBox from "./SearchListBox.jsx";
+import SearchList from "./SearchList.jsx";
 
 // const { kakao } = window;
 
@@ -231,7 +231,7 @@ function WelcomeMap({ focusRef, onClick }) {
             <div className="search-list">
               {stores.map((store) => (
                 <>
-                  <SearchListBox
+                  <SearchList
                     key={store.placeId}
                     store={store}
                     isSelected={selectStore?.placeId === store.placeId}
