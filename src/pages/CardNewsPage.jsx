@@ -8,6 +8,7 @@ import useUuidStore from "../store/useUuidStore.js";
 import useCardStore from "../store/useCardStore.js";
 import useTextStore from "../store/useTextStore.js";
 import SelectBox from "../components/cardnews/SelectBox.jsx";
+import axios from "axios";
 // import Loading from "../components/Loading.jsx";
 
 function CardNewsPage() {
@@ -64,12 +65,14 @@ function CardNewsPage() {
       console.log("trying...");
       const getCard = await backgroundImg2(cardData);
       console.log(getCard);
+      console.log(getCard.url);
+
       setCard(getCard);
+
       navigate("/cardnews/result");
     } catch (error) {
       console.log(error);
     }
-    // TypeError: Cannot destructure property 'url' of 'undefined' as it is undefined.
 
     console.log("finish");
   };

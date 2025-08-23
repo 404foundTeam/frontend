@@ -136,7 +136,7 @@ function WelcomePage() {
             <p className="mini-title">업장 홍보</p>
             <h1 className="card-title">AI 마케팅</h1>
             <p className="card-content">
-              마케팅 방식을 잘 모르는 사람을 위해서
+              마케팅 방식을 잘 모르는 사장님을 위해서
               <br />
               AI가 분석한 데이터를 바탕으로 마케팅 방안을 알려줘요.
             </p>
