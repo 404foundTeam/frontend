@@ -4,8 +4,8 @@
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import SideBar from "../components/SideBar";
-import WelcomeMap from "../components/WelcomoMap"; // 오타 주의
-import Blur from "../components/Blur";
+import WelcomeMap from "../components/welcome/WelcomoMap"; // 오타 주의
+import Blur from "../components/welcome/Blur";
 import styles from "../styles/MyLayout.module.css";
 import useUuidStore from "../store/useUuidStore";
 

@@ -1,0 +1,33 @@
+.container {
+  /* width: 269px; */
+  height: 40px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 21px 51px 35px 15px;
+  gap: 11px;
+
+  border: 2px solid #d9d9d9;
+}
+
+.container .name {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 21px;
+  letter-spacing: -0.025em;
+
+  color: #6d3737;
+}
+
+.container .addr {
+  width: 167px;
+  text-align: left;
+
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: -0.025em;
+
+  color: #717171;
+}

@@ -7,7 +7,6 @@ function Header() {
     <header>
       <img src={logoImg} className={styles.img}></img>
       <div className={styles.tags}>
-
         <NavLink to="/main" className={styles.text}>
           market BEE
         </NavLink>

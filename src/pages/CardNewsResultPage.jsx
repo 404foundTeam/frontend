@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import Loading from "../components/Loading";
-import Ex1 from "../assets/test/image03.png";
 import "../styles/cardnews/CardNewsResultPage.css";
-import useTextStore from "../store/useTextStore";
-import useCardStore from "../store/useCardStore";
+import Ex1 from "../assets/test/image03.png";
+import Loading from "../components/Loading";
+// import useTextStore from "../store/useTextStore";
+// import useCardStore from "../store/useCardStore";
 // import img from "../assets/show.png";
 
 function drawWrappedText(ctx, text, x, y, maxWidth, lineHeight) {
@@ -50,9 +50,9 @@ function drawRoundedRect(ctx, x, y, width, height, radius, fillStyle) {
 }
 
 function CardNewsResultPage() {
-  console.log(generatedText);
-  const generatedText = useTextStore((state) => state.generatedText);
-  const imgData = useCardStore((state) => state);
+  // console.log(generatedText);
+  // const generatedText = useTextStore((state) => state.generatedText);
+  // const imgData = useCardStore((state) => state);
   const remainingFreeCount = 1;
   // 이미지 박스 크기 스타일
   const [box, setBox] = useState("");

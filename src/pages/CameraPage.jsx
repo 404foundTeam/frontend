@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
-import dragImg from "../assets/camera/drag_img.png";
+import { useNavigate } from "react-router-dom";
 import styles from "../styles/camera/CameraPage.module.css";
-import { Link, useNavigate } from "react-router-dom";
+import dragImg from "../assets/camera/drag_img.png";
 
 function CameraPage() {
   const navigate = useNavigate();
@@ -45,7 +45,7 @@ function CameraPage() {
           ) : (
             <>
               <img src={dragImg} className={styles.dragImg} />
-              드래그 해서 가져오기
+              드래그해서 가져오기
             </>
           )}
         </div>

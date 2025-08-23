@@ -1,8 +1,10 @@
 .map-container {
-  width: 1000px;
+  width: 80%;
+  max-width: 1000px;
   position: absolute;
   top: 3000px;
-  left: 218px;
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 4;
 
   padding-bottom: 80px;
@@ -18,8 +20,8 @@
 
 /* 닫기 버튼 스타일 */
 .header-close-button {
-  padding-top: 20px;
-  padding-left: 900px;
+  padding-top: 2%;
+  padding-left: 90%;
 
   cursor: pointer;
 }
