@@ -97,7 +97,15 @@ export const backgroundImg2 = async ({
   return res.data;
 };
 
-export const getPresignedUrl = async ({ storeUuid }) => {
-  const res = await api.post("/sns-cards/final/presigned-url", { storeUuid });
+export const postPresignedUrl = async (storeUuid) => {
+  // post(파라미터 포함) 요청
+  const res = await api.post("/sns-cards/final/presigned-url", null, {
+    params: { storeUuid },
+  });
+  return res.data;
+};
+
+export const postCard = async ({ storeUuid, finalUrl }) => {
+  const res = await api.post("/sns-cards/final", { storeUuid, finalUrl });
   return res.data;
 };

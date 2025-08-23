@@ -5,7 +5,8 @@ import Loading from "../components/Loading";
 import useTextStore from "../store/useTextStore";
 import useCardStore from "../store/useCardStore";
 import useUuidStore from "../store/useUuidStore";
-import { getPresignedUrl } from "../api";
+import { postCard, postPresignedUrl } from "../api";
+import axios from "axios";
 
 function drawWrappedText(ctx, text, x, y, maxWidth, lineHeight) {
   // 왼쪽 정렬
@@ -68,6 +69,7 @@ function CardNewsResultPage() {
 
   const canvasRef = useRef(null);
   const resultImgRef = useRef(null);
+  const [blob, setBlob] = useState(null);
 
   useEffect(() => {
     // const imgData1 = useCardStore((state) => state);
@@ -93,7 +95,7 @@ function CardNewsResultPage() {
     image.crossOrigin = "anonymous"; // 크로스 허용
     image.src = imgData.url; // 이미지 경로를 설정하세요.
     image.src = `${imgData.url}?not-from-cache-please`;
-    image.onload = () => {
+    image.onload = async () => {
       // 이미지 렌더링
       switch (imgData.ratio) {
         case "SQUARE_1_1":
@@ -143,13 +145,36 @@ function CardNewsResultPage() {
 
       const data = canvas.toDataURL("image/png");
       resultImgRef.current.src = data;
+      const blobData = await (await fetch(data)).blob();
+      setBlob(blobData);
     };
   }, []);
 
   const saveCard = async () => {
+    let fileUrl;
+
     try {
-      const getUrl = await getPresignedUrl({ storeUuid });
+      const getUrl = await postPresignedUrl(storeUuid);
       console.log(getUrl);
+      fileUrl = getUrl.fileUrl;
+      const uploadUrl = getUrl.uploadUrl;
+      // alert("저장이 완료됐습니다.");
+      console.log("업로드 시작");
+      await axios.put(uploadUrl, blob, {
+        headers: {
+          "Content-Type": "image/png",
+        },
+      });
+      console.log("업로드 완료", fileUrl);
+    } catch (error) {
+      console.log(error);
+    }
+
+    try {
+      console.log("서버로~~~~~~~");
+      console.log("파일 url", fileUrl);
+      const postImg = await postCard({ storeUuid, finalUrl: fileUrl });
+      console.log(postImg);
     } catch (error) {
       console.log(error);
     }
@@ -162,7 +187,6 @@ function CardNewsResultPage() {
       <div className="result-container">
         <div className="top-box"></div>
         <div className="result-box">
-          {/* 1:1, 가로/세로 스타일 지정 필요 */}
           <img ref={resultImgRef} className={`result-img ${box}`} />
           <div className="button-container">
             <button className="save" onClick={saveCard}>
