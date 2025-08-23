@@ -1,7 +1,7 @@
 /* src/styles/MarketingContent.module.css */
 
 .container {
-  max-width: 1000px;
+  max-width: 800px;
   margin: 2rem auto; /* 페이지 중앙 정렬 */
   padding: 1rem;
   font-family: sans-serif;
@@ -25,7 +25,7 @@
   justify-content: space-between;
   align-items: center;
   background-color: #FEBF22; /* 노란색/주황색 배경 */
-  padding: 40px 45px;
+  padding: 30px 30px;
   border-radius: 12px;
   text-align: left;
 }
@@ -35,14 +35,14 @@
 }
 
 .eventTitle {
-  font-size: 30px;
+  font-size: 25px;
   font-weight: bold;
   color: #6D3737;
   margin: 0 0 5px 0;
 }
 
 .eventDesc {
-  font-size: 20px;
+  font-size: 18px;
   color: #717171;
   margin: 0;
 }
@@ -52,9 +52,9 @@
   color: #FFFFFF;
   border: none;
   border-radius: 8px;
-  padding: 10px 40px;
+  padding: 8px 30px;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 17px;
   cursor: pointer;
   flex-shrink: 0; /* 버튼 크기가 줄어들지 않도록 설정 */
   margin-left: 20px;

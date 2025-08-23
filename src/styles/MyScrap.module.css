@@ -1,14 +1,13 @@
 .header {
-    justify-items: center;
+    text-align: center;
     margin: 30px;
 
 }
 
 .mainTitle{
-      margin: 20px;
-
+  margin: 20px;
   font-size: 30px;
-color: #413738
+  color: #413738
 }
 
 .subtitle{
@@ -17,8 +16,8 @@ color: #413738
 }
 
 .cardGrid {
-  margin-left: 10%;
-  margin-right: 10%;
+  max-width: 1200px; /* 콘텐츠의 최대 너비를 설정해 너무 넓어지는 것을 방지합니다. */
+  margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* 3개의 열 */
   gap: 1rem;
@@ -32,8 +31,8 @@ color: #413738
 }
 
 .cardImage {
-  width: 390px;
-  height: 380px;
+  width: 339px;
+  height: 331px;
   object-fit: cover;
 }
 

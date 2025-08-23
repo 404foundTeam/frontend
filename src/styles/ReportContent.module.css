@@ -1,130 +1,118 @@
 /* src/styles/ReportContent.module.css */
 
-/* --- 전체 페이지 레이아웃 --- */
-.pageWrapper {
-  width: 100vw;
-  margin-left: calc(-50vw + 50%);
+
+/* --- 1. 전체 페이지 레이아웃 및 중앙 정렬 --- */
+.reportContainer {
+  width: 100%;
+  max-width: 1400px; /* 페이지의 최대 너비를 설정해 너무 넓어지는 것을 방지 */
+  margin: 0 auto;    /* 컨테이너 자체를 화면 중앙에 배치 */
 }
 
 .pageLayout {
   display: flex;
-  gap: 2rem;
-  align-items: flex-start;
-  padding: 2rem;
+  flex-wrap: wrap; /* 화면이 좁아지면 컬럼이 아래로 떨어지도록 설정 */
+  padding: 2rem; /* 내부 여백을 넉넉하게 */
   background-color: #FFE5A7;
-  border-bottom-left-radius: 500px; 
+  width: 100vw;   /* 뷰포트 전체 너비 */
+  margin-left: calc(-50vw + 50%); /* 부모 컨테이너 패딩/마진을 무시하고 화면 전체에 맞춤 */
+  border-bottom-left-radius: 500px; /* 곡률을 조금 줄여 자연스럽게 */
+  align-items: center; /* 컬럼들을 세로 중앙에 정렬 */
 }
 
-/* --- 왼쪽 컬럼 스타일 --- */
-.leftColumn {
-  flex: 1;
-  top: 2rem;
+.leftColumn, .rightColumn {
+  flex-grow: 1; /* 컬럼이 남는 공간을 차지하도록 설정 */
+  flex-basis: 350px; /* 컬럼의 최소 너비를 지정해 자동 줄바꿈 기준 생성 */
 }
 
-/* --- 오른쪽 컬럼 스타일 --- */
 .rightColumn {
-  flex: 1.5;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 오른쪽 컬럼 내부 요소들을 중앙 정렬 */
 }
 
-/* --- 헤더 스타일 --- */
+/* --- 3. 헤더 스타일 --- */
 .reportHeader {
-  margin-left: 30%;
+  text-align: left; /* 텍스트를 중앙 정렬 */
   padding: 20px;
-}
-.headerText h2 {
-  font-size: 20px;
-  color: #413738;
-  line-height: 1.4;
+  margin-left: 20%;
+
 }
 
-/* ✅ '어웨이 커피' 부분만 강조하기 위한 스타일 */
+.headerText h2 {
+  font-size: clamp(1.5rem, 4vw, 1.8rem); /* 화면 크기에 따라 글자 크기 조절 */
+  color: #413738;
+  margin-bottom: 20px;
+}
+
 .storeName {
   color: #6D3737;
-  font-size: 40px;
+  font-size: clamp(1.8rem, 5vw, 2.5rem); /* 화면 크기에 따라 글자 크기 조절 */
 }
 
 .headerText p {
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: #717171;
-  margin-top: 1rem;
 }
+
 .headerIllustration {
   width: 100%;
-  max-width: 1100px;
+  max-width: 600px; /* 크기를 줄여 전체적인 균형 맞춤 */
+  height: auto;
   margin-top: 2rem;
-  transform: translate(-50px, 100px); 
 }
 
-/* --- 2x2 그리드 레이아웃 --- */
+/* --- 4. 반응형 그리드 레이아웃 --- */
 .dashboardGrid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); 
-  gap: 1.2rem;
+  grid-template-columns: repeat(2, 300px);
+  gap: 1.5rem;
+  width: 100%;
+  justify-content: start; /* 👈 카드들을 왼쪽으로 붙임 */
 }
 
-/* --- 작아진 카드 공통 스타일 --- */
 .card {
-  padding: 30px;
+  padding: 1.5rem;
   border-radius: 15px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
-  height: 250px;
+  height: 200px; 
+  overflow: hidden; /* 내용이 넘치면 잘림 */
 }
 
-/* --- 하단 버튼 --- */
+/* --- 5. 하단 버튼 --- */
 .actionButtons {
   display: flex;
-  justify-content: center;
+  justify-content: left; /* 버튼들을 중앙 정렬 */
   gap: 1rem;
-  margin-top: 2rem;
-  justify-content: flex-start;
-  margin-left: 300px;
+  margin-top: 2.5rem;
+  width: 100%;
+  margin-left: 290px;
 }
+
 .updateButton, .posButton {
-  padding: 12px 30px;
+  padding: 12px 25px;
   border-radius: 8px;
   border: none;
   font-size: 1rem;
   font-weight: bold;
   cursor: pointer;
-  width: 180px; /* 버튼의 너비를 180px로 고정합니다. (값 조절 가능) */
+  width: 160px; /* 버튼 크기 약간 축소 */
 }
+
 .updateButton {
   background-color: #FEBF22;
   color: #6D3737;
 }
+
 .posButton {
   background-color: #FEBF22;
   color: #6D3737;
 }
 
-
-@media (max-width: 1024px) {
-  .pageLayout {
-    flex-direction: column;
-  }
-
-  .leftColumn {
-    position: static;
-    width: 100%;
-  }
-
-  .rightColumn {
-    width: 100%;
-  }
+/* --- 6. 하단 추가 섹션 --- */
+.summarySection, .tipsSection {
+  margin-top: 3rem;
+  padding: 1rem;
 }
 
-@media (max-width: 768px) {
-  .dashboardGrid {
-    grid-template-columns: 1fr;
-  }
-
-  .card {
-    height: auto;
-  }
-
-  .headerText h2 {
-    font-size: 1.8rem;
-  }
-}

@@ -2,7 +2,7 @@
 
 /* 기존 헤더 스타일 */
 .myCalendarContainer {
-  width: 100%;
+  width: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,21 +14,21 @@
 }
 
 .mainTitle {
-  font-size: 2.5rem;
+  font-size: 30px;
   font-weight: 600;
   margin-bottom: 0.5rem;
   color: #413738;
 }
 
 .subtitle {
-  font-size: 1.1rem;
+  font-size: 15px;
   color: #555;
 }
 
 /* --- 캘린더 전체 스타일 --- */
 .calendarWrapper {
   width: 100%;
-  max-width: 900px;
+  max-width: 800px;
   background: white;
   border-radius: 20px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
@@ -96,7 +96,7 @@
   max-width: 100%;
   padding: 10px;
   text-align: left;
-  height: 120px;
+  height: 100px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
