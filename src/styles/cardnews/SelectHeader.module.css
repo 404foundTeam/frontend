@@ -1,6 +1,7 @@
 .container {
   display: flex;
-  gap: 5px;
+  align-items: center;
+  gap: 4px;
 }
 
 .ico {
@@ -9,9 +10,9 @@
 }
 
 .title {
-  font-size: 30px;
   font-weight: 600;
-  line-height: 36px;
+  font-size: 20px;
+  line-height: 24px;
   letter-spacing: -0.025em;
 
   color: #6d3737;

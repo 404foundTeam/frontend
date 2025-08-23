@@ -30,18 +30,32 @@
   margin: 0 auto;
 }
 
+.header-text-box {
+  padding-left: 171px;
+}
+
 .welcome-header-box .header-title {
   width: 577px;
 
   padding-top: 108px;
-  padding-left: 32px;
 
   font-weight: 700;
-  font-size: 64px;
-  line-height: 95px;
+  font-size: 48px;
+  line-height: 75px;
   letter-spacing: -0.025em;
 
   color: #413738;
+}
+
+.welcome-header-box .header-text {
+  padding-top: 25px;
+
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 30px;
+  letter-spacing: -0.025em;
+
+  color: #797979;
 }
 
 .welcome-header-box .header-img {
@@ -58,15 +72,12 @@
 }
 
 /* 벌 애니메이션 */
-.bee:nth-child(3) {
+.bee:nth-child(2) {
   width: 273px;
   height: 278px;
 
-  top: 280px;
+  top: 210px;
   right: 800px;
-
-  /* animation: wave-animation1 4s linear infinite,
-    wave-animation2 4s linear infinite; */
 
   animation: wave-animation1 5s linear infinite alternate;
 }
@@ -101,48 +112,18 @@
     /* background-image: url("../assets//welcome/welcome_bee_rev.png"); */
   }
 }
-@keyframes wave-animation2 {
-  0% {
-    background-image: url("../assets//welcome/welcome_bee_rev.png");
-    transform: translateX(0) translateY(0);
-  }
-  12.5% {
-    transform: translateX(calc(12.5% + 2.5px)) translateY(7px);
-  }
-  25% {
-    transform: translateX(calc(75% + 15px)) translateY(-10px);
-  }
-  37.5% {
-    transform: translateX(calc(37.5% + 7.5px)) translateY(7px);
-  }
-  50% {
-    transform: translateX(calc(50% + 10px)) translateY(0);
-  }
-  62.5% {
-    transform: translateX(calc(62.5% + 12.5px)) translateY(-7px);
-  }
-  75% {
-    transform: translateX(calc(25% + 5px)) translateY(10px);
-  }
-  87.5% {
-    transform: translateX(calc(87.5% + 17.5px)) translateY(-7px);
-  }
-  100% {
-    transform: translateX(calc(100% + 20px)) translateY(0);
-  }
-}
 
-.bee:nth-child(4) {
+.bee:nth-child(3) {
   width: 205px;
   height: 211px;
 
-  top: 504px;
+  top: 434px;
   right: 724px;
 
-  animation: wave-animation3 7s linear infinite alternate;
+  animation: wave-animation2 7s linear infinite alternate;
 }
 
-@keyframes wave-animation3 {
+@keyframes wave-animation2 {
   0% {
     transform: translateX(calc(100% + 20px)) translateY(0);
   }
@@ -185,23 +166,6 @@
   background-size: contain;
   background-position: right center;
   background-repeat: no-repeat;
-}
-
-/* 헤더, 사인맵 p 태그 공통 스타일 */
-.text {
-  font-weight: 500;
-  font-size: 30px;
-  line-height: 36px;
-  letter-spacing: -0.025em;
-
-  color: #797979;
-}
-
-.header.text {
-  width: 515px;
-
-  padding-top: 67px;
-  padding-left: 32px;
 }
 
 /* 헤더 바닥 박스 스타일 */
@@ -270,8 +234,8 @@
   padding-top: 20px;
 
   font-weight: 700;
-  font-size: 60px;
-  line-height: 78px;
+  font-size: 48px;
+  line-height: 57px;
 
   color: #6d3737;
 }
@@ -280,7 +244,7 @@
   padding-top: 59px;
 
   font-weight: 500;
-  font-size: 20px;
+  font-size: 18px;
   line-height: 40px;
   letter-spacing: -0.025em;
 
@@ -329,7 +293,7 @@
 }
 
 .marketing-boxs .marketing-box {
-  width: 689px;
+  width: 635px;
   height: 114px;
 
   border-radius: 10px;
@@ -387,6 +351,7 @@
 }
 
 .welcome-card .welcome-text-box.sns {
+  padding-top: 66px;
   margin-left: 122px;
 }
 
@@ -405,8 +370,8 @@
 }
 
 .welcome-card .card-img-box .card-img {
-  width: 402px;
-  height: 533px;
+  width: 370px;
+  height: 491px;
   position: absolute;
 
   border-radius: 35px;
@@ -455,12 +420,12 @@
   color: #413738;
 }
 
-.welcome-sign-map .sign.text {
+.welcome-sign-map .sign-text {
   padding-top: 32px;
 
   font-weight: 500;
-  font-size: 30px;
-  line-height: 36px;
+  font-size: 18px;
+  line-height: 21px;
   letter-spacing: -0.025em;
 
   color: #797979;
@@ -474,7 +439,7 @@
 }
 
 .welcome-sign-map .welcome-sign-button {
-  width: 593px;
+  width: 581px;
   height: 93px;
 
   margin-top: 72px;
@@ -502,115 +467,4 @@
 .welcome-sign-map .welcome-sign-button:hover {
   background-color: #8b4b4b;
   transform: scale(1.04);
-}
-
-/*
-.bee:nth-child(2) {
-  width: 273px;
-  height: 278px;
-
-  top: 327px;
-  right: 753px;
-
-  animation: wave-animation1 3s linear infinite;
-  /* animation: wave-animation1 3s linear infinite alternate; */
-
-@keyframes wave-animation {
-  0% {
-    transform: translateX(100px) translateY(0);
-  }
-  12.5% {
-    transform: translateX(87.5px) translateY(-7px);
-  }
-  25% {
-    transform: translateX(75px) translateY(-10px);
-  }
-  37.5% {
-    transform: translateX(62.5px) translateY(-7px);
-  }
-  50% {
-    transform: translateX(50px) translateY(0);
-  }
-  62.5% {
-    transform: translateX(37.5px) translateY(7px);
-  }
-  75% {
-    transform: translateX(25px) translateY(10px);
-  }
-  87.5% {
-    transform: translateX(12.5px) translateY(7px);
-  }
-  100% {
-    transform: translateX(0) translateY(0);
-  }
-}
-
-/* .bee:nth-child(3) {
-  width: 205px;
-  height: 211px;
-
-  top: 504px;
-  right: 575px;
-
-  animation: wave-animation2 3s linear infinite;
-  /* wave-animation3 3s linear infinite; */
-/* animation-delay: 1s; */
-
-@keyframes wave-animation {
-  0% {
-    transform: translateX(100px) translateY(0);
-  }
-  12.5% {
-    transform: translateX(87.5px) translateY(-7px);
-  }
-  25% {
-    transform: translateX(75px) translateY(-10px);
-  }
-  37.5% {
-    transform: translateX(62.5px) translateY(-7px);
-  }
-  50% {
-    transform: translateX(50px) translateY(0);
-  }
-  62.5% {
-    transform: translateX(37.5px) translateY(7px);
-  }
-  75% {
-    transform: translateX(25px) translateY(10px);
-  }
-  87.5% {
-    transform: translateX(12.5px) translateY(7px);
-  }
-  100% {
-    transform: translateX(0) translateY(0);
-  }
-}
-@keyframes wave-animation {
-  0% {
-    transform: translateX(0) translateY(0);
-  }
-  12.5% {
-    transform: translateX(12.5px) translateY(7px);
-  }
-  25% {
-    transform: translateX(25px) translateY(10px);
-  }
-  37.5% {
-    transform: translateX(37.5px) translateY(7px);
-  }
-  50% {
-    transform: translateX(50px) translateY(0);
-  }
-  62.5% {
-    transform: translateX(62.5px) translateY(-7px);
-  }
-  75% {
-    transform: translateX(75px) translateY(-10px);
-  }
-  87.5% {
-    transform: translateX(87.5px) translateY(-7px);
-  }
-  100% {
-    transform: translateX(100px) translateY(0);
-  }
 }

@@ -22,9 +22,10 @@
 
 .guide-box h2 {
   font-weight: 600;
-  font-size: 30px;
-  line-height: 36px;
+  font-size: 24px;
+  line-height: 29px;
   letter-spacing: -0.025em;
+
   color: #6d3737;
 }
 
@@ -34,27 +35,31 @@
 
 .guide-box div {
   width: 1047px;
-  margin-top: 10px;
-  padding: 27px 23px;
 
-  font-weight: 400;
-  font-size: 25px;
-  line-height: 34px;
-  letter-spacing: -0.025em;
-  color: #6d3737;
+  margin-top: 10px;
+  padding: 23px 24px 15px;
 
   border: 2px solid #acacac;
   border-radius: 10px;
+
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 34px;
+  letter-spacing: -0.025em;
+
+  color: #6d3737;
 }
 
 .guide-box p {
   margin-top: 44px;
 
-  font-weight: 400;
-  font-size: 25px;
-  line-height: 17px;
-  letter-spacing: -0.025em;
   text-align: center;
+
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: -0.025em;
+
   color: #6d3737;
 }
 

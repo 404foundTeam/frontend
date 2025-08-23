@@ -45,7 +45,7 @@ function CameraPage() {
           ) : (
             <>
               <img src={dragImg} className={styles.dragImg} />
-              드래그 해서 가져오기
+              드래그해서 가져오기
             </>
           )}
         </div>

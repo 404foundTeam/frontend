@@ -75,8 +75,8 @@
 }
 
 .coa-map-container .coa-map-list {
-  width: 303px;
-  height: 545px;
+  width: 222px;
+  height: 500px;
 
   overflow: hidden;
   overflow-y: scroll;
@@ -87,12 +87,12 @@
 
 .coa-map-list .coa-map-list-box {
   /* width: 269px; */
-  /* height: 45px; */
+  height: 40px;
 
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 28px 18px 43px;
+  padding: 21px 51px 35px 15px;
   gap: 11px;
 
   border: 2px solid #d9d9d9;
@@ -108,7 +108,7 @@
 }
 
 .coa-map-list .coa-map-list-box .store-add {
-  width: 232px;
+  width: 167px;
   text-align: left;
 
   font-weight: 500;
@@ -120,8 +120,8 @@
 }
 
 .coa-map-container .coa-map-box {
-  width: 860px;
-  height: 545px;
+  width: 833px;
+  height: 436px;
 
   background-color: #797979;
 }
@@ -130,6 +130,7 @@
   width: 100%;
 
   padding-top: 28px;
+  padding-left: 418px;
   padding-bottom: 199px;
 
   display: flex;

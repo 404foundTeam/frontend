@@ -81,14 +81,16 @@ function WelcomePage() {
       {showMap && <WelcomeMap focusRef={mapRef} onClick={clickHideMap} />}
       <div className="welcome-header-container">
         <div className="welcome-header-box">
-          <h1 className="header-title">
-            소상공인을 위한
-            <br />
-            스마트한 마케팅 플랫폼
-          </h1>
-          <p className="header text">
-            어렵고 복잡한 마케팅과 운영전략을 한번에
-          </p>
+          <div className="header-text-box">
+            <h1 className="header-title">
+              소상공인을 위한
+              <br />
+              스마트한 마케팅 플랫폼
+            </h1>
+            <p className="header-text">
+              어렵고 복잡한 마케팅과 운영전략을 한번에
+            </p>
+          </div>
           <div className="header-img bee"></div>
           <div className="header-img bee"></div>
           <div className="header-img hive"></div>
@@ -168,8 +170,8 @@ function WelcomePage() {
       />
       <div className="welcome-sign-map">
         <h2 className="welcome-sign-title">업장 등록하기</h2>
-        <p className="sign text">
-          클릭 몇 번으로 가게 홍보에 필요한 모든 콘텐츠와 운영을 자동으로
+        <p className="sign-text">
+          업장을 등록해서 홍보에 필요한 모든 콘텐츠와 운영을 자동으로
           관리해보세요.
         </p>
         <img src={mapImg} className="welcome-sign-img" />
