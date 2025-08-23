@@ -50,8 +50,10 @@ function drawRoundedRect(ctx, x, y, width, height, radius, fillStyle) {
 
 function CardNewsResultPage() {
   console.log("resultPage");
+  const imgData1 = useCardStore((state) => state);
+  console.log("이미지 스토어 :", imgData1);
   const generatedText = useTextStore((state) => state.generatedText);
-  console.log(generatedText);
+  console.log(`텍스트 스토어 : ${generatedText}`);
   // const imgData = useCardStore((state) => state);
   const remainingFreeCount = 1;
   // 이미지 박스 크기 스타일
@@ -61,14 +63,15 @@ function CardNewsResultPage() {
   const resultImgRef = useRef(null);
 
   useEffect(() => {
+    // const imgData1 = useCardStore((state) => state);
     const imgData = {
-      url: Ex1,
+      url: imgData1.url,
       // "추석 연휴에도 정상 영업합니다.\n 가족과 함께 특별한 시간을 보내세요!"
       // "부드럽고 고소한 까눌레와 휘낭시에!\n 특별한 날, 소중한 분께 완벽한 선물이 됩니다."
       // "깔끔한 인테리어와 아늑한 룸, 편리한 주차 공간까지!\n 편안한 시간을 만끽하세요."
-      text: "추석 연휴에도 정상 영업합니다.\n 가족과 함께 특별한 시간을 보내세요!",
-      ratio: "SQUARE_1_1", // SQUARE_1_1, RATIO_2_3, RATIO_3_2
-      template: "T1_TEXT_ONLY", //  T1_TEXT_ONLY, T2_TEXT_BOTTOM, T3_TEXT_RIGHT
+      text: generatedText,
+      ratio: imgData1.ratio, // SQUARE_1_1, RATIO_2_3, RATIO_3_2
+      template: imgData1.template, //  T1_TEXT_ONLY, T2_TEXT_BOTTOM, T3_TEXT_RIGHT
     };
 
     const canvas = canvasRef.current;
@@ -76,6 +79,7 @@ function CardNewsResultPage() {
 
     // 이미지 로드
     const image = new Image();
+    image.crossOrigin = "anonymous"; // 크로스 허용
     image.src = imgData.url; // 이미지 경로를 설정하세요.
     image.onload = () => {
       // 이미지 렌더링

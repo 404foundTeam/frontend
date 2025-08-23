@@ -80,6 +80,29 @@ export const backgroundImg = async ({
   return res.data;
 };
 
+export const backgroundImg2 = async ({
+  storeUuid,
+  storeName,
+  cardType,
+  menuName,
+  generatedText,
+  template,
+  ratio,
+  theme,
+}) => {
+  const res = await api.post("/sns-cards/background2", {
+    storeUuid,
+    storeName,
+    cardType,
+    menuName,
+    generatedText,
+    template,
+    ratio,
+    theme,
+  });
+  return res.data;
+};
+
 /*
 /api/v1/main	GET
 	

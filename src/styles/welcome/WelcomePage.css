@@ -118,9 +118,9 @@
   height: 151px;
 
   top: 434px;
-  right: 724px;
+  right: 558px;
 
-  animation: wave-animation2 7s linear infinite alternate;
+  animation: wave-animation2 4s linear infinite alternate;
 }
 
 @keyframes wave-animation2 {
