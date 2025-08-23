@@ -94,7 +94,7 @@ function CardNewsResultPage() {
     const image = new Image();
     image.crossOrigin = "anonymous"; // 크로스 허용
     image.src = imgData.url; // 이미지 경로를 설정하세요.
-    image.src = `${imgData.url}?not-from-cache-please`;
+    image.src = `${imgData.url}?not-from-cache-please`; // s3 크로스 shit
     image.onload = async () => {
       // 이미지 렌더링
       switch (imgData.ratio) {
