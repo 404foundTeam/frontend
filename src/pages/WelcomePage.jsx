@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState } from "react";
+import "../styles/WelcomePage.css";
 import reportImg from "../assets/welcome/report_img.png";
 import cardImg01 from "../assets/welcome/card_img01.png";
 import cardImg02 from "../assets/welcome/card_img02.png";
 import cardImg03 from "../assets/welcome/card_img03.png";
 import mapImg from "../assets/welcome/map_img.png";
-import TextBox from "../components/TextBox";
-import WelcomeMap from "../components/WelcomoMap";
-import "../styles/WelcomePage.css";
-import Blur from "../components/Blur";
+import TextBox from "../components/welcome/TextBox";
+import WelcomeMap from "../components/welcome/WelcomoMap";
+import Blur from "../components/welcome/Blur";
 
 function WelcomePage() {
   const [showMap, setShowMap] = useState(false);

@@ -1,5 +1,5 @@
-import img from "../assets/group.png";
-import styles from "../styles/map/MapBanner.module.css";
+import styles from "../../styles/map/MapBanner.module.css";
+import img from "../../assets/group.png";
 
 function MapBanner() {
   return (

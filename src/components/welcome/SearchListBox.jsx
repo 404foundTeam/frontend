@@ -1,6 +1,6 @@
-import styles from "../styles/SearchListBox.module.css";
+import styles from "../../styles/SearchListBox.module.css";
 // import "../styles/SearchListBox.css";
-import listIcon from "../assets/welcomeMap/marker_icon.png";
+import listIcon from "../../assets/welcomeMap/marker_icon.png";
 
 function SearchListBox({ store, isSelected, onClick }) {
   if (!store) return null;

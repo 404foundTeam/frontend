@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import Loading from "../components/Loading";
-import Ex1 from "../assets/test/image03.png";
 import "../styles/cardnews/CardNewsResultPage.css";
+import Ex1 from "../assets/test/image03.png";
+import Loading from "../components/Loading";
 // import useTextStore from "../store/useTextStore";
 // import useCardStore from "../store/useCardStore";
 // import img from "../assets/show.png";

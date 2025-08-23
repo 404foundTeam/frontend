@@ -1,12 +1,12 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { backgroundImg, generateText } from "../api/index.js";
 import "../styles/cardnews/CardNewsPage.css";
 import bannerImg from "../assets/cardnews/banner_img.png";
 import SelectHeader from "../components/SelectHeader";
-import { backgroundImg, generateText } from "../api/index.js";
 import useUuidStore from "../store/useUuidStore.js";
 import useCardStore from "../store/useCardStore.js";
 import useTextStore from "../store/useTextStore.js";
-import { useNavigate } from "react-router-dom";
 
 function CardNewsPage() {
   const navigate = useNavigate();

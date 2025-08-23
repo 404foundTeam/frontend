@@ -1,14 +1,13 @@
 import { useEffect, useRef, useState } from "react";
-import close from "../assets/welcomeMap/close.png";
-import listTitle from "../assets/welcomeMap/list.png";
-import selectMarkerImg from "../assets/welcomeMap/select_marker.png";
-import "../styles/WelcomeMap.css";
-import StoreSearch from "./StoreSearch";
-import useUuidStore from "../store/useUuidStore";
-import { fetchStoresByCoord, matchStore } from "../api/index.js";
-import SearchListBox from "./SearchListBox.jsx";
-import { Colors } from "chart.js";
 import { useNavigate } from "react-router-dom";
+import { fetchStoresByCoord, matchStore } from "../../api/index.js";
+import useUuidStore from "../../store/useUuidStore";
+import "../../styles/WelcomeMap.css";
+import close from "../../assets/welcomeMap/close.png";
+import listTitle from "../../assets/welcomeMap/list.png";
+import selectMarkerImg from "../../assets/welcomeMap/select_marker.png";
+import StoreSearch from "./StoreSearch";
+import SearchListBox from "./SearchListBox.jsx";
 
 // const { kakao } = window;
 
@@ -174,7 +173,6 @@ function WelcomeMap({ focusRef, onClick }) {
   };
 
   const postStoreInfo = async () => {
-
     console.log("post1");
 
     if (!selectStore) return;

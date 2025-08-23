@@ -1,4 +1,4 @@
-import styles from "../styles/StoreSearch.module.css";
+import styles from "../../styles/StoreSearch.module.css";
 
 function StoreSearch({ focusRef, placeholder, value, onChange, onKeyDown }) {
   return (
