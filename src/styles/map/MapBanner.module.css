@@ -1,6 +1,9 @@
 .banner {
-  width: 1920px;
+  width: 100%;
+  max-width: 1440px;
   height: 198px;
+
+  margin: 0 auto;
 
   display: flex;
   justify-content: center;
@@ -17,8 +20,8 @@
   margin-left: 24px;
 
   font-weight: 700;
-  font-size: 64px;
-  line-height: 76px;
+  font-size: 48px;
+  line-height: 57px;
 
   color: #febf22;
 }

@@ -1,10 +1,8 @@
 .container {
-  position: absolute;
-  top: 262px;
-  left: 452px;
-
   display: flex;
   flex-direction: column;
+  align-items: center;
+  margin-top: 35px;
 }
 
 .container .show {
@@ -30,12 +28,19 @@
 }
 
 .show.select {
-  background-color: #febf22;
+  border: 6px solid #febf22;
 }
 
 .show .dragImg {
   width: 102px;
   height: 102px;
+
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 36px;
+  letter-spacing: -0.025em;
+
+  color: #797979;
 }
 
 .buttonBox {
@@ -50,10 +55,13 @@
   width: 214px;
   height: 51px;
 
+  border-radius: 10px;
+
   font-weight: 700;
-  font-size: 25px;
-  line-height: 30px;
+  font-size: 18px;
+  line-height: 21px;
   letter-spacing: -0.025em;
+
   color: #6d3737;
 }
 

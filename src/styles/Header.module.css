@@ -1,44 +1,43 @@
-.header {
-  width: 1920px;
+header {
+  /* width: 1920px; */
+  width: 1440px;
   height: 72px;
+  position: relative;
 
-  /* position: relative;
-    margin: 0 auto;
-    width: 1440px; */
+  margin: 0 auto;
 
   font-style: normal;
   font-weight: 500;
-  font-size: 26px;
+  font-size: 20px;
   line-height: 24px;
   letter-spacing: -0.025em;
   color: #333333;
 }
 
-.header .img {
+header .img {
   width: 75px;
   height: 54px;
   position: absolute;
   top: 3px;
-  left: 205px;
+  left: 32px;
 }
 
-.header .tags {
+header .tags {
   height: 100%;
   display: flex;
   align-items: center;
   gap: 80px;
-  padding-left: 264px;
+  padding-left: 88px;
 }
 
-.header .text {
+header .text {
   color: #febf22;
 }
 
-.header .tags .link {
+header .tags .link {
   color: #333333;
 }
 
-.header .my {
-  margin-left: auto; /* 맨 오른쪽으로 */
-  padding-right: 205px;
-}
+/* header .my {
+  margin-left: auto;
+} */

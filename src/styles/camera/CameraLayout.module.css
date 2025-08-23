@@ -1,43 +1,40 @@
 .container {
-  width: 1920px;
+  width: 100%;
+  max-width: 1440px;
   height: 495px;
 
-  margin-bottom: 704px;
+  margin: 0 auto 599px auto;
 
   background-color: #fffaed;
 }
 
 .header {
-  margin-top: 20px;
-  margin-left: 224px;
+  width: 100%;
+  max-width: 1440px;
+
+  padding-top: 27px;
 
   display: flex;
   align-items: center;
-
-  position: absolute;
-  z-index: 1;
+  justify-content: center;
+  gap: 4px;
 }
 
 .img {
   width: 128px;
   height: 128px;
-
-  margin-left: 226px;
 }
 
 .title {
-  margin-left: 24px;
-
   font-weight: 700;
-  font-size: 64px;
-  line-height: 76px;
+  font-size: 48px;
+  line-height: 57px;
 
   color: #febf22;
 }
 
 .content {
-  margin-top: 30px;
-  margin-left: 8px;
+  padding-top: 20px;
 
   font-weight: 500;
   font-size: 30px;

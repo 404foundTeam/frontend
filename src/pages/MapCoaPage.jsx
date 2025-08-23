@@ -1,7 +1,7 @@
+import { useState } from "react";
 import "../styles/map/MapCoaPage.css";
 import SelectHeader from "../components/SelectHeader";
-import { useState } from "react";
-import CoaBanner from "../components/MapBanner";
+import MapBanner from "../components/map/MapBanner";
 
 function MapCoaPage() {
   const [text, setText] = useState("");
@@ -10,7 +10,7 @@ function MapCoaPage() {
 
   return (
     <>
-      <CoaBanner />
+      <MapBanner />
       <div className="coa-container">
         <div className="goal">
           <SelectHeader text={"제휴맺는 목적이 무엇인가요?"} />
@@ -97,8 +97,8 @@ function MapCoaPage() {
             </div>
           </div>
         </div>
+        <button className="coa-button">제휴 요청하기</button>
       </div>
-      <button className="coa-button">제휴 요청하기</button>
     </>
   );
 }

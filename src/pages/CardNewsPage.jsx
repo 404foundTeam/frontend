@@ -1,12 +1,13 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { backgroundImg, generateText } from "../api/index.js";
 import "../styles/cardnews/CardNewsPage.css";
 import bannerImg from "../assets/cardnews/banner_img.png";
 import SelectHeader from "../components/SelectHeader";
-import { backgroundImg, generateText } from "../api/index.js";
 import useUuidStore from "../store/useUuidStore.js";
 import useCardStore from "../store/useCardStore.js";
 import useTextStore from "../store/useTextStore.js";
-import { useNavigate } from "react-router-dom";
+import SelectBox from "../components/cardnews/SelectBox.jsx";
 
 function CardNewsPage() {
   const navigate = useNavigate();
@@ -19,22 +20,20 @@ function CardNewsPage() {
   const [cardType, setCardType] = useState("");
   const [menuName, setMenuName] = useState("");
   const [userText, setUserText] = useState("");
-  const [generatedText, setGeneratedText] =
-    useState(`창가 쪽에서 안쪽으로 찍으면 자연광이 인물과 공간을 부드럽게
-            비춥니다. 역광보다는 측광·순광이 좋아요. 나무, 초록 식물, 따뜻한
-            조명이 있으면 사진 분위기가 한층 좋아질거에요. 가로사진은 3:2 비율,
-            세로사진은 4:5 비율이 SNS에서 가장 반응이 좋아요. 오전 10시~오후 3시
-            사이가 가장 자연광이 예쁘게 들어오는 시간이기 때문에 이 시간대에
-            사진을 촬영하는 것을 추천해요.`);
+  const [generatedText, setGeneratedText] = useState("");
   const [template, setTemplate] = useState("");
   const [ratio, setRatio] = useState("");
   const [theme, setTheme] = useState("");
 
   const getGenerateText = async () => {
+    console.log("text1");
     try {
-      const getText = await generateText({ cardType, userText });
-      setGeneratedText(getText.data);
-      setText({ generatedText: getText.data });
+      console.log(cardType);
+      console.log(userText);
+      const getText = await generateText({ type: cardType, userText });
+      console.log(getText);
+      setGeneratedText(getText.generatedText);
+      setText(getText.generatedText);
     } catch (error) {
       console.log("데이터 요청 실패", error);
       alert("텍스트 변환에 실패했습니다.");
@@ -75,43 +74,32 @@ function CardNewsPage() {
         <div className="cardnews-box cardnews-type">
           <SelectHeader text="어떤 SNS 카드 뉴스를 만들까요?" />
           <div className="select-boxs">
-            <div
-              className="select-box notice"
+            <SelectBox
+              value="notice"
+              selected={cardType === "NOTICE"}
               onClick={() => {
                 setCardType(cardType === "NOTICE" ? "" : "NOTICE");
               }}
-            >
-              <div
-                className={`box ${cardType === "NOTICE" ? "select" : ""}`}
-              ></div>
-              <p className="select-box-title">공지</p>
-            </div>
-            <div
-              className="select-box product_promo"
+              label="공지"
+            />
+            <SelectBox
+              value="product_promo"
+              selected={cardType === "PRODUCT_PROMO"}
               onClick={() => {
                 setCardType(
                   cardType === "PRODUCT_PROMO" ? "" : "PRODUCT_PROMO"
                 );
               }}
-            >
-              <div
-                className={`box ${
-                  cardType === "PRODUCT_PROMO" ? "select" : ""
-                }`}
-              ></div>
-              <p className="select-box-title">신제품 홍보</p>
-            </div>
-            <div
-              className="select-box store_intro"
+              label="신제품 홍보"
+            />
+            <SelectBox
+              value="store_intro"
+              selected={cardType === "STORE_INTRO"}
               onClick={() => {
                 setCardType(cardType === "STORE_INTRO" ? "" : "STORE_INTRO");
               }}
-            >
-              <div
-                className={`box ${cardType === "STORE_INTRO" ? "select" : ""}`}
-              ></div>
-              <p className="select-box-title">매장 소개</p>
-            </div>
+              label="매장 소개"
+            />
           </div>
         </div>
         {(cardType === "NOTICE" || cardType === "STORE_INTRO") && (
@@ -217,39 +205,30 @@ function CardNewsPage() {
         <div className="cardnews-box cardnews-ratio">
           <SelectHeader text="원하는 비율을 선택해주세요." />
           <div className="select-boxs">
-            <div
-              className="select-box normal"
+            <SelectBox
+              value="normal"
+              selected={ratio === "SQUARE_1_1"}
               onClick={() => {
                 setRatio(ratio === "SQUARE_1_1" ? "" : "SQUARE_1_1");
               }}
-            >
-              <div
-                className={`box ${ratio === "SQUARE_1_1" ? "select" : ""}`}
-              ></div>
-              <p className="select-box-title">1:1 비율</p>
-            </div>
-            <div
-              className="select-box hor"
+              label="1:1 비율"
+            />
+            <SelectBox
+              value="hor"
+              selected={ratio === "RATIO_2_3"}
               onClick={() => {
                 setRatio(ratio === "RATIO_2_3" ? "" : "RATIO_2_3");
               }}
-            >
-              <div
-                className={`box ${ratio === "RATIO_2_3" ? "select" : ""}`}
-              ></div>
-              <p className="select-box-title">4:5 비율(가로)</p>
-            </div>
-            <div
-              className="select-box ver"
+              label="4:5 비율(가로)"
+            />
+            <SelectBox
+              value="ver"
+              selected={ratio === "RATIO_3_2"}
               onClick={() => {
                 setRatio(ratio === "RATIO_3_2" ? "" : "RATIO_3_2");
               }}
-            >
-              <div
-                className={`box ${ratio === "RATIO_3_2" ? "select" : ""}`}
-              ></div>
-              <p className="select-box-title">4:5 비율(세로)</p>
-            </div>
+              label="4:5 비율(세로)"
+            />
           </div>
         </div>
         <div className="cardnews-box cardnews-theme">

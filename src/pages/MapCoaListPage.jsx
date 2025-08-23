@@ -1,5 +1,5 @@
 import styles from "../styles/map/MapCoaListPage.module.css";
-import CoaBanner from "../components/MapBanner";
+import MapBanner from "../components/map/MapBanner";
 
 function MapCoaListPage() {
   const myCoaList = [
@@ -42,7 +42,7 @@ function MapCoaListPage() {
 
   return (
     <>
-      <CoaBanner />
+      <MapBanner />
       <div className={styles.container}>
         <div>
           <h1>

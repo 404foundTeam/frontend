@@ -1,8 +1,7 @@
-import styles from "../styles/SearchListBox.module.css";
-// import "../styles/SearchListBox.css";
-import listIcon from "../assets/welcomeMap/marker_icon.png";
+import styles from "../../styles/welcome/SearchList.module.css";
+import listIcon from "../../assets/welcomeMap/marker_icon.png";
 
-function SearchListBox({ store, isSelected, onClick }) {
+function SearchList({ store, isSelected, onClick }) {
   if (!store) return null;
 
   return (
@@ -12,11 +11,11 @@ function SearchListBox({ store, isSelected, onClick }) {
     >
       <img src={listIcon} className={styles.icon} />
       <div className={styles.store}>
-        <h1 className={styles.name}>{store.name}</h1>
+        <h1 className={styles.name}>{store.placeName}</h1>
         <p className={styles.addr}>{store.roadAddress}</p>
       </div>
     </div>
   );
 }
 
-export default SearchListBox;
+export default SearchList;
