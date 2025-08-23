@@ -1,7 +1,7 @@
 import { create } from "zustand";
 
 const useUuidStore = create((set) => ({
-  storeUuid: "e284a976-5b2c-47c7-b115-d350e47539c8",
+  storeUuid: "85e105b5-eb2c-4b03-bb9d-25765e33f0d8",
   storeName: "어웨이커피",
   isNew: null,
   setUuid: ({ storeUuid, isNew, storeName }) =>
