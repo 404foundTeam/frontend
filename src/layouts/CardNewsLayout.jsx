@@ -4,7 +4,7 @@ import SideBar from "../components/SideBar";
 function CardNewsLayout() {
   return (
     <>
-      {/* <SideBar isCard={true} /> */}
+      <SideBar isCard={true} />
       <>
         <Outlet />
       </>
