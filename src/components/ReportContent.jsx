@@ -1,16 +1,16 @@
 // src/components/ReportContent.jsx
 
-import styles from '../styles/ReportContent.module.css';
-import TimePattern from './TimePattern';
-import DayPattern from './DayPattern';
-import TopMenus from './TopMenus';
-import TotalVisitors from './TotalVisitors';
-import illustration from '../assets/report/image.png';
-import SalesSummary from './SalesSummary'; 
-import ImprovementTips from './ImprovementTips'; 
-import { useState } from 'react'; // useState import
-import FileUploadModal from './FileUploadModal'; // 1. 모달 컴포넌트 import
-import Blur from './welcome/Blur'; // 블러 효과 컴포넌트 import
+import styles from "../styles/ReportContent.module.css";
+import TimePattern from "./TimePattern";
+import DayPattern from "./DayPattern";
+import TopMenus from "./TopMenus";
+import TotalVisitors from "./TotalVisitors";
+import illustration from "../assets/report/image.png";
+import SalesSummary from "./SalesSummary";
+import ImprovementTips from "./ImprovementTips";
+import { useState } from "react"; // useState import
+import FileUploadModal from "./FileUploadModal"; // 1. 모달 컴포넌트 import
+import Blur from "./welcome/Blur"; // 블러 효과 컴포넌트 import
 import useUuidStore from "../store/useUuidStore";
 
 function ReportContent() {
@@ -44,6 +44,7 @@ function ReportContent() {
               <TotalVisitors />
             </div>
             <div className={styles.actionButtons}>
+
               <button className={styles.updateButton} onClick={() => setIsModalOpen(true)}>
                 데이터 업데이트
               </button>
@@ -51,7 +52,6 @@ function ReportContent() {
             </div>
           </div>
         </div>
-        
         <div className={styles.summarySection}>
           <SalesSummary />
         </div>
