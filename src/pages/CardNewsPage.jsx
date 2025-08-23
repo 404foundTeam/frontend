@@ -41,6 +41,7 @@ function CardNewsPage() {
   };
 
   const postCardNews = async () => {
+    console.log(1);
     const cardData = {
       storeUuid,
       storeName,
@@ -51,7 +52,9 @@ function CardNewsPage() {
       ratio,
       theme,
     };
+    console.log(2);
     try {
+      console.log(3);
       const getCard = await backgroundImg(cardData);
       setCard(getCard.data);
     } catch (error) {

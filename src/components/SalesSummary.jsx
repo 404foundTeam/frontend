@@ -4,10 +4,12 @@ import { Line } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Filler } from 'chart.js';
 import styles from '../styles/SalesSummary.module.css';
 import swapIcon from '../assets/report/swap-icon.png'; // 교환 아이콘 이미지 경로
+import useUuidStore from "../store/useUuidStore";
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Filler);
 
 function SalesSummary() {
+  const storeName = useUuidStore((state) => state.storeName);
   // 임시 데이터
   const salesData = {
     monthlySales: "520만원",
@@ -57,7 +59,7 @@ function SalesSummary() {
     <div className={styles.contentWrapper}>
       {/* --- 왼쪽 컬럼 --- */}
       <div className={styles.leftColumn}>
-        <h2 className={styles.title}>어웨이 커피님의 매출</h2>
+        <h2 className={styles.title}>{storeName}님의 매출</h2>
         <ul className={styles.salesInfo}>
           <li>이번달 매출 현황: <strong>{salesData.monthlySales}</strong></li>
           <li>금일 결제건: <strong>{salesData.todayPayments}건</strong></li>
@@ -80,7 +82,7 @@ function SalesSummary() {
       <div className={styles.rightColumn}>
         <div className={styles.ratingCard}>
           <div className={styles.ratingHeader}>
-            <p>어웨이 커피 월별 평균 평점</p>
+            <p>{storeName} 월별 평균 평점</p>
             <span>4.7</span>
           </div>
           <div className={styles.chartContainer}>

@@ -15,8 +15,9 @@
 
 .mainTitle {
   font-size: 2.5rem;
-  font-weight: 800;
+  font-weight: 600;
   margin-bottom: 0.5rem;
+  color: #413738;
 }
 
 .subtitle {
@@ -97,7 +98,8 @@
   text-align: left;
   height: 120px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   align-items: flex-start;
 }
 
@@ -131,7 +133,6 @@
 /* 선택된 날짜 (현재 코드에서는 사용하지 않지만, 기본 스타일) */
 :global(.react-calendar__tile--active) {
   background: #fecf70;
-  color: white;
 }
 
 /* 다른 달의 날짜들 */
@@ -160,7 +161,7 @@
   background-color: #FFE5A7;
   color: #c79a00;
   border-radius: 4px;
-  padding: 4px 8px;
+  padding: 4px 4px;
   font-size: 0.8em;
   font-weight: 500;
   margin-top: 8px;
@@ -168,6 +169,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 100%;
+  width: 100%;
 }
 
 /* --- 모달 창 스타일 --- */
@@ -246,4 +248,20 @@
 }
 .closeButton:hover {
   background-color: #c7c7c7;
+}
+
+.holiday abbr {
+  color: #D9534F;
+}
+
+/* 2. 공휴일 이름 태그를 위한 스타일 */
+.holidayTag {
+  font-size: 0.7rem;
+  padding: 2px 2px;
+  background-color: transparent; /* 배경 없이 글자만 표시 */
+  color: #D9534F; /* 글자색도 빨간색으로 */
+  margin-top: 2px;
+  margin-left: 6px;
+  overflow: hidden;
+  font-weight: 500;
 }
