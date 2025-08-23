@@ -12,6 +12,8 @@
   width: 100%;
   max-width: 1440px;
 
+  padding-top: 27px;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -25,8 +27,8 @@
 
 .title {
   font-weight: 700;
-  font-size: 64px;
-  line-height: 76px;
+  font-size: 48px;
+  line-height: 57px;
 
   color: #febf22;
 }

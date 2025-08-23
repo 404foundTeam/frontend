@@ -75,8 +75,8 @@
 }
 
 .coa-map-container .coa-map-list {
-  width: 303px;
-  height: 545px;
+  width: 222px;
+  height: 500px;
 
   overflow: hidden;
   overflow-y: scroll;
@@ -85,43 +85,9 @@
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.coa-map-list .coa-map-list-box {
-  /* width: 269px; */
-  /* height: 45px; */
-
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 28px 18px 43px;
-  gap: 11px;
-
-  border: 2px solid #d9d9d9;
-}
-
-.coa-map-list .coa-map-list-box .store-name {
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 21px;
-  letter-spacing: -0.025em;
-
-  color: #6d3737;
-}
-
-.coa-map-list .coa-map-list-box .store-add {
-  width: 232px;
-  text-align: left;
-
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 14px;
-  letter-spacing: -0.025em;
-
-  color: #717171;
-}
-
 .coa-map-container .coa-map-box {
-  width: 860px;
-  height: 545px;
+  width: 833px;
+  height: 436px;
 
   background-color: #797979;
 }
@@ -130,6 +96,7 @@
   width: 100%;
 
   padding-top: 28px;
+  padding-left: 454px;
   padding-bottom: 199px;
 
   display: flex;
@@ -137,12 +104,12 @@
 }
 
 .go-my-coa-button {
-  width: 272px;
-  height: 51px;
+  width: 195px;
+  height: 44px;
 
   font-weight: 700;
-  font-size: 25px;
-  line-height: 30px;
+  font-size: 18px;
+  line-height: 21px;
   letter-spacing: -0.025em;
 
   color: #6d3737;

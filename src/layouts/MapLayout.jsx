@@ -4,7 +4,7 @@ import SideBar from "../components/SideBar";
 function MapLayout() {
   return (
     <>
-      {/* <SideBar isMap={true} /> */}
+      <SideBar isMap={true} />
       <>
         <Outlet />
       </>

@@ -1,4 +1,4 @@
-import styles from "../styles/TextBox.module.css";
+import styles from "../../styles/welcome/TextBox.module.css";
 
 function TextBox({ title, content }) {
   return (

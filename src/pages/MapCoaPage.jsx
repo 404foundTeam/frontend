@@ -1,7 +1,7 @@
+import { useState } from "react";
 import "../styles/map/MapCoaPage.css";
 import SelectHeader from "../components/SelectHeader";
-import { useState } from "react";
-import MapBanner from "../components/MapBanner";
+import MapBanner from "../components/map/MapBanner";
 
 function MapCoaPage() {
   const [text, setText] = useState("");
