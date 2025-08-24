@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styles from '../styles/MyPage.module.css';
-import MyScrap from '../components/MyScrap';
-import MyCalendar from '../components/MyCalendar';
+import MyScrap from '../components/my/MyScrap';
+import MyCalendar from '../components/my/MyCalendar';
 
 
 function MyPage() {

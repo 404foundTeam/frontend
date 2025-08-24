@@ -245,7 +245,7 @@ function CardNewsResultPage() {
             <button className={styles.back}>새로 만들기</button>
           </div>
           <p className={styles.chance}>
-            {/* 이번 달 무료 횟수 <span>{imgData1.remainingFreeCount}회</span> */}
+            이번 달 무료 횟수 <span>{imgData1.remainingFreeCount}회</span>
             남았어요.
           </p>
         </div>

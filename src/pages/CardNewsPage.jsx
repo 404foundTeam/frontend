@@ -3,11 +3,11 @@ import { Route, useNavigate } from "react-router-dom";
 import { backgroundImg, backgroundImg2, generateText } from "../api/index.js";
 import styles from "../styles/cardnews/CardNewsPage.module.css";
 import bannerImg from "../assets/cardnews/banner_img.png";
-import SelectHeader from "../components/cardnews/SelectHeader.jsx";
+import SelectHeader from "../components/SelectHeader.jsx";
 import useUuidStore from "../store/useUuidStore.js";
 import useCardStore from "../store/useCardStore.js";
 import useTextStore from "../store/useTextStore.js";
-import SelectBox from "../components/cardnews/SelectBox.jsx";
+import SelectBox from "../components/SelectBox.jsx";
 import Loading from "../components/Loading.jsx";
 
 function CardNewsPage() {
@@ -298,11 +298,11 @@ function CardNewsPage() {
           </div>
         </div>
       </div>
-      {/* {cardType && generatedText && template && ratio && theme && ( */}
-      <button className={styles.finButton} onClick={postCardNews}>
-        완료
-      </button>
-      {/* )} */}
+      {cardType && generatedText && template && ratio && theme && (
+        <button className={styles.finButton} onClick={postCardNews}>
+          완료
+        </button>
+      )}
     </div>
   );
 }

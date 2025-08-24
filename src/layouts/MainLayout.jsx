@@ -32,11 +32,11 @@ function MainLayout() {
         {/* --- 3. 여기에 새로운 카드뉴스 배너를 추가합니다 --- */}
         <div className={styles.cardNewsBanner}>
           <div className={styles.bannerContent}>
-            <p className={styles.cardNewsTitle}>
+            <div className={styles.cardNewsTitle}>
               스마트 리포트를 참고해서 더 많은 손님을 사로잡을
               <br />
               <h2>카드뉴스를 만들어 보세요.</h2>
-            </p>
+            </div>
             {/* Link 컴포넌트를 사용해 /cardnews 경로로 이동하는 버튼을 만듭니다. */}
             <Link to="/cardnews" className={styles.shortcutButton}>
               바로가기
