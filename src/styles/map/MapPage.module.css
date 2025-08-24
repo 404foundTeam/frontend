@@ -1,4 +1,4 @@
-.map-page-header {
+.header {
   width: 100%;
   max-width: 1440px;
   height: 495px;
@@ -13,7 +13,7 @@
   background-color: #fffaed;
 }
 
-.map-page-header .map-header-title {
+.header .title {
   margin-top: 48px;
 
   font-weight: 600;
@@ -24,7 +24,7 @@
   color: #413738;
 }
 
-.map-page-header .map-header-content {
+.header .content {
   padding-bottom: 32px;
 
   font-weight: 500;
@@ -35,7 +35,7 @@
   color: #797979;
 }
 
-.map-page-header .map-header-button-box {
+.header .buttonBox {
   margin-top: 9px;
   margin-right: 884px;
 
@@ -43,11 +43,7 @@
   gap: 11px;
 }
 
-.map-page-header .map-header-button-box .select {
-  background-color: #6d3737;
-}
-
-.map-page-header .map-header-button-box button {
+.header .buttonBox button {
   width: 71px;
   height: 35px;
 
@@ -63,7 +59,11 @@
   background-color: #acacac;
 }
 
-.coa-map-container {
+.header .buttonBox .select {
+  background-color: #6d3737;
+}
+
+.container {
   width: 100%;
 
   /* -148px */
@@ -74,7 +74,7 @@
   gap: 50px;
 }
 
-.coa-map-container .coa-map-list {
+.container .mapList {
   width: 222px;
   height: 500px;
 
@@ -85,14 +85,14 @@
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.coa-map-container .coa-map-box {
+.container .mapBox {
   width: 833px;
   height: 436px;
 
   background-color: #797979;
 }
 
-.go-my-coa {
+.goMyCoa {
   width: 100%;
 
   padding-top: 28px;
@@ -103,7 +103,7 @@
   justify-content: center;
 }
 
-.go-my-coa-button {
+.goMyCoaButton {
   width: 195px;
   height: 44px;
 

@@ -1,4 +1,4 @@
-.map-container {
+.container {
   width: 80%;
   max-width: 1000px;
   position: absolute;
@@ -19,26 +19,26 @@
 }
 
 /* 닫기 버튼 스타일 */
-.header-close-button {
+.closeButton {
   padding-top: 2%;
   padding-left: 90%;
 
   cursor: pointer;
 }
 
-.header-close-button .close-button-img {
+.closeButton .closeImg {
   width: 60px;
   height: 60px;
 }
 
-.map-container .map-header {
+.container .header {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 16px;
 }
 
-.map-header .header-title {
+.header .headerTitle {
   font-weight: 600;
   font-size: 40px;
   line-height: 60px;
@@ -47,7 +47,7 @@
   color: #413738;
 }
 
-.map-header .header-content {
+.header .headerContent {
   font-weight: 500;
   font-size: 20px;
   line-height: 24px;
@@ -56,7 +56,11 @@
   color: #797979;
 }
 
-.map-box {
+.searchBox {
+  margin-top: 48px;
+}
+
+.mapBox {
   width: 800px;
 
   margin-top: 64px;
@@ -68,11 +72,7 @@
 }
 
 /* 업장 검색 결과 리스트 */
-.search-box {
-  margin-top: 48px;
-}
-
-.search-list-title {
+.searchListTitle {
   height: 76px;
 
   display: flex;
@@ -90,13 +90,13 @@
   background-color: #febf22;
 }
 
-.list-title-ico {
+.searchTitleIco {
   width: 25px;
   height: 13px;
 }
 
 /* 업장 목록 */
-.search-list {
+.searchList {
   height: 452px;
   overflow: hidden;
   overflow-y: scroll;
@@ -105,7 +105,7 @@
 }
 
 /* 등록 버튼 */
-.map-button {
+.mapButton {
   width: 327px;
   height: 89px;
 
@@ -125,12 +125,12 @@
 }
 
 /* 선택 스타일 */
-.map-button.select {
+.mapButton.select {
   background-color: #6d3737;
   cursor: pointer;
 }
 
-.map-button.select:hover {
+.mapButton.select:hover {
   background-color: #8b4b4b;
 
   cursor: pointer;

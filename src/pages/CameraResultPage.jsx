@@ -1,4 +1,4 @@
-import "../styles/camera/CameraResultPage.css";
+import styles from "../styles/camera/CameraResultPage.module.css";
 import img from "../assets/ex1.png";
 import Loading from "../components/Loading";
 
@@ -16,14 +16,14 @@ function CameraResultPage() {
   return (
     <>
       {/* <Loading isCamera={true} /> */}
-      <div className="camera-result-container">
-        <img src={img} />
-        <div className="guide-box">
-          <h2>
+      <div className={styles.container}>
+        <img src={img} className={styles.guideImg} />
+        <div className={styles.guideBox}>
+          <h2 className={styles.guideTitle}>
             <span>AI</span>가 분석해준 촬영 가이드 결과입니다.
           </h2>
-          <div>{data.text}</div>
-          <p>
+          <div className={styles.guideText}>{data.text}</div>
+          <p className={styles.chance}>
             이번 달 무료 횟수 <span>{data.chance}회</span> 남았어요.
           </p>
         </div>

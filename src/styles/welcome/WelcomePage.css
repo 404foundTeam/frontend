@@ -73,11 +73,11 @@
 
 /* 벌 애니메이션 */
 .bee:nth-child(2) {
-  width: 273px;
-  height: 278px;
+  width: 213px;
+  height: 218px;
 
-  top: 210px;
-  right: 800px;
+  top: 264px;
+  right: 658px;
 
   animation: wave-animation1 5s linear infinite alternate;
 }
@@ -114,13 +114,13 @@
 }
 
 .bee:nth-child(3) {
-  width: 205px;
-  height: 211px;
+  width: 145px;
+  height: 151px;
 
   top: 434px;
-  right: 724px;
+  right: 558px;
 
-  animation: wave-animation2 7s linear infinite alternate;
+  animation: wave-animation2 4s linear infinite alternate;
 }
 
 @keyframes wave-animation2 {
@@ -155,10 +155,10 @@
 }
 
 .welcome-header-box .hive {
-  width: 855px;
-  height: 535px;
+  width: 700px;
+  height: 493px;
 
-  top: 61px;
+  top: 111px;
   right: 0;
   z-index: 1;
 

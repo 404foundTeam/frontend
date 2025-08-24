@@ -1,7 +1,8 @@
 import { useState } from "react";
-import "../styles/map/MapCoaPage.css";
+import styles from "../styles/map/MapCoaPage.module.css";
 import SelectHeader from "../components/SelectHeader";
 import MapBanner from "../components/map/MapBanner";
+import SelectBox from "../components/SelectBox";
 
 function MapCoaPage() {
   const [text, setText] = useState("");
@@ -11,44 +12,43 @@ function MapCoaPage() {
   return (
     <>
       <MapBanner />
-      <div className="coa-container">
+      <div className={styles.container}>
         <div className="goal">
           <SelectHeader text={"제휴맺는 목적이 무엇인가요?"} />
-          <div className="select-boxs">
-            <div
-              className="select-box inter"
+          <div className={styles.selectBoxs}>
+            <SelectBox
+              value="inter"
+              selected={goal === "inter"}
               onClick={() => {
                 setGoal(goal === "inter" ? "" : "inter");
               }}
-            >
-              <div className={`box ${goal === "inter" ? "select" : ""}`}></div>
-              <p className="select-box-title">매장간 상호 홍보</p>
-            </div>
-            <div
-              className="select-box fest"
+              label="매장간 상호 홍보"
+            />
+            <SelectBox
+              value="fest"
+              selected={goal === "fest"}
               onClick={() => {
                 setGoal(goal === "fest" ? "" : "fest");
               }}
-            >
-              <div className={`box ${goal === "fest" ? "select" : ""}`}></div>
-              <p className="select-box-title">지역행사 및 캠페인 협력</p>
-            </div>
-            <div
-              className="select-box part"
+              label="지역행사 및 캠페인 협력"
+            />
+            <SelectBox
+              value="part"
+              selected={goal === "part"}
               onClick={() => {
                 setGoal(goal === "part" ? "" : "part");
               }}
-            >
-              <div className={`box ${goal === "part" ? "select" : ""}`}></div>
-              <p className="select-box-title">공동 프로모션</p>
-            </div>
+              label="공동 프로모션"
+            />
           </div>
         </div>
-        <div className="content">
+        <div className={styles.content}>
           <SelectHeader text={"제휴 요청 상세 내용을 입력하세요."} />
-          <div className="content-text-box">
+          <div className={styles.contentTextBox}>
             <input
-              className={`content-text-input ${text ? "select" : ""}`}
+              className={`${styles.contentTextInput} ${
+                text ? styles.select : ""
+              }`}
               type="text"
               placeholder="텍스트를 입력하세요."
               value={text}
@@ -57,47 +57,44 @@ function MapCoaPage() {
               }}
             />
             <button
-              className={`text-button content-text-button ${
-                text ? "select" : ""
+              className={`${styles.textButton} ${styles.contentTextButton} ${
+                text ? styles.select : ""
               }`}
             >
               완료
             </button>
           </div>
         </div>
-        <div className="date">
+        <div className={styles.date}>
           <SelectHeader text={"제휴 희망 기간을 선택하세요."} />
-          <div className="select-boxs">
-            <div
-              className="select-box seven"
+          <div className={styles.selectBoxs}>
+            <SelectBox
+              value="seven"
+              selected={date === "seven"}
               onClick={() => {
                 setDate(date === "seven" ? "" : "seven");
               }}
-            >
-              <div className={`box ${date === "seven" ? "select" : ""}`}></div>
-              <p className="select-box-title">7일</p>
-            </div>
-            <div
-              className="select-box thrid"
+              label="7일"
+            />
+            <SelectBox
+              value="thrid"
+              selected={date === "thrid"}
               onClick={() => {
-                setDate(date === "third" ? "" : "third");
+                setDate(date === "thrid" ? "" : "thrid");
               }}
-            >
-              <div className={`box ${date === "third" ? "select" : ""}`}></div>
-              <p className="select-box-title">3개월</p>
-            </div>
-            <div
-              className="select-box six"
+              label="3개월"
+            />
+            <SelectBox
+              value="six"
+              selected={date === "six"}
               onClick={() => {
                 setDate(date === "six" ? "" : "six");
               }}
-            >
-              <div className={`box ${date === "six" ? "select" : ""}`}></div>
-              <p className="select-box-title">6개월</p>
-            </div>
+              label="6개월"
+            />
           </div>
         </div>
-        <button className="coa-button">제휴 요청하기</button>
+        <button className={styles.goCoaButton}>제휴 요청하기</button>
       </div>
     </>
   );
