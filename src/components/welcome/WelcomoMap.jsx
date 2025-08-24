@@ -144,6 +144,7 @@ function WelcomeMap({ focusRef, onClick }) {
       const result = await matchStore(selectStore);
       console.log("응답 데이터 : ", result);
       setUuid(result);
+      alert("업장 등록 완료!");
       console.log("업장 uuid 등록 완료");
       console.log("페이지 이동");
       navigate("/main");

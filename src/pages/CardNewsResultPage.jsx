@@ -221,6 +221,7 @@ function CardNewsResultPage() {
       const postImg = await postCard({ storeUuid, finalUrl: fileUrl });
       console.log("성 공");
       console.log(postImg);
+      alert("이미지 업로드 성공!");
     } catch (error) {
       console.log(error);
     }
