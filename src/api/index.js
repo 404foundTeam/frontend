@@ -109,3 +109,16 @@ export const postCard = async ({ storeUuid, finalUrl }) => {
   const res = await api.post("/sns-cards/final", { storeUuid, finalUrl });
   return res.data;
 };
+// /api/v1/photo/guide-file
+
+export const guideFile = async (file) => {
+  const formData = new FormData();
+  formData.append("file", file);
+
+  const res = await api.post("/photo/guide-file", formData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
+  return res.data;
+};

@@ -48,13 +48,6 @@ function WelcomePage() {
   }, [showMap]);
 
   useEffect(() => {
-    // 새로고침 시 최상단 이동
-    window.onbeforeunload = function pushRefresh() {
-      window.scrollTo(0, 0);
-    };
-  }, []);
-
-  useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -90,6 +83,9 @@ function WelcomePage() {
             <p className="header-text">
               어렵고 복잡한 마케팅과 운영전략을 한번에
             </p>
+            <button onClick={clickShowMap} className="text-box-button">
+              업장 등록하기
+            </button>
           </div>
           <div className="header-img bee"></div>
           <div className="header-img bee"></div>

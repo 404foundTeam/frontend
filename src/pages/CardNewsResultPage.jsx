@@ -1,12 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "../styles/cardnews/CardNewsResultPage.module.css";
-
-import Loading from "../components/Loading";
 import useTextStore from "../store/useTextStore";
 import useCardStore from "../store/useCardStore";
 import useUuidStore from "../store/useUuidStore";
 import { postCard, postPresignedUrl } from "../api";
 import axios from "axios";
+import Ex1 from "../assets/test/image08.png";
 
 function drawWrappedText(ctx, text, x, y, maxWidth, lineHeight) {
   // 왼쪽 정렬
@@ -53,37 +52,37 @@ function drawRoundedRect(ctx, x, y, width, height, radius, fillStyle) {
 
 const boxAreas = {
   SQUARE_1_1: {
-    T1_TEXT_ONLY: { x: 240, y: 260, w: 550, h: 400 },
-    T2_TEXT_BOTTOM: { x: 140, y: 710, w: 800, h: 300 },
-    T3_TEXT_RIGHT: { x: 585, y: 110, w: 400, h: 500 },
+    T1_TEXT_ONLY: { x: 230, y: 260, w: 570, h: 450 },
+    T2_TEXT_BOTTOM: { x: 120, y: 710, w: 820, h: 300 },
+    T3_TEXT_RIGHT: { x: 555, y: 110, w: 430, h: 500 },
   },
   RATIO_2_3: {
-    T1_TEXT_ONLY: { x: 220, y: 380, w: 650, h: 400 },
-    T2_TEXT_BOTTOM: { x: 190, y: 940, w: 650, h: 350 },
-    T3_TEXT_RIGHT: { x: 560, y: 220, w: 450, h: 400 },
+    T1_TEXT_ONLY: { x: 210, y: 380, w: 670, h: 400 },
+    T2_TEXT_BOTTOM: { x: 180, y: 940, w: 650, h: 400 },
+    T3_TEXT_RIGHT: { x: 550, y: 220, w: 450, h: 500 },
   },
   RATIO_3_2: {
-    T1_TEXT_ONLY: { x: 250, y: 220, w: 830, h: 400 },
-    T2_TEXT_BOTTOM: { x: 320, y: 750, w: 700, h: 300 },
-    T3_TEXT_RIGHT: { x: 810, y: 150, w: 450, h: 450 },
+    T1_TEXT_ONLY: { x: 250, y: 220, w: 860, h: 420 },
+    T2_TEXT_BOTTOM: { x: 290, y: 720, w: 720, h: 350 },
+    T3_TEXT_RIGHT: { x: 800, y: 150, w: 450, h: 500 },
   },
 };
 
 const testArea = {
   SQUARE_1_1: {
     T1_TEXT_ONLY: { x: 280, y: [360, 530], w: 550 },
-    T2_TEXT_BOTTOM: { x: 140, y: [810, 890], w: 800 },
-    T3_TEXT_RIGHT: { x: 585, y: [200, 400], w: 350 },
+    T2_TEXT_BOTTOM: { x: 160, y: [790, 910], w: 800 },
+    T3_TEXT_RIGHT: { x: 590, y: [200, 400], w: 350 },
   },
   RATIO_2_3: {
-    T1_TEXT_ONLY: { x: 220, y: [480, 630], w: 600 },
-    T2_TEXT_BOTTOM: { x: 190, y: [1040, 1140], w: 650 },
-    T3_TEXT_RIGHT: { x: 560, y: [320, 480], w: 450 },
+    T1_TEXT_ONLY: { x: 240, y: [470, 640], w: 600 },
+    T2_TEXT_BOTTOM: { x: 220, y: [1030, 1210], w: 650 },
+    T3_TEXT_RIGHT: { x: 580, y: [320, 480], w: 450 },
   },
   RATIO_3_2: {
-    T1_TEXT_ONLY: { x: 250, y: [320, 480], w: 830 },
-    T2_TEXT_BOTTOM: { x: 320, y: [850, 940], w: 600 },
-    T3_TEXT_RIGHT: { x: 810, y: [250, 130], w: 400 },
+    T1_TEXT_ONLY: { x: 280, y: [300, 490], w: 830 },
+    T2_TEXT_BOTTOM: { x: 320, y: [820, 960], w: 600 },
+    T3_TEXT_RIGHT: { x: 830, y: [250, 480], w: 420 },
   },
 };
 
@@ -95,7 +94,7 @@ function CardNewsResultPage() {
   const imgData1 = useCardStore((state) => state);
   console.log("이미지 스토어 데이터 확인 :", imgData1);
   const generatedText = useTextStore((state) => state.generatedText);
-  console.log(`텍스트 스토어 데이터 확인 : ${generatedText}`);
+  console.log("텍스트 스토어 데이터 확인 :", generatedText);
 
   // 이미지 박스 크기 스타일
   const [box, setBox] = useState("");
@@ -106,6 +105,13 @@ function CardNewsResultPage() {
 
   useEffect(() => {
     console.log("이미지 데이터 가져오기");
+    // const imgData = {
+    //   url: Ex1,
+    //   text: "추석 연휴에도 정상 영업합니다.\n 가족과 함께 특별한 시간을 보내세요!",
+    //   ratio: "RATIO_3_2", // SQUARE_1_1, RATIO_2_3, RATIO_3_2
+    //   template: "T3_TEXT_RIGHT", //  T1_TEXT_ONLY, T2_TEXT_BOTTOM, T3_TEXT_RIGHT
+    //   // remainingFreeCount: imgData1.remainingFreeCount,
+    // };
     const imgData = {
       url: imgData1.url,
       text: generatedText,
@@ -218,8 +224,6 @@ function CardNewsResultPage() {
     } catch (error) {
       console.log(error);
     }
-
-    console.log("이미지 저장하기 끄ㅡㅡㅡㅡㅡㅡ읕");
   };
 
   return (
@@ -241,7 +245,7 @@ function CardNewsResultPage() {
             <button className={styles.back}>새로 만들기</button>
           </div>
           <p className={styles.chance}>
-            이번 달 무료 횟수 <span>{imgData1.remainingFreeCount}회</span>{" "}
+            {/* 이번 달 무료 횟수 <span>{imgData1.remainingFreeCount}회</span> */}
             남았어요.
           </p>
         </div>

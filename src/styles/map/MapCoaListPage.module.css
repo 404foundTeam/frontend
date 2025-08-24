@@ -55,7 +55,7 @@
   border-radius: 10px;
 }
 
-.text .info .name {
+.name {
   font-weight: 600;
   font-size: 24px;
   line-height: 29px;
@@ -64,7 +64,7 @@
   color: #febf22;
 }
 
-.text .info .add {
+.add {
   font-weight: 500;
   font-size: 18px;
   line-height: 21px;

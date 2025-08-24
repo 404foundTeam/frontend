@@ -3,45 +3,52 @@ import { Route, useNavigate } from "react-router-dom";
 import { backgroundImg, backgroundImg2, generateText } from "../api/index.js";
 import styles from "../styles/cardnews/CardNewsPage.module.css";
 import bannerImg from "../assets/cardnews/banner_img.png";
-import SelectHeader from "../components/SelectHeader";
+import SelectHeader from "../components/cardnews/SelectHeader.jsx";
 import useUuidStore from "../store/useUuidStore.js";
 import useCardStore from "../store/useCardStore.js";
 import useTextStore from "../store/useTextStore.js";
-import SelectBox from "../components/SelectBox.jsx";
-// import Loading from "../components/Loading.jsx";
+import SelectBox from "../components/cardnews/SelectBox.jsx";
+import Loading from "../components/Loading.jsx";
 
 function CardNewsPage() {
   const navigate = useNavigate();
 
+  const storeUuid = useUuidStore((state) => state.storeUuid);
+  const storeName = useUuidStore((state) => state.storeName);
+
+  const generatedTextStore = useTextStore((state) => state.generatedText);
+
   const setText = useTextStore((state) => state.setText);
   const setCard = useCardStore((state) => state.setCard);
 
-  const storeUuid = useUuidStore((state) => state.storeUuid);
-  const storeName = useUuidStore((state) => state.storeName);
   const [cardType, setCardType] = useState("");
   const [menuName, setMenuName] = useState("");
   const [userText, setUserText] = useState("");
-  const [generatedText, setGeneratedText] = useState("dsada");
+  const [generatedText, setGeneratedText] = useState("");
   const [template, setTemplate] = useState("");
   const [ratio, setRatio] = useState("");
   const [theme, setTheme] = useState("");
 
+  const [loading, setLoading] = useState(false);
+
   const getGenerateText = async () => {
     console.log("텍스트 변환 시작");
     try {
-      console("요청 데이터들 : ", cardType, userText);
+      console.log("요청 데이터들 : ", cardType, userText);
       const getText = await generateText({ type: cardType, userText });
       console.log("응답 : ", getText);
       setGeneratedText(getText.generatedText);
       console.log("변환 텍스트 저장 완료");
-      setText(getText.generatedText);
+      console.log(getText.generatedText);
+      // setText(getText.generatedText);
+      setText({ generatedText: getText.generatedText });
+      console.log();
       console.log("변환 텍스트 전역 저장 완료");
+      console.log(generatedTextStore);
     } catch (error) {
       console.log("데이터 요청 실패", error);
       alert("텍스트 변환에 실패했습니다.");
     }
-
-    console.log("텍스트 변환 끄읕");
   };
 
   const postCardNews = async () => {
@@ -60,9 +67,10 @@ function CardNewsPage() {
     console.log("요청 데이터 : ", cardData);
 
     try {
+      setLoading(true);
       console.log("trying...");
-      // const getCard = await backgroundImg(cardData);
-      const getCard = await backgroundImg2(cardData);
+      const getCard = await backgroundImg(cardData);
+      // const getCard = await backgroundImg2(cardData);
       console.log("응답 데이터 : ", getCard);
       console.log("이미지 url 확인 : ", getCard.url);
 
@@ -71,10 +79,12 @@ function CardNewsPage() {
       navigate("/cardnews/result");
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
-
-    console.log("이미지 받아오기 끝");
   };
+
+  if (loading) return <Loading isCamera={false} />;
 
   return (
     <div className={styles.container}>
