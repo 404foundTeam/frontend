@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import Calendar from "react-calendar";
 import axios from 'axios';
-import styles from "../styles/MyCalendar.module.css";
-import useUuidStore from "../store/useUuidStore";
+import styles from "../../styles/MyCalendar.module.css";
+import useUuidStore from "../../store/useUuidStore";
 
 const API_BASE_URL = 'http://13.209.239.240';
 
