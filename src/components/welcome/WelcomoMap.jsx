@@ -68,6 +68,7 @@ function WelcomeMap({ focusRef, onClick }) {
       marker.setMap(mapRef.current);
 
       window.kakao.maps.event.addListener(marker, "click", function () {
+        console.log(marker);
         // 이전 선택 마커가 있으면 원래 이미지로 복원
         if (selectedMarker && selectedMarker !== marker) {
           selectedMarker.setImage(markerImage);

@@ -5,7 +5,6 @@ const useUuidStore = create((set) => ({
   storeName: null,
   roadAddress: null,
   isNew: null,
-
   setUuid: ({ storeUuid, storeName, roadAddress, isNew }) =>
     set({ storeUuid, storeName, roadAddress, isNew }),
 }));
