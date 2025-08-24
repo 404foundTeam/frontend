@@ -178,6 +178,7 @@ function CardNewsResultPage() {
 
       console.log("blob 파일 시작");
       const data = canvas.toDataURL("image/png");
+      console.log(data);
       resultImgRef.current.src = data;
       const blobData = await (await fetch(data)).blob();
       console.log("blob 파일 완료");

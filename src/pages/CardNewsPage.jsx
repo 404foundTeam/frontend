@@ -61,6 +61,7 @@ function CardNewsPage() {
 
     try {
       console.log("trying...");
+      // const getCard = await backgroundImg(cardData);
       const getCard = await backgroundImg2(cardData);
       console.log("응답 데이터 : ", getCard);
       console.log("이미지 url 확인 : ", getCard.url);
