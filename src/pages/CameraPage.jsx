@@ -2,30 +2,36 @@ import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "../styles/camera/CameraPage.module.css";
 import dragImg from "../assets/camera/drag_img.png";
+import { guideFile } from "../api";
 
 function CameraPage() {
   const navigate = useNavigate();
 
   const imgInput = useRef();
   const [preview, setPreview] = useState(null);
+  const [data, setData] = useState(null);
 
   const handleFile = (file) => {
     console.log("파일", file);
-    console.log();
     if (!file) return;
+
+    setData(file);
     const render = new FileReader();
     render.onload = (e) => {
       console.log("이미지", e.target.result);
       setPreview(e.target.result);
-
-      const formData = new FormData();
-      formData.append("image", file);
     };
     render.readAsDataURL(file);
   };
 
-  const goToResult = () => {
-    navigate("/camera/result");
+  const goToResult = async () => {
+    try {
+      const res = await guideFile(data);
+      console.log("성공", res);
+    } catch (error) {
+      console.log(error);
+    }
+    // navigate("/camera/result");
   };
 
   return (

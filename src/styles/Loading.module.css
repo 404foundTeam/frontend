@@ -1,38 +1,41 @@
 .container {
-  position: relative;
-
-  font-style: normal;
+  margin-bottom: 399px;
 }
 
 .box {
-  width: 1920px;
+  width: 100%;
+  max-width: 1440px;
   height: 635px;
+  position: absolute;
+  z-index: -1;
+
+  margin: 0 auto;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   background-color: #fffaed;
 }
 
 .loadingBox {
-  position: absolute;
   top: 139px;
   left: 575px;
 
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 121px;
-}
-
-.loadingBox.cardnews {
-  left: 620px;
+  gap: 80px;
 }
 
 .loadingImg {
-  width: 423px;
-  height: 423px;
+  width: 422px;
+  height: 422px;
 }
 
 .textBox {
   text-align: center;
+  padding-top: 126px;
 }
 
 .textBox p {

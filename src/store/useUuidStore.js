@@ -1,11 +1,13 @@
 import { create } from "zustand";
 
 const useUuidStore = create((set) => ({
-  storeUuid: "463fdc6a-8fea-46ad-ab4e-91c6e00c3c45",
-  storeName: "어웨이커피",
+  storeUuid: null,
+  storeName: null,
+  roadAddress: null,
   isNew: null,
-  setUuid: ({ storeUuid, isNew, storeName }) =>
-    set({ storeUuid, isNew, storeName }),
+
+  setUuid: ({ storeUuid, storeName, roadAddress, isNew }) =>
+    set({ storeUuid, storeName, roadAddress, isNew }),
 }));
 
 export default useUuidStore;

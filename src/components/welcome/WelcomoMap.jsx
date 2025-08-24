@@ -171,7 +171,6 @@ function WelcomeMap({ focusRef, onClick }) {
         console.log("요청 에러", error);
         alert("데이터 요청에 실패했습니다.");
       }
-      console.log("끄으으읕..");
     });
   };
 
@@ -192,8 +191,6 @@ function WelcomeMap({ focusRef, onClick }) {
       console.log("업장 등록 실패", error);
       alert("업장 등록에 실패했습니다.");
     }
-
-    console.log("등록 성~공~");
   };
 
   const onChange = (e) => {
