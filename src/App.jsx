@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useEffect } from "react";
 import "./App.css";
 import ScrollToTop from "./utils/ScrollToTop";
+import WelcomeLayout from "./layouts/WelcomeLayout";
 import Layout from "./layouts/Layout";
 import MyLayout from "./layouts/MyLayout";
 import CardNewsLayout from "./layouts/CardNewsLayout";
@@ -36,9 +37,10 @@ function App() {
       <BrowserRouter>
         <ScrollToTop />
         <Routes>
-          {/* 웰컴, 메인, 마이, 홍보, 카드 */}
-          <Route path="/" element={<Layout />}>
+          <Route path="/" element={<WelcomeLayout />}>
             <Route index element={<WelcomePage />} />
+          </Route>
+          <Route path="/" element={<Layout />}>
             <Route path="main" element={<MainLayout />}>
               <Route index element={<MainPage />} />
             </Route>

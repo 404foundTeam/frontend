@@ -48,13 +48,6 @@ function WelcomePage() {
   }, [showMap]);
 
   useEffect(() => {
-    // 새로고침 시 최상단 이동
-    window.onbeforeunload = function pushRefresh() {
-      window.scrollTo(0, 0);
-    };
-  }, []);
-
-  useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -90,6 +83,9 @@ function WelcomePage() {
             <p className="header-text">
               어렵고 복잡한 마케팅과 운영전략을 한번에
             </p>
+            <button onClick={clickShowMap} className="text-box-button">
+              업장 등록하기
+            </button>
           </div>
           <div className="header-img bee"></div>
           <div className="header-img bee"></div>
@@ -136,7 +132,7 @@ function WelcomePage() {
             <p className="mini-title">업장 홍보</p>
             <h1 className="card-title">AI 마케팅</h1>
             <p className="card-content">
-              마케팅 방식을 잘 모르는 사람을 위해서
+              마케팅 방식을 잘 모르는 사장님을 위해서
               <br />
               AI가 분석한 데이터를 바탕으로 마케팅 방안을 알려줘요.
             </p>

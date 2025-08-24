@@ -2,8 +2,8 @@
   width: 100%;
   max-width: 1440px;
   height: 495px;
-
-  margin: 0 auto 599px auto;
+  position: absolute;
+  z-index: -1;
 
   background-color: #fffaed;
 }
