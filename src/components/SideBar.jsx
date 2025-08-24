@@ -20,10 +20,12 @@ function SideBar({
 }) {
   return (
     <div className={styles.container}>
-      <div className={`${styles.box} ${isMain ? styles.select : ""}`}>
-        <img src={isMain ? mainSelect : main} className={styles.main} />
-        <p className={styles.text}>메인페이지</p>
-      </div>
+      <NavLink to="/main">
+        <div className={`${styles.box} ${isMain ? styles.select : ""}`}>
+          <img src={isMain ? mainSelect : main} className={styles.main} />
+          <p className={styles.text}>메인페이지</p>
+        </div>
+      </NavLink>
       <NavLink to="/camera">
         <div className={`${styles.box} ${isCamera ? styles.select : ""}`}>
           <img

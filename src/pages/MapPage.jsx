@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import "../styles/map/MapPage.css";
+import styles from "../styles/map/MapPage.module.css";
 import MapSearch from "../components/map/MapSearch";
 import CoaMapList from "../components/map/CoaMapList";
 
@@ -49,25 +49,23 @@ function MapPage() {
 
   return (
     <>
-      <div className="map-page-header">
-        <h2 className="map-header-title">업장 찾기</h2>
-        <p className="map-header-content">
-          업장을 검색해서 제휴를 요청해보세요.
-        </p>
+      <div className={styles.header}>
+        <h2 className={styles.title}>업장 찾기</h2>
+        <p className={styles.content}>업장을 검색해서 제휴를 요청해보세요.</p>
         <MapSearch placeholder="업장을 입력해주세요." />
-        <div className="map-header-button-box">
-          <button className="select">유사 업종</button>
+        <div className={styles.buttonBox}>
+          <button className={styles.select}>유사 업종</button>
           <button>편의점</button>
           <button>음식점</button>
         </div>
       </div>
-      <div className="coa-map-container">
-        <div className="coa-map-list">
+      <div className={styles.container}>
+        <div className={styles.mapList}>
           {stores.map((store) => (
             <CoaMapList name={store.name} addr={store.addr} />
           ))}
         </div>
-        <div className="coa-map-box">
+        <div className={styles.mapBox}>
           <div
             className="map"
             ref={container}
@@ -75,8 +73,8 @@ function MapPage() {
           ></div>
         </div>
       </div>
-      <div className="go-my-coa">
-        <button className="go-my-coa-button">나의 제휴 보러가기</button>
+      <div className={styles.goMyCoa}>
+        <button className={styles.goMyCoaButton}>나의 제휴 보러가기</button>
       </div>
     </>
   );

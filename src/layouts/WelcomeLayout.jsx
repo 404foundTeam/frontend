@@ -5,7 +5,7 @@ import Footer from "../components/Footer";
 function Layout() {
   return (
     <>
-      <Header isWelcome={false} />
+      <Header isWelcome={true} />
       <main>
         <Outlet />
       </main>

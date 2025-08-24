@@ -10,10 +10,16 @@ function CameraPage() {
   const [preview, setPreview] = useState(null);
 
   const handleFile = (file) => {
+    console.log("파일", file);
+    console.log();
     if (!file) return;
     const render = new FileReader();
     render.onload = (e) => {
+      console.log("이미지", e.target.result);
       setPreview(e.target.result);
+
+      const formData = new FormData();
+      formData.append("image", file);
     };
     render.readAsDataURL(file);
   };

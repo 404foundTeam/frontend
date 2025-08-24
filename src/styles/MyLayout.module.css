@@ -4,19 +4,21 @@
 }
 
 .banner {
+  max-width: 1920px;
   margin-left: 200px;
   padding: 20px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  gap: 970px;
-
+  gap: 50%;
 }
-
+.userInfo {
+  white-space: nowrap; /* 줄바꿈을 방지하는 핵심 속성 */
+}
 .userName {
   color: #413738;
   font-weight: bold;
-  font-size: 40px;
+  font-size: 35px;
 }
 
 .userAddress {
@@ -26,6 +28,7 @@
 }
 
 .reregisterButton {
+  white-space: nowrap; 
   background-color: #6D3737;
   color: white;
   padding: 12px 25px; 

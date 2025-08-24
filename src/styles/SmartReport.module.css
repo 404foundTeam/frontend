@@ -9,14 +9,14 @@
   display: flex;
   gap: 1rem;
   border-bottom: 1px solid #EAE1CF;
-  margin-left: 8%;
+  margin-left: 10%;
 }
 
 .tabButton {
   padding: 15px 10px;
   border: none;
   background-color: transparent;
-  font-size: 30px;
+  font-size: 25px;
   font-weight: 600;
   color: #ACACAC;
   cursor: pointer;

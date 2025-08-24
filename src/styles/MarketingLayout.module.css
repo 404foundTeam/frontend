@@ -1,5 +1,7 @@
 /* src/styles/MarketingLayout.module.css */
 
+/* src/styles/MarketingLayout.module.css */
+
 .layoutContainer {
   display: flex;
 }
@@ -11,28 +13,30 @@
 
 .banner {
   background-color: #FFE5A7; /* 이미지와 유사한 배경색 */
-  border-radius: 20px;
-  padding: 150px;
+  border-radius: 10px;
+  padding: 140px;
   margin-bottom: 2rem;
   position: relative; /* 일러스트 위치 조정을 위한 기준 */
   width: 100vw;   /* 뷰포트 전체 너비 */
   margin-left: calc(-50vw + 50%); /* 부모 컨테이너 패딩/마진을 무시하고 화면 전체에 맞춤 */
-  border-bottom-left-radius: 500px; 
+  border-bottom-left-radius: 500px;
 }
+
 .bannerContentWrapper {
     display: flex;
   align-items: center;
-  justify-content: flex-start;
-  gap: 300px; /* 100px 값을 조절해 간격을 맞추세요. */
+  justify-content: center; 
+  gap: 100px; /* 100px 값을 조절해 간격을 맞추세요. */
 }
+
 .bannerInfo {
   position: relative;
-  margin-left: 10%;
+  /* margin-left: 10%; */ /* 🗑️ [제거] 중앙 정렬을 위해 불필요한 margin 삭제 */
   transform: translateY(-180px); /* Y축으로 -20px 만큼 위로 이동합니다. */
 }
 
 .bannerTitle {
-  font-size: 45px;
+  font-size: 35px;
   font-weight: bold;
   color: #413738;
   line-height: 2;
@@ -46,21 +50,21 @@
 
 .illustration {
   position: absolute;
-  width: 700px; /* 일러스트 크기 조절 */
-  left: -130px;
-  bottom: -600px; /* 아래로 내려서 겹치게 배치 */
+  width: 500px; /* 일러스트 크기 조절 */
+  left: -130px; /*  전체 콘텐츠가 중앙 정렬되었으니, 이 값은 화면을 보며 조절해야 할 수 있습니다. */
+  bottom: -480px; /* 아래로 내려서 겹치게 배치 */
   transform: rotate(-10deg)
 }
 
 .buttonGrid {
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* 2x2 그리드 */
-  gap: 20px;
+  gap: 15px;
   position: relative;
 }
 
 .imageButton {
-  width: 200px; /* 버튼 이미지 크기 조절 */
+  width: 130px; 
   height: auto;
   transition: transform 0.2s ease-in-out;
 }
@@ -73,32 +77,28 @@
 .partnershipBanner {
   display: flex;
   align-items: center;
+  justify-content: center; 
   gap: 2rem;
-  background-color: #E2D7D7; /* 이미지와 유사한 배경색 */
+  background-color: #E2D7D7;
   padding: 10px;
-  margin-left: 20%;
-  width: 100vw;   /* 뷰포트 전체 너비 */
-  margin-left: calc(-50vw + 50%); /* 부모 컨테이너 패딩/마진을 무시하고 화면 전체에 맞춤 */
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
 }
 
 .bannerIllustrationContainer {
-  flex: 1;
-  position: relative; 
-  margin-left: 300px;
-  bottom: -57px; /* 아래로 내려서 겹치게 배치 */ 
-
+  position: relative;
+  bottom: -43px;
 }
 
 .bannerIllustration {
-    width: 600px;
+    width: 400px;
 }
 
 .bannerListContainer {
-  flex: 1.5; /* 오른쪽 리스트 영역이 조금 더 넓도록 설정 */
 }
 
 .listTitle {
-  font-size: 25px;
+  font-size: 20px;
   font-weight: 600;
   color: #6D3737;
   margin: 0 0 20px 0;
@@ -107,7 +107,7 @@
 .partnerList {
   display: flex;
   flex-direction: column;
-  gap: 15px; /* 카드 사이의 간격 */
+  gap: 10px; /* 카드 사이의 간격 */
 }
 
 .partnerCard {
@@ -115,7 +115,7 @@
   justify-content: space-between;
   align-items: center;
   background-color: white;
-  max-width: 800px; /* 550px 값을 조절해 원하는 길이로 만드세요. */
+  max-width: 500px;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
@@ -126,16 +126,17 @@
 }
 
 .partnerName {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
-  color: #FEBF22; /* 금색 계열 */
+  color: #FEBF22;
   margin: 0 0 5px 0;
 }
 
 .partnerAddress {
-  font-size: 15px;
+  font-size: 13px;
   color: #797979;
   margin: 0;
+  max-width: 350px;
 }
 
 .partnerButtons {

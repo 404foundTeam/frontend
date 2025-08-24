@@ -36,7 +36,6 @@ function App() {
       <BrowserRouter>
         <ScrollToTop />
         <Routes>
-          {/* 웰컴, 메인, 마이, 홍보, 카드 */}
           <Route path="/" element={<Layout />}>
             <Route index element={<WelcomePage />} />
             <Route path="main" element={<MainLayout />}>

@@ -1,65 +1,95 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 import styles from '../styles/MyScrap.module.css';
-import myImg01 from '../assets/mypage/image copy.png';
-import myImg02 from '../assets/mypage/image copy 1.png';
-import myImg03 from '../assets/mypage/image copy 2.png';
-import myImg04 from '../assets/mypage/image copy 3.png';
-import myImg05 from '../assets/mypage/image copy 4.png';
-import myImg06 from '../assets/mypage/image copy 5.png';
-import myImg07 from '../assets/mypage/image copy 4.png';
-import myImg08 from '../assets/mypage/image copy 5.png';
-
-
-// 실제로는 API로 받아올 데이터입니다.
-const dummyData = [
-  { id: 1, title: '공지', img: myImg01 },
-  { id: 2, title: '홍보', img: myImg02 },
-  { id: 3, title: '공지', img: myImg03 },
-  { id: 4, title: '홍보', img: myImg04 },
-  { id: 5, title: '신메뉴소개', img: myImg05 },
-  { id: 6, title: '공지', img: myImg06 },
-  { id: 7, title: '테스트 추가 데이터', img: myImg07 },
-  { id: 8, title: '테스트 추가 데이터', img: myImg08 },
-];
+import useUuidStore from "../store/useUuidStore";
 
 function MyScrap() {
+  const [cards, setCards] = useState([]);
+  const [totalItems, setTotalItems] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+  
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
 
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = dummyData.slice(indexOfFirstItem, indexOfLastItem);
+  const storeUuid = useUuidStore((state) => state.storeUuid);
 
-  const totalPages = Math.ceil(dummyData.length / itemsPerPage);
+  useEffect(() => {
+    if (!storeUuid) {
+      // storeUuid가 없을 때 사용자에게 안내 메시지를 보여주는 것도 좋은 방법입니다.
+      // 예: setCards([]); setTotalItems(0); setError("업장 정보가 없습니다.");
+      return;
+    }
+
+    const fetchCards = async () => {
+      setIsLoading(true);
+      setError(null);
+      try {
+        const response = await axios.get('http://13.209.239.240/api/v1/sns-cards/final', {
+          params: {
+            storeUuid: storeUuid,
+            page: currentPage - 1,
+            size: itemsPerPage,
+          },
+        });
+        
+        setCards(response.data.items);
+        setTotalItems(response.data.total);
+
+      } catch (err) {
+        console.error("API Error:", err);
+        setError("카드 목록을 불러오는 데 실패했습니다.");
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchCards();
+  }, [currentPage, storeUuid]);
+
+  const totalPages = Math.ceil(totalItems / itemsPerPage);
+
+  // 로딩 중이거나 에러가 발생했을 때의 UI는 그대로 유지합니다.
+  if (isLoading) return <div className={styles.statusMessage}>로딩 중...</div>;
+  if (error) return <div className={styles.statusMessage}>{error}</div>;
 
   return (
-    <><div className={styles.header}>
+    <>
+      <div className={styles.header}>
         <h1 className={styles.mainTitle}>My Content</h1>
         <p className={styles.subtitle}>내가 만든 카드뉴스를 한 눈에 관리해보세요</p>
       </div>
+
       <div className={styles.cardGrid}>
-        {currentItems.map((item) => (
-          // 3. 이제 key={item.id}는 항상 고유한 값을 가집니다.
-          <div key={item.id}>
-            <div className={styles.card}>
-              <img src={item.img} alt={item.title} className={styles.cardImage} />
+        {cards.length > 0 ? (
+          // cards 배열에 아이템이 있으면 기존처럼 목록을 렌더링
+          cards.map((item) => (
+            <div key={item.id}>
+              <div className={styles.card}>
+                <img src={item.imageUrl} alt={`Card ${item.id}`} className={styles.cardImage} />
+              </div>
             </div>
-            <h3 className={styles.cardTitle}>{item.title}</h3>
-          </div>
-        ))}
+          ))
+        ) : (
+          // cards 배열이 비어있으면 "작성한 카드 뉴스가 없습니다." 메시지를 표시
+          <p className={styles.emptyMessage}>작성한 카드 뉴스가 없습니다.</p>
+        )}
       </div>
 
-      <div className={styles.pagination}>
-        {Array.from({ length: totalPages }, (_, i) => (
-          <button
-            key={i + 1}
-            onClick={() => setCurrentPage(i + 1)}
-            className={`${styles.pageButton} ${currentPage === i + 1 ? styles.active : ''}`}
-          >
-            {i + 1}
-          </button>
-        ))}
-      </div>
+      {/* 페이지네이션은 아이템이 있을 때만 보여주는 것이 더 자연스러울 수 있습니다. */}
+      {totalItems > 0 && (
+        <div className={styles.pagination}>
+          {Array.from({ length: totalPages }, (_, i) => (
+            <button
+              key={i + 1}
+              onClick={() => setCurrentPage(i + 1)}
+              className={`${styles.pageButton} ${currentPage === i + 1 ? styles.active : ''}`}
+            >
+              {i + 1}
+            </button>
+          ))}
+        </div>
+      )}
     </>
   );
 }
