@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { fetchStoresByCoord, matchStore } from "../../api/index.js";
 import useUuidStore from "../../store/useUuidStore";
-import "../../styles/welcome/WelcomeMap.css";
+import styles from "../../styles/welcome/WelcomeMap.module.css";
 import close from "../../assets/welcomeMap/close.png";
 import listTitle from "../../assets/welcomeMap/list.png";
 import MarkerImg from "../../assets/welcomeMap/marker.png";
@@ -196,16 +196,16 @@ function WelcomeMap({ focusRef, onClick }) {
   };
 
   return (
-    <div className="map-container" tabIndex={-1}>
-      <div className="header-close-button" onClick={onClick}>
-        <img src={close} className="close-button-img" />
+    <div className={styles.container} tabIndex={-1}>
+      <div className={styles.closeButton} onClick={onClick}>
+        <img src={close} className={styles.closeImg} />
       </div>
-      <div className="map-header">
-        <h2 className="header-title">업장 찾기</h2>
-        <p className="header-content">
+      <div className={styles.header}>
+        <h2 className={styles.headerTitle}>업장 찾기</h2>
+        <p className={styles.headerContent}>
           어렵고 복잡한 마케팅과 운영전략을 한번에
         </p>
-        <div className="search-box">
+        <div className={styles.searchBox}>
           <StoreSearch
             focusRef={focusRef}
             placeholder="주소를 입력해주세요."
@@ -217,36 +217,34 @@ function WelcomeMap({ focusRef, onClick }) {
           />
         </div>
       </div>
-      <div className="map-box">
+      <div className={styles.mapBox}>
         <div
-          className="map"
+          className={styles.map}
           ref={container}
           style={{ width: "100%", height: "400px" }}
         ></div>
-        <div className="search-lists">
-          <div className="search-list-title">
+        <div className={styles.searchLists}>
+          <div className={styles.searchListTitle}>
             업장 검색 결과
-            <img src={listTitle} className="list-title-ico" />
+            <img src={listTitle} className={styles.searchTitleIco} />
           </div>
           {stores && (
-            <div className="search-list">
+            <div className={styles.searchList}>
               {stores.map((store) => (
-                <>
-                  <SearchList
-                    key={store.placeId}
-                    store={store}
-                    isSelected={selectStore?.placeId === store.placeId}
-                    onClick={(e) => {
-                      if (e.currentTarget.className.includes("select")) {
-                        setSelectStore(null);
-                        setIsClick(false);
-                      } else {
-                        setSelectStore(store);
-                        setIsClick(true);
-                      }
-                    }}
-                  />
-                </>
+                <SearchList
+                  key={store.placeId}
+                  store={store}
+                  isSelected={selectStore?.placeId === store.placeId}
+                  onClick={(e) => {
+                    if (e.currentTarget.className.includes("select")) {
+                      setSelectStore(null);
+                      setIsClick(false);
+                    } else {
+                      setSelectStore(store);
+                      setIsClick(true);
+                    }
+                  }}
+                />
               ))}
             </div>
           )}
@@ -254,7 +252,7 @@ function WelcomeMap({ focusRef, onClick }) {
       </div>
       <div>
         <button
-          className={`map-button ${isClick ? "select" : ""}`}
+          className={`${styles.mapButton} ${isClick ? styles.select : ""}`}
           onClick={postStoreInfo}
         >
           업장 등록

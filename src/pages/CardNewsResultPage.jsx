@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import "../styles/cardnews/CardNewsResultPage.css";
+import styles from "../styles/cardnews/CardNewsResultPage.module.css";
 import Ex1 from "../assets/test/image.png";
 import Loading from "../components/Loading";
 import useTextStore from "../store/useTextStore";
@@ -62,8 +62,7 @@ function CardNewsResultPage() {
   // "깔끔한 인테리어와 아늑한 룸, 편리한 주차 공간까지!\n 편안한 시간을 만끽하세요."
   const generatedText = useTextStore((state) => state.generatedText);
   console.log(`텍스트 스토어 : ${generatedText}`);
-  // const imgData = useCardStore((state) => state);
-  const remainingFreeCount = 1;
+
   // 이미지 박스 크기 스타일
   const [box, setBox] = useState("");
 
@@ -72,20 +71,13 @@ function CardNewsResultPage() {
   const [blob, setBlob] = useState(null);
 
   useEffect(() => {
-    // const imgData1 = useCardStore((state) => state);
     const imgData = {
       url: imgData1.url,
-      // url: Ex1,
       text: generatedText,
       ratio: imgData1.ratio, // SQUARE_1_1, RATIO_2_3, RATIO_3_2
       template: imgData1.template, //  T1_TEXT_ONLY, T2_TEXT_BOTTOM, T3_TEXT_RIGHT
+      remainingFreeCount: imgData1.remainingFreeCount,
     };
-    // const imgData = {
-    //   url: imgData1.url,
-    //   text: generatedText,
-    //   ratio: imgData1.ratio, // SQUARE_1_1, RATIO_2_3, RATIO_3_2
-    //   template: imgData1.template, //  T1_TEXT_ONLY, T2_TEXT_BOTTOM, T3_TEXT_RIGHT
-    // };
 
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
@@ -181,22 +173,26 @@ function CardNewsResultPage() {
   };
 
   return (
-    <div className="cardnews-container">
+    <div className={styles.container}>
       <canvas ref={canvasRef} style={{ display: "none" }} />
       {/* <Loading /> */}
-      <div className="result-container">
-        <div className="top-box"></div>
-        <div className="result-box">
-          <img ref={resultImgRef} className={`result-img ${box}`} />
-          <div className="button-container">
-            <button className="save" onClick={saveCard}>
+      <div className={styles.showResult}>
+        <div className={styles.topBox}></div>
+        <div className={styles.resultBox}>
+          <img
+            ref={resultImgRef}
+            className={`${styles.resultImg} ${styles[box]}`}
+          />
+          <div className={styles.buttonBox}>
+            <button className={styles.save} onClick={saveCard}>
               저장하기
             </button>
-            <button className="back">홍보페이지로 돌아가기</button>
-            <button className="new">새로 만들기</button>
+            <button className={styles.new}>홍보페이지로 돌아가기</button>
+            <button className={styles.back}>새로 만들기</button>
           </div>
-          <p>
-            이번 달 무료 횟수 <span>{remainingFreeCount}회</span> 남았어요.
+          <p className={styles.chance}>
+            이번 달 무료 횟수 <span>{imgData1.remainingFreeCount}회</span>{" "}
+            남았어요.
           </p>
         </div>
       </div>
