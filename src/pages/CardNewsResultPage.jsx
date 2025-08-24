@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "../styles/cardnews/CardNewsResultPage.module.css";
-import Ex1 from "../assets/test/image.png";
+
 import Loading from "../components/Loading";
 import useTextStore from "../store/useTextStore";
 import useCardStore from "../store/useCardStore";
@@ -51,6 +51,42 @@ function drawRoundedRect(ctx, x, y, width, height, radius, fillStyle) {
   ctx.fill();
 }
 
+const boxAreas = {
+  SQUARE_1_1: {
+    T1_TEXT_ONLY: { x: 240, y: 260, w: 550, h: 400 },
+    T2_TEXT_BOTTOM: { x: 140, y: 710, w: 800, h: 300 },
+    T3_TEXT_RIGHT: { x: 585, y: 110, w: 400, h: 500 },
+  },
+  RATIO_2_3: {
+    T1_TEXT_ONLY: { x: 220, y: 380, w: 650, h: 400 },
+    T2_TEXT_BOTTOM: { x: 190, y: 940, w: 650, h: 350 },
+    T3_TEXT_RIGHT: { x: 560, y: 220, w: 450, h: 400 },
+  },
+  RATIO_3_2: {
+    T1_TEXT_ONLY: { x: 250, y: 220, w: 830, h: 400 },
+    T2_TEXT_BOTTOM: { x: 320, y: 750, w: 700, h: 300 },
+    T3_TEXT_RIGHT: { x: 810, y: 150, w: 450, h: 450 },
+  },
+};
+
+const testArea = {
+  SQUARE_1_1: {
+    T1_TEXT_ONLY: { x: 280, y: [360, 530], w: 550 },
+    T2_TEXT_BOTTOM: { x: 140, y: [810, 890], w: 800 },
+    T3_TEXT_RIGHT: { x: 585, y: [200, 400], w: 350 },
+  },
+  RATIO_2_3: {
+    T1_TEXT_ONLY: { x: 220, y: [480, 630], w: 600 },
+    T2_TEXT_BOTTOM: { x: 190, y: [1040, 1140], w: 650 },
+    T3_TEXT_RIGHT: { x: 560, y: [320, 480], w: 450 },
+  },
+  RATIO_3_2: {
+    T1_TEXT_ONLY: { x: 250, y: [320, 480], w: 830 },
+    T2_TEXT_BOTTOM: { x: 320, y: [850, 940], w: 600 },
+    T3_TEXT_RIGHT: { x: 810, y: [250, 130], w: 400 },
+  },
+};
+
 function CardNewsResultPage() {
   const storeUuid = useUuidStore((state) => state.storeUuid);
   console.log("uuid", storeUuid);
@@ -95,35 +131,35 @@ function CardNewsResultPage() {
           canvas.width = 1024;
           canvas.height = 1024;
           setBox("");
-          ctx.drawImage(image, 0, 0, 1024, 1024); // (이미지 객체, x, y, 너비, 높이)
+          ctx.drawImage(image, 0, 0, 1024, 1024);
           break;
         case "RATIO_2_3":
           canvas.width = 1080;
           canvas.height = 1350;
           setBox("ratio23");
-          ctx.drawImage(image, 0, 0, 1080, 1350); // (이미지 객체, x, y, 너비, 높이) 가로
+          ctx.drawImage(image, 0, 0, 1080, 1350);
           break;
         case "RATIO_3_2":
           canvas.width = 1350;
           canvas.height = 1080;
           setBox("ratio32");
-          ctx.drawImage(image, 0, 0, 1350, 1080); // (이미지 객체, x, y, 너비, 높이) 세로
+          ctx.drawImage(image, 0, 0, 1350, 1080);
           break;
       }
 
-      // 텍스트 위치 x-y(넓이,높이)
-      // 280-360/530/700(550, 60), 180-810/890(800,60), 625-200/400(350,60)
-      // 260-480/630/750(600, 60), 230-1040/1140(650,60), 600-320/480(450,60)
-      // 290-320/480/620(830, 60), 360-850/940(600,60), 850-250/430(400,60)
-
-      // x(-40)/y(-100)/넓이(+50)/높이(230)
-      // 240/260/550/400, 140/710/800/300, 585/110/400/500
-      // 220/380/650/400, 190/940/650/350, 560/220/450/400
+      const area = boxAreas[imgData.ratio][imgData.template];
+      const text = testArea[imgData.ratio][imgData.template];
 
       const lines = imgData.text.split("\n");
-      const position = [320, 480, 700];
-      // 590, 140, 370, 500, 40,
-      drawRoundedRect(ctx, 560, 220, 450, 400, 60, "rgba(255,255,255,0.8)");
+      drawRoundedRect(
+        ctx,
+        area.x,
+        area.y,
+        area.w,
+        area.h,
+        60,
+        "rgba(255,255,255,0.8)"
+      );
 
       // 텍스트 스타일 설정
       ctx.font = "700 45px Inter";
@@ -131,8 +167,7 @@ function CardNewsResultPage() {
 
       // 텍스트 그리기
       lines.forEach((line, i) => {
-        drawWrappedText(ctx, line, 600, position[i], 450, 60);
-        // ctx.fillText(line, 300, position[i]);
+        drawWrappedText(ctx, line, text.x, text.y[i], text.w, 60);
       });
 
       const data = canvas.toDataURL("image/png");

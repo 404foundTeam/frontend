@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Route, useNavigate } from "react-router-dom";
 import { backgroundImg, backgroundImg2, generateText } from "../api/index.js";
 import styles from "../styles/cardnews/CardNewsPage.module.css";
 import bannerImg from "../assets/cardnews/banner_img.png";
@@ -8,7 +8,6 @@ import useUuidStore from "../store/useUuidStore.js";
 import useCardStore from "../store/useCardStore.js";
 import useTextStore from "../store/useTextStore.js";
 import SelectBox from "../components/SelectBox.jsx";
-import axios from "axios";
 // import Loading from "../components/Loading.jsx";
 
 function CardNewsPage() {
@@ -22,7 +21,7 @@ function CardNewsPage() {
   const [cardType, setCardType] = useState("");
   const [menuName, setMenuName] = useState("");
   const [userText, setUserText] = useState("");
-  const [generatedText, setGeneratedText] = useState("");
+  const [generatedText, setGeneratedText] = useState("dsada");
   const [template, setTemplate] = useState("");
   const [ratio, setRatio] = useState("");
   const [theme, setTheme] = useState("");
@@ -48,19 +47,18 @@ function CardNewsPage() {
     console.log("이미지 POST!");
 
     const cardData = {
-      storeUuid: "e284a976-5b2c-47c7-b115-d350e47539c8",
-      storeName: "여수에서온나진국밥 용인기흥구청점",
-      cardType: "NOTICE",
-      menuName: "돼지국밥",
-      generatedText:
-        "추석 연휴에도 정상 영업합니다.\n 가족과 함께 특별한 시간을 보내세요!",
-      template: "T1_TEXT_ONLY",
-      ratio: "SQUARE_1_1",
-      theme: "MODERN",
+      storeUuid,
+      storeName,
+      cardType,
+      menuName,
+      generatedText,
+      template,
+      ratio,
+      theme,
     };
-
     console.log(2);
     console.log(cardData);
+
     try {
       console.log("trying...");
       const getCard = await backgroundImg2(cardData);
