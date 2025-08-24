@@ -13,11 +13,11 @@ import SelectBox from "../components/SelectBox.jsx";
 function CardNewsPage() {
   const navigate = useNavigate();
 
-  const storeUuid = useUuidStore((state) => state.storeUuid);
-  const storeName = useUuidStore((state) => state.storeName);
   const setText = useTextStore((state) => state.setText);
   const setCard = useCardStore((state) => state.setCard);
 
+  const storeUuid = useUuidStore((state) => state.storeUuid);
+  const storeName = useUuidStore((state) => state.storeName);
   const [cardType, setCardType] = useState("");
   const [menuName, setMenuName] = useState("");
   const [userText, setUserText] = useState("");
