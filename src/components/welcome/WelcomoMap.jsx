@@ -192,6 +192,8 @@ function WelcomeMap({ focusRef, onClick }) {
       console.log("업장 등록 실패", error);
       alert("업장 등록에 실패했습니다.");
     }
+
+    console.log("등록 성~공~");
   };
 
   const onChange = (e) => {

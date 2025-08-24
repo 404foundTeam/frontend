@@ -27,24 +27,25 @@ function CardNewsPage() {
   const [theme, setTheme] = useState("");
 
   const getGenerateText = async () => {
-    console.log("text1");
+    console.log("텍스트 변환 시작");
     try {
-      console.log(cardType);
-      console.log(userText);
+      console("요청 데이터들 : ", cardType, userText);
       const getText = await generateText({ type: cardType, userText });
-      console.log(getText);
+      console.log("응답 : ", getText);
       setGeneratedText(getText.generatedText);
+      console.log("변환 텍스트 저장 완료");
       setText(getText.generatedText);
+      console.log("변환 텍스트 전역 저장 완료");
     } catch (error) {
       console.log("데이터 요청 실패", error);
       alert("텍스트 변환에 실패했습니다.");
     }
+
+    console.log("텍스트 변환 끄읕");
   };
 
   const postCardNews = async () => {
-    console.log(1);
-
-    console.log("이미지 POST!");
+    console.log("이미지 받아오기 시작");
 
     const cardData = {
       storeUuid,
@@ -56,23 +57,22 @@ function CardNewsPage() {
       ratio,
       theme,
     };
-    console.log(2);
-    console.log(cardData);
+    console.log("요청 데이터 : ", cardData);
 
     try {
       console.log("trying...");
       const getCard = await backgroundImg2(cardData);
-      console.log(getCard);
-      console.log(getCard.url);
+      console.log("응답 데이터 : ", getCard);
+      console.log("이미지 url 확인 : ", getCard.url);
 
       setCard(getCard);
-
+      console.log("데이터 전역 저장 완료");
       navigate("/cardnews/result");
     } catch (error) {
       console.log(error);
     }
 
-    console.log("finish");
+    console.log("이미지 받아오기 끝");
   };
 
   return (

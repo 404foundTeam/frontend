@@ -89,15 +89,13 @@ const testArea = {
 
 function CardNewsResultPage() {
   const storeUuid = useUuidStore((state) => state.storeUuid);
-  console.log("uuid", storeUuid);
-  console.log("resultPage");
+  console.log("여긴 결과 페이지");
+  console.log("uuid 확인", storeUuid);
+
   const imgData1 = useCardStore((state) => state);
-  console.log("이미지 스토어 :", imgData1);
-  // "추석 연휴에도 정상 영업합니다.\n 가족과 함께 특별한 시간을 보내세요!"
-  // "부드럽고 고소한 까눌레와 휘낭시에!\n 특별한 날, 소중한 분께 완벽한 선물이 됩니다."
-  // "깔끔한 인테리어와 아늑한 룸, 편리한 주차 공간까지!\n 편안한 시간을 만끽하세요."
+  console.log("이미지 스토어 데이터 확인 :", imgData1);
   const generatedText = useTextStore((state) => state.generatedText);
-  console.log(`텍스트 스토어 : ${generatedText}`);
+  console.log(`텍스트 스토어 데이터 확인 : ${generatedText}`);
 
   // 이미지 박스 크기 스타일
   const [box, setBox] = useState("");
@@ -107,6 +105,7 @@ function CardNewsResultPage() {
   const [blob, setBlob] = useState(null);
 
   useEffect(() => {
+    console.log("이미지 데이터 가져오기");
     const imgData = {
       url: imgData1.url,
       text: generatedText,
@@ -119,10 +118,13 @@ function CardNewsResultPage() {
     const ctx = canvas.getContext("2d");
 
     // 이미지 로드
+    console.log("이미지 로드");
     const image = new Image();
     image.crossOrigin = "anonymous"; // 크로스 허용
     image.src = imgData.url; // 이미지 경로를 설정하세요.
     image.src = `${imgData.url}?not-from-cache-please`; // s3 크로스 shit
+
+    console.log("이미지 렌더리 주웅...");
     image.onload = async () => {
       // 이미지 렌더링
       switch (imgData.ratio) {
@@ -146,9 +148,11 @@ function CardNewsResultPage() {
           ctx.drawImage(image, 0, 0, 1350, 1080);
           break;
       }
+      console.log("비율 적용 완료");
 
       const area = boxAreas[imgData.ratio][imgData.template];
       const text = testArea[imgData.ratio][imgData.template];
+      console.log("텍스트/박스 위치 선정");
 
       const lines = imgData.text.split("\n");
       drawRoundedRect(
@@ -160,6 +164,7 @@ function CardNewsResultPage() {
         60,
         "rgba(255,255,255,0.8)"
       );
+      console.log("박스 위치");
 
       // 텍스트 스타일 설정
       ctx.font = "700 45px Inter";
@@ -169,22 +174,28 @@ function CardNewsResultPage() {
       lines.forEach((line, i) => {
         drawWrappedText(ctx, line, text.x, text.y[i], text.w, 60);
       });
+      console.log("텍스트 위치");
 
+      console.log("blob 파일 시작");
       const data = canvas.toDataURL("image/png");
       resultImgRef.current.src = data;
       const blobData = await (await fetch(data)).blob();
+      console.log("blob 파일 완료");
       setBlob(blobData);
     };
   }, []);
 
   const saveCard = async () => {
+    console.log("이미지 저장하기 시작");
     let fileUrl;
 
     try {
       const getUrl = await postPresignedUrl(storeUuid);
+      console.log("url들 가져오기");
       console.log(getUrl);
       fileUrl = getUrl.fileUrl;
       const uploadUrl = getUrl.uploadUrl;
+      console.log("url 확인", fileUrl, uploadUrl);
       // alert("저장이 완료됐습니다.");
       console.log("업로드 시작");
       await axios.put(uploadUrl, blob, {
@@ -201,10 +212,13 @@ function CardNewsResultPage() {
       console.log("서버로~~~~~~~");
       console.log("파일 url", fileUrl);
       const postImg = await postCard({ storeUuid, finalUrl: fileUrl });
+      console.log("성 공");
       console.log(postImg);
     } catch (error) {
       console.log(error);
     }
+
+    console.log("이미지 저장하기 끄ㅡㅡㅡㅡㅡㅡ읕");
   };
 
   return (
