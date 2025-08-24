@@ -48,13 +48,6 @@ function WelcomePage() {
   }, [showMap]);
 
   useEffect(() => {
-    // 새로고침 시 최상단 이동
-    window.onbeforeunload = function pushRefresh() {
-      window.scrollTo(0, 0);
-    };
-  }, []);
-
-  useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
