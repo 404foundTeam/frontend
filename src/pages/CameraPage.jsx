@@ -3,13 +3,18 @@ import { useNavigate } from "react-router-dom";
 import styles from "../styles/camera/CameraPage.module.css";
 import dragImg from "../assets/camera/drag_img.png";
 import { guideFile } from "../api";
+import useGuideStore from "../store/useGuideStore";
+import Loading from "../components/Loading";
+import CameraBanner from "../components/camera/CameraBanner";
 
 function CameraPage() {
   const navigate = useNavigate();
+  const setGuide = useGuideStore((state) => state.setGuide);
 
   const imgInput = useRef();
   const [preview, setPreview] = useState(null);
   const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const handleFile = (file) => {
     console.log("파일", file);
@@ -26,16 +31,22 @@ function CameraPage() {
 
   const goToResult = async () => {
     try {
+      setLoading(true);
       const res = await guideFile(data);
-      console.log("성공", res);
+      console.log("성공", res.guideText);
+      setGuide({ guideImg: preview, guideText: res.guideText });
     } catch (error) {
       console.log(error);
     }
-    // navigate("/camera/result");
+
+    navigate("/camera/result");
   };
+
+  if (loading) return <Loading isCamera={true} />;
 
   return (
     <>
+      <CameraBanner isShow={true} />
       <div className={styles.container}>
         {/* onDragOver 드래그 허용 */}
         <div

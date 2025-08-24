@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { use, useEffect, useRef, useState } from "react";
+import { useFetcher, useNavigate } from "react-router-dom";
 import { fetchStoresByCoord, matchStore } from "../../api/index.js";
 import useUuidStore from "../../store/useUuidStore";
 import styles from "../../styles/welcome/WelcomeMap.module.css";
@@ -77,51 +77,61 @@ function WelcomeMap({ focusRef, onClick }) {
 
   useEffect(() => {
     if (window.kakao && window.kakao.maps) {
-      // 맵 생성 api 적용시 분리
       const centerPos = new window.kakao.maps.LatLng(37.2756, 127.116);
-
       const options = {
         center: centerPos,
         level: 3,
       };
-      const map = new window.kakao.maps.Map(container.current, options);
-      mapRef.current = map;
-
-      // 마커 여러 개 생성 api 적용시 의존성 추가
-      if (!stores) return;
-      stores.forEach((store) => {
-        // if (!stores) return;
-        // 이전 마커 제거
-        // if (markerRef.current) {
-        //   markerRef.current.forEach((m) => m.setMap(null));
-        // }
-
-        const markerPosition = new window.kakao.maps.LatLng(
-          store.latitude,
-          store.longitude
-        );
-        // 마커 이미지
-        const imageSize = new window.kakao.maps.Size(24, 35); // 이미지 크기
-        const imageOption = { offset: new window.kakao.maps.Point(12, 35) }; // 마커 중심 좌표
-        const markerImage = new window.kakao.maps.MarkerImage(
-          MarkerImg,
-          imageSize,
-          imageOption
-        );
-
-        const marker = new window.kakao.maps.Marker({
-          position: markerPosition,
-          image: markerImage, // 커스텀 마커 이미지 적용
-        });
-        marker.setMap(map);
-
-        // 마커 클릭 이벤트
-        window.kakao.maps.event.addListener(marker, "click", function () {
-          alert(`${store.name} 클릭됨`);
-        });
-      });
     }
+    const map = new window.kakao.maps.Map(container.current, options);
+    mapRef.current = map;
   }, []);
+
+  // useEffect(() => {
+  //    if (!mapRef.current || !window.kakao) return;
+
+  //     // 마커 여러 개 생성 api 적용시 의존성 추가
+  //     if (!stores) return;
+  //     stores.forEach((store) => {
+  //       if (!stores) return;
+  //       // 이전 마커 제거
+  //       if (markerRef.current) {
+  //         markerRef.current.forEach((m) => m.setMap(null));
+  //       }
+
+  //       const markerPosition = new window.kakao.maps.LatLng(
+  //         store.latitude,
+  //         store.longitude
+  //       );
+  //       // 마커 이미지
+  //       const imageSize = new window.kakao.maps.Size(24, 35); // 이미지 크기
+  //       const imageOption = { offset: new window.kakao.maps.Point(12, 35) }; // 마커 중심 좌표
+  //       const markerImage = new window.kakao.maps.MarkerImage(
+  //         MarkerImg,
+  //         imageSize,
+  //         imageOption
+  //       );
+
+  //       const selectMarkerImage = new window.kakako.maps.MarkerImage(
+  //         selectMarkerImg,
+  //         imageSize,
+  //         imageOption
+  //       );
+
+  //       const marker = new window.kakao.maps.Marker({
+  //         position: markerPosition,
+  //         image: markerImage, // 커스텀 마커 이미지 적용
+  //       });
+  //       marker.setMap(map);
+
+  //       // 마커 클릭 이벤트
+  //       window.kakao.maps.event.addListener(marker, "click", function () {
+  //         alert(`${store.name} 클릭됨`);
+  //         marker.image = selectMarkerImage;
+  //       });
+
+  //   }
+  // }, [stores]);
 
   const searchAddr = (address) => {
     console.log("업장 검색 시작");

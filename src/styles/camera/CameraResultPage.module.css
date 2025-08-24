@@ -1,5 +1,6 @@
 .container {
-  margin-top: 35px;
+  padding-top: 48px;
+  padding-bottom: 199px;
 
   display: flex;
   flex-direction: column;
@@ -8,7 +9,6 @@
 }
 
 .container .guideImg {
-  width: 815px;
   height: 390px;
 
   border: 6px solid #febf22;
