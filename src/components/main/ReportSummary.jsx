@@ -1,6 +1,6 @@
 // src/components/ReportSummary.jsx
 
-import styles from '../styles/ReportSummary.module.css';
+import styles from '../../styles/ReportSummary.module.css';
 
 function ReportSummary() {
   return (

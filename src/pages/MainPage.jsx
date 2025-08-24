@@ -1,10 +1,10 @@
 // src/pages/MainPage.jsx
 
 import styles from '../styles/Main.module.css';
-import WeeklyScheduleViewer from '../components/WeeklyScheduleViewer';
-import MarketingTips from '../components/MarketingTips';
-import ReportSummary from '../components/ReportSummary'; // 1. ReportSummary 컴포넌트 import
-import DashboardPage from '../components/DashboardPage';
+import WeeklyScheduleViewer from '../components/main/WeeklyScheduleViewer';
+import MarketingTips from '../components/main/MarketingTips';
+import ReportSummary from '../components/main/ReportSummary'; // 1. ReportSummary 컴포넌트 import
+import DashboardPage from '../components/main/DashboardPage';
 
 
 function MainPage() {
