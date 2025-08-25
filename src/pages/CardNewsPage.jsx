@@ -85,7 +85,7 @@ function CardNewsPage() {
         <img src={bannerImg} className={styles.img} />
         <h1 className={styles.title}>{storeName}</h1>
         <p className={styles.content}>
-          를 위한 SNS 카드 뉴스를 만들어드릴게요.
+          을 위한 SNS 카드 뉴스를 만들어드릴게요.
         </p>
       </div>
       <div className={styles.cardNewsContainer}>

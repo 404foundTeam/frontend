@@ -13,7 +13,6 @@ function MyLayout() {
   const storeName = useUuidStore((state) => state.storeName);
   const roadAddress = useUuidStore((state) => state.roadAddress);
 
-
   // --- 2. 팝업(WelcomeMap)을 관리할 state와 핸들러 함수를 추가합니다 ---
   const [showMap, setShowMap] = useState(false);
 
@@ -41,9 +40,8 @@ function MyLayout() {
               <div className={styles.userInfo}>
                 <h2 className={styles.userName}>{storeName}님</h2>
                 <p className={styles.userAddress}>
-                  {roadAddress || '등록된 주소가 없습니다.'}
+                  {roadAddress || "등록된 주소가 없습니다."}
                 </p>
-
               </div>
               <button
                 className={styles.reregisterButton}

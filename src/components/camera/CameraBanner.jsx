@@ -13,7 +13,7 @@ function CameraBanner({ isShow }) {
           <div className={styles.header}>
             <img src={camera} className={styles.img} />
             <h1 className={styles.title}>{storeName}</h1>
-            <p className={styles.content}>를 위한 사진 분석 및 촬영 가이드</p>
+            <p className={styles.content}>을 위한 사진 분석 및 촬영 가이드</p>
           </div>
         </>
       )}
