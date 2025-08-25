@@ -58,7 +58,7 @@ const boxAreas = {
   },
   RATIO_2_3: {
     T1_TEXT_ONLY: { x: 210, y: 380, w: 670, h: 400 },
-    T2_TEXT_BOTTOM: { x: 180, y: 940, w: 650, h: 400 },
+    T2_TEXT_BOTTOM: { x: 180, y: 940, w: 630, h: 400 },
     T3_TEXT_RIGHT: { x: 550, y: 220, w: 450, h: 500 },
   },
   RATIO_3_2: {
@@ -74,12 +74,12 @@ const testArea = {
     T2_TEXT_BOTTOM: { x: 160, y: [790, 910], w: 800 },
     T3_TEXT_RIGHT: { x: 590, y: [200, 400], w: 350 },
   },
-  RATIO_2_3: {
+  RATIO_3_2: {
     T1_TEXT_ONLY: { x: 240, y: [470, 640], w: 600 },
     T2_TEXT_BOTTOM: { x: 220, y: [1030, 1210], w: 650 },
     T3_TEXT_RIGHT: { x: 580, y: [320, 480], w: 450 },
   },
-  RATIO_3_2: {
+  RATIO_2_3: {
     T1_TEXT_ONLY: { x: 280, y: [300, 490], w: 830 },
     T2_TEXT_BOTTOM: { x: 320, y: [820, 960], w: 600 },
     T3_TEXT_RIGHT: { x: 830, y: [250, 480], w: 420 },
@@ -221,6 +221,7 @@ function CardNewsResultPage() {
       const postImg = await postCard({ storeUuid, finalUrl: fileUrl });
       console.log("성 공");
       console.log(postImg);
+      alert("이미지 업로드 성공!");
     } catch (error) {
       console.log(error);
     }

@@ -4,18 +4,19 @@
 
   margin: 0 auto;
   padding-top: 43px;
-  padding-left: 40px;
+  padding-left: 54px;
   padding-bottom: 199px;
 
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 66px;
 }
 
 .container div h1 {
   font-weight: 600;
-  font-size: 40px;
-  line-height: 48px;
+  font-size: 30px;
+  line-height: 42px;
   letter-spacing: -0.025em;
 
   color: #413738;
@@ -34,17 +35,15 @@
 }
 
 .myCoaBox {
-  width: 1182px;
-
   display: flex;
   align-items: center;
   gap: 83px;
 }
 
 .myCoaBox .text {
-  width: 1099px;
+  width: 886px;
 
-  padding: 39px 38px 20px 39px;
+  padding: 20px 38px 20px 39px;
 
   display: flex;
   justify-content: space-between;
@@ -75,23 +74,25 @@
 
 .text .date {
   font-weight: 400;
-  font-size: 24px;
-  line-height: 29px;
+  font-size: 18px;
+  line-height: 21px;
   letter-spacing: -0.025em;
 
   color: #797979;
 }
 
 .myCoaBox button {
-  width: 214px;
+  width: 165px;
   height: 51px;
 
   border-radius: 10px;
 
   font-weight: 700;
-  font-size: 25px;
-  line-height: 30px;
+  font-size: 20px;
+  line-height: 24px;
   letter-spacing: -0.025em;
+
+  color: #6d3737;
 }
 
 .myCoaBox button.discon {
@@ -107,7 +108,7 @@
 }
 
 .fromCoaBox {
-  width: 1206px;
+  width: 1098px;
 
   padding: 39px 62px 20px 40px;
 
@@ -133,7 +134,6 @@
 .fromCoaBox .buttonBox button {
   width: 64px;
   height: 36px;
-  left: 1491px;
 
   border-radius: 10px;
 }
@@ -151,7 +151,7 @@
 }
 
 .toCoaBox {
-  width: 1206px;
+  width: 1098px;
 
   padding: 39px 62px 20px 40px;
 

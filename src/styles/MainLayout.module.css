@@ -14,6 +14,9 @@
 /* --- 아래에 배너 스타일을 추가합니다 --- */
 
 .welcomeBanner {
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
   position: relative; /* 자식 요소(원)를 absolute로 위치시키기 위한 기준점 */
   padding: 40px;
   background: linear-gradient(
@@ -21,12 +24,12 @@
     #fffaed,
     #febf22
   ); /* 노란색 그라데이션 배경 */
-  margin-bottom: 2rem; /* 배너와 아래 콘텐츠(Outlet) 사이의 간격 */
+  /* margin-bottom: 2rem; 배너와 아래 콘텐츠(Outlet) 사이의 간격 */
   overflow: hidden; /* 장식용 원이 배너 밖으로 나가지 않도록 설정 */
-  width: 100vw; /* 뷰포트 전체 너비 */
-  margin-left: calc(
+  /* width: 100vw; 뷰포트 전체 너비 */
+  /* margin-left: calc(
     -50vw + 50%
-  ); /* 부모 컨테이너 패딩/마진을 무시하고 화면 전체에 맞춤 */
+  ); 부모 컨테이너 패딩/마진을 무시하고 화면 전체에 맞춤 */
 }
 
 .bannerText {

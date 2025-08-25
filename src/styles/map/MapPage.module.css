@@ -107,14 +107,14 @@
   width: 195px;
   height: 44px;
 
+  border-radius: 10px;
+
   font-weight: 700;
   font-size: 18px;
   line-height: 21px;
   letter-spacing: -0.025em;
 
   color: #6d3737;
-
-  border-radius: 10px;
 
   background-color: #febf22;
 }

@@ -2,10 +2,12 @@ import { useEffect, useRef } from "react";
 import styles from "../styles/map/MapPage.module.css";
 import MapSearch from "../components/map/MapSearch";
 import CoaMapList from "../components/map/CoaMapList";
+import { useNavigate } from "react-router-dom";
 
 // const { kakao } = window;
 
 function MapPage() {
+  const navigate = useNavigate();
   const container = useRef(null);
   const stores = [
     {
@@ -47,6 +49,10 @@ function MapPage() {
     const map = new window.kakao.maps.Map(container.current, options);
   }, []);
 
+  const goToList = () => {
+    navigate("/map/coalition/list");
+  };
+
   return (
     <>
       <div className={styles.header}>
@@ -74,7 +80,9 @@ function MapPage() {
         </div>
       </div>
       <div className={styles.goMyCoa}>
-        <button className={styles.goMyCoaButton}>나의 제휴 보러가기</button>
+        <button className={styles.goMyCoaButton} onClick={goToList}>
+          나의 제휴 보러가기
+        </button>
       </div>
     </>
   );
