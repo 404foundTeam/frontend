@@ -24,6 +24,7 @@
 .leftColumn,
 .rightColumn {
   flex-grow: 1; /* 컬럼이 남는 공간을 차지하도록 설정 */
+  flex-basis: 350px;
 }
 
 .rightColumn {
@@ -56,7 +57,7 @@
 }
 
 .headerIllustration {
-  width: 100%;
+  /* width: 100%; */
   max-width: 600px;
   height: auto;
   margin-top: 2rem;
