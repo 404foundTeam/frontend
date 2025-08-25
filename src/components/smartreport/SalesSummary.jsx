@@ -172,12 +172,12 @@ function SalesSummary() {
           <div className={styles.menuLists}>
             <div className={styles.menuList}>
               <h3>주간 베스트 메뉴</h3>
-              <ul>{bestMenus.length > 0 ? bestMenus.map(menu => <li key={menu}>{menu}</li>) : <li>데이터 없음</li>}</ul>
+              <ul>{bestMenus.length > 0 ? bestMenus.map(menu => <li key={menu}>{menu}</li>) : <li>엑셀 파일을 업로드해주세요</li>}</ul>
             </div>
             <img src={swapIcon} alt="Swap" className={styles.swapIcon} />
             <div className={styles.menuList}>
               <h3>주간 워스트 메뉴</h3>
-              <ul>{worstMenus.length > 0 ? worstMenus.map(menu => <li key={menu}>{menu}</li>) : <li>데이터 없음</li>}</ul>
+              <ul>{worstMenus.length > 0 ? worstMenus.map(menu => <li key={menu}>{menu}</li>) : <li>엑셀 파일을 업로드해주세요</li>}</ul>
             </div>
           </div>
         </div>

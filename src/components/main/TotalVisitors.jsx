@@ -59,7 +59,13 @@ function TotalVisitors() {
         }
 
       } catch (err) {
-        setError("총 방문객 정보를 불러오는 데 실패했습니다.");
+        setError(
+        <>
+        총 방문객 정보를 확인하려면
+        <br />
+        엑셀 파일을 업로드해주세요.
+        </>
+        );
         console.error("API Error:", err);
       } finally {
         setIsLoading(false);
