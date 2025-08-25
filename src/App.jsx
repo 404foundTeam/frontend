@@ -23,6 +23,7 @@ import MarketingPage from "./pages/MarketingPage";
 import MarketingLayout from "./layouts/MarketingLayout";
 import SmartReportLayout from "./layouts/SmartReportLayout";
 import SmartReportPage from "./pages/SmartReportPage";
+import Error from "./components/Error";
 
 function App() {
   // 새로고침 시 최상단 이동
@@ -67,6 +68,7 @@ function App() {
               <Route index element={<MyPage />} />
             </Route>
           </Route>
+          <Route path="*" element={<Error />} />
         </Routes>
       </BrowserRouter>
     </>

@@ -9,6 +9,7 @@ import useCardStore from "../store/useCardStore.js";
 import useTextStore from "../store/useTextStore.js";
 import SelectBox from "../components/SelectBox.jsx";
 import Loading from "../components/Loading.jsx";
+import Error from "../components/Error.jsx";
 
 function CardNewsPage() {
   const navigate = useNavigate();
@@ -30,6 +31,7 @@ function CardNewsPage() {
   const [theme, setTheme] = useState("");
 
   const [loading, setLoading] = useState(false);
+  const [fail, setFail] = useState(false);
 
   const getGenerateText = async () => {
     console.log("텍스트 변환 시작");
@@ -71,6 +73,7 @@ function CardNewsPage() {
       console.log("데이터 전역 저장 완료");
       navigate("/cardnews/result");
     } catch (error) {
+      setFail(true);
       console.log(error);
     } finally {
       setLoading(false);
@@ -78,6 +81,7 @@ function CardNewsPage() {
   };
 
   if (loading) return <Loading isCamera={false} />;
+  if (fail) return <Error />;
 
   return (
     <div className={styles.container}>

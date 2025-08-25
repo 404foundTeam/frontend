@@ -15,16 +15,20 @@ import SearchList from "./SearchList.jsx";
 // const { kakao } = window;
 
 function WelcomeMap({ focusRef, onClick }) {
+  const navigate = useNavigate();
   const infoWindowRef = useRef(null);
+  const container = useRef(null);
+  const mapRef = useRef(null);
+  const markerRef = useRef([]);
+
+  const setUuid = useUuidStore((state) => state.setUuid);
+
   const [stores, setStores] = useState([]);
   const [search, setSearch] = useState("");
   const [isClick, setIsClick] = useState(false);
   const [selectStore, setSelectStore] = useState(null);
-  const container = useRef(null);
-  const mapRef = useRef(null);
-  const markerRef = useRef([]);
-  const navigate = useNavigate();
-  const setUuid = useUuidStore((state) => state.setUuid);
+
+  const [fail, setFail] = useState(false);
 
   // 맵은 최초 1회만 생성
   useEffect(() => {
@@ -153,6 +157,7 @@ function WelcomeMap({ focusRef, onClick }) {
       console.log("페이지 이동");
       navigate("/main");
     } catch (error) {
+      setFail(true);
       console.log("업장 등록 실패", error);
       alert("업장 등록에 실패했습니다.");
     }
@@ -161,6 +166,8 @@ function WelcomeMap({ focusRef, onClick }) {
   const onChange = (e) => {
     setSearch(e.target.value);
   };
+
+  if (fail) return <Error />;
 
   return (
     <div className={styles.container} tabIndex={-1}>
