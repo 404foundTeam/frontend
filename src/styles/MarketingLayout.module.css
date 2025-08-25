@@ -8,25 +8,30 @@
 
 .mainContent {
   flex: 1;
-  padding: 2rem;
 }
 
 .banner {
-  background-color: #FFE5A7; /* 이미지와 유사한 배경색 */
+  width: 100%;
+  max-width: 1440px;
+  background-color: #ffe5a7; /* 이미지와 유사한 배경색 */
   border-radius: 10px;
   padding: 140px;
-  margin-bottom: 2rem;
+  margin: 0 auto;
+
   position: relative; /* 일러스트 위치 조정을 위한 기준 */
-  width: 100vw;   /* 뷰포트 전체 너비 */
-  margin-left: calc(-50vw + 50%); /* 부모 컨테이너 패딩/마진을 무시하고 화면 전체에 맞춤 */
-  border-bottom-left-radius: 500px;
+
+  border-bottom-left-radius: 354px;
 }
 
 .bannerContentWrapper {
-    display: flex;
+  position: relative;
+  left: -147px;
+
+  display: flex;
   align-items: center;
-  justify-content: center; 
-  gap: 100px; /* 100px 값을 조절해 간격을 맞추세요. */
+  justify-content: center;
+  gap: 210px; /* 100px 값을 조절해 간격을 맞추세요. */
+  padding-right: 15px;
 }
 
 .bannerInfo {
@@ -51,20 +56,23 @@
 .illustration {
   position: absolute;
   width: 500px; /* 일러스트 크기 조절 */
-  left: -130px; /*  전체 콘텐츠가 중앙 정렬되었으니, 이 값은 화면을 보며 조절해야 할 수 있습니다. */
+  top: 182px;
+  left: -51px;
+  /*  전체 콘텐츠가 중앙 정렬되었으니, 이 값은 화면을 보며 조절해야 할 수 있습니다. */
   bottom: -480px; /* 아래로 내려서 겹치게 배치 */
-  transform: rotate(-10deg)
+  transform: rotate(-10deg);
 }
 
 .buttonGrid {
+  margin-left: -4px;
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* 2x2 그리드 */
-  gap: 15px;
+  gap: 50px;
   position: relative;
 }
 
 .imageButton {
-  width: 130px; 
+  width: 140px;
   height: auto;
   transition: transform 0.2s ease-in-out;
 }
@@ -77,9 +85,9 @@
 .partnershipBanner {
   display: flex;
   align-items: center;
-  justify-content: center; 
+  justify-content: center;
   gap: 2rem;
-  background-color: #E2D7D7;
+  background-color: #e2d7d7;
   padding: 10px;
   width: 100vw;
   margin-left: calc(-50vw + 50%);
@@ -91,7 +99,7 @@
 }
 
 .bannerIllustration {
-    width: 400px;
+  width: 400px;
 }
 
 .bannerListContainer {
@@ -100,7 +108,7 @@
 .listTitle {
   font-size: 20px;
   font-weight: 600;
-  color: #6D3737;
+  color: #6d3737;
   margin: 0 0 20px 0;
 }
 
@@ -128,7 +136,7 @@
 .partnerName {
   font-size: 18px;
   font-weight: bold;
-  color: #FEBF22;
+  color: #febf22;
   margin: 0 0 5px 0;
 }
 
@@ -152,11 +160,11 @@
 }
 
 .acceptButton {
-  background-color: #6D3737;
-  color: #FEBF22;
+  background-color: #6d3737;
+  color: #febf22;
 }
 
 .declineButton {
   background-color: #797979;
-  color: #FFFFFF;
+  color: #ffffff;
 }

@@ -187,15 +187,20 @@ function CardNewsPage() {
           <SelectHeader text="원하는 템플릿을 선택해주세요." />
           <p>* 회색 배경은 AI가 텍스트로 만든 이미지입니다.</p>
           <div className={styles.templateList}>
-            <div
-              className={`${styles.templateBox} ${
-                template === "T1_TEXT_ONLY" ? styles.select : ""
-              }`}
-              onClick={() => {
-                setTemplate(template === "T1_TEXT_ONLY" ? "" : "T1_TEXT_ONLY");
-              }}
-            >
-              <div className={styles.content}>생성된 텍스트</div>
+            <div className={styles.templateBoxs}>
+              <div
+                className={`${styles.templateBox} ${
+                  template === "T1_TEXT_ONLY" ? styles.select : ""
+                }`}
+                onClick={() => {
+                  setTemplate(
+                    template === "T1_TEXT_ONLY" ? "" : "T1_TEXT_ONLY"
+                  );
+                }}
+              >
+                <div className={styles.content}>생성된 텍스트</div>
+              </div>
+              <p>1:1</p>
             </div>
             <div className={styles.imgBox}>
               <div
@@ -213,6 +218,7 @@ function CardNewsPage() {
                   생성된 텍스트
                 </div>
               </div>
+              <p>가로</p>
             </div>
             <div className={styles.imgBox}>
               <div
@@ -230,6 +236,7 @@ function CardNewsPage() {
                   생성된 텍스트
                 </div>
               </div>
+              <p>가로</p>
             </div>
           </div>
         </div>

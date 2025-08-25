@@ -28,6 +28,7 @@
 }
 
 .title {
+  max-width: 344px;
   margin-left: 24px;
 
   font-weight: 700;
@@ -228,7 +229,7 @@
 
 /* 템플릿 리스트 */
 
-.cardNewsTemplate p {
+.cardNewsTemplate > p {
   padding-top: 28px;
   padding-left: 50px;
 }
@@ -253,6 +254,12 @@
   border: 5px solid #acacac;
   border-radius: 10px;
 }
+.templateList .templateBoxs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
 
 .templateList .templateBox:hover {
   transform: scale(1.04);
@@ -260,13 +267,18 @@
 }
 
 .templateList .templateBox.select {
-  font-size: 30px;
-  background-color: #fffaed;
   border: 5px solid #febf22;
+  background-color: #fffaed;
+
   transform: scale(1.04);
 }
 
+.templateList .templateBox.select .text {
+  font-size: 30px;
+}
+
 .templateList .templateBox.select .content {
+  font-size: 30px;
   background-color: #febf22;
 }
 
@@ -313,7 +325,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 39px;
+  gap: 18px;
 }
 
 .imgBox .templateBox .content.bottom {

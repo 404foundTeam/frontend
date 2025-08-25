@@ -10,7 +10,8 @@
 .section {
   display: flex;
   align-items: center;
-  gap: -10px; /* 텍스트와 이미지 사이 간격 */
+  /* gap: -10px; 텍스트와 이미지 사이 간격 */
+  margin-top: 16px;
   margin-bottom: 6rem; /* 섹션과 섹션 사이 간격 */
 }
 
@@ -50,7 +51,7 @@
   max-width: 90%;
   height: auto;
   border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); */
 }
 
 /* 마지막 '지도 이용 제휴' 섹션을 위한 스타일 */
