@@ -1,20 +1,23 @@
 import { useEffect, useRef, useState } from "react";
 import "../styles/welcome/WelcomePage.css";
+
+import TextBox from "../components/welcome/TextBox";
+import WelcomeMap from "../components/welcome/WelcomoMap";
+import Blur from "../components/welcome/Blur";
+
 import reportImg from "../assets/welcome/report_img.png";
 import cardImg01 from "../assets/welcome/card_img01.png";
 import cardImg02 from "../assets/welcome/card_img02.png";
 import cardImg03 from "../assets/welcome/card_img03.png";
 import mapImg from "../assets/welcome/map_img.png";
-import TextBox from "../components/welcome/TextBox";
-import WelcomeMap from "../components/welcome/WelcomoMap";
-import Blur from "../components/welcome/Blur";
 
 function WelcomePage() {
-  const [showMap, setShowMap] = useState(false);
-
   const cardRefs = useRef([]);
   const mapRef = useRef();
 
+  const [showMap, setShowMap] = useState(false);
+
+  // 마케팅 박스 데이터
   const marketingBoxes = [
     {
       title: "오후 3시 전 음료 사이즈업 무료",
@@ -34,7 +37,7 @@ function WelcomePage() {
       content: "축제를 같이 즐길 달콤한 디저트 30% 할인 이벤트 어떠세요?",
     },
   ];
-
+  // 모달창 show
   const clickShowMap = () => {
     setShowMap(true);
   };
@@ -47,6 +50,7 @@ function WelcomePage() {
     mapRef.current?.focus();
   }, [showMap]);
 
+  // 애니메이션
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {

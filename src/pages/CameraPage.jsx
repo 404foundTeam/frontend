@@ -33,7 +33,6 @@ function CameraPage() {
     try {
       setLoading(true);
       const res = await guideFile(data);
-      console.log("성공", res.guideText);
       setGuide({ guideImg: preview, guideText: res.guideText });
     } catch (error) {
       console.log(error);

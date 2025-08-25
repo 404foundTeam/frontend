@@ -34,13 +34,10 @@ function CardNewsPage() {
   const getGenerateText = async () => {
     console.log("텍스트 변환 시작");
     try {
-      console.log("요청 데이터들 : ", cardType, userText);
       const getText = await generateText({ type: cardType, userText });
-      console.log("응답 : ", getText);
       setGeneratedText(getText.generatedText);
       console.log("변환 텍스트 저장 완료");
       console.log(getText.generatedText);
-      // setText(getText.generatedText);
       setText({ generatedText: getText.generatedText });
       console.log();
       console.log("변환 텍스트 전역 저장 완료");
@@ -64,15 +61,11 @@ function CardNewsPage() {
       ratio,
       theme,
     };
-    console.log("요청 데이터 : ", cardData);
 
     try {
       setLoading(true);
       console.log("trying...");
       const getCard = await backgroundImg(cardData);
-      // const getCard = await backgroundImg2(cardData);
-      console.log("응답 데이터 : ", getCard);
-      console.log("이미지 url 확인 : ", getCard.url);
 
       setCard(getCard);
       console.log("데이터 전역 저장 완료");
@@ -200,7 +193,6 @@ function CardNewsPage() {
               >
                 <div className={styles.content}>생성된 텍스트</div>
               </div>
-              <p>1:1</p>
             </div>
             <div className={styles.imgBox}>
               <div
@@ -218,7 +210,6 @@ function CardNewsPage() {
                   생성된 텍스트
                 </div>
               </div>
-              <p>가로</p>
             </div>
             <div className={styles.imgBox}>
               <div
@@ -236,7 +227,6 @@ function CardNewsPage() {
                   생성된 텍스트
                 </div>
               </div>
-              <p>가로</p>
             </div>
           </div>
         </div>

@@ -1,12 +1,13 @@
 import { useEffect, useRef, useState } from "react";
+import { postCard, postPresignedUrl } from "../api";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import styles from "../styles/cardnews/CardNewsResultPage.module.css";
 import useTextStore from "../store/useTextStore";
 import useCardStore from "../store/useCardStore";
 import useUuidStore from "../store/useUuidStore";
-import { postCard, postPresignedUrl } from "../api";
-import axios from "axios";
-import Ex1 from "../assets/test/image08.png";
 
+// 텍스트 조정 함수
 function drawWrappedText(ctx, text, x, y, maxWidth, lineHeight) {
   // 왼쪽 정렬
   ctx.textAlign = "left";
@@ -34,6 +35,7 @@ function drawWrappedText(ctx, text, x, y, maxWidth, lineHeight) {
   }
 }
 
+// 배경 라디우스
 function drawRoundedRect(ctx, x, y, width, height, radius, fillStyle) {
   ctx.beginPath();
   ctx.moveTo(x + radius, y);
@@ -50,6 +52,7 @@ function drawRoundedRect(ctx, x, y, width, height, radius, fillStyle) {
   ctx.fill();
 }
 
+// 배경 박스 위치
 const boxAreas = {
   SQUARE_1_1: {
     T1_TEXT_ONLY: { x: 230, y: 260, w: 570, h: 450 },
@@ -67,7 +70,7 @@ const boxAreas = {
     T3_TEXT_RIGHT: { x: 800, y: 150, w: 450, h: 500 },
   },
 };
-
+// 텍스트 위치
 const testArea = {
   SQUARE_1_1: {
     T1_TEXT_ONLY: { x: 280, y: [360, 530], w: 550 },
@@ -87,36 +90,28 @@ const testArea = {
 };
 
 function CardNewsResultPage() {
+  const navigate = useNavigate();
+  const canvasRef = useRef(null);
+  const resultImgRef = useRef(null);
+  // 이미지 업로드
+  const [blob, setBlob] = useState(null);
+
   const storeUuid = useUuidStore((state) => state.storeUuid);
-  console.log("여긴 결과 페이지");
-  console.log("uuid 확인", storeUuid);
 
   const imgData1 = useCardStore((state) => state);
-  console.log("이미지 스토어 데이터 확인 :", imgData1);
   const generatedText = useTextStore((state) => state.generatedText);
-  console.log("텍스트 스토어 데이터 확인 :", generatedText);
 
   // 이미지 박스 크기 스타일
   const [box, setBox] = useState("");
 
-  const canvasRef = useRef(null);
-  const resultImgRef = useRef(null);
-  const [blob, setBlob] = useState(null);
-
   useEffect(() => {
     console.log("이미지 데이터 가져오기");
-    // const imgData = {
-    //   url: Ex1,
-    //   text: "추석 연휴에도 정상 영업합니다.\n 가족과 함께 특별한 시간을 보내세요!",
-    //   ratio: "RATIO_3_2", // SQUARE_1_1, RATIO_2_3, RATIO_3_2
-    //   template: "T3_TEXT_RIGHT", //  T1_TEXT_ONLY, T2_TEXT_BOTTOM, T3_TEXT_RIGHT
-    //   // remainingFreeCount: imgData1.remainingFreeCount,
-    // };
+
     const imgData = {
       url: imgData1.url,
       text: generatedText,
-      ratio: imgData1.ratio, // SQUARE_1_1, RATIO_2_3, RATIO_3_2
-      template: imgData1.template, //  T1_TEXT_ONLY, T2_TEXT_BOTTOM, T3_TEXT_RIGHT
+      ratio: imgData1.ratio,
+      template: imgData1.template,
       remainingFreeCount: imgData1.remainingFreeCount,
     };
 
@@ -124,18 +119,17 @@ function CardNewsResultPage() {
     const ctx = canvas.getContext("2d");
 
     // 이미지 로드
-    console.log("이미지 로드");
     const image = new Image();
     image.crossOrigin = "anonymous"; // 크로스 허용
-    image.src = imgData.url; // 이미지 경로를 설정하세요.
-    image.src = `${imgData.url}?not-from-cache-please`; // s3 크로스 shit
+    image.src = imgData.url;
+    image.src = `${imgData.url}?not-from-cache-please`; // s3 크로스
 
     console.log("이미지 렌더리 주웅...");
     image.onload = async () => {
       // 이미지 렌더링
+      // 이미지 크기
       switch (imgData.ratio) {
         case "SQUARE_1_1":
-          // 이미지 크기
           canvas.width = 1024;
           canvas.height = 1024;
           setBox("");
@@ -160,7 +154,8 @@ function CardNewsResultPage() {
       const text = testArea[imgData.ratio][imgData.template];
       console.log("텍스트/박스 위치 선정");
 
-      const lines = imgData.text.split("\n");
+      const lines = imgData.text.split("\n"); // 텍스트 구분
+      // 배경 그리기
       drawRoundedRect(
         ctx,
         area.x,
@@ -181,7 +176,7 @@ function CardNewsResultPage() {
         drawWrappedText(ctx, line, text.x, text.y[i], text.w, 60);
       });
       console.log("텍스트 위치");
-
+      // blob 파일 생성
       console.log("blob 파일 시작");
       const data = canvas.toDataURL("image/png");
       console.log(data);
@@ -203,7 +198,7 @@ function CardNewsResultPage() {
       fileUrl = getUrl.fileUrl;
       const uploadUrl = getUrl.uploadUrl;
       console.log("url 확인", fileUrl, uploadUrl);
-      // alert("저장이 완료됐습니다.");
+
       console.log("업로드 시작");
       await axios.put(uploadUrl, blob, {
         headers: {
@@ -217,20 +212,22 @@ function CardNewsResultPage() {
 
     try {
       console.log("서버로~~~~~~~");
-      console.log("파일 url", fileUrl);
       const postImg = await postCard({ storeUuid, finalUrl: fileUrl });
       console.log("성 공");
       console.log(postImg);
-      alert("이미지 업로드 성공!");
+      alert("저장이 완료됐습니다.");
     } catch (error) {
       console.log(error);
     }
   };
 
+  const goToMarketing = () => {
+    navigate("/marketing");
+  };
+
   return (
     <div className={styles.container}>
       <canvas ref={canvasRef} style={{ display: "none" }} />
-      {/* <Loading /> */}
       <div className={styles.showResult}>
         <div className={styles.topBox}></div>
         <div className={styles.resultBox}>
@@ -242,8 +239,9 @@ function CardNewsResultPage() {
             <button className={styles.save} onClick={saveCard}>
               저장하기
             </button>
-            <button className={styles.new}>홍보페이지로 돌아가기</button>
-            <button className={styles.back}>새로 만들기</button>
+            <button className={styles.new} onClick={goToMarketing}>
+              홍보페이지로 돌아가기
+            </button>
           </div>
           <p className={styles.chance}>
             이번 달 무료 횟수 <span>{imgData1.remainingFreeCount}회</span>

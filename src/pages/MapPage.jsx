@@ -1,14 +1,17 @@
 import { useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "../styles/map/MapPage.module.css";
+
 import MapSearch from "../components/map/MapSearch";
 import CoaMapList from "../components/map/CoaMapList";
-import { useNavigate } from "react-router-dom";
 
 // const { kakao } = window;
 
 function MapPage() {
-  const navigate = useNavigate();
   const container = useRef(null);
+  const navigate = useNavigate();
+
+  // 미완성 목 데이터
   const stores = [
     {
       name: "브래드랩",

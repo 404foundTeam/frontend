@@ -1,13 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { fetchStoresByCoord, matchStore } from "../../api/index.js";
-import useUuidStore from "../../store/useUuidStore";
 import styles from "../../styles/welcome/WelcomeMap.module.css";
+
+import useUuidStore from "../../store/useUuidStore";
+
 import close from "../../assets/welcomeMap/close.png";
 import listTitle from "../../assets/welcomeMap/list.png";
 import MarkerImg from "../../assets/welcomeMap/marker.png";
 import selectMarkerImg from "../../assets/welcomeMap/select_marker.png";
-import StoreSearch from "./StoreSearch";
+import StoreSearch from "./StoreSearch.jsx";
 import SearchList from "./SearchList.jsx";
 
 // const { kakao } = window;
@@ -90,11 +92,6 @@ function WelcomeMap({ focusRef, onClick }) {
       if (status === window.kakao.maps.services.Status.OK) {
         const coords = new window.kakao.maps.LatLng(result[0].y, result[0].x);
 
-        console.log("result : ", result);
-        console.log("도로명 주소 : ", result[0].address_name);
-        console.log("경도 : ", result[0].x);
-        console.log("위도 : ", result[0].y);
-
         mapRef.current.setCenter(coords);
 
         // 검색 마커만 따로 관리
@@ -121,9 +118,8 @@ function WelcomeMap({ focusRef, onClick }) {
       }
       console.log("업장 목록 가져오는 중...");
       try {
-        console.log("리스트 데이터", result[0].x, result[0].y);
         const storeList = await fetchStoresByCoord(result[0].x, result[0].y);
-        console.log("응답 데이터 : ", storeList);
+
         setStores(storeList.items);
         console.log("업장 검색 완료");
       } catch (error) {
