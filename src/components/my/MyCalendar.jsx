@@ -40,6 +40,16 @@ function MyCalendar() {
         }
         return acc;
       }, {});
+
+      if (year === 2025) {
+        const gwangbokjeol = '2025-08-15';
+        if (holidaysData[gwangbokjeol]) {
+          holidaysData[gwangbokjeol].title += ', 광복절';
+        } else {
+          holidaysData[gwangbokjeol] = { title: '광복절', type: 'HOLIDAY' };
+        }
+      }
+
       setHolidays(holidaysData);
     } catch (err) {
       console.error("공휴일 정보 조회 실패:", err);
