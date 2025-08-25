@@ -128,14 +128,11 @@ function WelcomeMap({ focusRef, onClick }) {
       } else {
         alert("오류 발생");
       }
-      console.log("업장 목록 가져오는 중...");
       try {
         const storeList = await fetchStoresByCoord(result[0].x, result[0].y);
 
         setStores(storeList.items);
-        console.log("업장 검색 완료");
       } catch (error) {
-        console.log("업장 검색 실패");
         console.log("요청 에러", error);
         alert("데이터 요청에 실패했습니다.");
       }
@@ -143,18 +140,12 @@ function WelcomeMap({ focusRef, onClick }) {
   };
 
   const postStoreInfo = async () => {
-    console.log("업장 등록 시작");
-
     if (!selectStore) return;
 
     try {
-      console.log("업장 등로옥");
       const result = await matchStore(selectStore);
-      console.log("응답 데이터 : ", result);
       setUuid(result);
       alert("업장 등록 완료!");
-      console.log("업장 uuid 등록 완료");
-      console.log("페이지 이동");
       navigate("/main");
     } catch (error) {
       setFail(true);

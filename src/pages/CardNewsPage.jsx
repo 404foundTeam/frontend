@@ -16,9 +16,6 @@ function CardNewsPage() {
 
   const storeUuid = useUuidStore((state) => state.storeUuid);
   const storeName = useUuidStore((state) => state.storeName);
-
-  const generatedTextStore = useTextStore((state) => state.generatedText);
-
   const setText = useTextStore((state) => state.setText);
   const setCard = useCardStore((state) => state.setCard);
 
@@ -34,16 +31,10 @@ function CardNewsPage() {
   const [fail, setFail] = useState(false);
 
   const getGenerateText = async () => {
-    console.log("텍스트 변환 시작");
     try {
       const getText = await generateText({ type: cardType, userText });
       setGeneratedText(getText.generatedText);
-      console.log("변환 텍스트 저장 완료");
-      console.log(getText.generatedText);
       setText({ generatedText: getText.generatedText });
-      console.log();
-      console.log("변환 텍스트 전역 저장 완료");
-      console.log(generatedTextStore);
     } catch (error) {
       console.log("데이터 요청 실패", error);
       alert("텍스트 변환에 실패했습니다.");
@@ -66,7 +57,6 @@ function CardNewsPage() {
 
     try {
       setLoading(true);
-      console.log("trying...");
       const getCard = await backgroundImg(cardData);
 
       setCard(getCard);

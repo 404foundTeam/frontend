@@ -105,8 +105,6 @@ function CardNewsResultPage() {
   const [box, setBox] = useState("");
 
   useEffect(() => {
-    console.log("이미지 데이터 가져오기");
-
     const imgData = {
       url: imgData1.url,
       text: generatedText,
@@ -124,7 +122,6 @@ function CardNewsResultPage() {
     image.src = imgData.url;
     image.src = `${imgData.url}?not-from-cache-please`; // s3 크로스
 
-    console.log("이미지 렌더리 주웅...");
     image.onload = async () => {
       // 이미지 렌더링
       // 이미지 크기
@@ -148,11 +145,9 @@ function CardNewsResultPage() {
           ctx.drawImage(image, 0, 0, 1350, 1080);
           break;
       }
-      console.log("비율 적용 완료");
 
       const area = boxAreas[imgData.ratio][imgData.template];
       const text = testArea[imgData.ratio][imgData.template];
-      console.log("텍스트/박스 위치 선정");
 
       const lines = imgData.text.split("\n"); // 텍스트 구분
       // 배경 그리기
@@ -175,11 +170,8 @@ function CardNewsResultPage() {
       lines.forEach((line, i) => {
         drawWrappedText(ctx, line, text.x, text.y[i], text.w, 60);
       });
-      console.log("텍스트 위치");
       // blob 파일 생성
-      console.log("blob 파일 시작");
       const data = canvas.toDataURL("image/png");
-      console.log(data);
       resultImgRef.current.src = data;
       const blobData = await (await fetch(data)).blob();
       console.log("blob 파일 완료");
@@ -188,34 +180,25 @@ function CardNewsResultPage() {
   }, []);
 
   const saveCard = async () => {
-    console.log("이미지 저장하기 시작");
     let fileUrl;
 
     try {
       const getUrl = await postPresignedUrl(storeUuid);
-      console.log("url들 가져오기");
-      console.log(getUrl);
       fileUrl = getUrl.fileUrl;
       const uploadUrl = getUrl.uploadUrl;
-      console.log("url 확인", fileUrl, uploadUrl);
-
-      console.log("업로드 시작");
       await axios.put(uploadUrl, blob, {
         headers: {
           "Content-Type": "image/png",
         },
       });
-      console.log("업로드 완료", fileUrl);
     } catch (error) {
       console.log(error);
     }
 
     try {
-      console.log("서버로~~~~~~~");
       const postImg = await postCard({ storeUuid, finalUrl: fileUrl });
-      console.log("성 공");
-      console.log(postImg);
       alert("저장이 완료됐습니다.");
+      return postImg;
     } catch (error) {
       console.log(error);
     }

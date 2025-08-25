@@ -20,13 +20,11 @@ function CameraPage() {
   const [fail, setFail] = useState(false);
 
   const handleFile = (file) => {
-    console.log("파일", file);
     if (!file) return;
 
     setData(file);
     const render = new FileReader();
     render.onload = (e) => {
-      console.log("이미지", e.target.result);
       setPreview(e.target.result);
     };
     render.readAsDataURL(file);
@@ -38,6 +36,7 @@ function CameraPage() {
       const res = await guideFile(data);
       setGuide({ guideImg: preview, guideText: res.guideText });
     } catch (error) {
+      setFail(true);
       console.log(error);
     }
 

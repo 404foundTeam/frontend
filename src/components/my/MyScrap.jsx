@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-import styles from '../../styles/MyScrap.module.css';
+import { useState, useEffect } from "react";
+import axios from "axios";
+import styles from "../../styles/MyScrap.module.css";
 import useUuidStore from "../../store/useUuidStore";
 
 function MyScrap() {
@@ -8,7 +8,7 @@ function MyScrap() {
   const [totalItems, setTotalItems] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  
+
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
 
@@ -23,17 +23,19 @@ function MyScrap() {
       setIsLoading(true);
       setError(null);
       try {
-        const response = await axios.get('http://13.209.239.240/api/v1/sns-cards/final', {
-          params: {
-            storeUuid: storeUuid,
-            page: currentPage - 1,
-            size: itemsPerPage,
-          },
-        });
-        
+        const response = await axios.get(
+          "http://13.209.239.240/api/v1/sns-cards/final",
+          {
+            params: {
+              storeUuid: storeUuid,
+              page: currentPage - 1,
+              size: itemsPerPage,
+            },
+          }
+        );
+
         setCards(response.data.items);
         setTotalItems(response.data.total);
-
       } catch (err) {
         console.error("API Error:", err);
         setError("카드 목록을 불러오는 데 실패했습니다.");
@@ -54,8 +56,10 @@ function MyScrap() {
   return (
     <>
       <div className={styles.header}>
-        <h1 className={styles.mainTitle}>My Content</h1>
-        <p className={styles.subtitle}>내가 만든 카드뉴스를 한 눈에 관리해보세요</p>
+        <h1 className={styles.mainTitle}>나의 컨텐츠</h1>
+        <p className={styles.subtitle}>
+          내가 만든 카드뉴스를 한 눈에 관리해보세요
+        </p>
       </div>
 
       <div className={styles.cardGrid}>
@@ -64,7 +68,11 @@ function MyScrap() {
           cards.map((item) => (
             <div key={item.id}>
               <div className={styles.card}>
-                <img src={item.imageUrl} alt={`Card ${item.id}`} className={styles.cardImage} />
+                <img
+                  src={item.imageUrl}
+                  alt={`Card ${item.id}`}
+                  className={styles.cardImage}
+                />
               </div>
             </div>
           ))
@@ -80,7 +88,9 @@ function MyScrap() {
             <button
               key={i + 1}
               onClick={() => setCurrentPage(i + 1)}
-              className={`${styles.pageButton} ${currentPage === i + 1 ? styles.active : ''}`}
+              className={`${styles.pageButton} ${
+                currentPage === i + 1 ? styles.active : ""
+              }`}
             >
               {i + 1}
             </button>

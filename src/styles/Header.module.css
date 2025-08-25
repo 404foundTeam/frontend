@@ -1,7 +1,5 @@
 header {
-  /* width: 1920px; */
   width: 1440px;
-  /* height: 72px; */
   height: 68px;
   position: relative;
 
@@ -10,7 +8,6 @@ header {
 
   font-style: normal;
   font-weight: 500;
-  /* font-size: 20px; */
   font-size: 17px;
   line-height: 24px;
   letter-spacing: -0.025em;
@@ -41,7 +38,3 @@ header .text {
 header .tags .link {
   color: #333333;
 }
-
-/* header .my {
-  margin-left: auto;
-} */
