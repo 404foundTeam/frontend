@@ -5,7 +5,7 @@ import SideBar from "../components/SideBar";
 import styles from "../styles/MarketingLayout.module.css";
 
 // 배너에 필요한 이미지들 import.
-import illustration from "../assets/marketingpage/image copy 7.png";
+import illustration from "../assets/marketingpage/img_cop_2.png";
 import btnCardNews from "../assets/marketingpage/image copy 3.png";
 import btnMap from "../assets/marketingpage/image copy 4.png";
 import btnPhoto from "../assets/marketingpage/image copy 5.png";
