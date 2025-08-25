@@ -9,7 +9,10 @@
 
 .card {
   background-color: white;
-  padding: 25px;
+  color: #413738;
+  text-align: center;
+  line-height: 1.8;
+  padding: 30px;
   border-radius: 50px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }

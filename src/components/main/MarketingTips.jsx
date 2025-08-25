@@ -30,7 +30,13 @@ function MarketingTips() {
         setTips(response.data.marketingSuggestions || []);
         
       } catch (err) {
-        setError("마케팅 Tip 정보를 불러오는 데 실패했습니다.");
+        setError(
+        <div className={styles.error}>
+        데이터를 분석하여 맞춤 마케팅 Tip을 생성합니다.
+        <br /><br />
+        스마트 리포트에 분석할 엑셀 파일을 등록해주세요.
+        </div>
+        );
         console.error("API Error:", err);
       } finally {
         setIsLoading(false);

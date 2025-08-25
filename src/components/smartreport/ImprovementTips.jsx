@@ -31,7 +31,7 @@ function ImprovementTips() {
         setTipsText(response.data.combinedTips || '');
         
       } catch (err) {
-        setError("개선 Tip 정보를 불러오는 데 실패했습니다.");
+        setError("아직 리뷰나 업로드된 엑셀 파일이 없습니다.");
         console.error("API Error:", err);
       } finally {
         setIsLoading(false);

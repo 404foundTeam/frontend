@@ -52,7 +52,13 @@ function DayPattern() {
         }
 
       } catch (err) {
-        setError("요일별 방문 패턴 정보를 불러오는 데 실패했습니다.");
+        setError(
+        <>
+        요일별 방문 패턴을 확인하려면
+        <br />
+        엑셀 파일을 업로드해주세요.
+        </>
+        );
         console.error("API Error:", err);
       } finally {
         setIsLoading(false);

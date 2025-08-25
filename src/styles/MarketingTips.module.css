@@ -103,3 +103,8 @@
 .tipDescription p:last-child {
   margin-bottom: 0;
 }
+
+.error {
+  color: #413738;
+  text-align: center;
+}
