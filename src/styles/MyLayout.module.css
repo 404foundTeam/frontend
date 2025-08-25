@@ -1,6 +1,7 @@
 .bannerWrapper {
   margin-left: -300px;
-  background-color: #E2D7D7; 
+  padding-top: 2em;
+  background-color: #e2d7d7;
 }
 
 .banner {
@@ -28,17 +29,17 @@
 }
 
 .reregisterButton {
-  white-space: nowrap; 
-  background-color: #6D3737;
+  white-space: nowrap;
+  background-color: #6d3737;
   color: white;
-  padding: 12px 25px; 
-  font-size: 1rem; 
-  font-weight: bold; 
+  padding: 12px 25px;
+  font-size: 1rem;
+  font-weight: bold;
 
-  border-radius: 8px; 
-  border: none; 
-  cursor: pointer; 
-  transition: opacity 0.2s; 
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s;
 }
 
 .reregisterButton:hover {
