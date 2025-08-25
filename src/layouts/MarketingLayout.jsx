@@ -4,9 +4,8 @@ import { Outlet, Link } from "react-router-dom";
 import SideBar from "../components/SideBar";
 import styles from "../styles/MarketingLayout.module.css";
 
-// 1. 배너에 필요한 이미지들을 import 합니다.
-// (경로는 실제 프로젝트 파일 위치에 맞게 꼭 수정해주세요!)
-import illustration from "../assets/marketingpage/img_copy_1.png";
+// 배너에 필요한 이미지들 import.
+import illustration from "../assets/marketingpage/image copy 7.png";
 import btnCardNews from "../assets/marketingpage/image copy 3.png";
 import btnMap from "../assets/marketingpage/image copy 4.png";
 import btnPhoto from "../assets/marketingpage/image copy 5.png";
@@ -17,7 +16,6 @@ function MarketingLayout() {
   return (
     <div className={styles.layoutContainer}>
       <SideBar />
-      {/* Outlet은 항상 main 콘텐츠 영역 안에 위치해야 합니다. */}
       <main className={styles.mainContent}>
         {/* --- 여기에 배너 코드를 추가합니다 --- */}
         <div className={styles.banner}>

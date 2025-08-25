@@ -6,12 +6,12 @@
 
 .mainTitle{
   margin: 20px;
-  font-size: 30px;
+  font-size: 25px;
   color: #413738
 }
 
 .subtitle{
-  font-size: 20px;
+  font-size: 17px;
     color: #797979;
 }
 
@@ -37,7 +37,7 @@
 }
 
 .card:hover .cardImage {
-  transform: scale(1.1); /* 이미지를 1.1배 확대합니다. 숫자를 조절해 확대 비율을 변경할 수 있습니다. */
+  transform: scale(1.1); /* 이미지를 1.1배 확대 숫자를 조절해 확대 비율을 변경 가능 */
 }
 
 .cardTitle {
@@ -62,7 +62,7 @@
   color: #797979; 
 }
 
-/* 활성화된(선택된) 페이지 버튼 스타일 */
+/* (선택된) 페이지 버튼 스타일 */
 .pageButton.active {
   color: #FEBF22; 
   font-weight: 700;
@@ -71,11 +71,8 @@
 .emptyMessage {
   grid-column: 1 / -1;
   text-align: center; 
-  
-  font-size: 20px;   
-  font-weight: 700;    /* 글자를 굵게(bold) 만듭니다. */
-
-  /* 기타 스타일 */
+  font-size: 17px;   
+  font-weight: 700;    
   color: #797979;
-  padding: 150px 0; /* 위아래로 충분한 여백을 줍니다. */
+  padding: 150px 0; 
 }

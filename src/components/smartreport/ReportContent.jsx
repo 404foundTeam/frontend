@@ -4,19 +4,17 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styles from "../../styles/ReportContent.module.css";
 import useUuidStore from "../../store/useUuidStore";
+import TimePattern from '../main/TimePattern';
+import DayPattern from '../main/DayPattern';
+import TopMenus from '../main/TopMenus';
+import TotalVisitors from '../main/TotalVisitors';
+import illustration from '../../assets/report/image.png';
+import SalesSummary from './SalesSummary'; 
+import ImprovementTips from './ImprovementTips'; 
+import FileUploadModal from './FileUploadModal';
+import Blur from '../welcome/Blur';
 
-// --- 하위 컴포넌트들 ---
-import TimePattern from "../main/TimePattern";
-import DayPattern from "../main/DayPattern";
-import TopMenus from "../main/TopMenus";
-import TotalVisitors from "../main/TotalVisitors";
-import illustration from "../../assets/report/image.png";
-import SalesSummary from "./SalesSummary";
-import ImprovementTips from "./ImprovementTips";
-import FileUploadModal from "./FileUploadModal";
-import Blur from "../welcome/Blur";
 
-// --- 간단한 UI 컴포넌트 ---
 
 // 사용자 알림 (Toast) 컴포넌트
 function Toast({ message }) {
@@ -24,7 +22,6 @@ function Toast({ message }) {
   return <div className={styles.toast}>{message}</div>;
 }
 
-// --- 메인 컴포넌트 ---
 
 function ReportContent() {
   const storeUuid = useUuidStore((state) => state.storeUuid);
@@ -36,7 +33,7 @@ function ReportContent() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   // const [toastMessage, setToastMessage] = useState('');
 
-  // --- 1. API 호출 로직 ---
+  // --- API 호출 로직 ---
   useEffect(() => {
     // 가게 정보가 없으면 API를 호출하지 않음
     if (!storeUuid || !storeName) {

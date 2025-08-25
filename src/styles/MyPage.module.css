@@ -4,17 +4,18 @@
 }
 
 .tabContainer {
+  margin-left: 12%;
   display: flex;
-  border-bottom: 2px solid #eee;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   margin-bottom: 1rem;
 }
 
 .tabButton {
-  padding: 10px 20px;
+  padding: 10px 30px;
   border: none;
   background-color: transparent;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 17px;
   font-weight: bold;
   color: #acacac;
 }

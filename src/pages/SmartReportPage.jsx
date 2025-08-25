@@ -6,7 +6,6 @@ import ReportContent from '../components/smartreport/ReportContent';
 import MarketingContent from '../components/smartreport/MarketingContent';
 
 function SmartReportPage() {
-  // 'report' 또는 'marketing' 탭 상태를 관리
   const [activeTab, setActiveTab] = useState('report');
 
   return (

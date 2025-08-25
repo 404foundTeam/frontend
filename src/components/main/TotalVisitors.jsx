@@ -7,7 +7,6 @@ import axios from 'axios';
 import useUuidStore from '../../store/useUuidStore';
 import styles from '../../styles/Dashboard.module.css';
 
-// Chart.js에 필요한 요소들을 등록합니다.
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Filler, Tooltip);
 
 // 요일을 정렬하기 위한 순서 객체

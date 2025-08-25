@@ -1,9 +1,10 @@
 // src/components/TopMenus.jsx
 
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import useUuidStore from "../../store/useUuidStore";
-import styles from "../../styles/Dashboard.module.css"; // 컴포넌트의 기존 스타일
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import useUuidStore from '../../store/useUuidStore';
+import styles from '../../styles/Dashboard.module.css'; 
+
 
 function TopMenus() {
   const storeUuid = useUuidStore((state) => state.storeUuid);
@@ -22,11 +23,8 @@ function TopMenus() {
     const fetchTopMenus = async () => {
       try {
         setIsLoading(true);
-        // TODO: 실제 백엔드 서버 주소로 변경해주세요.
-        const response = await axios.get(
-          `http://13.209.239.240/api/v1/report/${storeUuid}/product-ranking`
-        );
-
+        const response = await axios.get(`http://13.209.239.240/api/v1/report/${storeUuid}/product-ranking`);
+        
         const chartData = response.data.salesDistributionChart || [];
 
         const formattedData = chartData.map((item, index) => ({
@@ -49,7 +47,6 @@ function TopMenus() {
 
   // --- 상태에 따른 조건부 렌더링 ---
 
-  // ✨ [수정] 로딩 중일 때 간단한 텍스트를 보여줍니다.
   if (isLoading) {
     return (
       <div className={styles.card}>

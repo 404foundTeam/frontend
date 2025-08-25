@@ -80,12 +80,15 @@ function WeeklyScheduleViewer() {
   const upcomingEvents = useMemo(() => {
     const today = new Date();
     today.setHours(0, 0, 0, 0); // 날짜만 비교하기 위해 시간을 0으로 설정
-
-    // events 배열에서 오늘 날짜 이후의 일정만 필터링합니다.
-    return events.filter((event) => new Date(event.date) >= today).slice(0, 4);
+    
+    // events 배열에서 오늘 날짜 이후의 일정만 필터링.
+    return events.filter(event => new Date(event.date) >= today)
+    .slice(0, 4);
   }, [events]); // events 데이터가 변경될 때만 재계산합니다.
 
-  // 가장 가까운 일정 ID를 찾는 로직은 이제 upcomingEvents를 사용합니다.
+
+  // 가장 가까운 일정 ID를 찾는 로직은 이제 upcomingEvents를 사용.
+
   const closestEventId = useMemo(() => {
     // 이미 정렬된 상태이므로 첫 번째 항목의 id를 반환하면 됩니다.
     return upcomingEvents.length > 0 ? upcomingEvents[0].id : null;
@@ -129,11 +132,10 @@ function WeeklyScheduleViewer() {
             <p>일정을 불러오는 중...</p>
           ) : error ? (
             <p>{error}</p>
-          ) : // ✨ [수정] 필터링된 upcomingEvents 배열을 사용하고, 메시지를 좀 더 명확하게 변경합니다.
-          upcomingEvents.length === 0 ? (
+          ) : upcomingEvents.length === 0 ? (
+
             <p>이번 달에는 다가오는 일정이 없습니다.</p>
           ) : (
-            // ✨ [수정] events 대신 필터링된 upcomingEvents를 map으로 순회합니다.
             upcomingEvents.map((event) => (
               <div key={event.id} className={styles.eventItem}>
                 <div className={styles.bullet}></div>
