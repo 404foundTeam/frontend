@@ -3,16 +3,9 @@
 import styles from "../styles/MarketingPage.module.css";
 
 // 1. 페이지에 사용할 이미지들을 import 합니다.
-<<<<<<< Updated upstream
-// (실제 프로젝트의 이미지 경로에 맞게 수정해주세요)
-import cardNewsImage from "../assets/marketingpage/image.png";
-import templateImage from "../assets/marketingpage/image copy.png";
-import aiGuideImage from "../assets/marketingpage/image copy 2.png";
-=======
 import cardNewsImage from '../assets/marketingpage/image.png';
 import templateImage from '../assets/marketingpage/image copy.png';
 import aiGuideImage from '../assets/marketingpage/image copy 2.png';
->>>>>>> Stashed changes
 
 function MarketingPage() {
   const cardNewsDesc = `AI가 생성한 문구를 활용하여 카드 뉴스를 생성해보세요.
