@@ -15,6 +15,7 @@ import SearchList from "./SearchList.jsx";
 // const { kakao } = window;
 
 function WelcomeMap({ focusRef, onClick }) {
+  const infoWindowRef = useRef(null);
   const [stores, setStores] = useState([]);
   const [search, setSearch] = useState("");
   const [isClick, setIsClick] = useState(false);
@@ -44,7 +45,7 @@ function WelcomeMap({ focusRef, onClick }) {
     }
 
     if (!stores) return;
-    let selectedMarker = null;
+    // 리스트 목록 마커 동작
     const newMarkers = stores.map((store) => {
       const markerPosition = new window.kakao.maps.LatLng(
         store.latitude,
@@ -63,25 +64,32 @@ function WelcomeMap({ focusRef, onClick }) {
         imageOption
       );
 
+      // 선택된 store와 일치하면 select 이미지, 아니면 기본 이미지
+      const isSelected = selectStore?.placeId === store.placeId;
       const marker = new window.kakao.maps.Marker({
         position: markerPosition,
-        image: markerImage,
+        image: isSelected ? selectMarkerImage : markerImage,
       });
       marker.setMap(mapRef.current);
 
       window.kakao.maps.event.addListener(marker, "click", function () {
-        console.log(marker);
-        // 이전 선택 마커가 있으면 원래 이미지로 복원
-        if (selectedMarker && selectedMarker !== marker) {
-          selectedMarker.setImage(markerImage);
+        setSelectStore(store);
+        setIsClick(true);
+        // 기존 인포윈도우 제거
+        if (infoWindowRef.current) {
+          infoWindowRef.current.close();
         }
-        marker.setImage(selectMarkerImage);
-        selectedMarker = marker;
+        // 인포윈도우 생성
+        const infoWindow = new window.kakao.maps.InfoWindow({
+          content: `<div style='padding:5px;font-size:14px;'>${store.placeName}</div>`,
+        });
+        infoWindow.open(mapRef.current, marker);
+        infoWindowRef.current = infoWindow;
       });
       return marker;
     });
     markerRef.current = newMarkers;
-  }, [stores]);
+  }, [stores, selectStore]);
 
   const searchAddr = (address) => {
     console.log("업장 검색 시작");
@@ -194,14 +202,9 @@ function WelcomeMap({ focusRef, onClick }) {
                   key={store.placeId}
                   store={store}
                   isSelected={selectStore?.placeId === store.placeId}
-                  onClick={(e) => {
-                    if (e.currentTarget.className.includes("select")) {
-                      setSelectStore(null);
-                      setIsClick(false);
-                    } else {
-                      setSelectStore(store);
-                      setIsClick(true);
-                    }
+                  onClick={() => {
+                    setSelectStore(store);
+                    setIsClick(true);
                   }}
                 />
               ))}
