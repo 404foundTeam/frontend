@@ -11,6 +11,7 @@ import useUuidStore from "../store/useUuidStore";
 
 function MyLayout() {
   const storeName = useUuidStore((state) => state.storeName);
+  const rodAddress = useUuidStore((state) => state.rodAddress);
 
   // --- 2. 팝업(WelcomeMap)을 관리할 state와 핸들러 함수를 추가합니다 ---
   const [showMap, setShowMap] = useState(false);
@@ -38,9 +39,7 @@ function MyLayout() {
             <div className={styles.banner}>
               <div className={styles.userInfo}>
                 <h2 className={styles.userName}>{storeName}님</h2>
-                <p className={styles.userAddress}>
-                  경기 용인시 기흥구 기흥역로 9 108호 어웨이커피
-                </p>
+                <p className={styles.userAddress}>{rodAddress}</p>
               </div>
               <button
                 className={styles.reregisterButton}
