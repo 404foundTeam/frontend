@@ -1,14 +1,15 @@
 import styles from "../../styles/welcome/SearchList.module.css";
-
 import listIcon from "../../assets/welcomeMap/marker_icon.png";
+import React, { forwardRef } from "react";
 
-function SearchList({ store, isSelected, onClick }) {
+const SearchList = forwardRef(({ store, isSelected, onClick }, ref) => {
   if (!store) return null;
-
   return (
     <div
+      ref={ref}
       className={`${styles.list} ${isSelected ? styles.select : ""}`}
       onClick={onClick}
+      tabIndex={0}
     >
       <img src={listIcon} className={styles.icon} />
       <div className={styles.store}>
@@ -17,6 +18,6 @@ function SearchList({ store, isSelected, onClick }) {
       </div>
     </div>
   );
-}
+});
 
 export default SearchList;

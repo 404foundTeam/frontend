@@ -16,6 +16,8 @@ import SearchList from "./SearchList.jsx";
 
 function WelcomeMap({ focusRef, onClick }) {
   const navigate = useNavigate();
+  // SearchList DOM 접근용 ref 배열
+  const searchListRefs = useRef([]);
   const infoWindowRef = useRef(null);
   const container = useRef(null);
   const mapRef = useRef(null);
@@ -50,7 +52,7 @@ function WelcomeMap({ focusRef, onClick }) {
 
     if (!stores) return;
     // 리스트 목록 마커 동작
-    const newMarkers = stores.map((store) => {
+    const newMarkers = stores.map((store, idx) => {
       const markerPosition = new window.kakao.maps.LatLng(
         store.latitude,
         store.longitude
@@ -89,6 +91,14 @@ function WelcomeMap({ focusRef, onClick }) {
         });
         infoWindow.open(mapRef.current, marker);
         infoWindowRef.current = infoWindow;
+        // SearchList 자동 스크롤 및 포커스
+        if (searchListRefs.current[idx]) {
+          searchListRefs.current[idx].scrollIntoView({
+            behavior: "smooth",
+            block: "center",
+          });
+          searchListRefs.current[idx].focus();
+        }
       });
       return marker;
     });
@@ -195,15 +205,17 @@ function WelcomeMap({ focusRef, onClick }) {
           </div>
           {stores && (
             <div className={styles.searchList}>
-              {stores.map((store) => (
+              {stores.map((store, idx) => (
                 <SearchList
                   key={store.placeId}
+                  ref={(el) => (searchListRefs.current[idx] = el)}
                   store={store}
                   isSelected={selectStore?.placeId === store.placeId}
                   onClick={() => {
                     setSelectStore(store);
                     setIsClick(true);
                   }}
+                  tabIndex={0}
                 />
               ))}
             </div>
