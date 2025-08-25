@@ -1,6 +1,5 @@
 .bannerWrapper {
   margin-left: -300px;
-  padding-top: 2em;
   background-color: #e2d7d7;
 }
 
@@ -51,6 +50,7 @@
 
 .mainContent {
   width: 1920px;
+  padding-top: 2em;
   /* height: 495px; 나중에 수정 */
   margin-left: 300px;
 }
