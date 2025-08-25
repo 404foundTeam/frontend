@@ -14,13 +14,13 @@ function CardNewsLoadingPage({ isCamera = false }) {
         <p className={styles.content}>
           {!isCamera && (
             <>
-              <span className={styles.store}>{storeName}</span>를 홍보할 SNS
+              <span className={styles.store}>{storeName}</span>을 홍보할 SNS
               카드뉴스가 만들어지고 있어요!
             </>
           )}
           {isCamera && (
             <>
-              <span className={styles.store}>{storeName}</span>를 위한 사진 분석
+              <span className={styles.store}>{storeName}</span>을 위한 사진 분석
               및 촬영 가이드가 만들어지고 있어요!
             </>
           )}

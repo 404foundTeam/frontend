@@ -362,16 +362,14 @@
   height: 760px;
   position: relative;
 
+  padding-left: 20px;
+
   display: flex;
 }
 
 .welcome-card .welcome-text-box.sns {
   padding-top: 66px;
   margin-left: 122px;
-}
-
-.welcome-card .card-img-box {
-  padding-left: 20px;
 }
 
 /* 카드 뉴스 겹치게 */
