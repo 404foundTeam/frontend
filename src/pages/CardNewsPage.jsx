@@ -9,6 +9,7 @@ import useCardStore from "../store/useCardStore.js";
 import useTextStore from "../store/useTextStore.js";
 import SelectBox from "../components/SelectBox.jsx";
 import Loading from "../components/Loading.jsx";
+import Error from "../components/Error.jsx";
 
 function CardNewsPage() {
   const navigate = useNavigate();
@@ -30,17 +31,15 @@ function CardNewsPage() {
   const [theme, setTheme] = useState("");
 
   const [loading, setLoading] = useState(false);
+  const [fail, setFail] = useState(false);
 
   const getGenerateText = async () => {
     console.log("텍스트 변환 시작");
     try {
-      console.log("요청 데이터들 : ", cardType, userText);
       const getText = await generateText({ type: cardType, userText });
-      console.log("응답 : ", getText);
       setGeneratedText(getText.generatedText);
       console.log("변환 텍스트 저장 완료");
       console.log(getText.generatedText);
-      // setText(getText.generatedText);
       setText({ generatedText: getText.generatedText });
       console.log();
       console.log("변환 텍스트 전역 저장 완료");
@@ -64,20 +63,17 @@ function CardNewsPage() {
       ratio,
       theme,
     };
-    console.log("요청 데이터 : ", cardData);
 
     try {
       setLoading(true);
       console.log("trying...");
       const getCard = await backgroundImg(cardData);
-      // const getCard = await backgroundImg2(cardData);
-      console.log("응답 데이터 : ", getCard);
-      console.log("이미지 url 확인 : ", getCard.url);
 
       setCard(getCard);
       console.log("데이터 전역 저장 완료");
       navigate("/cardnews/result");
     } catch (error) {
+      setFail(true);
       console.log(error);
     } finally {
       setLoading(false);
@@ -85,6 +81,7 @@ function CardNewsPage() {
   };
 
   if (loading) return <Loading isCamera={false} />;
+  if (fail) return <Error />;
 
   return (
     <div className={styles.container}>
@@ -92,7 +89,7 @@ function CardNewsPage() {
         <img src={bannerImg} className={styles.img} />
         <h1 className={styles.title}>{storeName}</h1>
         <p className={styles.content}>
-          를 위한 SNS 카드 뉴스를 만들어드릴게요.
+          을 위한 SNS 카드 뉴스를 만들어드릴게요.
         </p>
       </div>
       <div className={styles.cardNewsContainer}>
@@ -200,7 +197,6 @@ function CardNewsPage() {
               >
                 <div className={styles.content}>생성된 텍스트</div>
               </div>
-              <p>1:1</p>
             </div>
             <div className={styles.imgBox}>
               <div
@@ -218,7 +214,6 @@ function CardNewsPage() {
                   생성된 텍스트
                 </div>
               </div>
-              <p>가로</p>
             </div>
             <div className={styles.imgBox}>
               <div
@@ -236,7 +231,6 @@ function CardNewsPage() {
                   생성된 텍스트
                 </div>
               </div>
-              <p>가로</p>
             </div>
           </div>
         </div>

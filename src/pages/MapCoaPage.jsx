@@ -1,10 +1,12 @@
 import { useState } from "react";
 import styles from "../styles/map/MapCoaPage.module.css";
+
 import SelectHeader from "../components/SelectHeader";
 import MapBanner from "../components/map/MapBanner";
 import SelectBox from "../components/SelectBox";
 
 function MapCoaPage() {
+  // 리퀘스트 바디 데이터
   const [text, setText] = useState("");
   const [goal, setGoal] = useState("");
   const [date, setDate] = useState("");

@@ -4,6 +4,7 @@
   justify-content: center;
   gap: 2rem;
   padding: 2rem;
+  margin-bottom: 24px;
 }
 
 .card {
@@ -16,13 +17,13 @@
 .cardTitle {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #6D3737;
+  color: #6d3737;
   margin-bottom: 20px;
 }
 
 .cardDescription {
   font-size: 0.95rem;
-  color: #6D3737;
+  color: #6d3737;
   line-height: 1.6;
   margin-top: 20px;
 }
@@ -34,13 +35,16 @@
 }
 .bubbleContainer {
 }
-.bubble, .bubbleLarge, .bubbleSmall {
+.bubble,
+.bubbleLarge,
+.bubbleSmall {
   /* 원형, 배경색, 글자 스타일 */
 }
 
 /* 주문 많은 메뉴 */
 .rankList {
   list-style-type: none;
+  margin-top: 32px;
   padding: 0;
 }
 .rankItem {
@@ -51,7 +55,7 @@
 }
 .rankNumber {
   font-weight: bold;
-  color: #FEBF22;
+  color: #febf22;
   width: 50px;
 }
 .rankName {
@@ -59,4 +63,11 @@
 }
 .rankPercentage {
   font-weight: bold;
+}
+
+.feedback {
+  font-size: 0.95rem;
+  color: #6d3737;
+  line-height: 1.6;
+  margin-top: 32px;
 }

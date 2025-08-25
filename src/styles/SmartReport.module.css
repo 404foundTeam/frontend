@@ -6,10 +6,12 @@
 
 /* --- 탭 네비게이션 --- */
 .tabNav {
+  max-width: 1244px;
   display: flex;
   gap: 1rem;
-  border-bottom: 1px solid #EAE1CF;
-  margin-left: 10%;
+  border-bottom: 1px solid #eae1cf;
+  padding-left: 10%;
+  margin: 0 auto;
 }
 
 .tabButton {
@@ -18,15 +20,15 @@
   background-color: transparent;
   font-size: 25px;
   font-weight: 600;
-  color: #ACACAC;
+  color: #acacac;
   cursor: pointer;
   position: relative;
   border-bottom: 4px solid transparent;
 }
 
 .tabButton.active {
-  color: #6D3737;
-  border-bottom: 10px solid #FEBF22;
+  color: #6d3737;
+  border-bottom: 10px solid #febf22;
 }
 
 /* --- 콘텐츠 공통 --- */
@@ -51,18 +53,19 @@
   gap: 1rem;
   margin-top: 2rem;
 }
-.updateButton, .posButton {
+.updateButton,
+.posButton {
   padding: 12px 30px;
   border-radius: 8px;
   font-weight: bold;
   cursor: pointer;
 }
 .updateButton {
-  background-color: #FEBF22;
+  background-color: #febf22;
   border: none;
 }
 .posButton {
-  background-color: #EAE1CF;
+  background-color: #eae1cf;
   border: none;
 }
 

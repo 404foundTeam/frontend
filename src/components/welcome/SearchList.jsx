@@ -1,4 +1,5 @@
 import styles from "../../styles/welcome/SearchList.module.css";
+
 import listIcon from "../../assets/welcomeMap/marker_icon.png";
 
 function SearchList({ store, isSelected, onClick }) {

@@ -1,9 +1,12 @@
 import styles from "../styles/map/MapCoaListPage.module.css";
-import MapBanner from "../components/map/MapBanner";
 import useUuidStore from "../store/useUuidStore";
+
+import MapBanner from "../components/map/MapBanner";
 
 function MapCoaListPage() {
   const storeName = useUuidStore((state) => state.storeName);
+
+  // 목 데이터
   const myCoaList = [
     {
       storeName: "브레드랩",

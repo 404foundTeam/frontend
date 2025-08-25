@@ -1,27 +1,34 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { fetchStoresByCoord, matchStore } from "../../api/index.js";
-import useUuidStore from "../../store/useUuidStore";
 import styles from "../../styles/welcome/WelcomeMap.module.css";
+
+import useUuidStore from "../../store/useUuidStore";
+
 import close from "../../assets/welcomeMap/close.png";
 import listTitle from "../../assets/welcomeMap/list.png";
 import MarkerImg from "../../assets/welcomeMap/marker.png";
 import selectMarkerImg from "../../assets/welcomeMap/select_marker.png";
-import StoreSearch from "./StoreSearch";
+import StoreSearch from "./StoreSearch.jsx";
 import SearchList from "./SearchList.jsx";
 
 // const { kakao } = window;
 
 function WelcomeMap({ focusRef, onClick }) {
+  const navigate = useNavigate();
+  const infoWindowRef = useRef(null);
+  const container = useRef(null);
+  const mapRef = useRef(null);
+  const markerRef = useRef([]);
+
+  const setUuid = useUuidStore((state) => state.setUuid);
+
   const [stores, setStores] = useState([]);
   const [search, setSearch] = useState("");
   const [isClick, setIsClick] = useState(false);
   const [selectStore, setSelectStore] = useState(null);
-  const container = useRef(null);
-  const mapRef = useRef(null);
-  const markerRef = useRef([]);
-  const navigate = useNavigate();
-  const setUuid = useUuidStore((state) => state.setUuid);
+
+  const [fail, setFail] = useState(false);
 
   // 맵은 최초 1회만 생성
   useEffect(() => {
@@ -42,7 +49,7 @@ function WelcomeMap({ focusRef, onClick }) {
     }
 
     if (!stores) return;
-    let selectedMarker = null;
+    // 리스트 목록 마커 동작
     const newMarkers = stores.map((store) => {
       const markerPosition = new window.kakao.maps.LatLng(
         store.latitude,
@@ -61,25 +68,32 @@ function WelcomeMap({ focusRef, onClick }) {
         imageOption
       );
 
+      // 선택된 store와 일치하면 select 이미지, 아니면 기본 이미지
+      const isSelected = selectStore?.placeId === store.placeId;
       const marker = new window.kakao.maps.Marker({
         position: markerPosition,
-        image: markerImage,
+        image: isSelected ? selectMarkerImage : markerImage,
       });
       marker.setMap(mapRef.current);
 
       window.kakao.maps.event.addListener(marker, "click", function () {
-        console.log(marker);
-        // 이전 선택 마커가 있으면 원래 이미지로 복원
-        if (selectedMarker && selectedMarker !== marker) {
-          selectedMarker.setImage(markerImage);
+        setSelectStore(store);
+        setIsClick(true);
+        // 기존 인포윈도우 제거
+        if (infoWindowRef.current) {
+          infoWindowRef.current.close();
         }
-        marker.setImage(selectMarkerImage);
-        selectedMarker = marker;
+        // 인포윈도우 생성
+        const infoWindow = new window.kakao.maps.InfoWindow({
+          content: `<div style='padding:5px;font-size:14px;'>${store.placeName}</div>`,
+        });
+        infoWindow.open(mapRef.current, marker);
+        infoWindowRef.current = infoWindow;
       });
       return marker;
     });
     markerRef.current = newMarkers;
-  }, [stores]);
+  }, [stores, selectStore]);
 
   const searchAddr = (address) => {
     console.log("업장 검색 시작");
@@ -89,11 +103,6 @@ function WelcomeMap({ focusRef, onClick }) {
     geocoder.addressSearch(address, async function (result, status) {
       if (status === window.kakao.maps.services.Status.OK) {
         const coords = new window.kakao.maps.LatLng(result[0].y, result[0].x);
-
-        console.log("result : ", result);
-        console.log("도로명 주소 : ", result[0].address_name);
-        console.log("경도 : ", result[0].x);
-        console.log("위도 : ", result[0].y);
 
         mapRef.current.setCenter(coords);
 
@@ -121,9 +130,8 @@ function WelcomeMap({ focusRef, onClick }) {
       }
       console.log("업장 목록 가져오는 중...");
       try {
-        console.log("리스트 데이터", result[0].x, result[0].y);
         const storeList = await fetchStoresByCoord(result[0].x, result[0].y);
-        console.log("응답 데이터 : ", storeList);
+
         setStores(storeList.items);
         console.log("업장 검색 완료");
       } catch (error) {
@@ -149,6 +157,7 @@ function WelcomeMap({ focusRef, onClick }) {
       console.log("페이지 이동");
       navigate("/main");
     } catch (error) {
+      setFail(true);
       console.log("업장 등록 실패", error);
       alert("업장 등록에 실패했습니다.");
     }
@@ -157,6 +166,8 @@ function WelcomeMap({ focusRef, onClick }) {
   const onChange = (e) => {
     setSearch(e.target.value);
   };
+
+  if (fail) return <Error />;
 
   return (
     <div className={styles.container} tabIndex={-1}>
@@ -198,14 +209,9 @@ function WelcomeMap({ focusRef, onClick }) {
                   key={store.placeId}
                   store={store}
                   isSelected={selectStore?.placeId === store.placeId}
-                  onClick={(e) => {
-                    if (e.currentTarget.className.includes("select")) {
-                      setSelectStore(null);
-                      setIsClick(false);
-                    } else {
-                      setSelectStore(store);
-                      setIsClick(true);
-                    }
+                  onClick={() => {
+                    setSelectStore(store);
+                    setIsClick(true);
                   }}
                 />
               ))}

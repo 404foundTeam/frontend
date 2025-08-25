@@ -1,7 +1,8 @@
-import loadingImg from "../assets/loading_img.png";
-import SideBar from "./SideBar";
 import styles from "../styles/Loading.module.css";
+
 import useUuidStore from "../store/useUuidStore";
+
+import loadingImg from "../assets/loading_img.png";
 
 function CardNewsLoadingPage({ isCamera = false }) {
   const storeName = useUuidStore((state) => state.storeName);

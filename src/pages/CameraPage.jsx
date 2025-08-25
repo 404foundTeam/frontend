@@ -6,6 +6,7 @@ import { guideFile } from "../api";
 import useGuideStore from "../store/useGuideStore";
 import Loading from "../components/Loading";
 import CameraBanner from "../components/camera/CameraBanner";
+import Error from "../components/Error";
 
 function CameraPage() {
   const navigate = useNavigate();
@@ -14,7 +15,9 @@ function CameraPage() {
   const imgInput = useRef();
   const [preview, setPreview] = useState(null);
   const [data, setData] = useState(null);
+
   const [loading, setLoading] = useState(false);
+  const [fail, setFail] = useState(false);
 
   const handleFile = (file) => {
     console.log("파일", file);
@@ -33,7 +36,6 @@ function CameraPage() {
     try {
       setLoading(true);
       const res = await guideFile(data);
-      console.log("성공", res.guideText);
       setGuide({ guideImg: preview, guideText: res.guideText });
     } catch (error) {
       console.log(error);
@@ -43,6 +45,7 @@ function CameraPage() {
   };
 
   if (loading) return <Loading isCamera={true} />;
+  if (fail) return <Error />;
 
   return (
     <>

@@ -36,9 +36,8 @@ function MyLayout() {
               <div className={styles.userInfo}>
                 <h2 className={styles.userName}>{storeName}님</h2>
                 <p className={styles.userAddress}>
-                  {roadAddress || '등록된 주소가 없습니다.'}
+                  {roadAddress || "등록된 주소가 없습니다."}
                 </p>
-
               </div>
               <button
                 className={styles.reregisterButton}

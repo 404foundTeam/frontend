@@ -49,20 +49,3 @@
 
   color: #6d3737;
 }
-
-.guideBox .chance {
-  margin-top: 44px;
-
-  text-align: center;
-
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 24px;
-  letter-spacing: -0.025em;
-
-  color: #6d3737;
-}
-
-.guideBox .chance span {
-  color: #febf22;
-}

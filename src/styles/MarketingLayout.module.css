@@ -51,12 +51,13 @@
 
 .illustration {
   position: absolute;
-  width: 500px; /* 일러스트 크기 조절 */
-  top: 182px;
+  width: 600px; /* 일러스트 크기 조절 */
+  height: 439px;
+  top: 225px;
   left: -51px;
   /*  전체 콘텐츠가 중앙 정렬되었으니, 이 값은 화면을 보며 조절해야 할 수 있습니다. */
   bottom: -480px; /* 아래로 내려서 겹치게 배치 */
-  transform: rotate(-10deg);
+  /* transform: rotate(-10deg); */
 }
 
 .buttonGrid {
