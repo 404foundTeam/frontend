@@ -1,16 +1,25 @@
 .bannerWrapper {
+<<<<<<< Updated upstream
   margin-left: -300px;
   background-color: #e2d7d7;
+=======
+  background-color: #E2D7D7; 
+  width: 100vw; /* 뷰포트 전체 너비 */
+  margin-left: calc(
+    -50vw + 50%
+  );
+>>>>>>> Stashed changes
 }
 
 .banner {
-  max-width: 1920px;
-  margin-left: 200px;
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
   padding: 20px;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
-  gap: 50%;
+  gap: 45%;
 }
 .userInfo {
   white-space: nowrap; /* 줄바꿈을 방지하는 핵심 속성 */
@@ -18,12 +27,12 @@
 .userName {
   color: #413738;
   font-weight: bold;
-  font-size: 35px;
+  font-size: 25px;
 }
 
 .userAddress {
-  font-weight: 500; /* medium */
-  font-size: 20px;
+  font-weight: 500; 
+  font-size: 15px;
   color: #797979;
 }
 
@@ -31,9 +40,15 @@
   white-space: nowrap;
   background-color: #6d3737;
   color: white;
+<<<<<<< Updated upstream
   padding: 12px 25px;
   font-size: 1rem;
   font-weight: bold;
+=======
+  padding: 12px 25px; 
+  font-size: 13px; 
+  font-weight: bold; 
+>>>>>>> Stashed changes
 
   border-radius: 8px;
   border: none;
@@ -49,8 +64,15 @@
 }
 
 .mainContent {
+<<<<<<< Updated upstream
   width: 1920px;
   padding-top: 2em;
   /* height: 495px; 나중에 수정 */
   margin-left: 300px;
+=======
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+  /* height: 495px; 나중에 수정 */
+>>>>>>> Stashed changes
 }

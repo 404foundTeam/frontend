@@ -1,6 +1,5 @@
 /* src/styles/MainLayout.module.css */
 
-/* --- 기존 레이아웃 스타일 --- */
 .layoutContainer {
   display: flex;
   min-height: 100vh;
@@ -11,7 +10,7 @@
   padding: 2rem;
 }
 
-/* --- 아래에 배너 스타일을 추가합니다 --- */
+/* --- 아래에 배너 스타일을 추가 --- */
 
 .welcomeBanner {
   max-width: 1440px;

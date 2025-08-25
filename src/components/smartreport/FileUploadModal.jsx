@@ -8,8 +8,8 @@ import useUuidStore from '../../store/useUuidStore';
 
 function FileUploadModal({ onClose }) {
   const [selectedFiles, setSelectedFiles] = useState([]);
-  const [isUploading, setIsUploading] = useState(false); //  2. 업로드 로딩 상태 추가
-  const storeUuid = useUuidStore((state) => state.storeUuid); //  3. 스토어에서 UUID 가져오기
+  const [isUploading, setIsUploading] = useState(false); // 업로드 로딩 상태 추가
+  const storeUuid = useUuidStore((state) => state.storeUuid); // 스토어에서 UUID 가져오기
 
   const onDrop = useCallback((acceptedFiles) => {
     setSelectedFiles(prevFiles => [...prevFiles, ...acceptedFiles]);
@@ -37,7 +37,7 @@ function FileUploadModal({ onClose }) {
       alert("파일을 선택해주세요.");
       return;
     }
-    //  4. storeUuid가 없는 경우 처리
+    //  storeUuid가 없는 경우 처리
     if (!storeUuid) {
       alert("가게 정보(UUID)를 찾을 수 없습니다.");
       return;
@@ -47,14 +47,14 @@ function FileUploadModal({ onClose }) {
 
     const formData = new FormData();
     selectedFiles.forEach(file => {
-      formData.append('file', file); // 백엔드 key가 'file'이므로 'files'에서 'file'로 변경
+      formData.append('file', file); 
     });
     
-    //  5. FormData에 storeUuid 추가
+    // FormData에 storeUuid 추가
     formData.append('storeUuid', storeUuid);
 
     try {
-      //  6. axios로 실제 API 호출
+      // axios로 실제 API 호출
       const response = await axios.post('http://13.209.239.240/api/v1/report/upload', formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
@@ -113,7 +113,7 @@ function FileUploadModal({ onClose }) {
         <p className={styles.note}>* 파일명은 "YYYYMMDD" 형식의 유효한 날짜를 포함해야 합니다.</p>
         
         <div className={styles.actionButtons}>
-          {/*  7. 업로드 중일 때 버튼 비활성화 및 텍스트 변경 */}
+          {/* 업로드 중일 때 버튼 비활성화 및 텍스트 변경 */}
           <button className={styles.uploadButton} onClick={handleUpload} disabled={isUploading}>
             {isUploading ? '등록 중...' : '등록하기'}
           </button>

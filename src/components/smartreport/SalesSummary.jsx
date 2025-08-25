@@ -8,7 +8,6 @@ import useUuidStore from "../../store/useUuidStore";
 import styles from '../../styles/SalesSummary.module.css';
 import swapIcon from '../../assets/report/swap-icon.png';
 
-// Chart.js에 필요한 요소들을 등록합니다.
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Filler);
 
 // --- 헬퍼 함수들 ---

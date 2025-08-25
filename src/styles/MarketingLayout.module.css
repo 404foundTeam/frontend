@@ -1,7 +1,5 @@
 /* src/styles/MarketingLayout.module.css */
 
-/* src/styles/MarketingLayout.module.css */
-
 .layoutContainer {
   display: flex;
 }
@@ -35,8 +33,7 @@
 
 .bannerInfo {
   position: relative;
-  /* margin-left: 10%; */ /* 🗑️ [제거] 중앙 정렬을 위해 불필요한 margin 삭제 */
-  transform: translateY(-180px); /* Y축으로 -20px 만큼 위로 이동합니다. */
+  transform: translateY(-180px); 
 }
 
 .bannerTitle {

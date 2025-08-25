@@ -13,7 +13,7 @@ function MarketingContent() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // --- 1. GET 요청으로 마케팅 제안 목록 불러오기 ---
+  // --- GET 요청으로 마케팅 제안 목록 불러오기 ---
   useEffect(() => {
     if (!storeUuid) {
       setIsLoading(false);
@@ -47,9 +47,8 @@ function MarketingContent() {
     fetchMarketingSuggestions();
   }, [storeUuid, dataVersion]); // storeUuid나 dataVersion이 바뀌면 데이터를 다시 불러옴
 
-  // --- 2. DELETE 요청으로 특정 제안 삭제하기 ---
+  // --- DELETE 요청으로 특정 제안 삭제하기 ---
   const handleDelete = async (idToDelete) => {
-    // 낙관적 업데이트: UI를 먼저 변경하여 사용자 경험 향상
     const originalEvents = [...events];
     const updatedEvents = events.filter(event => event.id !== idToDelete);
     setEvents(updatedEvents);
@@ -59,7 +58,7 @@ function MarketingContent() {
       // 성공 시 아무것도 안함 (이미 UI에 반영됨)
       console.log(`Suggestion with id ${idToDelete} deleted successfully.`);
     } catch (err) {
-      // API 호출 실패 시, UI를 원래 상태로 되돌리고 에러 메시지 표시
+      // API 호출 실패 시 UI를 원래 상태로 되돌리고 에러 메시지 표시
       alert("삭제에 실패했습니다. 다시 시도해주세요.");
       setEvents(originalEvents);
       console.error("Delete Error:", err);

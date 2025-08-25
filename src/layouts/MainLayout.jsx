@@ -29,7 +29,7 @@ function MainLayout() {
           </div>
         </div>
         <Outlet />
-        {/* --- 3. 여기에 새로운 카드뉴스 배너를 추가합니다 --- */}
+        {/* --- 여기에 새로운 카드뉴스 배너를 추가 --- */}
         <div className={styles.cardNewsBanner}>
           <div className={styles.bannerContent}>
             <div className={styles.cardNewsTitle}>
@@ -37,7 +37,7 @@ function MainLayout() {
               <br />
               <h2>카드뉴스를 만들어 보세요.</h2>
             </div>
-            {/* Link 컴포넌트를 사용해 /cardnews 경로로 이동하는 버튼을 만듭니다. */}
+            {/* Link 컴포넌트를 사용해 /cardnews 경로로 이동하는 버튼을 만듬 */}
             <Link to="/cardnews" className={styles.shortcutButton}>
               바로가기
             </Link>

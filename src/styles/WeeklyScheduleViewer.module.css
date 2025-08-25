@@ -64,16 +64,16 @@ margin-left: 15%;  border-radius: 20px;
 
 .eventItem {
   display: flex;
-  align-items: flex-start; /* 불렛과 텍스트 상단 정렬 */
+  align-items: flex-start; 
   gap: 15px;
 }
 
 .bullet {
   width: 10px;
   height: 10px;
-  background-color: #FEBF22; /* 노란색 불렛 */
+  background-color: #FEBF22; 
   border-radius: 50%;
-  margin-top: 8px; /* 텍스트와의 세로 위치 조절 */
+  margin-top: 8px; 
   flex-shrink: 0;
 }
 
@@ -108,7 +108,7 @@ margin-left: 15%;  border-radius: 20px;
   margin: 0 0 5px 0;
 }
 
-/* ✅ 가장 가까운 일정 제목에 적용될 스타일 */
+/* 가장 가까운 일정 제목에 적용될 스타일 */
 .closestEventTitle {
-  color: #FEBF22; /* 읽기 좋은 어두운 노란색/주황색 계열 */
+  color: #FEBF22; 
 }

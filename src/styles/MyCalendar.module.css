@@ -1,8 +1,7 @@
 /* src/styles/MyCalendar.module.css */
 
-/* 기존 헤더 스타일 */
 .myCalendarContainer {
-  width: 80%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -35,7 +34,7 @@
   padding: 20px;
 }
 
-/* react-calendar의 기본 클래스를 오버라이드합니다. */
+/* react-calendar의 기본 클래스를 오버라이드 */
 :global(.react-calendar) {
   width: 100%;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
@@ -130,7 +129,7 @@
   background: #fff2b2;
 }
 
-/* 선택된 날짜 (현재 코드에서는 사용하지 않지만, 기본 스타일) */
+/* 선택된 날짜  */
 :global(.react-calendar__tile--active) {
   background: #fecf70;
 }
@@ -254,7 +253,7 @@
   color: #D9534F;
 }
 
-/* 2. 공휴일 이름 태그를 위한 스타일 */
+/* 공휴일 이름 태그를 위한 스타일 */
 .holidayTag {
   font-size: 0.7rem;
   padding: 2px 2px;

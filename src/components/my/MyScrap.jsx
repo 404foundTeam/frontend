@@ -16,8 +16,6 @@ function MyScrap() {
 
   useEffect(() => {
     if (!storeUuid) {
-      // storeUuid가 없을 때 사용자에게 안내 메시지를 보여주는 것도 좋은 방법입니다.
-      // 예: setCards([]); setTotalItems(0); setError("업장 정보가 없습니다.");
       return;
     }
 
@@ -49,7 +47,7 @@ function MyScrap() {
 
   const totalPages = Math.ceil(totalItems / itemsPerPage);
 
-  // 로딩 중이거나 에러가 발생했을 때의 UI는 그대로 유지합니다.
+  // 로딩 중이거나 에러가 발생했을 때의 UI는 그대로 유지.
   if (isLoading) return <div className={styles.statusMessage}>로딩 중...</div>;
   if (error) return <div className={styles.statusMessage}>{error}</div>;
 
@@ -76,7 +74,6 @@ function MyScrap() {
         )}
       </div>
 
-      {/* 페이지네이션은 아이템이 있을 때만 보여주는 것이 더 자연스러울 수 있습니다. */}
       {totalItems > 0 && (
         <div className={styles.pagination}>
           {Array.from({ length: totalPages }, (_, i) => (

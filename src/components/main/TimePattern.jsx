@@ -8,14 +8,13 @@ import useUuidStore from '../../store/useUuidStore';
 import styles from '../../styles/Dashboard.module.css';
 
 
-// Chart.js에 필요한 요소들을 등록합니다.
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip);
 
 function TimePattern() {
   const storeUuid = useUuidStore((state) => state.storeUuid);
   const dataVersion = useUuidStore((state) => state.dataVersion); 
-  const [chartData, setChartData] = useState(null); // 차트 데이터를 저장할 상태
-  const [summary, setSummary] = useState(''); // 요약 텍스트를 저장할 상태
+  const [chartData, setChartData] = useState(null); 
+  const [summary, setSummary] = useState(''); 
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -29,13 +28,11 @@ function TimePattern() {
     const fetchTimePattern = async () => {
       try {
         setIsLoading(true);
-        // TODO: 실제 백엔드 서버 주소를 확인해주세요.
         const response = await axios.get(`http://13.209.239.240/api/v1/report/${storeUuid}/visitor-stats`);
         
         const mostVisited = response.data.mostVisitedHours || [];
 
         if (mostVisited.length > 0) {
-          // 1. 차트 라이브러리 형식에 맞게 데이터 가공
           const labels = mostVisited.map(item => `${item.hour}시`);
           const dataPoints = mostVisited.map(item => item.totalCustomers);
 
@@ -49,7 +46,6 @@ function TimePattern() {
             }],
           });
 
-          // 2. 요약 텍스트 동적 생성
           const topHours = mostVisited.slice(0, 2).map(item => `${item.hour}시`).join('와 ');
           const summaryText = `이번주는 손님들이 주로 ${topHours}에 많이 방문했어요. 이 시간대에 특별한 이벤트를 기획해보는 건 어떠세요?`;
           setSummary(summaryText);
@@ -71,7 +67,7 @@ function TimePattern() {
     responsive: true,
     plugins: {
       legend: {
-        display: false, // 범례 숨기기
+        display: false, 
       },
     },
     scales: {
