@@ -388,7 +388,7 @@
 
 .welcome-card .card-img-box .card-img {
   width: 370px;
-  height: 491px;
+  height: 380px;
   position: absolute;
 
   border-radius: 35px;
@@ -398,10 +398,12 @@
   z-index: 3;
 }
 .card-img:nth-child(2) {
+  opacity: 0.8;
   left: 124px;
   z-index: 2;
 }
 .card-img:nth-child(3) {
+  opacity: 0.6;
   left: 213px;
   z-index: 1;
 }
