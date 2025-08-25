@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Route, useNavigate } from "react-router-dom";
-import { backgroundImg, backgroundImg2, generateText } from "../api/index.js";
+import { backgroundImg, generateText } from "../api/index.js";
 import styles from "../styles/cardnews/CardNewsPage.module.css";
 import bannerImg from "../assets/cardnews/banner_img.png";
 import SelectHeader from "../components/SelectHeader.jsx";

@@ -12,7 +12,6 @@
 
 .banner {
   width: 100%;
-  max-width: 1440px;
   background-color: #ffe5a7; /* 이미지와 유사한 배경색 */
   border-radius: 10px;
   padding: 140px;

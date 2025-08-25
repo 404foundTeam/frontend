@@ -1,7 +1,9 @@
 import styles from "../styles/map/MapCoaListPage.module.css";
 import MapBanner from "../components/map/MapBanner";
+import useUuidStore from "../store/useUuidStore";
 
 function MapCoaListPage() {
+  const storeName = useUuidStore((state) => state.storeName);
   const myCoaList = [
     {
       storeName: "브레드랩",
@@ -46,7 +48,7 @@ function MapCoaListPage() {
       <div className={styles.container}>
         <div>
           <h1>
-            <span>어웨이 커피</span>님과 제휴 맺은 업체
+            <span>{storeName}</span>님과 제휴 맺은 업장
           </h1>
           <div className={`${styles.coaList} ${styles.myCoaList}`}>
             {myCoaList.map((store) => (
@@ -69,7 +71,7 @@ function MapCoaListPage() {
         </div>
         <div>
           <h1>
-            <span>어웨이 커피</span>님께 제휴 요청한 업체
+            <span>{storeName}</span>님께 제휴 요청한 업장
           </h1>
           <div className={`${styles.coaList} ${styles.fromCoaList}`}>
             {fromCoaList.map((store) => (
@@ -88,7 +90,7 @@ function MapCoaListPage() {
         </div>
         <div>
           <h1>
-            <span>어웨이 커피</span>님이 제휴 요청한 업체
+            <span>{storeName}</span>님이 제휴 요청한 업장
           </h1>
           <div className={`${styles.coaList} ${styles.toCoaList}`}>
             {toCoaList.map((store) => (
