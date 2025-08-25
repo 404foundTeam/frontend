@@ -18,9 +18,6 @@ function CameraResultPage() {
             <span>AI</span>가 분석해준 촬영 가이드 결과입니다.
           </h2>
           <div className={styles.guideText}>{text}</div>
-          <p className={styles.chance}>
-            이번 달 무료 횟수 <span>회</span> 남았어요.
-          </p>
         </div>
       </div>
     </>

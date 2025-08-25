@@ -46,6 +46,7 @@
 /* 주문 많은 메뉴 */
 .rankList {
   list-style-type: none;
+  margin-top: 32px;
   padding: 0;
 }
 .rankItem {
@@ -64,4 +65,11 @@
 }
 .rankPercentage {
   font-weight: bold;
+}
+
+.feedback {
+  font-size: 0.95rem;
+  color: #6d3737;
+  line-height: 1.6;
+  margin-top: 32px;
 }
