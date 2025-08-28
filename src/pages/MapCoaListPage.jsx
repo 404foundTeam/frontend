@@ -1,7 +1,9 @@
 import styles from "../styles/map/MapCoaListPage.module.css";
 import useUuidStore from "../store/useUuidStore";
-
 import MapBanner from "../components/map/MapBanner";
+import MyCoaBox from "../components/map/MyCoaBox";
+import FromCoaBox from "../components/map/FromCoaBox";
+import ToCoaBox from "../components/map/ToCoaBox";
 
 function MapCoaListPage() {
   const storeName = useUuidStore((state) => state.storeName);
@@ -54,21 +56,8 @@ function MapCoaListPage() {
             <span>{storeName}</span>님과 제휴 맺은 업장
           </h1>
           <div className={`${styles.coaList} ${styles.myCoaList}`}>
-            {myCoaList.map((store) => (
-              <div className={styles.myCoaBox}>
-                <div className={styles.text}>
-                  <div className={styles.info}>
-                    <p className={styles.name}>{store.storeName}</p>
-                    <p className={styles.add}>{store.storeAddress}</p>
-                  </div>
-                  <div className={styles.date}>{store.date}</div>
-                </div>
-                {store.isPartner ? (
-                  <button className={styles.discon}>제휴 끊기</button>
-                ) : (
-                  <button className={styles.con}>제휴 다시 맺기</button>
-                )}
-              </div>
+            {myCoaList.map((store, index) => (
+              <MyCoaBox key={index} store={store} />
             ))}
           </div>
         </div>
@@ -77,17 +66,8 @@ function MapCoaListPage() {
             <span>{storeName}</span>님께 제휴 요청한 업장
           </h1>
           <div className={`${styles.coaList} ${styles.fromCoaList}`}>
-            {fromCoaList.map((store) => (
-              <div className={styles.fromCoaBox}>
-                <div className={styles.info}>
-                  <p className={styles.name}>{store.storeName}</p>
-                  <p className={styles.add}>{store.storeAddress}</p>
-                </div>
-                <div className={styles.buttonBox}>
-                  <button className={styles.acc}>맺기</button>
-                  <button className={styles.ref}>거절</button>
-                </div>
-              </div>
+            {fromCoaList.map((store, index) => (
+              <FromCoaBox key={index} store={store} />
             ))}
           </div>
         </div>
@@ -96,14 +76,8 @@ function MapCoaListPage() {
             <span>{storeName}</span>님이 제휴 요청한 업장
           </h1>
           <div className={`${styles.coaList} ${styles.toCoaList}`}>
-            {toCoaList.map((store) => (
-              <div className={styles.toCoaBox}>
-                <div className={styles.info}>
-                  <p className={styles.name}>{store.storeName}</p>
-                  <p className={styles.add}>{store.storeAddress}</p>
-                </div>
-                <button>맺기 대기중</button>
-              </div>
+            {toCoaList.map((store, index) => (
+              <ToCoaBox key={index} store={store} />
             ))}
           </div>
         </div>

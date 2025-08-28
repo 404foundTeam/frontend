@@ -31,16 +31,20 @@ function CameraPage() {
   };
 
   const goToResult = async () => {
+    if (!data) {
+      alert("이미지를 업로드 해주세요.");
+      return;
+    }
+
     try {
       setLoading(true);
       const res = await guideFile(data);
       setGuide({ guideImg: preview, guideText: res.guideText });
+      navigate("/camera/result");
     } catch (error) {
       setFail(true);
       console.log(error);
     }
-
-    navigate("/camera/result");
   };
 
   if (loading) return <Loading isCamera={true} />;

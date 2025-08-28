@@ -1,7 +1,5 @@
 import styles from "../styles/camera/CameraResultPage.module.css";
-
 import useGuideStore from "../store/useGuideStore";
-
 import CameraBanner from "../components/camera/CameraBanner";
 
 function CameraResultPage() {

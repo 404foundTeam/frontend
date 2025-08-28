@@ -1,6 +1,5 @@
 import { useState } from "react";
 import styles from "../styles/map/MapCoaPage.module.css";
-
 import SelectHeader from "../components/SelectHeader";
 import MapBanner from "../components/map/MapBanner";
 import SelectBox from "../components/SelectBox";
