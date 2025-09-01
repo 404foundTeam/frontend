@@ -1,7 +1,6 @@
 import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "../styles/map/MapPage.module.css";
-
 import MapSearch from "../components/map/MapSearch";
 import CoaMapList from "../components/map/CoaMapList";
 
@@ -70,8 +69,8 @@ function MapPage() {
       </div>
       <div className={styles.container}>
         <div className={styles.mapList}>
-          {stores.map((store) => (
-            <CoaMapList name={store.name} addr={store.addr} />
+          {stores.map((store, index) => (
+            <CoaMapList key={index} name={store.name} addr={store.addr} />
           ))}
         </div>
         <div className={styles.mapBox}>

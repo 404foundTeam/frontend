@@ -1,10 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import "../styles/welcome/WelcomePage.css";
-
+import styles from "../styles/welcome/WelcomePage.module.css";
 import TextBox from "../components/welcome/TextBox";
 import WelcomeMap from "../components/welcome/WelcomoMap";
 import Blur from "../components/welcome/Blur";
-
 import reportImg from "../assets/welcome/report_img.png";
 import cardImg01 from "../assets/welcome/card_img01.png";
 import cardImg02 from "../assets/welcome/card_img02.png";
@@ -38,12 +36,13 @@ function WelcomePage() {
     },
   ];
   // 모달창 show
-  const clickShowMap = () => {
-    setShowMap(true);
-  };
-  const clickHideMap = () => {
-    setShowMap(false);
-  };
+  // const clickShowMap = () => {
+  //   setShowMap(true);
+  // };
+  // const clickHideMap = () => {
+  //   setShowMap(false);
+  // };
+  const toggleMap = () => setShowMap((prev) => !prev);
 
   // 포커스
   useEffect(() => {
@@ -57,7 +56,9 @@ function WelcomePage() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             // 요소가 화면에 관찰되면 클래스 추가
-            entry.target.classList.add("visible");
+            entry.target.classList.add(styles.visible);
+          } else {
+            entry.target.classList.remove(styles.visible);
           }
         });
       },
@@ -73,29 +74,29 @@ function WelcomePage() {
   }, []);
 
   return (
-    <div className="welcome-container">
+    <div className={styles.container}>
       {showMap && <Blur />}
-      {showMap && <WelcomeMap focusRef={mapRef} onClick={clickHideMap} />}
-      <div className="welcome-header-container">
-        <div className="welcome-header-box">
-          <div className="header-text-box">
-            <h1 className="header-title">
+      {showMap && <WelcomeMap focusRef={mapRef} onClick={toggleMap} />}
+      <div className={styles.headerContainer}>
+        <div className={styles.headerBox}>
+          <div className={styles.headerTextBox}>
+            <h1 className={styles.headerTitle}>
               소상공인을 위한
               <br />
               스마트한 마케팅 플랫폼
             </h1>
-            <p className="header-text">
+            <p className={styles.headerText}>
               AI가 어렵고 복잡한 마케팅과 운영전략을 한번에
             </p>
-            <button onClick={clickShowMap} className="text-box-button">
+            <button onClick={toggleMap} className={styles.signButton}>
               업장 등록하기
             </button>
           </div>
-          <div className="header-img bee"></div>
-          <div className="header-img bee"></div>
-          <div className="header-img hive"></div>
+          <div className={`${styles.headerImg} ${styles.bee}`}></div>
+          <div className={`${styles.headerImg} ${styles.bee}`}></div>
+          <div className={`${styles.headerImg} ${styles.hive}`}></div>
         </div>
-        <div className="welcome-header-bottom-box"></div>
+        <div className={styles.headrBottomBox}></div>
       </div>
       <TextBox
         title={"소상공인을 위한 쉽고 빠른 플랫폼, market BEE"}
@@ -103,39 +104,39 @@ function WelcomePage() {
           "클릭 몇 번으로 가게 홍보에 필요한 모든 콘텐츠와 운영을 자동으로 관리해보세요."
         }
       />
-      <div className="welcome-card-wrapper">
+      <div className={styles.cardWrapper}>
         <div
-          className="welcome-card report"
+          className={`${styles.cardBox} ${styles.report}`}
           ref={(el) => (cardRefs.current[0] = el)}
         >
-          <div className="line"></div>
-          <div className="welcome-text-box report">
-            <p className="mini-title">업장 운영 전략</p>
-            <h1 className="card-title">스마트 리포트 생성</h1>
-            <p className="card-content">
+          <div className={styles.line}></div>
+          <div className={`${styles.textBox} ${styles.report}`}>
+            <p className={styles.mini}>업장 운영 전략</p>
+            <h1 className={styles.title}>스마트 리포트 생성</h1>
+            <p className={styles.content}>
               AI가 리뷰, 방문 데이터를 분석해 매출이 오르는 패턴을 찾아드려요.
               <br />잘 팔리는 메뉴부터 개선 포인트까지 한 눈에 보이는 스마트
               리포트를 받아보세요.
             </p>
           </div>
-          <img src={reportImg} className="report-img" />
+          <img src={reportImg} className={styles.reportImg} />
         </div>
         <div
-          className="welcome-card marketing"
+          className={`${styles.cardBox} ${styles.marketing}`}
           ref={(el) => (cardRefs.current[1] = el)}
         >
-          <div className="marketing-boxs left">
+          <div className={`${styles.marketingBoxes} ${styles.right}`}>
             {marketingBoxes.map((item, index) => (
-              <div className="marketing-box" key={index}>
-                <h1 className="marketing-box-title">{item.title}</h1>
-                <p className="marketing-box-content">{item.content}</p>
+              <div className={styles.marketingBox} key={index}>
+                <h1 className={styles.marketingTitle}>{item.title}</h1>
+                <p className={styles.marketingContent}>{item.content}</p>
               </div>
             ))}
           </div>
-          <div className="welcome-text-box marketing">
-            <p className="mini-title">업장 홍보</p>
-            <h1 className="card-title">AI 마케팅</h1>
-            <p className="card-content">
+          <div className={`${styles.textBox} ${styles.marketing}`}>
+            <p className={styles.mini}>업장 홍보</p>
+            <h1 className={styles.title}>AI 마케팅</h1>
+            <p className={styles.content}>
               마케팅 방식을 잘 모르는 사장님을 위해서
               <br />
               AI가 분석한 데이터를 바탕으로 마케팅 방안을 알려줘요.
@@ -143,39 +144,39 @@ function WelcomePage() {
           </div>
         </div>
         <div
-          className="welcome-card sns"
+          className={`${styles.cardBox} ${styles.sns}`}
           ref={(el) => (cardRefs.current[2] = el)}
         >
-          <div className="welcome-text-box sns">
-            <p className="mini-title">업장 홍보</p>
-            <h1 className="card-title">SNS 카드 생성</h1>
-            <p className="card-content">
+          <div className={`${styles.textBox} ${styles.sns}`}>
+            <p className={styles.mini}>업장 홍보</p>
+            <h1 className={styles.title}>SNS 카드 생성</h1>
+            <p className={styles.content}>
               AI가 생성한 문구를 활용하여 카드 뉴스를 생성해보세요.
               <br />
               디자인 전문가 없이 SNS 카드 뉴스를 클릭 몇 번으로 완성할 수
               있어요.
             </p>
           </div>
-          <div className="card-img-box">
-            <img src={cardImg01} className="card-img" />
-            <img src={cardImg02} className="card-img" />
-            <img src={cardImg03} className="card-img" />
+          <div className={styles.cardImgBox}>
+            <img src={cardImg01} className={styles.cardImg} />
+            <img src={cardImg02} className={styles.cardImg} />
+            <img src={cardImg03} className={styles.cardImg} />
           </div>
-          <div className="line"></div>
+          <div className={styles.line}></div>
         </div>
       </div>
       <TextBox
         title={"가게 운영과 마케팅을 한 번에 잡는 스마트 솔루션"}
         content={"사장님을 위한 새로운 성장과 전략, 지금 시작하세요."}
       />
-      <div className="welcome-sign-map">
-        <h2 className="welcome-sign-title">업장 등록하기</h2>
-        <p className="sign-text">
+      <div className={styles.signMap}>
+        <h2 className={styles.signTitle}>업장 등록하기</h2>
+        <p className={styles.signText}>
           업장을 등록해서 홍보에 필요한 모든 콘텐츠와 운영을 자동으로
           관리해보세요.
         </p>
-        <img src={mapImg} className="welcome-sign-img" />
-        <button onClick={clickShowMap} className="welcome-sign-button">
+        <img src={mapImg} className={styles.signImg} />
+        <button onClick={toggleMap} className={styles.welcomeSign}>
           업장 검색
         </button>
       </div>
