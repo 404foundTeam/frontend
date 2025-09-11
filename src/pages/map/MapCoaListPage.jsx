@@ -1,9 +1,15 @@
-import styles from "../styles/map/MapCoaListPage.module.css";
-import useUuidStore from "../store/useUuidStore";
-import MapBanner from "../components/map/MapBanner";
-import MyCoaBox from "../components/map/MyCoaBox";
-import FromCoaBox from "../components/map/FromCoaBox";
-import ToCoaBox from "../components/map/ToCoaBox";
+import styles from "../../styles/map/MapCoaListPage.module.css";
+import useUuidStore from "../../store/useUuidStore";
+// import {
+//   MapBanner,
+//   MyCoaBox,
+//   FromCoaBox,
+//   ToCoaBox,
+// } from "../../components/map";
+import MapBanner from "../../components/map/MapBanner";
+import MyCoaBox from "../../components/map/MyCoaBox";
+import FromCoaBox from "../../components/map/FromCoaBox";
+import ToCoaBox from "../../components/map/ToCoaBox";
 
 function MapCoaListPage() {
   const storeName = useUuidStore((state) => state.storeName);

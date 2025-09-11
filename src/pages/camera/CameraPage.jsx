@@ -1,12 +1,12 @@
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import styles from "../styles/camera/CameraPage.module.css";
-import dragImg from "../assets/camera/drag_img.png";
-import { guideFile } from "../api";
-import useGuideStore from "../store/useGuideStore";
-import Loading from "../components/Loading";
-import CameraBanner from "../components/camera/CameraBanner";
-import Error from "../components/Error";
+import { guideFile } from "../../api";
+import dragImg from "../../assets/camera/drag_img.png";
+import styles from "../../styles/camera/CameraPage.module.css";
+import useGuideStore from "../../store/useGuideStore";
+import Loading from "../../components/Loading";
+import CameraBanner from "../../components/camera/CameraBanner";
+import Error from "../../components/Error";
 
 function CameraPage() {
   const navigate = useNavigate();

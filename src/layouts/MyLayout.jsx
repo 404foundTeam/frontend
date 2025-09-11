@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import SideBar from "../components/SideBar";
-import WelcomeMap from "../components/welcome/WelcomoMap"; 
+import WelcomeMap from "../components/welcome/WelcomeMap";
 import Blur from "../components/welcome/Blur";
 import styles from "../styles/MyLayout.module.css";
 import useUuidStore from "../store/useUuidStore";
@@ -11,7 +11,6 @@ import useUuidStore from "../store/useUuidStore";
 function MyLayout() {
   const storeName = useUuidStore((state) => state.storeName);
   const roadAddress = useUuidStore((state) => state.roadAddress);
-
 
   const [showMap, setShowMap] = useState(false);
 

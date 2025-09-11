@@ -1,8 +1,9 @@
 import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import styles from "../styles/map/MapPage.module.css";
-import MapSearch from "../components/map/MapSearch";
-import CoaMapList from "../components/map/CoaMapList";
+import styles from "../../styles/map/MapPage.module.css";
+// import { MapSearch, CoaMapList } from "../../components/map";
+import MapSearch from "../../components/map/MapSearch";
+import CoaMapList from "../../components/map/CoaMapList";
 
 // const { kakao } = window;
 

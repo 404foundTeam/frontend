@@ -1,15 +1,15 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { backgroundImg, generateText } from "../api/index.js";
-import styles from "../styles/cardnews/CardNewsPage.module.css";
-import bannerImg from "../assets/cardnews/banner_img.png";
-import SelectHeader from "../components/SelectHeader.jsx";
-import useUuidStore from "../store/useUuidStore.js";
-import useCardStore from "../store/useCardStore.js";
-import useTextStore from "../store/useTextStore.js";
-import SelectBox from "../components/SelectBox.jsx";
-import Loading from "../components/Loading.jsx";
-import Error from "../components/Error.jsx";
+import { backgroundImg, generateText } from "../../api/index.js";
+import styles from "../../styles/cardnews/CardNewsPage.module.css";
+import bannerImg from "../../assets/cardnews/banner_img.png";
+import useUuidStore from "../../store/useUuidStore.js";
+import useCardStore from "../../store/useCardStore.js";
+import useTextStore from "../../store/useTextStore.js";
+import SelectHeader from "../../components/SelectHeader.jsx";
+import SelectBox from "../../components/SelectBox.jsx";
+import Loading from "../../components/Loading.jsx";
+import Error from "../../components/Error.jsx";
 
 function CardNewsPage() {
   const navigate = useNavigate();

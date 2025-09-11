@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from "react";
-import { postCard, postPresignedUrl } from "../api";
+import { postCard, postPresignedUrl } from "../../api";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import styles from "../styles/cardnews/CardNewsResultPage.module.css";
-import useTextStore from "../store/useTextStore";
-import useCardStore from "../store/useCardStore";
-import useUuidStore from "../store/useUuidStore";
+import styles from "../../styles/cardnews/CardNewsResultPage.module.css";
+import useTextStore from "../../store/useTextStore";
+import useCardStore from "../../store/useCardStore";
+import useUuidStore from "../../store/useUuidStore";
 
 // 텍스트 조정 함수
 function drawWrappedText(ctx, text, x, y, maxWidth, lineHeight) {

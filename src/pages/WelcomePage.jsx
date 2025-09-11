@@ -1,10 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "../styles/welcome/WelcomePage.module.css";
-import TextBox from "../components/welcome/TextBox";
-import WelcomeMap from "../components/welcome/WelcomoMap";
-import Blur from "../components/welcome/Blur";
-import CardWrapper from "../components/welcome/CarWrapper";
-import MatchMap from "../components/welcome/MatchMap";
+import {
+  TextBox,
+  WelcomeMap,
+  Blur,
+  CardWrapper,
+  MatchMap,
+} from "../components/welcome";
 
 function WelcomePage() {
   const mapRef = useRef();
