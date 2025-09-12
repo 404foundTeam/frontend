@@ -336,22 +336,3 @@
   transform: scale(1.04);
   transition: transform 0.6s ease;
 }
-
-/* 카드뉴스 버튼 */
-.finButton {
-  width: 330px;
-  height: 78px;
-
-  margin-bottom: 199px;
-
-  border: none;
-  border-radius: 10px;
-  background-color: #febf22;
-
-  font-weight: 700;
-  font-size: 30px;
-  line-height: 36px;
-  letter-spacing: -0.025em;
-
-  color: #6d3737;
-}

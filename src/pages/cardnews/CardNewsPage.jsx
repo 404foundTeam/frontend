@@ -10,6 +10,7 @@ import SelectHeader from "../../components/SelectHeader.jsx";
 import SelectBox from "../../components/SelectBox.jsx";
 import Loading from "../../components/Loading.jsx";
 import Error from "../../components/Error.jsx";
+import FinButton from "../../components/FinButton.jsx";
 
 function CardNewsPage() {
   const navigate = useNavigate();
@@ -170,7 +171,7 @@ function CardNewsPage() {
             </button>
           </div>
         </div>
-        <div className={`${styles.cardNewsBox} ${styles.cardNewsTemplate}`}>
+        <div className={`${styles.cardNewsBox} ${styles.QcardNewsTemplate}`}>
           <SelectHeader text="원하는 템플릿을 선택해주세요." />
           <p>* 회색 배경은 AI가 텍스트로 만든 이미지입니다.</p>
           <div className={styles.templateList}>
@@ -290,9 +291,7 @@ function CardNewsPage() {
         </div>
       </div>
       {cardType && generatedText && template && ratio && theme && (
-        <button className={styles.finButton} onClick={postCardNews}>
-          완료
-        </button>
+        <FinButton onClick={postCardNews}>완료</FinButton>
       )}
     </div>
   );

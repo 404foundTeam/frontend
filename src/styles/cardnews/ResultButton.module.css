@@ -1,0 +1,22 @@
+.button {
+  width: 296px;
+  height: 53px;
+
+  border: none;
+  border-radius: 10px;
+
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 30px;
+  letter-spacing: -0.025em;
+
+  color: #6d3737;
+}
+
+.save {
+  background-color: #febf22;
+}
+
+.new {
+  background-color: #e3e3e3;
+}
