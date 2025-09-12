@@ -43,26 +43,6 @@
   gap: 11px;
 }
 
-.header .buttonBox button {
-  width: 71px;
-  height: 35px;
-
-  border-radius: 10px;
-
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 17px;
-  letter-spacing: -0.025em;
-
-  color: #ffffff;
-
-  background-color: #acacac;
-}
-
-.header .buttonBox .select {
-  background-color: #6d3737;
-}
-
 .container {
   width: 100%;
 

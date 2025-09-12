@@ -4,6 +4,7 @@ import styles from "../../styles/map/MapPage.module.css";
 // import { MapSearch, CoaMapList } from "../../components/map";
 import MapSearch from "../../components/map/MapSearch";
 import CoaMapList from "../../components/map/CoaMapList";
+import CategoryButton from "../../components/map/CategoryButton";
 
 // const { kakao } = window;
 
@@ -63,9 +64,9 @@ function MapPage() {
         <p className={styles.content}>업장을 검색해서 제휴를 요청해보세요.</p>
         <MapSearch placeholder="업장을 입력해주세요." />
         <div className={styles.buttonBox}>
-          <button className={styles.select}>유사 업종</button>
-          <button>편의점</button>
-          <button>음식점</button>
+          <CategoryButton isSelected={true}>유사 업종</CategoryButton>
+          <CategoryButton isSelected={false}>편의점</CategoryButton>
+          <CategoryButton isSelected={false}>음식점</CategoryButton>
         </div>
       </div>
       <div className={styles.container}>

@@ -13,13 +13,6 @@ function WelcomePage() {
 
   const [showMap, setShowMap] = useState(false);
 
-  // 모달창 show
-  // const clickShowMap = () => {
-  //   setShowMap(true);
-  // };
-  // const clickHideMap = () => {
-  //   setShowMap(false);
-  // };
   const toggleMap = () => setShowMap((prev) => !prev);
 
   // 포커스
@@ -29,8 +22,12 @@ function WelcomePage() {
 
   return (
     <div className={styles.container}>
-      {showMap && <Blur />}
-      {showMap && <WelcomeMap focusRef={mapRef} onClick={toggleMap} />}
+      {showMap && (
+        <>
+          <Blur />
+          <WelcomeMap focusRef={mapRef} onClick={toggleMap} />
+        </>
+      )}
       <div className={styles.headerContainer}>
         <div className={styles.headerBox}>
           <div className={styles.headerTextBox}>
