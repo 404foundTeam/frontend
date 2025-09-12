@@ -1,11 +1,13 @@
 import { useEffect, useRef, useState } from "react";
-import { postCard, postPresignedUrl } from "../api";
+import { postCard, postPresignedUrl } from "../../api";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import styles from "../styles/cardnews/CardNewsResultPage.module.css";
-import useTextStore from "../store/useTextStore";
-import useCardStore from "../store/useCardStore";
-import useUuidStore from "../store/useUuidStore";
+import styles from "../../styles/cardnews/CardNewsResultPage.module.css";
+import useTextStore from "../../store/useTextStore";
+import useCardStore from "../../store/useCardStore";
+import useUuidStore from "../../store/useUuidStore";
+import ResultButtonButton from "../../components/cardnews/ResultButton";
+import ChanceText from "../../components/cardnews/ChanceText";
 
 // 텍스트 조정 함수
 function drawWrappedText(ctx, text, x, y, maxWidth, lineHeight) {
@@ -219,17 +221,14 @@ function CardNewsResultPage() {
             className={`${styles.resultImg} ${styles[box]}`}
           />
           <div className={styles.buttonBox}>
-            <button className={styles.save} onClick={saveCard}>
+            <ResultButtonButton type="save" onClick={saveCard}>
               저장하기
-            </button>
-            <button className={styles.new} onClick={goToMarketing}>
+            </ResultButtonButton>
+            <ResultButtonButton type="new" onClick={goToMarketing}>
               홍보페이지로 돌아가기
-            </button>
+            </ResultButtonButton>
           </div>
-          <p className={styles.chance}>
-            이번 달 무료 횟수 <span>{imgData1.remainingFreeCount}회</span>
-            남았어요.
-          </p>
+          <ChanceText chance={imgData1.remainingFreeCount} />
         </div>
       </div>
     </div>

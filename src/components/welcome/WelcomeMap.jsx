@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { fetchStoresByCoord, matchStore } from "../../api/index.js";
 import styles from "../../styles/welcome/WelcomeMap.module.css";
 
-import useUuidStore from "../../store/useUuidStore";
+import useUuidStore from "../../store/useUuidStore.js";
 
 import close from "../../assets/welcomeMap/close.png";
 import listTitle from "../../assets/welcomeMap/list.png";

@@ -52,25 +52,3 @@
   justify-content: center;
   gap: 137px;
 }
-
-.buttonBox button {
-  width: 214px;
-  height: 51px;
-
-  border-radius: 10px;
-
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 21px;
-  letter-spacing: -0.025em;
-
-  color: #6d3737;
-}
-
-.buttonBox .img {
-  background-color: #ffe5a7;
-}
-
-.buttonBox .finish {
-  background-color: #febf22;
-}

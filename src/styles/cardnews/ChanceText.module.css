@@ -1,0 +1,12 @@
+.chance {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+  letter-spacing: -0.025em;
+
+  color: #6d3737;
+}
+
+.point {
+  color: #febf22;
+}

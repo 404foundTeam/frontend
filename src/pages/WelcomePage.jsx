@@ -1,23 +1,18 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "../styles/welcome/WelcomePage.module.css";
-import TextBox from "../components/welcome/TextBox";
-import WelcomeMap from "../components/welcome/WelcomoMap";
-import Blur from "../components/welcome/Blur";
-import CardWrapper from "../components/welcome/CarWrapper";
-import MatchMap from "../components/welcome/MatchMap";
+import {
+  TextBox,
+  WelcomeMap,
+  Blur,
+  CardWrapper,
+  MatchMap,
+} from "../components/welcome";
 
 function WelcomePage() {
   const mapRef = useRef();
 
   const [showMap, setShowMap] = useState(false);
 
-  // 모달창 show
-  // const clickShowMap = () => {
-  //   setShowMap(true);
-  // };
-  // const clickHideMap = () => {
-  //   setShowMap(false);
-  // };
   const toggleMap = () => setShowMap((prev) => !prev);
 
   // 포커스
@@ -27,8 +22,12 @@ function WelcomePage() {
 
   return (
     <div className={styles.container}>
-      {showMap && <Blur />}
-      {showMap && <WelcomeMap focusRef={mapRef} onClick={toggleMap} />}
+      {showMap && (
+        <>
+          <Blur />
+          <WelcomeMap focusRef={mapRef} onClick={toggleMap} />
+        </>
+      )}
       <div className={styles.headerContainer}>
         <div className={styles.headerBox}>
           <div className={styles.headerTextBox}>

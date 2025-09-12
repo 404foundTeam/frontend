@@ -1,8 +1,9 @@
 import { useState } from "react";
-import styles from "../styles/map/MapCoaPage.module.css";
-import SelectHeader from "../components/SelectHeader";
-import MapBanner from "../components/map/MapBanner";
-import SelectBox from "../components/SelectBox";
+import styles from "../../styles/map/MapCoaPage.module.css";
+import MapBanner from "../../components/map/MapBanner";
+import SelectHeader from "../../components/SelectHeader";
+import SelectBox from "../../components/SelectBox";
+import FinButton from "../../components/FinButton";
 
 function MapCoaPage() {
   // 리퀘스트 바디 데이터
@@ -95,7 +96,7 @@ function MapCoaPage() {
             />
           </div>
         </div>
-        <button className={styles.goCoaButton}>제휴 요청하기</button>
+        <FinButton>제휴 요청하기</FinButton>
       </div>
     </>
   );
