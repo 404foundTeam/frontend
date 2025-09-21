@@ -22,7 +22,7 @@ function MapCoaPage() {
 
   return (
     <>
-      <MapBanner />
+      <MapBanner />1
       <div className={styles.container}>
         <div className="goal">
           <SelectHeader text={"제휴맺는 목적이 무엇인가요?"} />
