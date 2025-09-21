@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "../../styles/map/MapPage.module.css";
 // import { MapSearch, CoaMapList } from "../../components/map";
@@ -11,6 +11,7 @@ import CategoryButton from "../../components/map/CategoryButton";
 function MapPage() {
   const container = useRef(null);
   const navigate = useNavigate();
+  const [select, setSelect] = useState("");
 
   // 미완성 목 데이터
   const stores = [
@@ -53,10 +54,6 @@ function MapPage() {
     const map = new window.kakao.maps.Map(container.current, options);
   }, []);
 
-  const goToList = () => {
-    navigate("/map/coalition/list");
-  };
-
   return (
     <>
       <div className={styles.header}>
@@ -64,9 +61,24 @@ function MapPage() {
         <p className={styles.content}>업장을 검색해서 제휴를 요청해보세요.</p>
         <MapSearch placeholder="업장을 입력해주세요." />
         <div className={styles.buttonBox}>
-          <CategoryButton isSelected={true}>유사 업종</CategoryButton>
-          <CategoryButton isSelected={false}>편의점</CategoryButton>
-          <CategoryButton isSelected={false}>음식점</CategoryButton>
+          <CategoryButton
+            isSelected={select === "유사 업종" ? true : false}
+            onClick={() => setSelect("유사 업종")}
+          >
+            유사 업종
+          </CategoryButton>
+          <CategoryButton
+            isSelected={select === "편의점" ? true : false}
+            onClick={() => setSelect("편의점")}
+          >
+            편의점
+          </CategoryButton>
+          <CategoryButton
+            isSelected={select === "음식점" ? true : false}
+            onClick={() => setSelect("음식점")}
+          >
+            음식점
+          </CategoryButton>
         </div>
       </div>
       <div className={styles.container}>
@@ -84,7 +96,12 @@ function MapPage() {
         </div>
       </div>
       <div className={styles.goMyCoa}>
-        <button className={styles.goMyCoaButton} onClick={goToList}>
+        <button
+          className={styles.goMyCoaButton}
+          onClick={() => {
+            navigate("/map/coalition/list");
+          }}
+        >
           나의 제휴 보러가기
         </button>
       </div>

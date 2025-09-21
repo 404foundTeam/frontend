@@ -1,5 +1,4 @@
 import styles from "../../styles/map/MapCoaListPage.module.css";
-import useUuidStore from "../../store/useUuidStore";
 // import {
 //   MapBanner,
 //   MyCoaBox,
@@ -10,10 +9,9 @@ import MapBanner from "../../components/map/MapBanner";
 import MyCoaBox from "../../components/map/MyCoaBox";
 import FromCoaBox from "../../components/map/FromCoaBox";
 import ToCoaBox from "../../components/map/ToCoaBox";
+import CoaSection from "../../components/map/CoaSection";
 
 function MapCoaListPage() {
-  const storeName = useUuidStore((state) => state.storeName);
-
   // 목 데이터
   const myCoaList = [
     {
@@ -57,36 +55,21 @@ function MapCoaListPage() {
     <>
       <MapBanner />
       <div className={styles.container}>
-        <div>
-          <h1>
-            <span>{storeName}</span>님과 제휴 맺은 업장
-          </h1>
-          <div className={`${styles.coaList} ${styles.myCoaList}`}>
-            {myCoaList.map((store, index) => (
-              <MyCoaBox key={index} store={store} />
-            ))}
-          </div>
-        </div>
-        <div>
-          <h1>
-            <span>{storeName}</span>님께 제휴 요청한 업장
-          </h1>
-          <div className={`${styles.coaList} ${styles.fromCoaList}`}>
-            {fromCoaList.map((store, index) => (
-              <FromCoaBox key={index} store={store} />
-            ))}
-          </div>
-        </div>
-        <div>
-          <h1>
-            <span>{storeName}</span>님이 제휴 요청한 업장
-          </h1>
-          <div className={`${styles.coaList} ${styles.toCoaList}`}>
-            {toCoaList.map((store, index) => (
-              <ToCoaBox key={index} store={store} />
-            ))}
-          </div>
-        </div>
+        <CoaSection
+          title="님과 제휴 맺은 업장"
+          list={myCoaList}
+          Component={MyCoaBox}
+        />
+        <CoaSection
+          title="님께 제휴 요청한 업장"
+          list={fromCoaList}
+          Component={FromCoaBox}
+        />
+        <CoaSection
+          title="님이 제휴 요청한 업장"
+          list={toCoaList}
+          Component={ToCoaBox}
+        />
       </div>
     </>
   );

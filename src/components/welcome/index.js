@@ -1,4 +1,5 @@
 export { default as Blur } from "./Blur";
+export { default as HeaderSection } from "./HeaderSection";
 export { default as CardWrapper } from "./CardWrapper";
 export { default as MatchMap } from "./MatchMap";
 export { default as SearchList } from "./SearchList";

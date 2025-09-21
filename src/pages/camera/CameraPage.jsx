@@ -71,6 +71,7 @@ function CameraPage() {
             <img
               src={preview}
               style={{ maxWidth: "100%", maxHeight: "100%" }}
+              alt="이미지 미리보기"
             />
           ) : (
             <>

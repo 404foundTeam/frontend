@@ -1,4 +1,6 @@
 .myCoaBox {
+  margin-top: 47px;
+
   display: flex;
   align-items: center;
   gap: 83px;
