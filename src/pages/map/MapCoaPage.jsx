@@ -7,9 +7,18 @@ import FinButton from "../../components/FinButton";
 
 function MapCoaPage() {
   // 리퀘스트 바디 데이터
-  const [text, setText] = useState("");
-  const [goal, setGoal] = useState("");
-  const [date, setDate] = useState("");
+  const [coa, setCoa] = useState({
+    text: null,
+    goal: null,
+    date: null,
+  });
+
+  const handleSelect = (current, value) => {
+    setCoa((prev) => ({
+      ...prev,
+      [current]: prev[current] === value ? null : value,
+    }));
+  };
 
   return (
     <>
@@ -20,26 +29,20 @@ function MapCoaPage() {
           <div className={styles.selectBoxs}>
             <SelectBox
               value="inter"
-              selected={goal === "inter"}
-              onClick={() => {
-                setGoal(goal === "inter" ? "" : "inter");
-              }}
+              selected={coa.goal === "inter"}
+              onClick={() => handleSelect("goal", "inter")}
               label="매장간 상호 홍보"
             />
             <SelectBox
               value="fest"
-              selected={goal === "fest"}
-              onClick={() => {
-                setGoal(goal === "fest" ? "" : "fest");
-              }}
+              selected={coa.goal === "fest"}
+              onClick={() => handleSelect("goal", "fest")}
               label="지역행사 및 캠페인 협력"
             />
             <SelectBox
               value="part"
-              selected={goal === "part"}
-              onClick={() => {
-                setGoal(goal === "part" ? "" : "part");
-              }}
+              selected={coa.goal === "part"}
+              onClick={() => handleSelect("goal", "part")}
               label="공동 프로모션"
             />
           </div>
@@ -49,18 +52,18 @@ function MapCoaPage() {
           <div className={styles.contentTextBox}>
             <input
               className={`${styles.contentTextInput} ${
-                text ? styles.select : ""
+                coa.text ? styles.select : ""
               }`}
               type="text"
               placeholder="텍스트를 입력하세요."
-              value={text}
+              value={coa.text}
               onChange={(e) => {
-                setText(e.target.value);
+                setCoa((prev) => ({ ...prev, text: e.target.value }));
               }}
             />
             <button
               className={`${styles.textButton} ${styles.contentTextButton} ${
-                text ? styles.select : ""
+                coa.text ? styles.select : ""
               }`}
             >
               완료
@@ -72,26 +75,20 @@ function MapCoaPage() {
           <div className={styles.selectBoxs}>
             <SelectBox
               value="seven"
-              selected={date === "seven"}
-              onClick={() => {
-                setDate(date === "seven" ? "" : "seven");
-              }}
+              selected={coa.date === "seven"}
+              onClick={() => handleSelect("date", "seven")}
               label="7일"
             />
             <SelectBox
               value="thrid"
-              selected={date === "thrid"}
-              onClick={() => {
-                setDate(date === "thrid" ? "" : "thrid");
-              }}
+              selected={coa.date === "thrid"}
+              onClick={() => handleSelect("date", "thrid")}
               label="3개월"
             />
             <SelectBox
               value="six"
-              selected={date === "six"}
-              onClick={() => {
-                setDate(date === "six" ? "" : "six");
-              }}
+              selected={coa.date === "six"}
+              onClick={() => handleSelect("date", "six")}
               label="6개월"
             />
           </div>

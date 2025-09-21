@@ -14,27 +14,42 @@ import FinButton from "../../components/FinButton.jsx";
 
 function CardNewsPage() {
   const navigate = useNavigate();
-
   const storeUuid = useUuidStore((state) => state.storeUuid);
   const storeName = useUuidStore((state) => state.storeName);
   const setText = useTextStore((state) => state.setText);
   const setCard = useCardStore((state) => state.setCard);
 
-  const [cardType, setCardType] = useState("");
-  const [menuName, setMenuName] = useState("");
-  const [userText, setUserText] = useState("");
-  const [generatedText, setGeneratedText] = useState("");
-  const [template, setTemplate] = useState("");
-  const [ratio, setRatio] = useState("");
-  const [theme, setTheme] = useState("");
+  const [cardData, setCardData] = useState({
+    cardType: "",
+    menuName: "",
+    userText: "",
+    generatedText: "",
+    template: "",
+    ratio: "",
+    theme: "",
+  });
 
   const [loading, setLoading] = useState(false);
   const [fail, setFail] = useState(false);
 
+  // 상태 업데이트 함수
+  const handleSelect = (key, value) => {
+    setCardData((prev) => ({
+      ...prev,
+      [key]: prev[key] === value ? "" : value,
+    }));
+  };
+
   const getGenerateText = async () => {
     try {
-      const getText = await generateText({ type: cardType, userText });
-      setGeneratedText(getText.generatedText);
+      const getText = await generateText({
+        type: cardData.cardType,
+        userText: cardData.userText,
+      });
+      setCardData((prev) => ({
+        ...prev,
+        generatedText: getText.generatedText,
+      }));
       setText({ generatedText: getText.generatedText });
     } catch (error) {
       console.log("데이터 요청 실패", error);
@@ -43,25 +58,16 @@ function CardNewsPage() {
   };
 
   const postCardNews = async () => {
-    console.log("이미지 받아오기 시작");
-
-    const cardData = {
+    const payload = {
       storeUuid,
       storeName,
-      cardType,
-      menuName,
-      generatedText,
-      template,
-      ratio,
-      theme,
+      ...cardData,
     };
 
     try {
       setLoading(true);
-      const getCard = await backgroundImg(cardData);
-
+      const getCard = await backgroundImg(payload);
       setCard(getCard);
-      console.log("데이터 전역 저장 완료");
       navigate("/cardnews/result");
     } catch (error) {
       setFail(true);
@@ -84,66 +90,66 @@ function CardNewsPage() {
         </p>
       </div>
       <div className={styles.cardNewsContainer}>
+        {/* 카드 타입 선택 */}
         <div className={`${styles.cardNewsBox} ${styles.cardNewsType}`}>
           <SelectHeader text="어떤 SNS 카드 뉴스를 만들까요?" />
           <div className={styles.selectBoxs}>
             <SelectBox
-              value="notice"
-              selected={cardType === "NOTICE"}
-              onClick={() => {
-                setCardType(cardType === "NOTICE" ? "" : "NOTICE");
-              }}
+              value="NOTICE"
+              selected={cardData.cardType === "NOTICE"}
+              onClick={() => handleSelect("cardType", "NOTICE")}
               label="공지"
             />
             <SelectBox
-              value="product_promo"
-              selected={cardType === "PRODUCT_PROMO"}
-              onClick={() => {
-                setCardType(
-                  cardType === "PRODUCT_PROMO" ? "" : "PRODUCT_PROMO"
-                );
-              }}
+              value="PRODUCT_PROMO"
+              selected={cardData.cardType === "PRODUCT_PROMO"}
+              onClick={() => handleSelect("cardType", "PRODUCT_PROMO")}
               label="신제품 홍보"
             />
             <SelectBox
-              value="store_intro"
-              selected={cardType === "STORE_INTRO"}
-              onClick={() => {
-                setCardType(cardType === "STORE_INTRO" ? "" : "STORE_INTRO");
-              }}
+              value="STORE_INTRO"
+              selected={cardData.cardType === "STORE_INTRO"}
+              onClick={() => handleSelect("cardType", "STORE_INTRO")}
               label="매장 소개"
             />
           </div>
         </div>
-        {(cardType === "NOTICE" || cardType === "STORE_INTRO") && (
+        {/* 메뉴 이름 입력 */}
+        {(cardData.cardType === "NOTICE" ||
+          cardData.cardType === "STORE_INTRO") && (
           <div className={`${styles.cardNewsBox} ${styles.cardNewsTextBox}`}>
             <SelectHeader text="카드뉴스에 넣고 싶은 메뉴 이름을 입력해주세요." />
             <input
-              className={`${styles.textInput} ${menuName ? styles.select : ""}`}
+              className={`${styles.textInput} ${
+                cardData.menuName ? styles.select : ""
+              }`}
               type="text"
               placeholder="텍스트를 입력하세요."
-              value={menuName}
-              onChange={(e) => {
-                setMenuName(e.target.value);
-              }}
+              value={cardData.menuName}
+              onChange={(e) =>
+                setCardData((prev) => ({ ...prev, menuName: e.target.value }))
+              }
             />
           </div>
         )}
+        {/* 사용자 텍스트 입력 */}
         <div className={`${styles.cardNewsBox} ${styles.cardNewsText}`}>
           <SelectHeader text="SNS 카드 뉴스에 넣고 싶은 텍스트를 입력하세요." />
           <div className={styles.cardNewsTextBox}>
             <input
-              className={`${styles.textInput} ${userText ? styles.select : ""}`}
+              className={`${styles.textInput} ${
+                cardData.userText ? styles.select : ""
+              }`}
               type="text"
               placeholder="텍스트를 입력하세요."
-              value={userText}
-              onChange={(e) => {
-                setUserText(e.target.value);
-              }}
+              value={cardData.userText}
+              onChange={(e) =>
+                setCardData((prev) => ({ ...prev, userText: e.target.value }))
+              }
             />
             <button
               className={`${styles.textButton} ${styles.cardnewsTextButton} ${
-                userText ? styles.select : ""
+                cardData.userText ? styles.select : ""
               }`}
               onClick={getGenerateText}
             >
@@ -151,26 +157,28 @@ function CardNewsPage() {
             </button>
           </div>
         </div>
+        {/* 변환 결과 */}
         <div className={`${styles.cardNewsBox} ${styles.cardNewsTextResult}`}>
           <SelectHeader text="변환 결과" />
           <div className={styles.textResultBox}>
             <div
               className={`${styles.showResult} ${
-                generatedText ? styles.select : ""
+                cardData.generatedText ? styles.select : ""
               }`}
             >
-              {generatedText && generatedText}
+              {cardData.generatedText && cardData.generatedText}
             </div>
             <button
               className={`${styles.textButton} ${
                 styles.cardNewsTextResultButton
-              } ${generatedText ? styles.select : ""}`}
+              } ${cardData.generatedText ? styles.select : ""}`}
               onClick={getGenerateText}
             >
               재생성하기
             </button>
           </div>
         </div>
+        {/* 템플릿 선택 */}
         <div className={`${styles.cardNewsBox} ${styles.QcardNewsTemplate}`}>
           <SelectHeader text="원하는 템플릿을 선택해주세요." />
           <p>* 회색 배경은 AI가 텍스트로 만든 이미지입니다.</p>
@@ -178,13 +186,9 @@ function CardNewsPage() {
             <div className={styles.templateBoxs}>
               <div
                 className={`${styles.templateBox} ${
-                  template === "T1_TEXT_ONLY" ? styles.select : ""
+                  cardData.template === "T1_TEXT_ONLY" ? styles.select : ""
                 }`}
-                onClick={() => {
-                  setTemplate(
-                    template === "T1_TEXT_ONLY" ? "" : "T1_TEXT_ONLY"
-                  );
-                }}
+                onClick={() => handleSelect("template", "T1_TEXT_ONLY")}
               >
                 <div className={styles.content}>생성된 텍스트</div>
               </div>
@@ -192,13 +196,9 @@ function CardNewsPage() {
             <div className={styles.imgBox}>
               <div
                 className={`${styles.templateBox} ${
-                  template === "T2_TEXT_BOTTOM" ? styles.select : ""
+                  cardData.template === "T2_TEXT_BOTTOM" ? styles.select : ""
                 }`}
-                onClick={() => {
-                  setTemplate(
-                    template === "T2_TEXT_BOTTOM" ? "" : "T2_TEXT_BOTTOM"
-                  );
-                }}
+                onClick={() => handleSelect("template", "T2_TEXT_BOTTOM")}
               >
                 <div className={`${styles.text} ${styles.bottom}`}>이미지</div>
                 <div className={`${styles.content} ${styles.bottom}`}>
@@ -209,13 +209,9 @@ function CardNewsPage() {
             <div className={styles.imgBox}>
               <div
                 className={`${styles.templateBox} ${
-                  template === "T3_TEXT_RIGHT" ? styles.select : ""
+                  cardData.template === "T3_TEXT_RIGHT" ? styles.select : ""
                 }`}
-                onClick={() => {
-                  setTemplate(
-                    template === "T3_TEXT_RIGHT" ? "" : "T3_TEXT_RIGHT"
-                  );
-                }}
+                onClick={() => handleSelect("template", "T3_TEXT_RIGHT")}
               >
                 <div className={`${styles.text} ${styles.right}`}>이미지</div>
                 <div className={`${styles.content} ${styles.right}`}>
@@ -225,74 +221,66 @@ function CardNewsPage() {
             </div>
           </div>
         </div>
+        {/* 비율 선택 */}
         <div className={`${styles.cardNewsBox} ${styles.cardNewsRatio}`}>
           <SelectHeader text="원하는 비율을 선택해주세요." />
           <div className={styles.selectBoxs}>
             <SelectBox
-              value="normal"
-              selected={ratio === "SQUARE_1_1"}
-              onClick={() => {
-                setRatio(ratio === "SQUARE_1_1" ? "" : "SQUARE_1_1");
-              }}
+              value="SQUARE_1_1"
+              selected={cardData.ratio === "SQUARE_1_1"}
+              onClick={() => handleSelect("ratio", "SQUARE_1_1")}
               label="1:1 비율"
             />
             <SelectBox
-              value="hor"
-              selected={ratio === "RATIO_2_3"}
-              onClick={() => {
-                setRatio(ratio === "RATIO_2_3" ? "" : "RATIO_2_3");
-              }}
+              value="RATIO_2_3"
+              selected={cardData.ratio === "RATIO_2_3"}
+              onClick={() => handleSelect("ratio", "RATIO_2_3")}
               label="4:5 비율(가로)"
             />
             <SelectBox
-              value="ver"
-              selected={ratio === "RATIO_3_2"}
-              onClick={() => {
-                setRatio(ratio === "RATIO_3_2" ? "" : "RATIO_3_2");
-              }}
+              value="RATIO_3_2"
+              selected={cardData.ratio === "RATIO_3_2"}
+              onClick={() => handleSelect("ratio", "RATIO_3_2")}
               label="4:5 비율(세로)"
             />
           </div>
         </div>
+        {/* 테마 선택 */}
         <div className={`${styles.cardNewsBox} ${styles.cardNewsTheme}`}>
           <SelectHeader text="원하는 테마를 선택해주세요." />
           <div className={styles.themeList}>
             <div
               className={`${styles.themeBox} ${
-                theme === "WARM" ? styles.select : ""
+                cardData.theme === "WARM" ? styles.select : ""
               }`}
-              onClick={() => {
-                setTheme(theme === "WARM" ? "" : "WARM");
-              }}
+              onClick={() => handleSelect("theme", "WARM")}
             >
               따뜻하고 편안한 분위기
             </div>
             <div
               className={`${styles.themeBox} ${
-                theme === "MODERN" ? styles.select : ""
+                cardData.theme === "MODERN" ? styles.select : ""
               }`}
-              onClick={() => {
-                setTheme(theme === "MODERN" ? "" : "MODERN");
-              }}
+              onClick={() => handleSelect("theme", "MODERN")}
             >
               깔끔하고 모던한 분위기
             </div>
             <div
               className={`${styles.themeBox} ${
-                theme === "BRIGHT" ? styles.select : ""
+                cardData.theme === "BRIGHT" ? styles.select : ""
               }`}
-              onClick={() => {
-                setTheme(theme === "BRIGHT" ? "" : "BRIGHT");
-              }}
+              onClick={() => handleSelect("theme", "BRIGHT")}
             >
               활기차고 밝은 분위기
             </div>
           </div>
         </div>
       </div>
-      {cardType && generatedText && template && ratio && theme && (
-        <FinButton onClick={postCardNews}>완료</FinButton>
-      )}
+      {cardData.cardType &&
+        cardData.generatedText &&
+        cardData.template &&
+        cardData.ratio &&
+        cardData.theme && <FinButton onClick={postCardNews}>완료</FinButton>}
     </div>
   );
 }

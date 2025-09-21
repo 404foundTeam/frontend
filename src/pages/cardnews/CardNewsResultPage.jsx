@@ -121,7 +121,6 @@ function CardNewsResultPage() {
     // 이미지 로드
     const image = new Image();
     image.crossOrigin = "anonymous"; // 크로스 허용
-    image.src = imgData.url;
     image.src = `${imgData.url}?not-from-cache-please`; // s3 크로스
 
     image.onload = async () => {
@@ -176,7 +175,6 @@ function CardNewsResultPage() {
       const data = canvas.toDataURL("image/png");
       resultImgRef.current.src = data;
       const blobData = await (await fetch(data)).blob();
-      console.log("blob 파일 완료");
       setBlob(blobData);
     };
   }, []);
@@ -206,10 +204,6 @@ function CardNewsResultPage() {
     }
   };
 
-  const goToMarketing = () => {
-    navigate("/marketing");
-  };
-
   return (
     <div className={styles.container}>
       <canvas ref={canvasRef} style={{ display: "none" }} />
@@ -224,7 +218,10 @@ function CardNewsResultPage() {
             <ResultButtonButton type="save" onClick={saveCard}>
               저장하기
             </ResultButtonButton>
-            <ResultButtonButton type="new" onClick={goToMarketing}>
+            <ResultButtonButton
+              type="new"
+              onClick={() => navigate("/marketing")}
+            >
               홍보페이지로 돌아가기
             </ResultButtonButton>
           </div>

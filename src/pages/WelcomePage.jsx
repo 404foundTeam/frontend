@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import styles from "../styles/welcome/WelcomePage.module.css";
 import {
   TextBox,
+  HeaderSection,
   WelcomeMap,
   Blur,
   CardWrapper,
@@ -28,27 +29,7 @@ function WelcomePage() {
           <WelcomeMap focusRef={mapRef} onClick={toggleMap} />
         </>
       )}
-      <div className={styles.headerContainer}>
-        <div className={styles.headerBox}>
-          <div className={styles.headerTextBox}>
-            <h1 className={styles.headerTitle}>
-              소상공인을 위한
-              <br />
-              스마트한 마케팅 플랫폼
-            </h1>
-            <p className={styles.headerText}>
-              AI가 어렵고 복잡한 마케팅과 운영전략을 한번에
-            </p>
-            <button onClick={toggleMap} className={styles.signButton}>
-              업장 등록하기
-            </button>
-          </div>
-          <div className={`${styles.headerImg} ${styles.bee}`}></div>
-          <div className={`${styles.headerImg} ${styles.bee}`}></div>
-          <div className={`${styles.headerImg} ${styles.hive}`}></div>
-        </div>
-        <div className={styles.headrBottomBox}></div>
-      </div>
+      <HeaderSection onClick={toggleMap} />
       <TextBox
         title={"소상공인을 위한 쉽고 빠른 플랫폼, market BEE"}
         content={
