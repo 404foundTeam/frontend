@@ -35,7 +35,7 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
-          source: "dist/**"
+          source: "dist/*"
           target: "/home/ubuntu/frontend/deploy-dist/"
 
       # 6. EC2에서 정리 + 반영
@@ -51,7 +51,7 @@ jobs:
             # 기존 파일 제거
             sudo rm -rf /home/ubuntu/frontend/*
 
-            # 새 dist 배포
+            # 새 dist 배포 (index.html이 바로 frontend/ 밑에 오도록)
             sudo mv /home/ubuntu/frontend/deploy-dist/* /home/ubuntu/frontend/
             sudo rm -rf /home/ubuntu/frontend/deploy-dist
 
@@ -61,5 +61,4 @@ jobs:
 
             # nginx 재시작
             sudo systemctl restart nginx
-
             echo "✅ Frontend deployed successfully!"
