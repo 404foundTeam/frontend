@@ -27,6 +27,8 @@ jobs:
       # 4. 빌드 (dist/ 생성)
       - name: Build project
         run: npm run build
+        env:
+          VITE_KAKAO_MAP_KEY: ${{ secrets.VITE_KAKAO_MAP_KEY }}
 
       # 5. EC2에 dist 업로드 (dist 폴더 전체)
       - name: Upload dist to EC2
