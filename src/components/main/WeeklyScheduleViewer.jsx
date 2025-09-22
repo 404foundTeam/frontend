@@ -131,6 +131,7 @@ function WeeklyScheduleViewer() {
           <p className={styles.promoText}>
             다가오는 일정을 확인하고 관리해보세요!
           </p>
+
           <button
             className={styles.listButton}
             onClick={() => {
