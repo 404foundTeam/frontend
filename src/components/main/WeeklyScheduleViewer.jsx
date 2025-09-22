@@ -5,6 +5,7 @@ import axios from "axios";
 import styles from "../../styles/WeeklyScheduleViewer.module.css";
 import useUuidStore from "../../store/useUuidStore";
 import { useNavigate } from "react-router-dom";
+import useActiveStroe from "../../store/useActiveStore";
 
 function WeeklyScheduleViewer() {
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -16,6 +17,7 @@ function WeeklyScheduleViewer() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  const setActive = useActiveStroe((state) => state.setActive);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -129,7 +131,13 @@ function WeeklyScheduleViewer() {
           <p className={styles.promoText}>
             다가오는 일정을 확인하고 관리해보세요!
           </p>
-          <button className={styles.listButton} onClick={() => navigate("/my")}>
+          <button
+            className={styles.listButton}
+            onClick={() => {
+              setActive("CALENDAR");
+              navigate("/my");
+            }}
+          >
             캘린더 바로가기
           </button>
         </div>
