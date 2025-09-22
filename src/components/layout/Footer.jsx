@@ -1,4 +1,4 @@
-import styles from "../../styles/Footer.module.css";
+import styles from "../../styles/layout/Footer.module.css";
 
 import logoImg from "../../assets/logo.png";
 

@@ -1,4 +1,4 @@
-import styles from "../../styles/Error.module.css";
+import styles from "../../styles/shared/Error.module.css";
 
 import Header from "../layout/Header";
 
