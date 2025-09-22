@@ -30,15 +30,16 @@ jobs:
         env:
           VITE_KAKAO_MAP_KEY: ${{ secrets.VITE_KAKAO_MAP_KEY }}
 
-      # 5. EC2에 dist 업로드 (dist 안의 파일들만 업로드)
+      # 5. EC2에 dist 업로드
       - name: Upload dist to EC2
         uses: appleboy/scp-action@v0.1.4
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
-          source: "dist/**"
+          source: "./dist/**"
           target: "/home/ubuntu/frontend"
+          overwrite: true
 
       # 6. EC2에서 정리 + 반영
       - name: Deploy on EC2
