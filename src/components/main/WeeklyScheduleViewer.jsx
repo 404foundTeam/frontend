@@ -130,7 +130,7 @@ function WeeklyScheduleViewer() {
             다가오는 일정을 확인하고 관리해보세요!
           </p>
           <button className={styles.listButton} onClick={() => navigate("/my")}>
-            캘린더 바로가기
+            일정 수정하기
           </button>
         </div>
         <div className={styles.eventList}>
