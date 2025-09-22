@@ -4,6 +4,7 @@ import React, { useState, useEffect, useMemo } from "react";
 import axios from "axios";
 import styles from "../../styles/WeeklyScheduleViewer.module.css";
 import useUuidStore from "../../store/useUuidStore";
+import { useNavigate } from "react-router-dom";
 
 function WeeklyScheduleViewer() {
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -14,6 +15,8 @@ function WeeklyScheduleViewer() {
   const [events, setEvents] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!storeUuid) {
@@ -80,12 +83,10 @@ function WeeklyScheduleViewer() {
   const upcomingEvents = useMemo(() => {
     const today = new Date();
     today.setHours(0, 0, 0, 0); // 날짜만 비교하기 위해 시간을 0으로 설정
-    
-    // events 배열에서 오늘 날짜 이후의 일정만 필터링.
-    return events.filter(event => new Date(event.date) >= today)
-    .slice(0, 4);
-  }, [events]); // events 데이터가 변경될 때만 재계산합니다.
 
+    // events 배열에서 오늘 날짜 이후의 일정만 필터링.
+    return events.filter((event) => new Date(event.date) >= today).slice(0, 4);
+  }, [events]); // events 데이터가 변경될 때만 재계산합니다.
 
   // 가장 가까운 일정 ID를 찾는 로직은 이제 upcomingEvents를 사용.
 
@@ -124,16 +125,20 @@ function WeeklyScheduleViewer() {
 
       {/* --- 하단: 일정 목록 --- */}
       <div className={styles.scheduleListSection}>
-        <p className={styles.promoText}>
-          다가오는 일정을 확인하고 관리해보세요!
-        </p>
+        <div className={styles.listHeader}>
+          <p className={styles.promoText}>
+            다가오는 일정을 확인하고 관리해보세요!
+          </p>
+          <button className={styles.listButton} onClick={() => navigate("/my")}>
+            캘린더 바로가기
+          </button>
+        </div>
         <div className={styles.eventList}>
           {isLoading ? (
             <p>일정을 불러오는 중...</p>
           ) : error ? (
             <p>{error}</p>
           ) : upcomingEvents.length === 0 ? (
-
             <p>이번 달에는 다가오는 일정이 없습니다.</p>
           ) : (
             upcomingEvents.map((event) => (

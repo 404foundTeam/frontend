@@ -2,7 +2,8 @@
 
 .container {
   max-width: 1400px;
-margin-left: 15%;  border-radius: 20px;
+  margin-left: 15%;
+  border-radius: 20px;
   padding: 25px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   font-family: sans-serif;
@@ -11,18 +12,19 @@ margin-left: 15%;  border-radius: 20px;
 /* --- 상단: 주간 캘린더 --- */
 .weekViewer {
   padding-bottom: 20px;
-  border-bottom: 1px solid #EAE1CF;
+  border-bottom: 1px solid #eae1cf;
 }
 
 .monthTitle {
   text-align: center;
   font-size: 1.2rem;
   font-weight: 600;
-  color: #6D3737;
+  color: #6d3737;
   margin-bottom: 20px;
 }
 
-.dayHeaders, .dates {
+.dayHeaders,
+.dates {
   display: grid;
   grid-template-columns: repeat(7, minmax(80px, 1fr)); /* 7개의 동일한 컬럼 */
   text-align: center;
@@ -30,19 +32,19 @@ margin-left: 15%;  border-radius: 20px;
 
 .dayHeader {
   font-size: 0.9rem;
-  color: #ACACAC;
+  color: #acacac;
   padding-bottom: 10px;
   font-weight: 500;
 }
 
 .dayHeader.sunday {
-  color: #FF6E20; /* 일요일 텍스트 색상 */
+  color: #ff6e20; /* 일요일 텍스트 색상 */
 }
 
 .dateCell {
   font-size: 1rem;
   font-weight: 600;
-  color: #6D3737;
+  color: #6d3737;
 }
 
 /* --- 하단: 일정 목록 --- */
@@ -50,13 +52,34 @@ margin-left: 15%;  border-radius: 20px;
   padding-top: 20px;
 }
 
+.listHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .promoText {
   font-size: 0.95rem;
   color: #797979;
-  margin-bottom: 25px;
+  /* margin-bottom: 25px; */
+}
+
+.listButton {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 0.8rem;
+  line-height: 27px;
+
+  color: #ffffff;
+
+  border-radius: 10px;
+  background-color: #6d3737;
+  padding: 6px 16px;
 }
 
 .eventList {
+  margin-top: 25px;
+
   display: flex;
   flex-direction: column;
   gap: 25px;
@@ -64,16 +87,16 @@ margin-left: 15%;  border-radius: 20px;
 
 .eventItem {
   display: flex;
-  align-items: flex-start; 
+  align-items: flex-start;
   gap: 15px;
 }
 
 .bullet {
   width: 10px;
   height: 10px;
-  background-color: #FEBF22; 
+  background-color: #febf22;
   border-radius: 50%;
-  margin-top: 8px; 
+  margin-top: 8px;
   flex-shrink: 0;
 }
 
@@ -110,5 +133,5 @@ margin-left: 15%;  border-radius: 20px;
 
 /* 가장 가까운 일정 제목에 적용될 스타일 */
 .closestEventTitle {
-  color: #FEBF22; 
+  color: #febf22;
 }
