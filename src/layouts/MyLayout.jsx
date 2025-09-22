@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
-import SideBar from "../components/SideBar";
+import SideBar from "../components/layout/SideBar";
 import WelcomeMap from "../components/welcome/WelcomeMap";
 import Blur from "../components/welcome/Blur";
 import styles from "../styles/MyLayout.module.css";

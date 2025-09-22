@@ -1,7 +1,7 @@
 // src/layouts/MarketingLayout.jsx
 
 import { Outlet, Link } from "react-router-dom";
-import SideBar from "../components/SideBar";
+import SideBar from "../components/layout/SideBar";
 import styles from "../styles/MarketingLayout.module.css";
 
 // 배너에 필요한 이미지들 import.

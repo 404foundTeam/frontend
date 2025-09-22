@@ -1,6 +1,6 @@
-import styles from "../styles/Footer.module.css";
+import styles from "../../styles/Footer.module.css";
 
-import logoImg from "../assets/logo.png";
+import logoImg from "../../assets/logo.png";
 
 function Footer() {
   return (
