@@ -38,7 +38,7 @@ jobs:
           username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
           source: "dist/**"
-          target: "/home/ubuntu/frontend/"
+          target: "/home/ubuntu/frontend"
 
       # 6. EC2에서 정리 + 반영
       - name: Deploy on EC2
