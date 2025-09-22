@@ -139,7 +139,7 @@ function WeeklyScheduleViewer() {
               navigate("/my");
             }}
           >
-            캘린더 바로가기
+            일정 수정하기
           </button>
         </div>
         <div className={styles.eventList}>
