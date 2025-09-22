@@ -1,4 +1,4 @@
-import styles from "../../styles/cardnews/SelectBox.module.css";
+import styles from "../../styles/shared/SelectBox.module.css";
 
 function SelectBox({ value, selected, onClick, label }) {
   return (

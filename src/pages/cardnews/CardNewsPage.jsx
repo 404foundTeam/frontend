@@ -10,7 +10,7 @@ import SelectHeader from "../../components/shared/SelectHeader.jsx";
 import SelectBox from "../../components/shared/SelectBox.jsx";
 import Loading from "../../components/shared/Loading.jsx";
 import Error from "../../components/shared/Error.jsx";
-import FinButton from "../../components/FinButton.jsx";
+import FinButton from "../../components/shared/FinButton.jsx";
 
 function CardNewsPage() {
   const navigate = useNavigate();

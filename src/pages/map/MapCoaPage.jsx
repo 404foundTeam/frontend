@@ -3,7 +3,7 @@ import styles from "../../styles/map/MapCoaPage.module.css";
 import MapBanner from "../../components/map/MapBanner";
 import SelectHeader from "../../components/shared/SelectHeader";
 import SelectBox from "../../components/shared/SelectBox";
-import FinButton from "../../components/FinButton";
+import FinButton from "../../components/shared/FinButton";
 
 function MapCoaPage() {
   // 리퀘스트 바디 데이터

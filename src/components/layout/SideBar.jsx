@@ -1,4 +1,4 @@
-import styles from "../../styles/SideBar.module.css";
+import styles from "../../styles/layout/SideBar.module.css";
 import main from "../../assets/sidebar/main.png";
 import mainSelect from "../../assets/sidebar/main_select.png";
 import camera from "../../assets/sidebar/camera.png";

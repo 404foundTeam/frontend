@@ -1,4 +1,4 @@
-import styles from "../../styles/Loading.module.css";
+import styles from "../../styles/shared/Loading.module.css";
 import useUuidStore from "../../store/useUuidStore";
 import loadingImg from "../../assets/loading_img.png";
 

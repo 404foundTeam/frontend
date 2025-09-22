@@ -1,4 +1,4 @@
-import styles from "../styles/FinButton.module.css";
+import styles from "../../styles/shared/FinButton.module.css";
 
 function FinButton({ children, onClick }) {
   return (

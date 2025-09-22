@@ -1,10 +1,11 @@
-import { useState } from "react";
 import styles from "../styles/MyPage.module.css";
 import MyScrap from "../components/my/MyScrap";
 import MyCalendar from "../components/my/MyCalendar";
+import useActiveStroe from "../store/useActiveStore";
 
 function MyPage() {
-  const [activeTab, setActiveTab] = useState("MY");
+  const activeTab = useActiveStroe((state) => state.activeTab);
+  const setActive = useActiveStroe((state) => state.setActive);
 
   return (
     <div className={styles.container}>
@@ -13,7 +14,7 @@ function MyPage() {
           className={`${styles.tabButton} ${
             activeTab === "MY" ? styles.active : ""
           }`}
-          onClick={() => setActiveTab("MY")}
+          onClick={() => setActive("MY")}
         >
           마이페이지
         </button>
@@ -21,7 +22,7 @@ function MyPage() {
           className={`${styles.tabButton} ${
             activeTab === "CALENDAR" ? styles.active : ""
           }`}
-          onClick={() => setActiveTab("CALENDAR")}
+          onClick={() => setActive("CALENDAR")}
         >
           캘린더
         </button>
