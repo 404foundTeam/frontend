@@ -1,7 +1,7 @@
 // src/layouts/MainLayout.jsx
 
 import { Outlet, Link } from "react-router-dom";
-import SideBar from "../components/SideBar";
+import SideBar from "../components/layout/SideBar";
 import styles from "../styles/MainLayout.module.css";
 import cardNewsPreview from "../assets/mainpage/image.png";
 import useUuidStore from "../store/useUuidStore";

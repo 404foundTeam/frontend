@@ -23,7 +23,7 @@ import SmartReportLayout from "./layouts/SmartReportLayout";
 import SmartReportPage from "./pages/SmartReportPage";
 import MyLayout from "./layouts/MyLayout";
 import MyPage from "./pages/MyPage";
-import Error from "./components/Error";
+import Error from "./components/shared/Error";
 
 function App() {
   // 새로고침 시 최상단 이동

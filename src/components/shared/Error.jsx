@@ -1,8 +1,8 @@
-import styles from "../styles/Error.module.css";
+import styles from "../../styles/Error.module.css";
 
-import Header from "./Header";
+import Header from "../layout/Header";
 
-import loadingImg from "../assets/loading_img.png";
+import loadingImg from "../../assets/loading_img.png";
 
 function Error() {
   return (

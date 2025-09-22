@@ -4,9 +4,9 @@ import { guideFile } from "../../api";
 import dragImg from "../../assets/camera/drag_img.png";
 import styles from "../../styles/camera/CameraPage.module.css";
 import useGuideStore from "../../store/useGuideStore";
-import Loading from "../../components/Loading";
+import Loading from "../../components/shared/Loading";
 import CameraBanner from "../../components/camera/CameraBanner";
-import Error from "../../components/Error";
+import Error from "../../components/shared/Error";
 import CameraButton from "../../components/camera/CameraButton";
 
 function CameraPage() {

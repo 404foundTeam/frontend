@@ -6,10 +6,10 @@ import bannerImg from "../../assets/cardnews/banner_img.png";
 import useUuidStore from "../../store/useUuidStore.js";
 import useCardStore from "../../store/useCardStore.js";
 import useTextStore from "../../store/useTextStore.js";
-import SelectHeader from "../../components/SelectHeader.jsx";
-import SelectBox from "../../components/SelectBox.jsx";
-import Loading from "../../components/Loading.jsx";
-import Error from "../../components/Error.jsx";
+import SelectHeader from "../../components/shared/SelectHeader.jsx";
+import SelectBox from "../../components/shared/SelectBox.jsx";
+import Loading from "../../components/shared/Loading.jsx";
+import Error from "../../components/shared/Error.jsx";
 import FinButton from "../../components/FinButton.jsx";
 
 function CardNewsPage() {

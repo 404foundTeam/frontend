@@ -1,5 +1,5 @@
-import styles from "../styles/cardnews/SelectHeader.module.css";
-import categoryImg from "../assets/cardnews/category.png";
+import styles from "../../styles/cardnews/SelectHeader.module.css";
+import categoryImg from "../../assets/cardnews/category.png";
 
 function SelectHeader({ text }) {
   return (
