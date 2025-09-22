@@ -28,7 +28,7 @@ jobs:
       - name: Build project
         run: npm run build
 
-      # 5. dist → EC2 업로드
+      # 5. EC2에 dist 업로드
       - name: Upload dist to EC2
         uses: appleboy/scp-action@v0.1.4
         with:
@@ -36,15 +36,30 @@ jobs:
           username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
           source: "dist/**"
-          target: "/home/ubuntu/frontend/"
+          target: "/home/ubuntu/frontend/deploy-dist/"
 
-      # 6. Nginx 재시작
-      - name: Restart Nginx
+      # 6. EC2에서 정리 + 반영
+      - name: Deploy on EC2
         uses: appleboy/ssh-action@v0.1.10
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
+            cd /home/ubuntu/frontend
+
+            # 기존 파일 제거
+            sudo rm -rf /home/ubuntu/frontend/*
+
+            # 새 dist 배포
+            sudo mv /home/ubuntu/frontend/deploy-dist/* /home/ubuntu/frontend/
+            sudo rm -rf /home/ubuntu/frontend/deploy-dist
+
+            # 권한 조정 (nginx가 읽을 수 있도록)
+            sudo chown -R ubuntu:www-data /home/ubuntu/frontend
+            sudo chmod -R 755 /home/ubuntu/frontend
+
+            # nginx 재시작
             sudo systemctl restart nginx
-            echo "✅ Frontend 배포 완료!"
+
+            echo "✅ Frontend deployed successfully!"
