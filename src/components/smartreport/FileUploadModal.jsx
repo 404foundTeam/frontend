@@ -3,7 +3,7 @@
 import { useState, useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 import axios from 'axios';
-import styles from '../../styles/FileUploadModal.module.css';
+import styles from '../../styles/smartreport/FileUploadModal.module.css';
 import useUuidStore from '../../store/useUuidStore';
 
 function FileUploadModal({ onClose }) {

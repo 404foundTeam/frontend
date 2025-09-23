@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import useUuidStore from '../../store/useUuidStore';
-import styles from '../../styles/MarketingTips.module.css';
+import styles from '../../styles/main/MarketingTips.module.css';
 
 function MarketingTips() {
   const storeUuid = useUuidStore((state) => state.storeUuid);

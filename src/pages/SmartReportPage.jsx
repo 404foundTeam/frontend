@@ -1,7 +1,7 @@
 // src/pages/SmartReportPage.jsx
 
 import { useState } from 'react';
-import styles from '../styles/SmartReport.module.css';
+import styles from '../styles/smartreport/SmartReport.module.css';
 import ReportContent from '../components/smartreport/ReportContent';
 import MarketingContent from '../components/smartreport/MarketingContent';
 

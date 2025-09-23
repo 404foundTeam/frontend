@@ -1,6 +1,6 @@
 // src/pages/MainPage.jsx
 
-import styles from '../styles/Main.module.css';
+import styles from '../styles/main/Main.module.css';
 import WeeklyScheduleViewer from '../components/main/WeeklyScheduleViewer';
 import MarketingTips from '../components/main/MarketingTips';
 import ReportSummary from '../components/main/ReportSummary'; 

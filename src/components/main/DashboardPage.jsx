@@ -1,4 +1,4 @@
-import styles from '../../styles/Dashboard.module.css';
+import styles from '../../styles/main/Dashboard.module.css';
 import TimePattern from './TimePattern';
 import DayPattern from './DayPattern';
 import TopMenus from './TopMenus';

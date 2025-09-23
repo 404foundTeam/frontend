@@ -1,6 +1,6 @@
 // src/pages/MarketingPage.jsx
 
-import styles from "../styles/MarketingPage.module.css";
+import styles from "../styles/marketing/MarketingPage.module.css";
 
 // 1. 페이지에 사용할 이미지들을 import 합니다.
 import cardNewsImage from "../assets/marketingpage/image.png";

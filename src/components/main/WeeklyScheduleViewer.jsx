@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useMemo } from "react";
 import axios from "axios";
-import styles from "../../styles/WeeklyScheduleViewer.module.css";
+import styles from "../../styles/main/WeeklyScheduleViewer.module.css";
 import useUuidStore from "../../store/useUuidStore";
 import { useNavigate } from "react-router-dom";
 import useActiveStroe from "../../store/useActiveStore";

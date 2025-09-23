@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import useUuidStore from '../../store/useUuidStore';
-import styles from '../../styles/ImprovementTips.module.css';
+import styles from '../../styles/smartreport/ImprovementTips.module.css';
 import tipIcon from '../../assets/report/tip-icon.png'; 
 
 function ImprovementTips() {

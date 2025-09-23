@@ -2,7 +2,7 @@
 
 import { Outlet, Link } from "react-router-dom";
 import SideBar from "../components/layout/SideBar";
-import styles from "../styles/MarketingLayout.module.css";
+import styles from "../styles/marketing/MarketingLayout.module.css";
 
 // 배너에 필요한 이미지들 import.
 import illustration from "../assets/marketingpage/img_cop_2.png";
