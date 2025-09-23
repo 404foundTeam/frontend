@@ -2,7 +2,7 @@
 
 import { Outlet } from "react-router-dom";
 import SideBar from "../components/layout/SideBar";
-import styles from "../styles/SmartReportLayout.module.css";
+import styles from "../styles/smartreport/SmartReportLayout.module.css";
 
 function SmartReportLayout() {
   return (

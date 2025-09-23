@@ -1,4 +1,4 @@
-import styles from "../styles/MyPage.module.css";
+import styles from "../styles/my/MyPage.module.css";
 import MyScrap from "../components/my/MyScrap";
 import MyCalendar from "../components/my/MyCalendar";
 import useActiveStroe from "../store/useActiveStore";

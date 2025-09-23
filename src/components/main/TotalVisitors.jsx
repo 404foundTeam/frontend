@@ -5,7 +5,7 @@ import { Line } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Filler, Tooltip } from 'chart.js';
 import axios from 'axios';
 import useUuidStore from '../../store/useUuidStore';
-import styles from '../../styles/Dashboard.module.css';
+import styles from '../../styles/main/Dashboard.module.css';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Filler, Tooltip);
 

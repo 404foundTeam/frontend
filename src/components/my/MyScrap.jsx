@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import styles from "../../styles/MyScrap.module.css";
+import styles from "../../styles/my/MyScrap.module.css";
 import useUuidStore from "../../store/useUuidStore";
 
 function MyScrap() {

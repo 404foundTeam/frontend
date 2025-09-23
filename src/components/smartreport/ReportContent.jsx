@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import styles from "../../styles/ReportContent.module.css";
+import styles from "../../styles/smartreport/ReportContent.module.css";
 import useUuidStore from "../../store/useUuidStore";
 import TimePattern from '../main/TimePattern';
 import DayPattern from '../main/DayPattern';

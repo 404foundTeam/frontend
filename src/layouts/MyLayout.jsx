@@ -5,7 +5,7 @@ import { Outlet } from "react-router-dom";
 import SideBar from "../components/layout/SideBar";
 import WelcomeMap from "../components/welcome/WelcomeMap";
 import Blur from "../components/welcome/Blur";
-import styles from "../styles/MyLayout.module.css";
+import styles from "../styles/my/MyLayout.module.css";
 import useUuidStore from "../store/useUuidStore";
 
 function MyLayout() {

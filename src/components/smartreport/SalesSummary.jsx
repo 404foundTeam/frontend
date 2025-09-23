@@ -14,7 +14,7 @@ import {
 } from "chart.js";
 import axios from "axios";
 import useUuidStore from "../../store/useUuidStore";
-import styles from "../../styles/SalesSummary.module.css";
+import styles from "../../styles/smartreport/SalesSummary.module.css";
 import swapIcon from "../../assets/report/swap-icon.png";
 
 ChartJS.register(

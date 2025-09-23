@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import useUuidStore from '../../store/useUuidStore';
-import styles from '../../styles/Dashboard.module.css'; 
+import styles from '../../styles/main/Dashboard.module.css'; 
 
 
 function TopMenus() {
