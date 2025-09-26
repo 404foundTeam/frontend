@@ -38,3 +38,36 @@ header .text {
 header .tags .link {
   color: #333333;
 }
+
+@media (max-width: 430px) {
+  header {
+    width: 100vw;
+    min-width: 0;
+    height: 44px;
+    padding-left: 0;
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    box-sizing: border-box;
+  }
+  header .img {
+    width: 36px;
+    height: 26px;
+    left: 12px;
+    top: 8px;
+  }
+  header .tags {
+    gap: 12px;
+    padding-left: 48px;
+    font-size: 0.9rem;
+  }
+  header .text {
+    font-size: 1rem;
+  }
+  header .tags .link {
+    font-size: 0.9rem;
+  }
+}

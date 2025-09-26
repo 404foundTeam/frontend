@@ -30,3 +30,35 @@
 
   color: #797979;
 }
+
+@media (max-width: 430px) {
+  .container {
+    padding: 16px 2px 16px 2px;
+  }
+  .title {
+    font-size: 1rem;
+    line-height: 1.2rem;
+  }
+  .content {
+    font-size: 0.85rem;
+    line-height: 1.1rem;
+    margin-top: 10px;
+  }
+}
+@media (max-width: 768px) {
+  .container {
+    padding: 32px 8px 32px 8px;
+  }
+  .title {
+    font-size: 1.3rem;
+    line-height: 1.7rem;
+    text-align: center;
+    max-width: 76%;
+  }
+  .content {
+    font-size: 1rem;
+    line-height: 1.3rem;
+    margin-top: 20px;
+    text-align: center;
+  }
+}

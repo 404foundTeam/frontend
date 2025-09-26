@@ -48,3 +48,26 @@
 
   color: #797979;
 }
+
+@media (max-width: 430px) {
+  .list {
+    height: 44px;
+    gap: 8px;
+    border-bottom-width: 1.5px;
+    padding: 0 4px;
+  }
+  .icon {
+    width: 18px;
+    height: 22px;
+    margin-left: 2px;
+  }
+  .store .name {
+    font-size: 0.85rem;
+    line-height: 1.1rem;
+  }
+  .store .addr {
+    margin-top: 2px;
+    font-size: 0.7rem;
+    line-height: 0.95rem;
+  }
+}
