@@ -63,12 +63,12 @@ const boxAreas = {
   },
   RATIO_2_3: {
     T1_TEXT_ONLY: { x: 210, y: 380, w: 670, h: 400 },
-    T2_TEXT_BOTTOM: { x: 180, y: 940, w: 630, h: 400 },
+    T2_TEXT_BOTTOM: { x: 180, y: 940, w: 660, h: 400 },
     T3_TEXT_RIGHT: { x: 550, y: 220, w: 450, h: 500 },
   },
   RATIO_3_2: {
     T1_TEXT_ONLY: { x: 250, y: 220, w: 860, h: 420 },
-    T2_TEXT_BOTTOM: { x: 290, y: 720, w: 720, h: 350 },
+    T2_TEXT_BOTTOM: { x: 290, y: 720, w: 740, h: 350 },
     T3_TEXT_RIGHT: { x: 800, y: 150, w: 450, h: 500 },
   },
 };
