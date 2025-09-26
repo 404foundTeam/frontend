@@ -71,3 +71,69 @@
   background-color: #8b4b4b;
   transform: scale(1.04);
 }
+
+@media (max-width: 768px) {
+  .signMap {
+    max-width: 100vw;
+    height: auto;
+    min-height: 320px;
+    padding: 16px 0 32px 0;
+  }
+  .signMap .signTitle {
+    font-size: 1.2rem;
+    line-height: 1.5rem;
+    padding-top: 20px;
+  }
+  .signMap .signText {
+    font-size: 0.95rem;
+    line-height: 1.2rem;
+    padding-top: 12px;
+  }
+  .signMap .signImg {
+    width: 120px;
+    height: 120px;
+    padding-top: 24px;
+  }
+  .signMap .welcomeSign {
+    width: 90vw;
+    min-width: 0;
+    max-width: 320px;
+    height: 48px;
+    font-size: 1rem;
+    line-height: 1.2rem;
+    margin-top: 24px;
+    margin-bottom: 32px;
+    border-radius: 32px;
+  }
+}
+
+@media (max-width: 430px) {
+  .signMap {
+    min-height: 180px;
+    padding: 8px 0 16px 0;
+  }
+  .signMap .signTitle {
+    font-size: 1rem;
+    line-height: 1.2rem;
+    padding-top: 8px;
+  }
+  .signMap .signText {
+    font-size: 0.8rem;
+    line-height: 1rem;
+    padding-top: 4px;
+  }
+  .signMap .signImg {
+    width: 64px;
+    height: 64px;
+    padding-top: 8px;
+  }
+  .signMap .welcomeSign {
+    max-width: 180px;
+    height: 32px;
+    font-size: 0.95rem;
+    line-height: 1.1rem;
+    margin-top: 8px;
+    margin-bottom: 16px;
+    border-radius: 16px;
+  }
+}
