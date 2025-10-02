@@ -1,7 +1,5 @@
 import styles from "../../styles/shared/Error.module.css";
-
 import Header from "../layout/Header";
-
 import loadingImg from "../../assets/loading_img.png";
 
 function Error() {
