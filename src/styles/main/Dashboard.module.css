@@ -23,7 +23,9 @@
   color: #6d3737;
   margin-bottom: 20px;
 }
-
+.chartContainer{
+  padding-top: 48px;
+}
 .cardDescription {
   font-size: 0.95rem;
   color: #6d3737;
