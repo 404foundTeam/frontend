@@ -19,7 +19,7 @@ function Header({ isWelcome }) {
             <NavLink to="/smartreport" className={styles.link}>
               스마트 리포트
             </NavLink>
-            <NavLink to="/my" className={`${styles.my} ${styles.link}`}>
+            <NavLink to="/my" className={styles.link}>
               마이페이지
             </NavLink>
           </>

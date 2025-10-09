@@ -26,9 +26,27 @@
 
 .title {
   font-weight: 500;
-  font-size: 18px;
+  font-size: 1.15rem;
   line-height: 21px;
   letter-spacing: -0.025em;
 
   color: #717171;
+}
+
+@media (max-width: 430px) {
+  .container {
+    gap: 8px;
+  }
+  .box {
+    width: 20px;
+    height: 20px;
+  }
+  .box.select {
+    width: 25px;
+    height: 25px;
+  }
+  .title {
+    font-size: 0.7rem;
+    line-height: 1rem;
+  }
 }
