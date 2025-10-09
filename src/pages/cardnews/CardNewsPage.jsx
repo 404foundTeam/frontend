@@ -133,7 +133,7 @@ function CardNewsPage() {
           </div>
         )}
         {/* 사용자 텍스트 입력 */}
-        <div className={`${styles.cardNewsBox} ${styles.cardNewsText}`}>
+        <div className={styles.cardNewsBox}>
           <SelectHeader text="SNS 카드 뉴스에 넣고 싶은 텍스트를 입력하세요." />
           <div className={styles.cardNewsTextBox}>
             <input
@@ -158,7 +158,7 @@ function CardNewsPage() {
           </div>
         </div>
         {/* 변환 결과 */}
-        <div className={`${styles.cardNewsBox} ${styles.cardNewsTextResult}`}>
+        <div className={styles.cardNewsBox}>
           <SelectHeader text="변환 결과" />
           <div className={styles.textResultBox}>
             <div
@@ -179,7 +179,7 @@ function CardNewsPage() {
           </div>
         </div>
         {/* 템플릿 선택 */}
-        <div className={`${styles.cardNewsBox} ${styles.QcardNewsTemplate}`}>
+        <div className={`${styles.cardNewsBox} ${styles.cardNewsTemplate}`}>
           <SelectHeader text="원하는 템플릿을 선택해주세요." />
           <p>* 회색 배경은 AI가 텍스트로 만든 이미지입니다.</p>
           <div className={styles.templateList}>
@@ -222,7 +222,7 @@ function CardNewsPage() {
           </div>
         </div>
         {/* 비율 선택 */}
-        <div className={`${styles.cardNewsBox} ${styles.cardNewsRatio}`}>
+        <div className={styles.cardNewsBox}>
           <SelectHeader text="원하는 비율을 선택해주세요." />
           <div className={styles.selectBoxs}>
             <SelectBox
@@ -246,7 +246,7 @@ function CardNewsPage() {
           </div>
         </div>
         {/* 테마 선택 */}
-        <div className={`${styles.cardNewsBox} ${styles.cardNewsTheme}`}>
+        <div className={styles.cardNewsBox}>
           <SelectHeader text="원하는 테마를 선택해주세요." />
           <div className={styles.themeList}>
             <div

@@ -1,5 +1,5 @@
 header {
-  width: 1440px;
+  max-width: 1440px;
   height: 68px;
   position: relative;
 
@@ -15,7 +15,7 @@ header {
   color: #333333;
 }
 
-header .img {
+.img {
   width: 75px;
   height: 54px;
   position: absolute;
@@ -23,7 +23,7 @@ header .img {
   left: 153px;
 }
 
-header .tags {
+.tags {
   height: 100%;
   display: flex;
   align-items: center;
@@ -31,11 +31,11 @@ header .tags {
   padding-left: 88px;
 }
 
-header .text {
+.text {
   color: #febf22;
 }
 
-header .tags .link {
+.link {
   color: #333333;
 }
 
@@ -53,21 +53,22 @@ header .tags .link {
     justify-content: flex-start;
     box-sizing: border-box;
   }
-  header .img {
+  .img {
     width: 36px;
     height: 26px;
     left: 12px;
     top: 8px;
   }
-  header .tags {
+  .tags {
     gap: 12px;
     padding-left: 48px;
     font-size: 0.9rem;
   }
-  header .text {
+
+  text {
     font-size: 1rem;
   }
-  header .tags .link {
-    font-size: 0.9rem;
+  .link {
+    font-size: 0.7rem;
   }
 }
