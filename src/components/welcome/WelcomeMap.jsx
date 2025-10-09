@@ -2,9 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { fetchStoresByCoord, matchStore } from "../../api/index.js";
 import styles from "../../styles/welcome/WelcomeMap.module.css";
-
 import useUuidStore from "../../store/useUuidStore.js";
-
 import close from "../../assets/welcomeMap/close.png";
 import listTitle from "../../assets/welcomeMap/list.png";
 import MarkerImg from "../../assets/welcomeMap/marker.png";
@@ -180,17 +178,15 @@ function WelcomeMap({ focusRef, onClick }) {
         <p className={styles.headerContent}>
           어렵고 복잡한 마케팅과 운영전략을 한번에
         </p>
-        <div className={styles.searchBox}>
-          <StoreSearch
-            focusRef={focusRef}
-            placeholder="주소를 입력해주세요."
-            value={search}
-            onChange={onChange}
-            onKeyDown={(e) => {
-              if (e.key === "Enter") searchAddr(search);
-            }}
-          />
-        </div>
+        <StoreSearch
+          focusRef={focusRef}
+          placeholder="주소를 입력해주세요."
+          value={search}
+          onChange={onChange}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") searchAddr(search);
+          }}
+        />
       </div>
       <div className={styles.mapBox}>
         <div
