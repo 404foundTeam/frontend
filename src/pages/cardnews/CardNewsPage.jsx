@@ -215,7 +215,7 @@ function CardNewsPage() {
               >
                 <div className={`${styles.text} ${styles.right}`}>이미지</div>
                 <div className={`${styles.content} ${styles.right}`}>
-                  생성된 텍스트
+                  생성된{"\n"} 텍스트
                 </div>
               </div>
             </div>

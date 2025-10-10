@@ -9,17 +9,18 @@ import map from "../../assets/sidebar/map.png";
 import mapSelect from "../../assets/sidebar/map_select.png";
 import { NavLink } from "react-router-dom";
 
-// svg는 나중에 하는 걸로...
-// import { ReactComponent as MainIcon } from "../assets/sidebar/main.svg";
-
 function SideBar({
   isMain = false,
   isCamera = false,
   isCard = false,
   isMap = false,
+  // isShow = true,
 }) {
   return (
-    <div className={styles.container}>
+    <div
+      className={styles.container}
+      // style={{ display: isShow ? "flex" : "none" }}
+    >
       <NavLink to="/main">
         <div className={`${styles.box} ${isMain ? styles.select : ""}`}>
           <img src={isMain ? mainSelect : main} className={styles.main} />
