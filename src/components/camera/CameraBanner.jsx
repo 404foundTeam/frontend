@@ -1,7 +1,5 @@
 import styles from "../../styles/camera/CameraBanner.module.css";
-
 import useUuidStore from "../../store/useUuidStore";
-
 import camera from "../../assets/camera/camera.png";
 
 function CameraBanner({ isShow }) {

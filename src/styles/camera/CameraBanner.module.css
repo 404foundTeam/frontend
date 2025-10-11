@@ -1,7 +1,7 @@
 .container {
   width: 100%;
   max-width: 1440px;
-  height: 495px;
+  height: 380px;
   position: absolute;
   z-index: -1;
 
@@ -27,7 +27,7 @@
 
 .title {
   font-weight: 700;
-  font-size: 48px;
+  font-size: 3rem;
   line-height: 57px;
 
   color: #febf22;
@@ -37,8 +37,24 @@
   padding-top: 20px;
 
   font-weight: 500;
-  font-size: 30px;
+  font-size: 1.875rem;
   line-height: 36px;
 
   color: #717171;
+}
+
+@media (max-width: 430px) {
+  .img {
+    width: 60px;
+    height: 54px;
+  }
+  .title {
+    padding-top: 8px;
+    font-size: 1.5rem;
+    line-height: 1.1rem;
+  }
+  .content {
+    font-size: 0.6rem;
+    line-height: 0.6rem;
+  }
 }

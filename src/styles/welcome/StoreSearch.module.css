@@ -27,6 +27,12 @@
   background-size: 25px 25px;
 }
 
+.searchIcon {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+}
+
 .search:focus {
   outline: none;
 }

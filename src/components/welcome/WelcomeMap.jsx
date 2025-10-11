@@ -183,6 +183,7 @@ function WelcomeMap({ focusRef, onClick }) {
           placeholder="주소를 입력해주세요."
           value={search}
           onChange={onChange}
+          onClick={() => searchAddr(search)}
           onKeyDown={(e) => {
             if (e.key === "Enter") searchAddr(search);
           }}
