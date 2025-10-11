@@ -32,7 +32,7 @@
   margin-left: 24px;
 
   font-weight: 700;
-  font-size: 48px;
+  font-size: 3rem;
   line-height: 57px;
 
   color: #febf22;
@@ -43,7 +43,7 @@
   margin-left: 8px;
 
   font-weight: 500;
-  font-size: 30px;
+  font-size: 1.875rem;
   line-height: 36px;
 
   color: #717171;
@@ -160,7 +160,8 @@
   border-radius: 10px;
 
   font-weight: 500;
-  font-size: 19px;
+
+  font-size: 1.2rem;
   line-height: 28px;
   letter-spacing: -0.025em;
 
@@ -230,7 +231,7 @@
   position: absolute;
 
   font-weight: 600;
-  font-size: 26px;
+  font-size: 1.6rem;
   line-height: 36px;
   letter-spacing: -0.025em;
 
@@ -255,7 +256,7 @@
   margin: 56px 24px;
 
   font-weight: 600;
-  font-size: 20px;
+  font-size: 1.25rem;
   line-height: 171px;
   letter-spacing: -0.025em;
 
@@ -285,7 +286,7 @@
   width: 96px;
   height: 200px;
 
-  font-size: 18px;
+  font-size: 1.125rem;
   line-height: 200px;
 
   margin-left: 168px;
@@ -303,9 +304,7 @@
 }
 
 .themeList .themeBox {
-  width: 283px;
-  height: 63px;
-
+  padding: 21px 63px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -315,7 +314,7 @@
   border-radius: 10px;
 
   font-weight: 800;
-  font-size: 18px;
+  font-size: 1.2rem;
   line-height: 21px;
   letter-spacing: -0.025em;
 
@@ -344,7 +343,9 @@
     height: 54px;
   }
   .banner .title {
-    font-size: 1rem;
+    margin-left: 12px;
+
+    font-size: 1.5rem;
     line-height: 1rem;
   }
   .banner .content {
@@ -352,12 +353,16 @@
     line-height: 0.6rem;
   }
 
+  .cardNewsContainer .cardNewsType {
+    padding-top: 32px;
+  }
+
   .cardNewsContainer .cardNewsBox {
     width: 300px;
   }
 
   .cardNewsBox .selectBoxs {
-    margin-top: 24px;
+    margin-top: 16px;
     margin-left: 30px;
 
     display: flex;
@@ -367,16 +372,93 @@
     width: 300px;
   }
   .textInput {
-    width: 260px;
+    width: 240px;
 
-    margin-top: 24px;
+    margin-top: 16px;
     margin-left: 22px;
     padding: 12px 8px;
 
-    font-size: 0.8rem;
+    font-size: 0.9rem;
   }
   .textButton {
+    margin: 16px auto 0;
     padding: 8px 24px;
     font-size: 0.8rem;
+  }
+  .showResult {
+    width: 218px;
+    height: 88px;
+
+    margin-top: 16px;
+    margin-left: 22px;
+    padding: 16px;
+
+    font-size: 0.9rem;
+    line-height: 1.1rem;
+  }
+  .cardNewsTemplate > p {
+    font-size: 0.8rem;
+
+    padding-top: 8px;
+    padding-left: 32px;
+  }
+  .templateList {
+    margin-left: 22px;
+
+    gap: 16px;
+  }
+  .templateList .templateBox {
+    width: 70px;
+    height: 70px;
+  }
+  .templateList .templateBox .content {
+    width: 50px;
+    height: 30px;
+
+    font-size: 0.5rem;
+    line-height: 30px;
+    margin: 20px auto;
+  }
+  .templateBox .text {
+    font-size: 0.5rem;
+    line-height: 0.6rem;
+  }
+  .templateBox .text.bottom {
+    top: 16px;
+    left: 24px;
+  }
+  .templateBox .text.right {
+    top: 32px;
+    left: 8px;
+  }
+  .imgBox .templateBox .content.bottom {
+    width: 60px;
+    height: 30px;
+    line-height: 30px;
+
+    margin: 32px auto 0;
+  }
+  .imgBox .templateBox .content.right {
+    width: 30px;
+    height: 60px;
+
+    font-size: 0.6rem;
+    line-height: 30px;
+
+    margin: 4px 0 0 34px;
+  }
+  .themeList {
+    margin-top: 16px;
+    margin-left: 22px;
+
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .themeList .themeBox {
+    padding: 4px 8px;
+    white-space: nowrap;
+
+    font-size: 0.6rem;
+    line-height: 0.8rem;
   }
 }

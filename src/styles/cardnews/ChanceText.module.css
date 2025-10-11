@@ -1,6 +1,6 @@
 .chance {
   font-weight: 400;
-  font-size: 18px;
+  font-size: 1.2rem;
   line-height: 21px;
   letter-spacing: -0.025em;
 
@@ -9,4 +9,11 @@
 
 .point {
   color: #febf22;
+}
+
+@media (max-width: 430px) {
+  .chance {
+    font-size: 1rem;
+    line-height: 1.1rem;
+  }
 }

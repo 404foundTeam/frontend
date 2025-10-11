@@ -183,6 +183,7 @@ function WelcomeMap({ focusRef, onClick }) {
           placeholder="주소를 입력해주세요."
           value={search}
           onChange={onChange}
+          onClick={() => searchAddr(search)}
           onKeyDown={(e) => {
             if (e.key === "Enter") searchAddr(search);
           }}
@@ -210,6 +211,15 @@ function WelcomeMap({ focusRef, onClick }) {
                   onClick={() => {
                     setSelectStore(store);
                     setIsClick(true);
+                    if (infoWindowRef.current) {
+                      infoWindowRef.current.close();
+                    }
+                    // 인포윈도우 생성
+                    const infoWindow = new window.kakao.maps.InfoWindow({
+                      content: `<div style='padding:5px;font-size:14px;'>${store.placeName}</div>`,
+                    });
+                    infoWindow.open(mapRef.current, markerRef.current[idx]);
+                    infoWindowRef.current = infoWindow;
                   }}
                   tabIndex={0}
                 />

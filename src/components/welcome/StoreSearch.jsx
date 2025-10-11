@@ -1,8 +1,17 @@
 import styles from "../../styles/welcome/StoreSearch.module.css";
+import SearchImg from "../../assets/search.png";
 
-function StoreSearch({ focusRef, placeholder, value, onChange, onKeyDown }) {
+function StoreSearch({
+  focusRef,
+  placeholder,
+  value,
+  onChange,
+  onClick,
+  onKeyDown,
+}) {
   return (
     <div className={styles.container}>
+      <img src={SearchImg} className={styles.searchIcon} />
       <input
         ref={focusRef}
         className={styles.search}
@@ -10,6 +19,7 @@ function StoreSearch({ focusRef, placeholder, value, onChange, onKeyDown }) {
         placeholder={placeholder}
         value={value}
         onChange={onChange}
+        onClick={onClick}
         onKeyDown={onKeyDown}
       />
     </div>

@@ -1,12 +1,11 @@
 .button {
-  width: 296px;
-  height: 53px;
+  padding: 16px 54px;
 
   border: none;
   border-radius: 10px;
 
   font-weight: 700;
-  font-size: 25px;
+  font-size: 1.55rem;
   line-height: 30px;
   letter-spacing: -0.025em;
 
@@ -19,4 +18,11 @@
 
 .new {
   background-color: #e3e3e3;
+}
+
+@media (max-width: 430px) {
+  .button {
+    font-size: 1rem;
+    padding: 6px 24px;
+  }
 }

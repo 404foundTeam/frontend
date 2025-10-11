@@ -1,7 +1,3 @@
-.container {
-  min-height: 1092px;
-}
-
 .showResult {
   position: relative;
 
@@ -9,6 +5,8 @@
 }
 
 .topBox {
+  position: absolute;
+  z-index: -1;
   width: 1920px;
   height: 635px;
 
@@ -16,10 +14,7 @@
 }
 
 .resultBox {
-  position: absolute;
-  top: 50px;
-  left: 404px;
-
+  padding-top: 52px;
   padding-bottom: 199px;
 
   display: flex;
@@ -45,4 +40,15 @@
 .buttonBox {
   display: flex;
   gap: 27px;
+}
+
+@media (max-width: 430px) {
+  .resultBox {
+    padding-top: 64px;
+    gap: 48px;
+  }
+  .resultImg {
+    width: 260px;
+    height: 260px;
+  }
 }

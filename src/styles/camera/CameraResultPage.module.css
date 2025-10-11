@@ -8,32 +8,32 @@
   gap: 100px;
 }
 
-.container .guideImg {
+.guideImg {
   height: 390px;
 
   border: 6px solid #febf22;
   border-radius: 10px;
 }
 
-.container .guideBox {
+.guideBox {
   display: flex;
   flex-direction: column;
 }
 
-.guideBox .guideTitle {
+.guideTitle {
   font-weight: 600;
-  font-size: 24px;
+  font-size: 1.5rem;
   line-height: 29px;
   letter-spacing: -0.025em;
 
   color: #6d3737;
 }
 
-.guideBox .guideTitle span {
+.guideTitle span {
   color: #febf22;
 }
 
-.guideBox .guideText {
+.guideText {
   width: 1047px;
 
   margin-top: 10px;
@@ -48,4 +48,10 @@
   letter-spacing: -0.025em;
 
   color: #6d3737;
+}
+
+@media (max-width: 430px) {
+  .guideTitle {
+    font-size: 1rem;
+  }
 }

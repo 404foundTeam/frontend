@@ -3,8 +3,10 @@
 .container {
   position: relative;
   max-width: 500px;
-  margin-top: 200px;
+  min-height: 198px;
   margin: 5%;
+  margin-top: 0;
+  margin-bottom: 2.5%;
   border-radius: 20px;
   padding: 25px;
   padding-top: 40px; /* 헤더가 올라오는 만큼 공간 확보 */
@@ -17,7 +19,7 @@
   top: 0;
   left: 50%;
   transform: translate(-50%, -50%); /* 헤더를 위로 올리고 중앙 정렬 */
-  background-color: #6D3737; /* 어두운 갈색 */
+  background-color: #6d3737; /* 어두운 갈색 */
   color: white;
   padding: 10px 25px;
   border-radius: 10px;
@@ -41,7 +43,7 @@
 }
 
 .summary .highlight {
-  color: #FEBF22; 
+  color: #febf22;
   font-weight: bold;
 }
 
@@ -51,7 +53,7 @@
   gap: 25px;
   text-align: left;
   max-height: 410px; /* 목록의 최대 높이를 지정 (원하는 높이로 조절) */
-  overflow-y: auto;  /* 내용이 최대 높이를 넘어가면 세로 스크롤바를 표시 */
+  overflow-y: auto; /* 내용이 최대 높이를 넘어가면 세로 스크롤바를 표시 */
   padding-right: 10px; /* 스크롤바와 내용이 겹치지 않도록 여백 추가 */
 }
 
@@ -64,7 +66,7 @@
 .bullet {
   width: 10px;
   height: 10px;
-  background-color: #FFC107;
+  background-color: #ffc107;
   border-radius: 50%;
   margin-top: 8px;
   flex-shrink: 0;
@@ -87,7 +89,7 @@
 }
 
 .tipLabel {
-  color: #FEBF22; /* 주황색 계열 */
+  color: #febf22; /* 주황색 계열 */
 }
 
 .tipDescription {
