@@ -93,10 +93,8 @@ function TopMenus() {
         ))}
       </ul>
       <p className={styles.feedback}>
-        {menuData[0].name}이(가) 가장 많이 팔렸어요. 반면에{" "}
-        {menuData[menuData.length - 1].name}은(는) 많이 안팔렸어요.{" "}
-        {menuData[menuData.length - 1].name} 메뉴에 대한 이벤트를 기획 해보는 건
-        어떠세요?
+
+        가장 많이 판매된 상품은 {menuData[0].name} 입니다.
       </p>
     </div>
   );

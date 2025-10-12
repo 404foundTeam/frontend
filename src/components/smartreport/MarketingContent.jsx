@@ -38,12 +38,12 @@ function MarketingContent() {
         setEvents(formattedEvents);
       } catch (err) {
         setError(
-                <div className={styles.error}>
-                데이터를 분석하여 맞춤 마케팅 Tip을 생성합니다.
-                <br /><br />
-                스마트 리포트에 분석할 엑셀 파일을 등록해주세요.
-                </div>
-                );
+          <div className={styles.error}>
+            데이터를 분석하여 맞춤 마케팅 Tip을 생성합니다.
+            <br /><br />
+            스마트 리포트에 분석할 엑셀 파일을 등록해주세요.
+          </div>
+        );
         console.error("API Error:", err);
       } finally {
         setIsLoading(false);
@@ -55,20 +55,27 @@ function MarketingContent() {
 
   // --- DELETE 요청으로 특정 제안 삭제하기 ---
   const handleDelete = async (idToDelete) => {
-    const originalEvents = [...events];
-    const updatedEvents = events.filter(event => event.id !== idToDelete);
-    setEvents(updatedEvents);
+    // 1. window.confirm으로 사용자에게 삭제 여부를 확인받습니다.
+    const isConfirmed = window.confirm("이 마케팅 제안을 정말 삭제하시겠습니까?");
 
-    try {
-      await axios.delete(`http://13.209.239.240/api/v1/report/${storeUuid}/marketing/${idToDelete}`);
-      // 성공 시 아무것도 안함 (이미 UI에 반영됨)
-      console.log(`Suggestion with id ${idToDelete} deleted successfully.`);
-    } catch (err) {
-      // API 호출 실패 시 UI를 원래 상태로 되돌리고 에러 메시지 표시
-      alert("삭제에 실패했습니다. 다시 시도해주세요.");
-      setEvents(originalEvents);
-      console.error("Delete Error:", err);
+    // 2. 사용자가 '확인'을 눌렀을 경우에만 (isConfirmed가 true일 때) 삭제 로직을 실행합니다.
+    if (isConfirmed) {
+      const originalEvents = [...events];
+      const updatedEvents = events.filter(event => event.id !== idToDelete);
+      setEvents(updatedEvents);
+
+      try {
+        await axios.delete(`http://13.209.239.240/api/v1/report/${storeUuid}/marketing/${idToDelete}`);
+        // 성공 시 아무것도 안함 (이미 UI에 반영됨)
+        console.log(`Suggestion with id ${idToDelete} deleted successfully.`);
+      } catch (err) {
+        // API 호출 실패 시 UI를 원래 상태로 되돌리고 에러 메시지 표시
+        alert("삭제에 실패했습니다. 다시 시도해주세요.");
+        setEvents(originalEvents);
+        console.error("Delete Error:", err);
+      }
     }
+    // '취소'를 누르면 아무 작업도 수행하지 않습니다.
   };
 
   const renderContent = () => {

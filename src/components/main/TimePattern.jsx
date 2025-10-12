@@ -47,7 +47,7 @@ function TimePattern() {
           });
 
           const topHours = mostVisited.slice(0, 2).map(item => `${item.hour}시`).join('와 ');
-          const summaryText = `이번주는 손님들이 주로 ${topHours}에 많이 방문했어요. 이 시간대에 특별한 이벤트를 기획해보는 건 어떠세요?`;
+          const summaryText = `이번주는 손님들이 주로 ${topHours}에 많이 방문했어요.`;
           setSummary(summaryText);
         }
 
