@@ -37,7 +37,7 @@ function MarketingTips() {
         스마트 리포트에 분석할 엑셀 파일을 등록해주세요.
         </div>
         );
-        // console.error("API Error:", err);
+        console.error("API Error:", err);
       } finally {
         setIsLoading(false);
       }
