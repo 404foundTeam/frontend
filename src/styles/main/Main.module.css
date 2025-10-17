@@ -6,6 +6,7 @@
   margin: 0 auto;
 
   display: flex; /* 자식 요소들을 가로로 나란히 배치합니다. */
+  justify-content: center;
   gap: 2rem; /* 컴포넌트 사이에 2rem(약 32px)의 간격을 줍니다. */
   padding: 2rem; /* 페이지 전체의 여백 */
   padding-top: 58px;
