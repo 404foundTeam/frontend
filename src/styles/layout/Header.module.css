@@ -4,7 +4,6 @@ header {
   position: relative;
 
   margin: 0 auto;
-  padding-left: 128px;
 
   font-style: normal;
   font-weight: 500;
@@ -28,9 +27,31 @@ header {
   display: flex;
   align-items: center;
   gap: 45px;
-  padding-left: 88px;
+  padding-left: 216px;
 }
 
+.links {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  padding-right: 120px;
+}
+.linkBox {
+  display: flex;
+  align-items: center;
+  gap: 56px;
+}
+.myBox {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.imgs {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid #333333;
+}
 .text {
   color: #febf22;
 }

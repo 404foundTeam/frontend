@@ -11,7 +11,6 @@ function StoreSearch({
 }) {
   return (
     <div className={styles.container}>
-      <img src={SearchImg} className={styles.searchIcon} />
       <input
         ref={focusRef}
         className={styles.search}
@@ -22,6 +21,7 @@ function StoreSearch({
         onClick={onClick}
         onKeyDown={onKeyDown}
       />
+      <img src={SearchImg} className={styles.searchIcon} onClick={onClick} />
     </div>
   );
 }
