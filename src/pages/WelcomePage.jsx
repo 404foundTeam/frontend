@@ -8,10 +8,13 @@ import {
   CardWrapper,
   MatchMap,
 } from "../components/welcome";
+import useUuidStore from "../store/useUuidStore";
+import { useNavigate } from "react-router-dom";
 
 function WelcomePage() {
   const mapRef = useRef();
-
+  const navigate = useNavigate();
+  const storeUuid = useUuidStore((state) => state.storeUuid);
   const [showMap, setShowMap] = useState(false);
 
   const toggleMap = () => setShowMap((prev) => !prev);
@@ -20,6 +23,10 @@ function WelcomePage() {
   useEffect(() => {
     mapRef.current?.focus();
   }, [showMap]);
+
+  // useEffect(() => {
+  //   if (storeUuid) navigate("/main");
+  // }, [storeUuid, navigate]);
 
   return (
     <div className={styles.container}>

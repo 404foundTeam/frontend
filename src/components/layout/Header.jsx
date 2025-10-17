@@ -11,19 +11,27 @@ function Header({ isWelcome }) {
         <NavLink to={!isWelcome ? "/main" : "/"} className={styles.text}>
           market BEE
         </NavLink>
-        {!isWelcome && (
-          <>
-            <NavLink to="/marketing" className={styles.link}>
-              홍보
-            </NavLink>
-            <NavLink to="/smartreport" className={styles.link}>
-              스마트 리포트
-            </NavLink>
+        <div className={styles.links}>
+          {!isWelcome && (
+            <>
+              <div className={styles.linkBox}>
+                <NavLink to="/marketing" className={styles.link}>
+                  소개
+                </NavLink>
+                <div className={styles.link}>홍보</div>
+                <NavLink to="/smartreport" className={styles.link}>
+                  스마트 리포트
+                </NavLink>
+              </div>
+            </>
+          )}
+          <div className={styles.myBox}>
             <NavLink to="/my" className={styles.link}>
-              마이페이지
+              마이 페이지
             </NavLink>
-          </>
-        )}
+            <div className={styles.imgs}></div>
+          </div>
+        </div>
       </div>
     </header>
   );

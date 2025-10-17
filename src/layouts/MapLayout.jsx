@@ -1,10 +1,10 @@
 import { Outlet } from "react-router-dom";
-import SideBar from "../components/layout/SideBar";
+// import SideBar from "../components/layout/SideBar";
 
 function MapLayout() {
   return (
     <>
-      <SideBar isMap={true} />
+      {/* <SideBar isMap={true} /> */}
       <>
         <Outlet />
       </>

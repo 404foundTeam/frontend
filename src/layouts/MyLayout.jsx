@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
-import SideBar from "../components/layout/SideBar";
+// import SideBar from "../components/layout/SideBar";
 import WelcomeMap from "../components/welcome/WelcomeMap";
 import Blur from "../components/welcome/Blur";
 import styles from "../styles/my/MyLayout.module.css";
@@ -28,7 +28,7 @@ function MyLayout() {
       {showMap && <WelcomeMap onClick={handleHideMap} />}
 
       <div className={styles.layoutContainer}>
-        <SideBar />
+        {/* <SideBar /> */}
         <main className={styles.mainContent}>
           <div className={styles.bannerWrapper}>
             <div className={styles.banner}>

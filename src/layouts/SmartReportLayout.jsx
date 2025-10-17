@@ -1,13 +1,13 @@
 // src/layouts/SmartReportLayout.jsx
 
 import { Outlet } from "react-router-dom";
-import SideBar from "../components/layout/SideBar";
+// import SideBar from "../components/layout/SideBar";
 import styles from "../styles/smartreport/SmartReportLayout.module.css";
 
 function SmartReportLayout() {
   return (
     <div className={styles.layoutContainer}>
-      <SideBar />
+      {/* <SideBar /> */}
       <main className={styles.mainContent}>
         <Outlet />
       </main>

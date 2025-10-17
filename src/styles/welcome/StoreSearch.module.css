@@ -1,5 +1,6 @@
 .container {
   margin-top: 16px;
+  position: relative;
 }
 
 .search {
@@ -20,17 +21,17 @@
   letter-spacing: -0.025em;
 
   color: #797979;
-
-  background-image: url("../../assets/search.png");
-  background-repeat: no-repeat;
-  background-position: calc(100% - 32px) center;
-  background-size: 25px 25px;
 }
 
 .searchIcon {
   width: 25px;
   height: 25px;
   position: absolute;
+  z-index: 14;
+  right: 35px;
+  top: 28px;
+
+  cursor: pointer;
 }
 
 .search:focus {
