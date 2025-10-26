@@ -1,0 +1,41 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.titleBox {
+  margin-top: 48px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.titleImg {
+  width: 130px;
+  height: 127px;
+  transform: translateY(-12px);
+}
+
+.titleText {
+  font-weight: 600;
+  font-size: 80px;
+  line-height: 95px;
+  letter-spacing: -0.025em;
+
+  color: #febf22;
+}
+
+.text {
+  margin-top: 32px;
+
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 33px;
+  letter-spacing: -0.025em;
+
+  color: #797979;
+}
