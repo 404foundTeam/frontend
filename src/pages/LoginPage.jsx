@@ -20,17 +20,21 @@ function LoginPage() {
         <form className={styles.form}>
           <AuthInput
             type="text"
+            placeholder="아이디를 입력해주세요."
             value={auth.id}
             onChange={(e) =>
               setAuth((state) => ({ ...state, id: e.target.value }))
             }
+            onClick={() => setAuth((state) => ({ ...state, id: "" }))}
           />
           <AuthInput
             type="password"
+            placeholder="비밀번호를 입력해주세요."
             value={auth.pw}
             onChange={(e) =>
               setAuth((state) => ({ ...state, pw: e.target.value }))
             }
+            onClick={() => setAuth((state) => ({ ...state, pw: "" }))}
           />
           <button
             type="submit"

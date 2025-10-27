@@ -37,4 +37,6 @@
 
   background-image: url("../assets/reset.png");
   background-size: cover;
+
+  cursor: pointer;
 }

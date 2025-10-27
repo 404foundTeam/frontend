@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from "../styles/AuthInput.module.css";
 
-function AuthInput({ type, value, onChange }) {
+function AuthInput({ type, placeholder, value, onChange, onClick }) {
   const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
@@ -13,11 +13,11 @@ function AuthInput({ type, value, onChange }) {
       <input
         type={type}
         className={styles.input}
-        placeholder="아이디를 입력해주세요."
+        placeholder={placeholder}
         value={value}
         onChange={onChange}
       ></input>
-      {isActive && <div className={styles.inputImg}></div>}
+      {isActive && <div className={styles.inputImg} onClick={onClick}></div>}
     </div>
   );
 }
