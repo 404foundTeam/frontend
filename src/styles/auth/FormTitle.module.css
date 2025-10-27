@@ -1,0 +1,21 @@
+.formTitle {
+  max-height: 68px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.titleText {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 33px;
+
+  color: #333333;
+}
+
+.titleImg {
+  width: 68px;
+  height: 68px;
+}
