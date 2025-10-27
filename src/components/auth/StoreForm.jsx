@@ -8,9 +8,11 @@ function StoreForm() {
   return (
     <FormLayout>
       <FormTitle label="업장 정보" isShow={true} />
+      <SignInput label="업장명" type="text" />
       <FormLine />
       <SignInput label="사업자등록번호" type="text" />
       <FormLine />
+      <SignInput label="이름" type="text" />
     </FormLayout>
   );
 }

@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import styles from "../styles/LoginPage.module.css";
-import Header from "../components/layout/Header";
 import TitleBox from "../components/auth/TitleBox";
 import LoginInput from "../components/auth/LoginInput";
 import { Link } from "react-router-dom";
@@ -21,7 +20,6 @@ function LoginPage() {
 
   return (
     <>
-      <Header />
       <div className={styles.container}>
         <TitleBox />
         <form className={styles.form}>

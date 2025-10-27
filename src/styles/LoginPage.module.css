@@ -9,15 +9,15 @@
 }
 
 .form {
-  width: 640px;
+  width: 540px;
 
-  margin-top: 48px;
+  margin-top: 38px;
   padding: 3rem;
 
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
+  gap: 1rem;
 
   background: #ffffff;
   border: 1px solid #d9d9d9;
@@ -26,9 +26,8 @@
 }
 
 .btn {
-  width: 280px;
+  width: 240px;
 
-  margin-top: 16px;
   margin-bottom: 16px;
   padding: 18px 16px;
 

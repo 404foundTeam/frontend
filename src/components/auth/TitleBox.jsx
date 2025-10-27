@@ -6,8 +6,7 @@ function TitleBox({ isShow = false }) {
   return (
     <div className={styles.titleBox}>
       <div className={styles.titleNav}>
-        <Link to="/">market BEE 홈</Link>
-        <Link to="/login">로그인</Link>
+        <Link to="/">market BEE 홈</Link> |<Link to="/login">로그인</Link>
       </div>
       <div className={styles.titleHeader}>
         <img src={titleImg} className={styles.titleImg} />
