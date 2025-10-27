@@ -7,6 +7,7 @@ function SignInput({
   type,
   width = "480px",
   value,
+  isCorrect = false,
   onChange,
   isId = false,
 }) {
@@ -19,7 +20,9 @@ function SignInput({
       <input
         name={name}
         type={type}
-        className={`${styles.input} ${value ? styles.active : ""}`}
+        className={`${styles.input} ${value ? styles.active : ""} ${
+          isCorrect ? styles.error : ""
+        }`}
         style={{ maxWidth: width }}
         value={value}
         onChange={onChange}

@@ -75,6 +75,7 @@ function AccountForm() {
           label="비밀번호 확인"
           type="password"
           value={pwCon}
+          isCorrect={isCorrect}
           onChange={(e) => setPwCon(e.target.value)}
         />
       </div>
