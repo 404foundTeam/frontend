@@ -198,13 +198,17 @@ function MyCalendar() {
             />
             <div className={styles.modalButtons}>
               <button onClick={handleSaveEvent} className={styles.saveButton}>저장</button>
-              <button 
-                onClick={handleDeleteEvent} 
-                className={styles.deleteButton} 
-                disabled={!currentEventId}
-              >
-                삭제
-              </button>
+              
+              {/* currentEventId가 존재할 때만 삭제 버튼을 렌더링 */}
+              {currentEventId && (
+                <button 
+                  onClick={handleDeleteEvent} 
+                  className={styles.deleteButton} 
+                >
+                  삭제
+                </button>
+              )}
+              
               <button onClick={() => setModalIsOpen(false)} className={styles.closeButton}>닫기</button>
             </div>
           </div>
