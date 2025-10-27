@@ -1,5 +1,5 @@
-import styles from "../styles/FormTitle.module.css";
-import img from "../assets/authImg.png";
+import styles from "../../styles/auth/FormTitle.module.css";
+import img from "../../assets/authImg.png";
 
 function FormTitle({ label, isShow = false }) {
   return (

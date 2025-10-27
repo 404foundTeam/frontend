@@ -1,0 +1,30 @@
+.pwBox {
+  display: flex;
+  flex-direction: column;
+
+  position: relative;
+}
+
+.pwText {
+  position: absolute;
+  top: 16px;
+  left: 180px;
+
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+
+  color: #acacac;
+}
+
+.pwError {
+  position: absolute;
+  top: 106px;
+  left: 180px;
+
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+
+  color: #f83434;
+}

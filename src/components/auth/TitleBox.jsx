@@ -1,6 +1,6 @@
-import styles from "../styles/TitleBox.module.css";
-import titleImg from "../assets/titleImg.png";
 import { Link } from "react-router-dom";
+import styles from "../../styles/auth/TitleBox.module.css";
+import titleImg from "../../assets/titleImg.png";
 
 function TitleBox({ isShow = false }) {
   return (

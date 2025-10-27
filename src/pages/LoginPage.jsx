@@ -1,13 +1,19 @@
 import { useEffect, useState } from "react";
 import styles from "../styles/LoginPage.module.css";
 import Header from "../components/layout/Header";
-import TitleBox from "../components/TitleBox";
-import LoginInput from "../components/LoginInput";
+import TitleBox from "../components/auth/TitleBox";
+import LoginInput from "../components/auth/LoginInput";
 import { Link } from "react-router-dom";
 
 function LoginPage() {
   const [auth, setAuth] = useState({ id: "", pw: "" });
   const [isActive, setIsActive] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setAuth((prev) => ({ ...prev, [name]: value }));
+  };
 
   useEffect(() => {
     auth.id && auth.pw ? setIsActive(true) : setIsActive(false);
@@ -21,22 +27,20 @@ function LoginPage() {
         <form className={styles.form}>
           <LoginInput
             label="아이디"
+            name="id"
             type="text"
             placeholder="아이디를 입력해주세요."
             value={auth.id}
-            onChange={(e) =>
-              setAuth((state) => ({ ...state, id: e.target.value }))
-            }
+            onChange={handleChange}
             onRest={() => setAuth((state) => ({ ...state, id: "" }))}
           />
           <LoginInput
             label="비밀번호"
+            name="pw"
             type="password"
             placeholder="비밀번호를 입력해주세요."
             value={auth.pw}
-            onChange={(e) =>
-              setAuth((state) => ({ ...state, pw: e.target.value }))
-            }
+            onChange={handleChange}
             onRest={() => setAuth((state) => ({ ...state, pw: "" }))}
           />
           <button

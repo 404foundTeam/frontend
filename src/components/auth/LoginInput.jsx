@@ -1,10 +1,19 @@
-import styles from "../styles/LoginInput.module.css";
+import styles from "../../styles/auth/LoginInput.module.css";
 
-function LoginInput({ label, type, placeholder, value, onChange, onRest }) {
+function LoginInput({
+  label,
+  name,
+  type,
+  placeholder,
+  value,
+  onChange,
+  onRest,
+}) {
   return (
     <div className={styles.inputBox}>
       <label className={styles.label}>{label}</label>
       <input
+        name={name}
         type={type}
         className={`${styles.input} ${value ? styles.active : ""}`}
         placeholder={placeholder}

@@ -21,7 +21,6 @@
 }
 
 .input {
-  max-width: 480px;
   flex: 1;
   padding: 1rem;
 
@@ -30,6 +29,17 @@
   border-radius: 10px;
 }
 
-.input:focus {
+.input:focus,
+.input.active {
   border-color: #febf22;
+}
+
+.checkBtn {
+  padding: 0.5rem;
+
+  border-radius: 10px;
+
+  background: #6d3737;
+
+  color: #ffffff;
 }
