@@ -9,14 +9,15 @@
 }
 
 .form {
-  width: 780px;
+  width: 640px;
 
   margin-top: 48px;
-  padding: 2rem;
+  padding: 3rem;
 
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 2rem;
 
   background: #ffffff;
   border: 1px solid #d9d9d9;
@@ -25,9 +26,9 @@
 }
 
 .btn {
-  width: 320px;
+  width: 280px;
 
-  margin-top: 56px;
+  margin-top: 16px;
   margin-bottom: 16px;
   padding: 18px 16px;
 
@@ -35,8 +36,8 @@
   border-radius: 20px;
 
   font-weight: 500;
-  font-size: 40px;
-  line-height: 48px;
+  font-size: 25px;
+  line-height: 30px;
 
   color: #acacac;
 }
@@ -47,11 +48,15 @@
 }
 
 .authFooter {
-  margin-top: 48px;
+  margin-top: 24px;
 
   font-weight: 500;
-  font-size: 30px;
+  font-size: 20px;
   line-height: 36px;
 
+  color: #acacac;
+}
+
+.authFooter a {
   color: #acacac;
 }

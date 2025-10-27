@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import styles from "../styles/LoginPage.module.css";
 import Header from "../components/layout/Header";
 import TitleBox from "../components/TitleBox";
-import AuthInput from "../components/AuthInput";
+import LoginInput from "../components/LoginInput";
+import { Link } from "react-router-dom";
 
 function LoginPage() {
   const [auth, setAuth] = useState({ id: "", pw: "" });
@@ -18,23 +19,25 @@ function LoginPage() {
       <div className={styles.container}>
         <TitleBox />
         <form className={styles.form}>
-          <AuthInput
+          <LoginInput
+            label="아이디"
             type="text"
             placeholder="아이디를 입력해주세요."
             value={auth.id}
             onChange={(e) =>
               setAuth((state) => ({ ...state, id: e.target.value }))
             }
-            onClick={() => setAuth((state) => ({ ...state, id: "" }))}
+            onRest={() => setAuth((state) => ({ ...state, id: "" }))}
           />
-          <AuthInput
+          <LoginInput
+            label="비밀번호"
             type="password"
             placeholder="비밀번호를 입력해주세요."
             value={auth.pw}
             onChange={(e) =>
               setAuth((state) => ({ ...state, pw: e.target.value }))
             }
-            onClick={() => setAuth((state) => ({ ...state, pw: "" }))}
+            onRest={() => setAuth((state) => ({ ...state, pw: "" }))}
           />
           <button
             type="submit"
@@ -44,7 +47,8 @@ function LoginPage() {
           </button>
         </form>
         <div className={styles.authFooter}>
-          <a>비밀번호 찾기</a> | <a>아이디 찾기</a> | <a>회원가입</a>
+          <a>비밀번호 찾기</a> | <a>아이디 찾기</a> |{" "}
+          <Link to="/signup">회원가입</Link>
         </div>
       </div>
     </>
