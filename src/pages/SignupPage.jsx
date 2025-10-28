@@ -7,6 +7,7 @@ import SignupAgreement from "../components/auth/SignupAgreement";
 function SignupPage() {
   return (
     <>
+      {/* id, email, pw, name/업장명, 주소 */}
       <div className={styles.container}>
         <TitleBox isShow={true} />
         <AccountForm />

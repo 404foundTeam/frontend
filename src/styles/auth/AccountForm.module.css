@@ -17,6 +17,10 @@
   color: #acacac;
 }
 
+.pwText.error {
+  color: #f83434;
+}
+
 .pwError {
   position: absolute;
   top: 106px;

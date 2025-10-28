@@ -12,17 +12,12 @@ import useUuidStore from "../store/useUuidStore";
 import { useNavigate } from "react-router-dom";
 
 function WelcomePage() {
-  const mapRef = useRef();
   const navigate = useNavigate();
   const storeUuid = useUuidStore((state) => state.storeUuid);
-  const [showMap, setShowMap] = useState(false);
 
-  const toggleMap = () => setShowMap((prev) => !prev);
-
-  // 포커스
-  useEffect(() => {
-    mapRef.current?.focus();
-  }, [showMap]);
+  const goToLogin = () => {
+    navigate("/login");
+  };
 
   // useEffect(() => {
   //   if (storeUuid) navigate("/main");
@@ -30,13 +25,7 @@ function WelcomePage() {
 
   return (
     <div className={styles.container}>
-      {showMap && (
-        <>
-          <Blur />
-          <WelcomeMap focusRef={mapRef} onClick={toggleMap} />
-        </>
-      )}
-      <HeaderSection onClick={toggleMap} />
+      <HeaderSection onClick={goToLogin} />
       <TextBox
         title={"소상공인을 위한 쉽고 빠른 플랫폼, market BEE"}
         content={
@@ -48,7 +37,7 @@ function WelcomePage() {
         title={"가게 운영과 마케팅을 한 번에 잡는 스마트 솔루션"}
         content={"사장님을 위한 새로운 성장과 전략, 지금 시작하세요."}
       />
-      <MatchMap toggleMap={toggleMap} />
+      <MatchMap toggleMap />
     </div>
   );
 }

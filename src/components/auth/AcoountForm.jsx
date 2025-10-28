@@ -13,12 +13,30 @@ function AccountForm() {
     pw: "",
   });
   const [pwCon, setPwCon] = useState("");
+  const [pwError, setPwError] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setAccount((prev) => ({ ...prev, [name]: value }));
   };
+
+  useEffect(() => {
+    // 비어있으면 에러 메시지 초기화
+    if (account.pw === "") {
+      setPwError(false);
+      return;
+    }
+
+    // Regex: 6~20자, 영문, 숫자, 특수문자(!@#$%^&*) 최소 1개씩 포함
+    const regex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*]).{6,20}$/;
+
+    if (!regex.test(account.pw)) {
+      setPwError(true);
+    } else {
+      setPwError(false); // 유효하면 에러 메시지 제거
+    }
+  }, [account.pw]);
 
   useEffect(() => {
     if (pwCon === "") {
@@ -59,12 +77,19 @@ function AccountForm() {
       />
       <FormLine />
       <div className={styles.pwBox}>
-        <p className={styles.pwText}>영문, 숫자, 특수문자 조합으로 6~20자</p>
+        {pwError ? (
+          <p className={`${styles.pwText} ${styles.error}`}>
+            영문, 숫자, 특수문자 조합으로 6~20자로 입력해주세요.
+          </p>
+        ) : (
+          <p className={styles.pwText}>영문, 숫자, 특수문자 조합으로 6~20자</p>
+        )}
         <SignInput
           label="비밀번호"
           name="pw"
           type="password"
           value={account.pw}
+          isCorrect={pwError}
           onChange={handleChange}
         />
         {isCorrect && (
