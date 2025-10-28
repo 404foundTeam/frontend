@@ -56,7 +56,6 @@ function AccountForm() {
         type="text"
         value={account.id}
         onChange={handleChange}
-        isId={true}
       />
       <FormLine />
       <div className={styles.pwBox}>

@@ -9,7 +9,7 @@ function SignInput({
   value,
   isCorrect = false,
   onChange,
-  isId = false,
+  isStore = false,
 }) {
   return (
     <div className={styles.inputBox}>
@@ -27,7 +27,11 @@ function SignInput({
         value={value}
         onChange={onChange}
       ></input>
-      {isId && <button className={styles.checkBtn}>중복 확인</button>}
+      {isStore && (
+        <button className={`${styles.storeBtn} ${value ? styles.active : ""}`}>
+          찾기
+        </button>
+      )}
     </div>
   );
 }

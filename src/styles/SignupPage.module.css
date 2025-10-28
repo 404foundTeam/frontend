@@ -43,3 +43,19 @@
 
   color: #acacac;
 }
+
+.btn {
+  width: 720px;
+
+  margin-top: 24px;
+  padding: 1rem;
+
+  border-radius: 20px;
+
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 42px;
+  text-align: center;
+
+  color: #acacac;
+}
