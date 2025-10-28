@@ -1,16 +1,20 @@
-// src/store/useUuidStore.js
+// src/store/useAuthStore.js
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-const useUuidStore = create(
+const useAuthStore = create(
   persist(
     (set) => ({
-      storeUuid: null,
+      accessToken: "",
       storeName: null,
       roadAddress: null,
-      isNew: true,
       dataVersion: 1,
-      setStoreInfo: (uuid, name) => set({ storeUuid: uuid, storeName: name }),
+      setAuthStore: (accessToken, storeName, roadAddress) =>
+        set({
+          accessToken: accessToken,
+          storeName: storeName,
+          roadAddress: roadAddress,
+        }),
       incrementDataVersion: () =>
         set((state) => ({ dataVersion: state.dataVersion + 1 })),
       setUuid: ({ storeUuid, storeName, roadAddress, isNew }) =>
@@ -22,4 +26,4 @@ const useUuidStore = create(
   )
 );
 
-export default useUuidStore;
+export default useAuthStore;

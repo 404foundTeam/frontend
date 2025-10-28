@@ -23,14 +23,14 @@ function Header({ isWelcome }) {
                   스마트 리포트
                 </NavLink>
               </div>
+              <div className={styles.myBox}>
+                <NavLink to="/my" className={styles.link}>
+                  마이 페이지
+                </NavLink>
+                <div className={styles.imgs}></div>
+              </div>
             </>
           )}
-          <div className={styles.myBox}>
-            <NavLink to="/my" className={styles.link}>
-              마이 페이지
-            </NavLink>
-            <div className={styles.imgs}></div>
-          </div>
         </div>
       </div>
     </header>

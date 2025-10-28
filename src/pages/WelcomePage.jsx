@@ -8,12 +8,12 @@ import {
   CardWrapper,
   MatchMap,
 } from "../components/welcome";
-import useUuidStore from "../store/useUuidStore";
+import useAuthStore from "../store/useAuthStore";
 import { useNavigate } from "react-router-dom";
 
 function WelcomePage() {
   const navigate = useNavigate();
-  const storeUuid = useUuidStore((state) => state.storeUuid);
+  const accessToken = useAuthStore((state) => state.accessToken);
 
   const goToLogin = () => {
     navigate("/login");

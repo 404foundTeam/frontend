@@ -4,10 +4,12 @@ import TitleBox from "../components/auth/TitleBox";
 import LoginInput from "../components/auth/LoginInput";
 import { Link } from "react-router-dom";
 import { login } from "../api";
+import useAuthStore from "../store/useAuthStore";
 
 function LoginPage() {
   const [auth, setAuth] = useState({ userId: "", password: "" });
   const [isActive, setIsActive] = useState(false);
+  const setAuthStore = useAuthStore((state) => state.setAuthStore);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -15,23 +17,24 @@ function LoginPage() {
     setAuth((prev) => ({ ...prev, [name]: value }));
   };
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  //   try {
-  //     const getAuth = await login({
-  //       userId: auth.userId,
-  //       password: auth.password,
-  //     });
+    try {
+      const getAuth = await login({
+        userId: auth.userId,
+        password: auth.password,
+      });
+      setAuthStore(getAuth.accessToken, getAuth.storeName, getAuth.roadAddress);
 
-  //     alert("로그인 성공");
-  //   } catch (error) {
-  //     alert("로그인 실패");
-  //   }
-  // };
+      alert("로그인 성공");
+    } catch (error) {
+      alert("로그인 실패");
+    }
+  };
 
   useEffect(() => {
-    auth.id && auth.pw ? setIsActive(true) : setIsActive(false);
+    auth.userId && auth.password ? setIsActive(true) : setIsActive(false);
   }, [auth]);
 
   return (

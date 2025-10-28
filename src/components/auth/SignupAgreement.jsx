@@ -43,7 +43,7 @@ function SignupAgreement() {
     <div className={styles.container}>
       <div className={styles.header}>
         <CheckBox
-          size="30px"
+          size="25px"
           isSelected={agreements.all}
           onClick={handleAllClick}
         />
