@@ -5,16 +5,10 @@ import FormLine from "./FormLine";
 import FormTitle from "./FormTitle";
 import SignInput from "./SignInput";
 
-function AccountForm() {
-  const [account, setAccount] = useState({
-    name: "",
-    email: "",
-    id: "",
-    pw: "",
-  });
+function AccountForm({ account, setAccount }) {
   const [pwCon, setPwCon] = useState("");
   const [pwError, setPwError] = useState(false);
-  const [isCorrect, setIsCorrect] = useState(false);
+  const [isMismatch, setIsMismatch] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -23,7 +17,7 @@ function AccountForm() {
 
   useEffect(() => {
     // 비어있으면 에러 메시지 초기화
-    if (account.pw === "") {
+    if (account.password === "") {
       setPwError(false);
       return;
     }
@@ -31,31 +25,27 @@ function AccountForm() {
     // Regex: 6~20자, 영문, 숫자, 특수문자(!@#$%^&*) 최소 1개씩 포함
     const regex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*]).{6,20}$/;
 
-    if (!regex.test(account.pw)) {
-      setPwError(true);
-    } else {
-      setPwError(false); // 유효하면 에러 메시지 제거
-    }
-  }, [account.pw]);
+    setPwError(!regex.test(account.password));
+  }, [account.password]);
 
   useEffect(() => {
     if (pwCon === "") {
-      setIsCorrect(false);
+      setIsMismatch(false);
       return;
     }
 
-    setIsCorrect(pwCon === account.pw ? false : true);
-  }, [account.pw, pwCon]);
+    setIsMismatch(pwCon !== account.password);
+  }, [account.password, pwCon]);
 
   return (
     <FormLayout>
       <FormTitle label="계정 정보" />
       <SignInput
         label="이름"
-        name="name"
+        name="userName"
         type="text"
         width="240px"
-        value={account.name}
+        value={account.userName}
         onChange={handleChange}
       />
       <FormLine />
@@ -70,9 +60,9 @@ function AccountForm() {
       <FormLine />
       <SignInput
         label="아이디"
-        name="id"
+        name="userId"
         type="text"
-        value={account.id}
+        value={account.userId}
         onChange={handleChange}
       />
       <FormLine />
@@ -86,20 +76,20 @@ function AccountForm() {
         )}
         <SignInput
           label="비밀번호"
-          name="pw"
+          name="password"
           type="password"
-          value={account.pw}
+          value={account.password}
           isCorrect={pwError}
           onChange={handleChange}
         />
-        {isCorrect && (
+        {isMismatch && (
           <p className={styles.pwError}>비밀번호가 일치하지 않습니다.</p>
         )}
         <SignInput
           label="비밀번호 확인"
           type="password"
           value={pwCon}
-          isCorrect={isCorrect}
+          isCorrect={isMismatch}
           onChange={(e) => setPwCon(e.target.value)}
         />
       </div>

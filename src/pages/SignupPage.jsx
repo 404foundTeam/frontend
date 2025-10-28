@@ -3,17 +3,26 @@ import AccountForm from "../components/auth/AcoountForm";
 import StoreForm from "../components/auth/StoreForm";
 import TitleBox from "../components/auth/TitleBox";
 import SignupAgreement from "../components/auth/SignupAgreement";
+import { useSignForm } from "../hooks/useSignupForm";
 
 function SignupPage() {
+  const { account, setAccount, store, setStore } = useSignForm();
   return (
     <>
-      {/* id, email, pw, name/업장명, 주소 */}
       <div className={styles.container}>
         <TitleBox isShow={true} />
-        <AccountForm />
-        <StoreForm />
+        <AccountForm account={account} setAccount={setAccount} />
+        <StoreForm store={store} setStore={setStore} />
         <SignupAgreement />
-        <button className={styles.btn}>가입하기</button>
+        <button
+          className={styles.btn}
+          onClick={() => {
+            console.log(account);
+            console.log(store);
+          }}
+        >
+          가입하기
+        </button>
       </div>
     </>
   );

@@ -27,6 +27,12 @@
   outline: none;
   border: 2px solid #d9d9d9;
   border-radius: 10px;
+
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+
+  color: #333333;
 }
 
 .input:focus,

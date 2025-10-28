@@ -22,11 +22,21 @@
 
 .storeName {
   flex: 1;
-  padding: 1.5rem 1rem;
+  padding: 1.25rem 1rem;
 
   outline: none;
   border: 2px solid #d9d9d9;
   border-radius: 10px;
+
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+
+  color: #333333;
+}
+
+.storeName.active {
+  border-color: #febf22;
 }
 
 .storeBtn {
@@ -34,7 +44,7 @@
 
   border-radius: 10px;
 
-  background: #d9d9d9;
+  background: #6d3737;
 
   font-weight: 700;
   font-size: 18px;
@@ -44,5 +54,5 @@
 }
 
 .storeBtn.active {
-  background: #6d3737;
+  background: #d9d9d9;
 }

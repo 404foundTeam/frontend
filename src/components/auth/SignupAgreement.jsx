@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "../../styles/auth/SignupAgreement.module.css";
 import Agreement from "./Agreement";
 import CheckBox from "./CheckBox";
@@ -29,6 +29,15 @@ function SignupAgreement() {
 
     setAgreements((prev) => ({ ...prev, [e]: value }));
   };
+
+  useEffect(() => {
+    const { all, service, privacy, marketing, ads } = agreements;
+    const allChecked = service && privacy && marketing && ads;
+
+    if (all !== allChecked) {
+      setAgreements((prev) => ({ ...prev, all: allChecked }));
+    }
+  }, [agreements]);
 
   return (
     <div className={styles.container}>
