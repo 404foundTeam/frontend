@@ -5,8 +5,6 @@ import FormLine from "./FormLine";
 import FormTitle from "./FormTitle";
 import SignInput from "./SignInput";
 import { WelcomeMap } from "../welcome";
-import CoaSection from "../map/CoaSection";
-import { Colors } from "chart.js";
 
 function StoreForm({ store, setStore }) {
   const mapRef = useRef();
@@ -66,9 +64,13 @@ function StoreForm({ store, setStore }) {
         <FormLine />
         <SignInput label="업장 대표자" type="text" width="240px" />
         <FormLine />
-        <SignInput label="사업자등록번호" type="text" />
+        <SignInput
+          label="사업자등록번호"
+          helper="-없이 숫자만 입력해주세요."
+          type="text"
+        />
         <FormLine />
-        <SignInput label="개업일자" type="text" />
+        <SignInput label="개업일자" helper="(YYYYMMDD)" type="text" />
         <FormLine />
       </FormLayout>
     </>

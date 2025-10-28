@@ -42,7 +42,11 @@ function SignupAgreement() {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <CheckBox isSelected={agreements.all} onClick={handleAllClick} />
+        <CheckBox
+          size="30px"
+          isSelected={agreements.all}
+          onClick={handleAllClick}
+        />
         <div className={styles.headerTitle}>전체동의</div>
       </div>
       <FormLine />

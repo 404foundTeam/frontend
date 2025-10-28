@@ -3,9 +3,10 @@ import styles from "../styles/LoginPage.module.css";
 import TitleBox from "../components/auth/TitleBox";
 import LoginInput from "../components/auth/LoginInput";
 import { Link } from "react-router-dom";
+import { login } from "../api";
 
 function LoginPage() {
-  const [auth, setAuth] = useState({ id: "", pw: "" });
+  const [auth, setAuth] = useState({ userId: "", password: "" });
   const [isActive, setIsActive] = useState(false);
 
   const handleChange = (e) => {
@@ -13,6 +14,21 @@ function LoginPage() {
 
     setAuth((prev) => ({ ...prev, [name]: value }));
   };
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+
+  //   try {
+  //     const getAuth = await login({
+  //       userId: auth.userId,
+  //       password: auth.password,
+  //     });
+
+  //     alert("로그인 성공");
+  //   } catch (error) {
+  //     alert("로그인 실패");
+  //   }
+  // };
 
   useEffect(() => {
     auth.id && auth.pw ? setIsActive(true) : setIsActive(false);
@@ -22,24 +38,27 @@ function LoginPage() {
     <>
       <div className={styles.container}>
         <TitleBox />
-        <form className={styles.form}>
+        <form
+          className={styles.form}
+          // onSubmit={handleSubmit}
+        >
           <LoginInput
             label="아이디"
-            name="id"
+            name="userId"
             type="text"
             placeholder="아이디를 입력해주세요."
-            value={auth.id}
+            value={auth.userId}
             onChange={handleChange}
-            onRest={() => setAuth((state) => ({ ...state, id: "" }))}
+            onRest={() => setAuth((state) => ({ ...state, userId: "" }))}
           />
           <LoginInput
             label="비밀번호"
-            name="pw"
+            name="password"
             type="password"
             placeholder="비밀번호를 입력해주세요."
-            value={auth.pw}
+            value={auth.password}
             onChange={handleChange}
-            onRest={() => setAuth((state) => ({ ...state, pw: "" }))}
+            onRest={() => setAuth((state) => ({ ...state, password: "" }))}
           />
           <button
             type="submit"

@@ -16,6 +16,12 @@ export const fetchStoresByCoord = async (x, y) => {
   return res.data;
 };
 
+// 로그인
+export const login = async ({ userId, password }) => {
+  const res = await api.post("/auth/login", { userId, password });
+  return res.data;
+};
+
 // 회원가입
 // export const signup = async () =>{
 //   const res = await api.post("/auth/signup", )

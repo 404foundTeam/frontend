@@ -1,6 +1,22 @@
 .inputBox {
   margin-top: 40px;
+}
 
+.helper {
+  padding-left: 180px;
+  padding-bottom: 4px;
+
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+
+  color: #acacac;
+}
+.helper.red {
+  color: #f83434;
+}
+
+.inputs {
   display: flex;
   align-items: center;
   gap: 2rem;

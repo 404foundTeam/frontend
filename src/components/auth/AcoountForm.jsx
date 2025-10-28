@@ -51,6 +51,7 @@ function AccountForm({ account, setAccount }) {
       <FormLine />
       <SignInput
         label="이메일"
+        error="이메일이 올바르지 않습니다."
         name="email"
         isReq={false}
         type="email"
@@ -60,6 +61,7 @@ function AccountForm({ account, setAccount }) {
       <FormLine />
       <SignInput
         label="아이디"
+        error="아이디가 중복됩니다."
         name="userId"
         type="text"
         value={account.userId}
@@ -67,29 +69,22 @@ function AccountForm({ account, setAccount }) {
       />
       <FormLine />
       <div className={styles.pwBox}>
-        {pwError ? (
-          <p className={`${styles.pwText} ${styles.error}`}>
-            영문, 숫자, 특수문자 조합으로 6~20자로 입력해주세요.
-          </p>
-        ) : (
-          <p className={styles.pwText}>영문, 숫자, 특수문자 조합으로 6~20자</p>
-        )}
         <SignInput
           label="비밀번호"
+          helper="영문, 숫자, 특수문자 조합으로 6~20자를 입력해주세요."
+          error="영문, 숫자, 특수문자 조합으로 6~20자로 입력해주세요."
           name="password"
           type="password"
           value={account.password}
-          isCorrect={pwError}
+          hasError={pwError}
           onChange={handleChange}
         />
-        {isMismatch && (
-          <p className={styles.pwError}>비밀번호가 일치하지 않습니다.</p>
-        )}
         <SignInput
           label="비밀번호 확인"
+          error="비밀번호가 일치하지 않습니다."
           type="password"
           value={pwCon}
-          isCorrect={isMismatch}
+          hasError={isMismatch}
           onChange={(e) => setPwCon(e.target.value)}
         />
       </div>
