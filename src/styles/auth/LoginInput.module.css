@@ -8,7 +8,7 @@
 
 .label {
   font-weight: 500;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 17px;
 
   color: #acacac;
@@ -23,7 +23,7 @@
   border-radius: 10px;
 
   font-weight: 500;
-  font-size: 14px;
+  font-size: 12px;
   line-height: 21px;
 
   color: #797979;
@@ -36,7 +36,7 @@
 
 .input::placeholder {
   font-weight: 500;
-  font-size: 14px;
+  font-size: 12px;
   line-height: 21px;
 
   color: #acacac;
@@ -47,7 +47,7 @@
   height: 30px;
 
   position: absolute;
-  top: 33px;
+  top: 32px;
   right: 8px;
 
   background-image: url("../../assets/reset.png");

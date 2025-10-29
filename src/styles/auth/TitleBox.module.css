@@ -1,7 +1,7 @@
 .titleBox {
   width: 100%;
 
-  margin-top: 24px;
+  /* margin-top: 24px; */
 
   display: flex;
   flex-direction: column;
@@ -27,12 +27,14 @@
 
 .titleHeader {
   margin-top: 16px;
-  margin-right: 64px;
+  /* margin-right: 64px; */
 
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 1rem;
+
+  cursor: pointer;
 }
 
 .titleImg {
@@ -51,7 +53,7 @@
 }
 
 .content {
-  margin-top: 24px;
+  /* margin-top: 24px; */
 
   font-weight: 400;
   font-size: 19px;

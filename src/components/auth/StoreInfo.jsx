@@ -3,7 +3,7 @@ import styles from "../../styles/auth/StoreInfo.module.css";
 function StoreInfo({
   label,
   value,
-  width = "480px",
+  width = "300px",
   isName,
   isFilled = false,
   onClick,

@@ -7,7 +7,7 @@ function SignInput({
   name,
   isReq = true,
   type,
-  width = "480px",
+  width = "300px",
   value,
   hasError = false,
   onChange,

@@ -51,27 +51,6 @@ function AccountForm({ account, setAccount }) {
       console.log(error);
     }
   };
-  // useEffect(() => {
-  //   if (!account.userId) {
-  //     setIdCheck({ available: true, message: "" });
-  //     return;
-  //   }
-
-  //   const checkId = async () => {
-  //     try {
-  //       const check = await exists(account.userId);
-  //       setIdCheck({
-  //         available: check.available,
-  //         message: check.message,
-  //       });
-  //     } catch (error) {
-  //       // alert("아이디 중복 확인 실패");
-  //       console.log(error);
-  //     }
-  //   };
-
-  //   checkId();
-  // }, [account.userId]);
 
   // 비밀번호 유효성 검사
   useEffect(() => {
@@ -104,7 +83,7 @@ function AccountForm({ account, setAccount }) {
         label="이름"
         name="userName"
         type="text"
-        width="240px"
+        width="200px"
         value={account.userName}
         onChange={handleChange}
       />

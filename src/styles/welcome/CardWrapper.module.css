@@ -16,24 +16,17 @@
 
 /* 카드 내부 스타일 및 애니메이션 */
 .cardWrapper .cardBox {
+  height: 800px;
+
   display: flex;
   align-items: flex-start;
   justify-content: center;
+  align-items: center;
+  gap: 6rem;
 
   opacity: 0;
   transform: translateY(80px);
   transition: opacity 2s ease-out, transform 2s ease-out;
-}
-
-.line {
-  width: 100%;
-  max-width: 1440px;
-
-  margin: 0 auto;
-  position: absolute;
-  top: 0;
-
-  border-top: 3px solid #d9d9d9;
 }
 
 .cardWrapper .cardBox.visible {
@@ -73,16 +66,16 @@
 
 /* 스마트 리포트 스타일 */
 .cardBox.report {
-  height: 660px;
+  /* height: 800px; */
 
-  display: flex;
-  gap: 2rem;
+  /* display: flex; */
+  gap: 3rem;
 }
 
 /* 텍스트 위치 조정 */
 .cardBox .textBox.report {
   padding-top: 199px;
-  margin-left: 122px;
+  /* margin-left: 122px; */
 }
 
 .cardBox .textBox.report .title {
@@ -93,18 +86,18 @@
   width: 494px;
 
   padding-top: 168px;
-  padding-right: 80px;
+  /* padding-right: 80px; */
 }
 
 /* 마케팅 스타일 */
 .cardBox.marketing {
-  height: 800px;
+  /* height: 800px; */
 }
 
 /* 마케팅 내부 박스 스타일 */
 .cardBox .marketingBoxes {
-  width: 840px;
-  height: 760px;
+  /* width: 840px; */
+  /* height: 760px; */
 
   display: flex;
   flex-direction: column;
@@ -159,13 +152,21 @@
 }
 
 .cardBox .textBox.marketing {
-  padding-top: 194px;
+  /* height: 800px; */
+  /* padding-top: 194px; */
 }
 
 /* 카드 뉴스 스타일 */
+.cardBox.sns {
+  /* height: 800px; */
+  /* padding-top: 199px; */
+}
+
 .cardBox .cardImgBox {
-  width: 840px;
-  height: 760px;
+  /* width: 840px; */
+  width: 564px;
+  height: 380px;
+  /* height: 760px; */
   position: relative;
 
   padding-left: 20px;
@@ -174,13 +175,8 @@
 }
 
 .cardBox .textBox.sns {
-  padding-top: 66px;
-  margin-left: 122px;
-}
-
-/* 카드 뉴스 겹치게 */
-.cardBox.sns {
-  padding-top: 199px;
+  /* padding-top: 66px; */
+  /* margin-left: 122px; */
 }
 
 .cardBox.sns .textBox .content {
@@ -207,11 +203,6 @@
   opacity: 0.6;
   left: 213px;
   z-index: 1;
-}
-
-.cardBox.sns .line {
-  bottom: 0;
-  top: auto;
 }
 
 @media (max-width: 430px) {

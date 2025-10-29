@@ -3,18 +3,17 @@ import styles from "../../styles/auth/StoreForm.module.css";
 import FormLayout from "./FormLayout";
 import FormLine from "./FormLine";
 import FormTitle from "./FormTitle";
-import SignInput from "./SignInput";
 import { WelcomeMap } from "../welcome";
 import StoreInfo from "./StoreInfo";
 
 function StoreForm({ store, setStore }) {
   const mapRef = useRef();
   const [showMap, setShowMap] = useState(false);
-  const [verify, setVerfiy] = useState({
-    storeNumber: "",
-    representativeName: "",
-    openDate: "",
-  });
+  // const [verify, setVerfiy] = useState({
+  //   storeNumber: "",
+  //   representativeName: "",
+  //   openDate: "",
+  // });
 
   const toggleMap = () => setShowMap((prev) => !prev);
 
@@ -49,7 +48,7 @@ function StoreForm({ store, setStore }) {
         <StoreInfo
           label="업장명"
           value={store.storeName}
-          width="240px"
+          width="200px"
           isName={true}
           onClick={toggleMap}
         />
@@ -67,12 +66,12 @@ function StoreForm({ store, setStore }) {
           </button>
         </div>
         <FormLine />
-        <StoreInfo label="업장 대표자" value={false} width="240px" />
+        <StoreInfo label="업장 대표자" value={false} width="200px" />
         <FormLine />
         {/* 3-2-5 */}
-        <StoreInfo label="사업자등록번호" value="216-51-32155" />
+        <StoreInfo label="사업자등록번호" value={false} />
         <FormLine />
-        <StoreInfo label="개업일자" value="2025-10-29" />
+        <StoreInfo label="개업일자" value={false} />
       </FormLayout>
     </>
   );

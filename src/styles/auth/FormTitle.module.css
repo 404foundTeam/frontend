@@ -9,13 +9,12 @@
 .titleText {
   font-style: normal;
   font-weight: 600;
-  font-size: 28px;
-  line-height: 33px;
+  font-size: 26px;
 
   color: #333333;
 }
 
 .titleImg {
-  width: 68px;
-  height: 68px;
+  width: 58px;
+  height: 58px;
 }
