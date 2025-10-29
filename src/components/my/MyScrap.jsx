@@ -56,7 +56,7 @@ function MyScrap() {
   return (
     <>
       <div className={styles.header}>
-        <h1 className={styles.mainTitle}>나의 컨텐츠</h1>
+        <h1 className={styles.mainTitle}>나의 카드뉴스</h1>
         <p className={styles.subtitle}>
           내가 만든 카드뉴스를 한 눈에 관리해보세요
         </p>
