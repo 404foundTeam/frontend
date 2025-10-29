@@ -22,10 +22,16 @@ export const login = async ({ userId, password }) => {
   return res.data;
 };
 
-// 회원가입
-// export const signup = async () =>{
-//   const res = await api.post("/auth/signup", )
-// }
+// 회원가입 -아이디 중복 확인
+export const exists = async ({ userId }) => {
+  const res = await api.get("/users/exists", { userId });
+  return res.data;
+};
+// 회원가입 - 서버에 등록
+export const signup = async (authInfo) => {
+  const res = await api.post("/auth/signup", { authInfo });
+  return res.data;
+};
 
 // 카드 뉴스 페이지 -/api/v1/sns-cards/generate
 export const generateText = async ({ type, userText }) => {

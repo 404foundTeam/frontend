@@ -5,7 +5,7 @@ import axios from "axios";
 import styles from "../../styles/cardnews/CardNewsResultPage.module.css";
 import useTextStore from "../../store/useTextStore";
 import useCardStore from "../../store/useCardStore";
-import useUuidStore from "../../store/useUuidStore";
+import useAuthStore from "../../store/useAuthStore";
 import ResultButtonButton from "../../components/cardnews/ResultButton";
 import ChanceText from "../../components/cardnews/ChanceText";
 
@@ -98,7 +98,7 @@ function CardNewsResultPage() {
   // 이미지 업로드
   const [blob, setBlob] = useState(null);
 
-  const storeUuid = useUuidStore((state) => state.storeUuid);
+  const storeUuid = useAuthStore((state) => state.storeUuid);
 
   const imgData1 = useCardStore((state) => state);
   const generatedText = useTextStore((state) => state.generatedText);

@@ -4,8 +4,13 @@ import FormLayout from "./FormLayout";
 import FormLine from "./FormLine";
 import FormTitle from "./FormTitle";
 import SignInput from "./SignInput";
+import { exists } from "../../api";
 
 function AccountForm({ account, setAccount }) {
+  const [idCheck, setIdCheck] = useState({
+    available: true,
+    message: "",
+  });
   const [pwCon, setPwCon] = useState("");
   const [pwError, setPwError] = useState(false);
   const [isMismatch, setIsMismatch] = useState(false);
@@ -14,6 +19,28 @@ function AccountForm({ account, setAccount }) {
     const { name, value } = e.target;
     setAccount((prev) => ({ ...prev, [name]: value }));
   };
+
+  useEffect(() => {
+    if (!account.userId) {
+      setIdCheck({ available: true, message: "" });
+      return;
+    }
+
+    const idCheck = async () => {
+      try {
+        const check = await exists(account.userId);
+        setIdCheck({
+          available: check.available,
+          message: check.message,
+        });
+      } catch (error) {
+        alert("아이디 중복 확인 실패");
+        console.log(error);
+      }
+    };
+
+    idCheck();
+  }, [account.userId]);
 
   useEffect(() => {
     // 비어있으면 에러 메시지 초기화
@@ -61,10 +88,12 @@ function AccountForm({ account, setAccount }) {
       <FormLine />
       <SignInput
         label="아이디"
-        error="아이디가 중복됩니다."
+        helper={idCheck.message}
+        error={idCheck.message}
         name="userId"
         type="text"
         value={account.userId}
+        hasError={!idCheck.available}
         onChange={handleChange}
       />
       <FormLine />

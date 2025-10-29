@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { backgroundImg, generateText } from "../../api/index.js";
 import styles from "../../styles/cardnews/CardNewsPage.module.css";
 import bannerImg from "../../assets/cardnews/banner_img.png";
-import useUuidStore from "../../store/useUuidStore.js";
+import useAuthStore from "../../store/useAuthStore.js";
 import useCardStore from "../../store/useCardStore.js";
 import useTextStore from "../../store/useTextStore.js";
 import SelectHeader from "../../components/shared/SelectHeader.jsx";
@@ -14,8 +14,8 @@ import FinButton from "../../components/shared/FinButton.jsx";
 
 function CardNewsPage() {
   const navigate = useNavigate();
-  const storeUuid = useUuidStore((state) => state.storeUuid);
-  const storeName = useUuidStore((state) => state.storeName);
+  const storeUuid = useAuthStore((state) => state.storeUuid);
+  const storeName = useAuthStore((state) => state.storeName);
   const setText = useTextStore((state) => state.setText);
   const setCard = useCardStore((state) => state.setCard);
 

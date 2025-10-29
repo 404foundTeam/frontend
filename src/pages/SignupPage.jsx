@@ -4,9 +4,11 @@ import StoreForm from "../components/auth/StoreForm";
 import TitleBox from "../components/auth/TitleBox";
 import SignupAgreement from "../components/auth/SignupAgreement";
 import { useSignForm } from "../hooks/useSignupForm";
+// import { signup } from "../api";
 
 function SignupPage() {
   const { account, setAccount, store, setStore } = useSignForm();
+ 
   return (
     <>
       <div className={styles.container}>

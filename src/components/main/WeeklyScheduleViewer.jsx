@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useMemo } from "react";
 import axios from "axios";
 import styles from "../../styles/main/WeeklyScheduleViewer.module.css";
-import useUuidStore from "../../store/useUuidStore";
+import useAuthStore from "../../store/useAuthStore";
 import { useNavigate } from "react-router-dom";
 import useActiveStroe from "../../store/useActiveStore";
 
@@ -11,7 +11,7 @@ function WeeklyScheduleViewer() {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [weekDates, setWeekDates] = useState([]);
   const [monthYear, setMonthYear] = useState("");
-  const storeUuid = useUuidStore((state) => state.storeUuid);
+  const storeUuid = useAuthStore((state) => state.storeUuid);
 
   const [events, setEvents] = useState([]);
   const [isLoading, setIsLoading] = useState(true);

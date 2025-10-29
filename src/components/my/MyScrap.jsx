@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import styles from "../../styles/my/MyScrap.module.css";
-import useUuidStore from "../../store/useUuidStore";
+import useAuthStore from "../../store/useAuthStore";
 
 function MyScrap() {
   const [cards, setCards] = useState([]);
@@ -12,7 +12,7 @@ function MyScrap() {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
 
-  const storeUuid = useUuidStore((state) => state.storeUuid);
+  const storeUuid = useAuthStore((state) => state.storeUuid);
 
   useEffect(() => {
     if (!storeUuid) {
