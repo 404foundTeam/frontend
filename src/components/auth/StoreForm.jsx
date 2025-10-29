@@ -15,6 +15,7 @@ function StoreForm({ store, setStore }) {
   const handleSelect = (selectedStore) => {
     setStore((prev) => ({
       ...prev,
+      placeId: selectedStore.placeId,
       storeName: selectedStore.placeName,
       roadAddress: selectedStore.roadAddress,
       longitude: selectedStore.longitude,
@@ -39,7 +40,7 @@ function StoreForm({ store, setStore }) {
       )}
       <FormLayout>
         <FormTitle label="업장 정보" isShow={true} />
-        <div className={styles.storeBox}>
+        <div className={styles.box}>
           <label className={styles.label}>
             업장명<span>*</span>
           </label>
@@ -53,9 +54,7 @@ function StoreForm({ store, setStore }) {
           </div>
           <button
             type="button"
-            className={`${styles.storeBtn} ${
-              store.storeName ? styles.active : ""
-            }`}
+            className={`${styles.btn} ${store.storeName ? styles.active : ""}`}
             onClick={toggleMap}
           >
             찾기
@@ -72,6 +71,18 @@ function StoreForm({ store, setStore }) {
         <FormLine />
         <SignInput label="개업일자" helper="(YYYYMMDD)" type="text" />
         <FormLine />
+        <div className={styles.box}>
+          <label className={styles.label}>
+            사업자등록증<span>*</span>
+          </label>
+          <button
+            type="button"
+            className={`${styles.btn} ${store.storeName ? styles.active : ""}`}
+            onClick={toggleMap}
+          >
+            파일 첨부하기
+          </button>
+        </div>
       </FormLayout>
     </>
   );

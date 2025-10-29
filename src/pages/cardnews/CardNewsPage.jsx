@@ -13,6 +13,7 @@ import Error from "../../components/shared/Error.jsx";
 import FinButton from "../../components/shared/FinButton.jsx";
 
 function CardNewsPage() {
+  const [userText, setUserText] = useState("");
   const navigate = useNavigate();
   const storeUuid = useAuthStore((state) => state.storeUuid);
   const storeName = useAuthStore((state) => state.storeName);
@@ -22,7 +23,6 @@ function CardNewsPage() {
   const [cardData, setCardData] = useState({
     cardType: "",
     menuName: "",
-    userText: "",
     generatedText: "",
     template: "",
     ratio: "",
@@ -44,7 +44,7 @@ function CardNewsPage() {
     try {
       const getText = await generateText({
         type: cardData.cardType,
-        userText: cardData.userText,
+        userText: userText,
       });
       setCardData((prev) => ({
         ...prev,
@@ -137,19 +137,15 @@ function CardNewsPage() {
           <SelectHeader text="SNS 카드 뉴스에 넣고 싶은 텍스트를 입력하세요." />
           <div className={styles.cardNewsTextBox}>
             <input
-              className={`${styles.textInput} ${
-                cardData.userText ? styles.select : ""
-              }`}
+              className={`${styles.textInput} ${userText ? styles.select : ""}`}
               type="text"
               placeholder="텍스트를 입력하세요."
-              value={cardData.userText}
-              onChange={(e) =>
-                setCardData((prev) => ({ ...prev, userText: e.target.value }))
-              }
+              value={userText}
+              onChange={(e) => setUserText(e.target.value)}
             />
             <button
               className={`${styles.textButton} ${styles.cardnewsTextButton} ${
-                cardData.userText ? styles.select : ""
+                userText ? styles.select : ""
               }`}
               onClick={getGenerateText}
             >

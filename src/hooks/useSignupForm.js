@@ -9,11 +9,12 @@ export function useSignForm() {
   });
 
   const [store, setStore] = useState({
+    placeId: "",
     storeName: "",
     roadAddress: "",
     longitude: "",
     latitude: "",
-    verified: "",
+    verified: null,
   });
 
   return {

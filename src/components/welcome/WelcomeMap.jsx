@@ -164,7 +164,6 @@ function WelcomeMap({ focusRef, onClick, handleSelect }) {
           어렵고 복잡한 마케팅과 운영전략을 한번에
         </p>
         <StoreSearch
-          focusRef={focusRef}
           placeholder="주소를 입력해주세요."
           value={search}
           onChange={onChange}
@@ -174,7 +173,7 @@ function WelcomeMap({ focusRef, onClick, handleSelect }) {
           }}
         />
       </div>
-      <div className={styles.mapBox}>
+      <div className={styles.mapBox} focusRef={focusRef}>
         <div
           className={styles.map}
           ref={container}

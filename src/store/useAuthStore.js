@@ -6,19 +6,20 @@ const useAuthStore = create(
   persist(
     (set) => ({
       accessToken: "",
-      storeName: null,
-      roadAddress: null,
+      storeName: "",
+      roadAddress: "",
       dataVersion: 1,
+
       setAuthStore: (accessToken, storeName, roadAddress) =>
         set({
           accessToken: accessToken,
           storeName: storeName,
           roadAddress: roadAddress,
         }),
+      clearAuthStore: () =>
+        set({ accessToken: "", storeName: "", roadAddress: "" }),
       incrementDataVersion: () =>
         set((state) => ({ dataVersion: state.dataVersion + 1 })),
-      setUuid: ({ storeUuid, storeName, roadAddress, isNew }) =>
-        set({ storeUuid, storeName, roadAddress, isNew }),
     }),
     {
       name: "store-storage", // localStorage에 저장될 때 사용될 키(key) 이름입니다.

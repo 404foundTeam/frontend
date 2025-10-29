@@ -28,8 +28,8 @@ export const exists = async ({ userId }) => {
   return res.data;
 };
 // 회원가입 - 서버에 등록
-export const signup = async (authInfo) => {
-  const res = await api.post("/auth/signup", { authInfo });
+export const signup = async (payload) => {
+  const res = await api.post("/auth/signup", payload);
   return res.data;
 };
 
@@ -40,26 +40,8 @@ export const generateText = async ({ type, userText }) => {
 };
 
 // 카드 뉴스 페이지 - /api/v1/sns-cards/background POST
-export const backgroundImg = async ({
-  storeUuid,
-  storeName,
-  cardType,
-  menuName,
-  generatedText,
-  template,
-  ratio,
-  theme,
-}) => {
-  const res = await api.post("/sns-cards/background", {
-    storeUuid,
-    storeName,
-    cardType,
-    menuName,
-    generatedText,
-    template,
-    ratio,
-    theme,
-  });
+export const backgroundImg = async (payload) => {
+  const res = await api.post("/sns-cards/background", payload);
   return res.data;
 };
 // 테스트용

@@ -1,4 +1,4 @@
-.storeBox {
+.box {
   margin-top: 40px;
 
   display: flex;
@@ -41,7 +41,7 @@
   border-color: #febf22;
 }
 
-.storeBtn {
+.btn {
   padding: 0.5rem 1.5rem;
 
   border-radius: 10px;
@@ -55,6 +55,6 @@
   color: #ffffff;
 }
 
-.storeBtn.active {
+.btn.active {
   background: #d9d9d9;
 }
