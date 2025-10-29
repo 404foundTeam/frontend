@@ -11,6 +11,7 @@ function SignInput({
   value,
   hasError = false,
   onChange,
+  onBlur,
   isStore = false,
 }) {
   return (
@@ -32,6 +33,7 @@ function SignInput({
           style={{ maxWidth: width }}
           value={value}
           onChange={onChange}
+          onBlur={onBlur}
         ></input>
         {isStore && (
           <button

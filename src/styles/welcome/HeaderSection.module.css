@@ -23,8 +23,7 @@
 }
 
 .headerTextBox .signButton {
-  width: 174px;
-  height: 49px;
+  padding: 1rem 4rem;
 
   margin-top: 41px;
 
@@ -240,7 +239,7 @@
     right: 124px;
   }
 
-  0% {
+  /* 0% {
     transform: translateX(calc(100% + 20px)) translateY(0);
   }
   12.5% {
@@ -266,7 +265,7 @@
   }
   100% {
     transform: translateX(0) translateY(0);
-  }
+  } */
 
   .bee:nth-child(3) {
     width: 46px;

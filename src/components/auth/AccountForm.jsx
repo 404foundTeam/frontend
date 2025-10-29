@@ -35,27 +35,43 @@ function AccountForm({ account, setAccount }) {
   }, [account.email]);
 
   // 아이디 중복 검사
-  useEffect(() => {
+  const handleIdBlur = async () => {
     if (!account.userId) {
       setIdCheck({ available: true, message: "" });
       return;
     }
 
-    const checkId = async () => {
-      try {
-        const check = await exists(account.userId);
-        setIdCheck({
-          available: check.available,
-          message: check.message,
-        });
-      } catch (error) {
-        alert("아이디 중복 확인 실패");
-        console.log(error);
-      }
-    };
+    try {
+      const check = await exists(account.userId);
+      setIdCheck({
+        available: check.available,
+        message: check.message,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  // useEffect(() => {
+  //   if (!account.userId) {
+  //     setIdCheck({ available: true, message: "" });
+  //     return;
+  //   }
 
-    checkId();
-  }, [account.userId]);
+  //   const checkId = async () => {
+  //     try {
+  //       const check = await exists(account.userId);
+  //       setIdCheck({
+  //         available: check.available,
+  //         message: check.message,
+  //       });
+  //     } catch (error) {
+  //       // alert("아이디 중복 확인 실패");
+  //       console.log(error);
+  //     }
+  //   };
+
+  //   checkId();
+  // }, [account.userId]);
 
   // 비밀번호 유효성 검사
   useEffect(() => {
@@ -113,6 +129,7 @@ function AccountForm({ account, setAccount }) {
         value={account.userId}
         hasError={!idCheck.available}
         onChange={handleChange}
+        onBlur={handleIdBlur}
       />
       <FormLine />
       <div className={styles.pwBox}>

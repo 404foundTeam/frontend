@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+// import { useEffect, useRef, useState } from "react";
 import styles from "../styles/welcome/WelcomePage.module.css";
 import {
   TextBox,
@@ -8,12 +8,12 @@ import {
   CardWrapper,
   MatchMap,
 } from "../components/welcome";
-import useAuthStore from "../store/useAuthStore";
+// import useAuthStore from "../store/useAuthStore";
 import { useNavigate } from "react-router-dom";
 
 function WelcomePage() {
   const navigate = useNavigate();
-  const accessToken = useAuthStore((state) => state.accessToken);
+  // const accessToken = useAuthStore((state) => state.accessToken);
 
   const goToLogin = () => {
     navigate("/login");
