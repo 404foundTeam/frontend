@@ -74,6 +74,9 @@
 /* 스마트 리포트 스타일 */
 .cardBox.report {
   height: 660px;
+
+  display: flex;
+  gap: 2rem;
 }
 
 /* 텍스트 위치 조정 */
@@ -87,9 +90,9 @@
 }
 
 .cardBox.report .reportImg {
-  width: 574px;
+  width: 494px;
 
-  padding-top: 108px;
+  padding-top: 168px;
   padding-right: 80px;
 }
 

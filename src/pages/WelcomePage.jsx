@@ -19,6 +19,10 @@ function WelcomePage() {
     navigate("/login");
   };
 
+  const gotToSignup = () => {
+    navigate("/signup");
+  };
+
   // useEffect(() => {
   //   if (storeUuid) navigate("/main");
   // }, [storeUuid, navigate]);
@@ -37,7 +41,7 @@ function WelcomePage() {
         title={"가게 운영과 마케팅을 한 번에 잡는 스마트 솔루션"}
         content={"사장님을 위한 새로운 성장과 전략, 지금 시작하세요."}
       />
-      <MatchMap toggleMap />
+      <MatchMap onClick={gotToSignup} />
     </div>
   );
 }

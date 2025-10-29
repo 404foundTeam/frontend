@@ -1,7 +1,7 @@
 import styles from "../../styles/welcome/MatchMap.module.css";
 import mapImg from "../../assets/welcome/map_img.png";
 
-function MatchMap({ toggleMap }) {
+function MatchMap({ onClick }) {
   return (
     <div className={styles.signMap}>
       <h2 className={styles.signTitle}>업장 등록하기</h2>
@@ -10,8 +10,8 @@ function MatchMap({ toggleMap }) {
         관리해보세요.
       </p>
       <img src={mapImg} className={styles.signImg} />
-      <button onClick={toggleMap} className={styles.welcomeSign}>
-        업장 검색
+      <button onClick={onClick} className={styles.welcomeSign}>
+        회원가입
       </button>
     </div>
   );
