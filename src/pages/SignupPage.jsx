@@ -11,6 +11,7 @@ function SignupPage() {
   const { account, setAccount, store, setStore } = useSignForm();
   const navigate = useNavigate();
 
+  // 커스텀 훅 account, store 상태로 회원가입 api 요청
   const handleSubmit = async (e) => {
     e.preventDefault();
 

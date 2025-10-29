@@ -7,6 +7,7 @@ import SignInput from "./SignInput";
 import { exists } from "../../api";
 
 function AccountForm({ account, setAccount }) {
+  const [emailError, setEmailError] = useState(false);
   const [idCheck, setIdCheck] = useState({
     available: true,
     message: "",
@@ -20,13 +21,27 @@ function AccountForm({ account, setAccount }) {
     setAccount((prev) => ({ ...prev, [name]: value }));
   };
 
+  // 이메일 유효성 검사
+  useEffect(() => {
+    if (account.email === "") {
+      setEmailError(false);
+      return;
+    }
+
+    // 이메일 정규식 (RFC 5322 기반)
+    const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+
+    setEmailError(!emailRegex.test(account.email));
+  }, [account.email]);
+
+  // 아이디 중복 검사
   useEffect(() => {
     if (!account.userId) {
       setIdCheck({ available: true, message: "" });
       return;
     }
 
-    const idCheck = async () => {
+    const checkId = async () => {
       try {
         const check = await exists(account.userId);
         setIdCheck({
@@ -39,9 +54,10 @@ function AccountForm({ account, setAccount }) {
       }
     };
 
-    idCheck();
+    checkId();
   }, [account.userId]);
 
+  // 비밀번호 유효성 검사
   useEffect(() => {
     // 비어있으면 에러 메시지 초기화
     if (account.password === "") {
@@ -55,6 +71,7 @@ function AccountForm({ account, setAccount }) {
     setPwError(!regex.test(account.password));
   }, [account.password]);
 
+  // 비밀번호 일치 검사
   useEffect(() => {
     if (pwCon === "") {
       setIsMismatch(false);
@@ -83,13 +100,14 @@ function AccountForm({ account, setAccount }) {
         isReq={false}
         type="email"
         value={account.email}
+        hasError={emailError}
         onChange={handleChange}
       />
       <FormLine />
       <SignInput
         label="아이디"
-        helper={idCheck.message}
-        error={idCheck.message}
+        helper={idCheck.available ? idCheck.message : ""}
+        error={!idCheck.available ? idCheck.message : ""}
         name="userId"
         type="text"
         value={account.userId}

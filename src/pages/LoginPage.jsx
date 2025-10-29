@@ -12,6 +12,7 @@ function LoginPage() {
   // const navigate = useNavigate();
   const setAuthStore = useAuthStore((state) => state.setAuthStore);
 
+  // 커스텀 훅 auth 업데이트
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -43,6 +44,7 @@ function LoginPage() {
     }
   };
 
+  // 버튼 활성화
   useEffect(() => {
     auth.userId && auth.password ? setIsActive(true) : setIsActive(false);
   }, [auth]);

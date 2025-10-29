@@ -9,6 +9,11 @@ import { WelcomeMap } from "../welcome";
 function StoreForm({ store, setStore }) {
   const mapRef = useRef();
   const [showMap, setShowMap] = useState(false);
+  const [verify, setVerfiy] = useState({
+    storeNumber: "",
+    representativeName: "",
+    openDate: "",
+  });
 
   const toggleMap = () => setShowMap((prev) => !prev);
 
@@ -61,15 +66,38 @@ function StoreForm({ store, setStore }) {
           </button>
         </div>
         <FormLine />
-        <SignInput label="업장 대표자" type="text" width="240px" />
+        <SignInput
+          label="업장 대표자"
+          type="text"
+          width="240px"
+          value={verify.representativeName}
+          onChange={(e) => {
+            setVerfiy((prev) => ({
+              ...prev,
+              representativeName: e.target.value,
+            }));
+          }}
+        />
         <FormLine />
         <SignInput
           label="사업자등록번호"
           helper="-없이 숫자만 입력해주세요."
-          type="text"
+          type="number"
+          value={verify.storeNumber}
+          onChange={(e) => {
+            setVerfiy((prev) => ({ ...prev, storeNumber: e.target.value }));
+          }}
         />
         <FormLine />
-        <SignInput label="개업일자" helper="(YYYYMMDD)" type="text" />
+        <SignInput
+          label="개업일자"
+          helper="(YYYYMMDD)"
+          type="number"
+          value={verify.openDate}
+          onChange={(e) => {
+            setVerfiy((prev) => ({ ...prev, openDate: e.target.value }));
+          }}
+        />
         <FormLine />
         <div className={styles.box}>
           <label className={styles.label}>
