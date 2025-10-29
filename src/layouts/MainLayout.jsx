@@ -1,17 +1,17 @@
 // src/layouts/MainLayout.jsx
 
 import { Outlet, Link } from "react-router-dom";
-import SideBar from "../components/layout/SideBar";
+// import SideBar from "../components/layout/SideBar";
 import styles from "../styles/main/MainLayout.module.css";
 import cardNewsPreview from "../assets/mainpage/image.png";
-import useUuidStore from "../store/useUuidStore";
+import useAuthStore from "../store/useAuthStore";
 
 function MainLayout() {
-  const storeName = useUuidStore((state) => state.storeName);
+  const storeName = useAuthStore((state) => state.storeName);
 
   return (
     <div className={styles.layoutContainer}>
-      <SideBar isMain={true} />
+      {/* <SideBar isMain={true} /> */}
       <main className={styles.mainContent}>
         {/* --- 배너 코드 --- */}
         <div className={styles.welcomeBanner}>

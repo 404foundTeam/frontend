@@ -1,0 +1,61 @@
+.container {
+  padding: 2rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background: #fbfbfb;
+}
+
+.form {
+  width: 720px;
+
+  margin-top: 56px;
+  padding: 3rem;
+
+  background: #ffffff;
+  border: 2px solid #d9d9d9;
+  border-radius: 10px;
+}
+
+.line {
+  margin-top: 32px;
+
+  border: 1px solid #d9d9d9;
+}
+
+.pwBox {
+  display: flex;
+  flex-direction: column;
+
+  position: relative;
+}
+
+.pwText {
+  position: absolute;
+  top: 16px;
+  left: 180px;
+
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+
+  color: #acacac;
+}
+
+.btn {
+  width: 720px;
+
+  margin-top: 24px;
+  padding: 1rem;
+
+  border-radius: 20px;
+
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 42px;
+  text-align: center;
+
+  color: #acacac;
+}

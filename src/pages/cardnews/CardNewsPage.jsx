@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { backgroundImg, generateText } from "../../api/index.js";
 import styles from "../../styles/cardnews/CardNewsPage.module.css";
 import bannerImg from "../../assets/cardnews/banner_img.png";
-import useUuidStore from "../../store/useUuidStore.js";
+import useAuthStore from "../../store/useAuthStore.js";
 import useCardStore from "../../store/useCardStore.js";
 import useTextStore from "../../store/useTextStore.js";
 import SelectHeader from "../../components/shared/SelectHeader.jsx";
@@ -13,16 +13,16 @@ import Error from "../../components/shared/Error.jsx";
 import FinButton from "../../components/shared/FinButton.jsx";
 
 function CardNewsPage() {
+  const [userText, setUserText] = useState("");
   const navigate = useNavigate();
-  const storeUuid = useUuidStore((state) => state.storeUuid);
-  const storeName = useUuidStore((state) => state.storeName);
+  const storeUuid = useAuthStore((state) => state.storeUuid);
+  const storeName = useAuthStore((state) => state.storeName);
   const setText = useTextStore((state) => state.setText);
   const setCard = useCardStore((state) => state.setCard);
 
   const [cardData, setCardData] = useState({
     cardType: "",
     menuName: "",
-    userText: "",
     generatedText: "",
     template: "",
     ratio: "",
@@ -44,7 +44,7 @@ function CardNewsPage() {
     try {
       const getText = await generateText({
         type: cardData.cardType,
-        userText: cardData.userText,
+        userText: userText,
       });
       setCardData((prev) => ({
         ...prev,
@@ -133,23 +133,19 @@ function CardNewsPage() {
           </div>
         )}
         {/* 사용자 텍스트 입력 */}
-        <div className={`${styles.cardNewsBox} ${styles.cardNewsText}`}>
+        <div className={styles.cardNewsBox}>
           <SelectHeader text="SNS 카드 뉴스에 넣고 싶은 텍스트를 입력하세요." />
           <div className={styles.cardNewsTextBox}>
             <input
-              className={`${styles.textInput} ${
-                cardData.userText ? styles.select : ""
-              }`}
+              className={`${styles.textInput} ${userText ? styles.select : ""}`}
               type="text"
               placeholder="텍스트를 입력하세요."
-              value={cardData.userText}
-              onChange={(e) =>
-                setCardData((prev) => ({ ...prev, userText: e.target.value }))
-              }
+              value={userText}
+              onChange={(e) => setUserText(e.target.value)}
             />
             <button
               className={`${styles.textButton} ${styles.cardnewsTextButton} ${
-                cardData.userText ? styles.select : ""
+                userText ? styles.select : ""
               }`}
               onClick={getGenerateText}
             >
@@ -158,7 +154,7 @@ function CardNewsPage() {
           </div>
         </div>
         {/* 변환 결과 */}
-        <div className={`${styles.cardNewsBox} ${styles.cardNewsTextResult}`}>
+        <div className={styles.cardNewsBox}>
           <SelectHeader text="변환 결과" />
           <div className={styles.textResultBox}>
             <div
@@ -179,7 +175,7 @@ function CardNewsPage() {
           </div>
         </div>
         {/* 템플릿 선택 */}
-        <div className={`${styles.cardNewsBox} ${styles.QcardNewsTemplate}`}>
+        <div className={`${styles.cardNewsBox} ${styles.cardNewsTemplate}`}>
           <SelectHeader text="원하는 템플릿을 선택해주세요." />
           <p>* 회색 배경은 AI가 텍스트로 만든 이미지입니다.</p>
           <div className={styles.templateList}>
@@ -215,14 +211,14 @@ function CardNewsPage() {
               >
                 <div className={`${styles.text} ${styles.right}`}>이미지</div>
                 <div className={`${styles.content} ${styles.right}`}>
-                  생성된 텍스트
+                  생성된{"\n"} 텍스트
                 </div>
               </div>
             </div>
           </div>
         </div>
         {/* 비율 선택 */}
-        <div className={`${styles.cardNewsBox} ${styles.cardNewsRatio}`}>
+        <div className={styles.cardNewsBox}>
           <SelectHeader text="원하는 비율을 선택해주세요." />
           <div className={styles.selectBoxs}>
             <SelectBox
@@ -246,7 +242,7 @@ function CardNewsPage() {
           </div>
         </div>
         {/* 테마 선택 */}
-        <div className={`${styles.cardNewsBox} ${styles.cardNewsTheme}`}>
+        <div className={styles.cardNewsBox}>
           <SelectHeader text="원하는 테마를 선택해주세요." />
           <div className={styles.themeList}>
             <div

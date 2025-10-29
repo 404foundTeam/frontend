@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import styles from "../../styles/my/MyScrap.module.css";
-import useUuidStore from "../../store/useUuidStore";
+import useAuthStore from "../../store/useAuthStore";
 
 function MyScrap() {
   const [cards, setCards] = useState([]);
@@ -12,7 +12,7 @@ function MyScrap() {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
 
-  const storeUuid = useUuidStore((state) => state.storeUuid);
+  const storeUuid = useAuthStore((state) => state.storeUuid);
 
   useEffect(() => {
     if (!storeUuid) {
@@ -56,7 +56,7 @@ function MyScrap() {
   return (
     <>
       <div className={styles.header}>
-        <h1 className={styles.mainTitle}>나의 컨텐츠</h1>
+        <h1 className={styles.mainTitle}>나의 카드뉴스</h1>
         <p className={styles.subtitle}>
           내가 만든 카드뉴스를 한 눈에 관리해보세요
         </p>

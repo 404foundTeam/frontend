@@ -4,6 +4,7 @@
   justify-content: center;
   gap: 2rem;
   padding: 2rem;
+  padding-top: 0;
   margin-bottom: 24px;
 }
 
@@ -23,7 +24,7 @@
   color: #6d3737;
   margin-bottom: 20px;
 }
-.chartContainer{
+.chartContainer {
   padding-top: 48px;
 }
 .cardDescription {

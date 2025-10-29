@@ -1,17 +1,22 @@
 .finButton {
-  width: 330px;
-  height: 78px;
-
   margin-bottom: 199px;
+  padding: 16px 96px;
 
   border: none;
   border-radius: 10px;
   background-color: #febf22;
 
   font-weight: 700;
-  font-size: 30px;
+  font-size: 1.875rem;
   line-height: 36px;
   letter-spacing: -0.025em;
 
   color: #6d3737;
+}
+
+@media (max-width: 430px) {
+  .finButton {
+    font-size: 1rem;
+    padding: 8px 48px;
+  }
 }

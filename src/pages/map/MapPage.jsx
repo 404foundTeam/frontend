@@ -71,7 +71,7 @@ function MapPage() {
             isSelected={select === "편의점" ? true : false}
             onClick={() => setSelect("편의점")}
           >
-            편의점
+            카페
           </CategoryButton>
           <CategoryButton
             isSelected={select === "음식점" ? true : false}

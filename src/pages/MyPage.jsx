@@ -16,7 +16,7 @@ function MyPage() {
           }`}
           onClick={() => setActive("MY")}
         >
-          마이페이지
+          카드뉴스
         </button>
         <button
           className={`${styles.tabButton} ${

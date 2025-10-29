@@ -1,11 +1,9 @@
 import styles from "../../styles/camera/CameraBanner.module.css";
-
-import useUuidStore from "../../store/useUuidStore";
-
+import useAuthStore from "../../store/useAuthStore";
 import camera from "../../assets/camera/camera.png";
 
 function CameraBanner({ isShow }) {
-  const storeName = useUuidStore((state) => state.storeName);
+  const storeName = useAuthStore((state) => state.storeName);
   return (
     <div className={styles.container}>
       {isShow && (

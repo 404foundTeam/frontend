@@ -1,14 +1,14 @@
 // src/components/MarketingContent.jsx
 
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import useUuidStore from '../../store/useUuidStore';
-import styles from '../../styles/smartreport/MarketingContent.module.css';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import useAuthStore from "../../store/useAuthStore";
+import styles from "../../styles/smartreport/MarketingContent.module.css";
 
 function MarketingContent() {
-  const storeUuid = useUuidStore((state) => state.storeUuid);
-  const dataVersion = useUuidStore((state) => state.dataVersion); // 데이터 업데이트 감지
-  
+  const storeUuid = useAuthStore((state) => state.storeUuid);
+  const dataVersion = useAuthStore((state) => state.dataVersion); // 데이터 업데이트 감지
+
   const [events, setEvents] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -25,25 +25,30 @@ function MarketingContent() {
       try {
         setIsLoading(true);
         setError(null);
-        
-        const response = await axios.get(`http://13.209.239.240/api/v1/report/${storeUuid}/marketing`);
-        
+
+        const response = await axios.get(
+          `http://13.209.239.240/api/v1/report/${storeUuid}/marketing`
+        );
+
         // API 응답 데이터 형식에 맞게 변환
-        const formattedEvents = response.data.marketingSuggestions.map(suggestion => ({
-          id: suggestion.id,
-          title: suggestion.title,
-          desc: suggestion.description,
-        }));
-        
+        const formattedEvents = response.data.marketingSuggestions.map(
+          (suggestion) => ({
+            id: suggestion.id,
+            title: suggestion.title,
+            desc: suggestion.description,
+          })
+        );
+
         setEvents(formattedEvents);
       } catch (err) {
         setError(
-                <div className={styles.error}>
-                데이터를 분석하여 맞춤 마케팅 Tip을 생성합니다.
-                <br /><br />
-                스마트 리포트에 분석할 엑셀 파일을 등록해주세요.
-                </div>
-                );
+          <div className={styles.error}>
+            데이터를 분석하여 맞춤 마케팅 Tip을 생성합니다.
+            <br />
+            <br />
+            스마트 리포트에 분석할 엑셀 파일을 등록해주세요.
+          </div>
+        );
         console.error("API Error:", err);
       } finally {
         setIsLoading(false);
@@ -55,20 +60,31 @@ function MarketingContent() {
 
   // --- DELETE 요청으로 특정 제안 삭제하기 ---
   const handleDelete = async (idToDelete) => {
-    const originalEvents = [...events];
-    const updatedEvents = events.filter(event => event.id !== idToDelete);
-    setEvents(updatedEvents);
+    // 1. window.confirm으로 사용자에게 삭제 여부를 확인받습니다.
+    const isConfirmed = window.confirm(
+      "이 마케팅 제안을 정말 삭제하시겠습니까?"
+    );
 
-    try {
-      await axios.delete(`http://13.209.239.240/api/v1/report/${storeUuid}/marketing/${idToDelete}`);
-      // 성공 시 아무것도 안함 (이미 UI에 반영됨)
-      console.log(`Suggestion with id ${idToDelete} deleted successfully.`);
-    } catch (err) {
-      // API 호출 실패 시 UI를 원래 상태로 되돌리고 에러 메시지 표시
-      alert("삭제에 실패했습니다. 다시 시도해주세요.");
-      setEvents(originalEvents);
-      console.error("Delete Error:", err);
+    // 2. 사용자가 '확인'을 눌렀을 경우에만 (isConfirmed가 true일 때) 삭제 로직을 실행합니다.
+    if (isConfirmed) {
+      const originalEvents = [...events];
+      const updatedEvents = events.filter((event) => event.id !== idToDelete);
+      setEvents(updatedEvents);
+
+      try {
+        await axios.delete(
+          `http://13.209.239.240/api/v1/report/${storeUuid}/marketing/${idToDelete}`
+        );
+        // 성공 시 아무것도 안함 (이미 UI에 반영됨)
+        console.log(`Suggestion with id ${idToDelete} deleted successfully.`);
+      } catch (err) {
+        // API 호출 실패 시 UI를 원래 상태로 되돌리고 에러 메시지 표시
+        alert("삭제에 실패했습니다. 다시 시도해주세요.");
+        setEvents(originalEvents);
+        console.error("Delete Error:", err);
+      }
     }
+    // '취소'를 누르면 아무 작업도 수행하지 않습니다.
   };
 
   const renderContent = () => {
@@ -87,7 +103,7 @@ function MarketingContent() {
           <h3 className={styles.eventTitle}>{event.title}</h3>
           <p className={styles.eventDesc}>{event.desc}</p>
         </div>
-        <button 
+        <button
           className={styles.deleteButton}
           onClick={() => handleDelete(event.id)}
         >
@@ -102,9 +118,7 @@ function MarketingContent() {
       <p className={styles.pageSubtitle}>
         AI가 분석한 데이터를 바탕으로 맞춤형 마케팅 이벤트를 제시합니다.
       </p>
-      <div className={styles.eventList}>
-        {renderContent()}
-      </div>
+      <div className={styles.eventList}>{renderContent()}</div>
     </div>
   );
 }

@@ -1,0 +1,23 @@
+.agreement {
+  margin-top: 2rem;
+
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.content {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+
+  color: #333333;
+}
+
+.required {
+  color: #febf22;
+}
+
+.selection {
+  color: #acacac;
+}

@@ -1,10 +1,10 @@
 import { Outlet } from "react-router-dom";
-import SideBar from "../components/layout/SideBar";
+// import SideBar from "../components/layout/SideBar";
 
 function CardNewsLayout() {
   return (
     <>
-      <SideBar isCard={true} />
+      {/* <SideBar isCard={true} /> */}
       <>
         <Outlet />
       </>

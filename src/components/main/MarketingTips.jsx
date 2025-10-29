@@ -1,13 +1,13 @@
 // src/components/MarketingTips.jsx
 
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import useUuidStore from '../../store/useUuidStore';
-import styles from '../../styles/main/MarketingTips.module.css';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import useAuthStore from "../../store/useAuthStore";
+import styles from "../../styles/main/MarketingTips.module.css";
 
 function MarketingTips() {
-  const storeUuid = useUuidStore((state) => state.storeUuid);
-  const dataVersion = useUuidStore((state) => state.dataVersion); 
+  const storeUuid = useAuthStore((state) => state.storeUuid);
+  const dataVersion = useAuthStore((state) => state.dataVersion);
 
   const [tips, setTips] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -24,18 +24,20 @@ function MarketingTips() {
       try {
         setIsLoading(true);
         setError(null);
-        
-        const response = await axios.get(`http://13.209.239.240/api/v1/report/${storeUuid}/marketing`);
-        
+
+        const response = await axios.get(
+          `http://13.209.239.240/api/v1/report/${storeUuid}/marketing`
+        );
+
         setTips(response.data.marketingSuggestions || []);
-        
       } catch (err) {
         setError(
-        <div className={styles.error}>
-        데이터를 분석하여 맞춤 마케팅 Tip을 생성합니다.
-        <br /><br />
-        스마트 리포트에 분석할 엑셀 파일을 등록해주세요.
-        </div>
+          <div className={styles.error}>
+            데이터를 분석하여 맞춤 마케팅 Tip을 생성합니다.
+            <br />
+            <br />
+            스마트 리포트에 분석할 엑셀 파일을 등록해주세요.
+          </div>
         );
         console.error("API Error:", err);
       } finally {
@@ -44,7 +46,7 @@ function MarketingTips() {
     };
 
     fetchMarketingTips();
-  }, [storeUuid, dataVersion]); 
+  }, [storeUuid, dataVersion]);
 
   const renderContent = () => {
     if (isLoading) {
@@ -73,18 +75,14 @@ function MarketingTips() {
 
   return (
     <div className={styles.container}>
-      <div className={styles.titleHeader}>
-        맞춤형 마케팅
-      </div>
+      <div className={styles.titleHeader}>맞춤형 마케팅</div>
 
       <div className={styles.content}>
         <p className={styles.summary}>
           AI가 제안하는 맞춤형 마케팅으로 가게 매출을 늘려보세요!
         </p>
 
-        <div className={styles.tipsList}>
-          {renderContent()}
-        </div>
+        <div className={styles.tipsList}>{renderContent()}</div>
       </div>
     </div>
   );

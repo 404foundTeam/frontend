@@ -1,0 +1,62 @@
+.titleBox {
+  width: 100%;
+
+  margin-top: 24px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.titleNav {
+  padding-left: 1000px;
+
+  display: flex;
+  gap: 1rem;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 23px;
+
+  color: #797979;
+}
+
+.titleNav a {
+  color: #797979;
+}
+
+.titleHeader {
+  margin-top: 16px;
+  margin-right: 64px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.titleImg {
+  width: 80px;
+  height: 77px;
+  transform: translateY(-12px);
+}
+
+.titleText {
+  font-weight: 600;
+  font-size: 56px;
+  line-height: 95px;
+  letter-spacing: -0.025em;
+
+  color: #febf22;
+}
+
+.content {
+  margin-top: 24px;
+
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 33px;
+  letter-spacing: -0.025em;
+
+  color: #797979;
+}

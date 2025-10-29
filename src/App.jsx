@@ -24,6 +24,8 @@ import SmartReportPage from "./pages/SmartReportPage";
 import MyLayout from "./layouts/MyLayout";
 import MyPage from "./pages/MyPage";
 import Error from "./components/shared/Error";
+import LoginPage from "./pages/LoginPage";
+import SignupPage from "./pages/SignupPage";
 
 function App() {
   // 새로고침 시 최상단 이동
@@ -38,6 +40,8 @@ function App() {
       <BrowserRouter>
         <ScrollToTop />
         <Routes>
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignupPage />} />
           <Route path="/" element={<WelcomeLayout />}>
             <Route index element={<WelcomePage />} />
           </Route>

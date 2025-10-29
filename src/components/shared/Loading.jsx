@@ -1,9 +1,9 @@
 import styles from "../../styles/shared/Loading.module.css";
-import useUuidStore from "../../store/useUuidStore";
+import useAuthStore from "../../store/useAuthStore";
 import loadingImg from "../../assets/loading_img.png";
 
 function CardNewsLoadingPage({ isCamera = false }) {
-  const storeName = useUuidStore((state) => state.storeName);
+  const storeName = useAuthStore((state) => state.storeName);
   return (
     <div className={styles.container}>
       <div className={styles.box}></div>

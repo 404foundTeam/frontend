@@ -1,7 +1,7 @@
 // src/layouts/MarketingLayout.jsx
 
 import { Outlet, Link } from "react-router-dom";
-import SideBar from "../components/layout/SideBar";
+// import SideBar from "../components/layout/SideBar";
 import styles from "../styles/marketing/MarketingLayout.module.css";
 
 // 배너에 필요한 이미지들 import.
@@ -15,7 +15,7 @@ import partnershipIllustration from "../assets/marketingpage/image copy 8.png";
 function MarketingLayout() {
   return (
     <div className={styles.layoutContainer}>
-      <SideBar />
+      {/* <SideBar /> */}
       <main className={styles.mainContent}>
         {/* --- 여기에 배너 코드를 추가합니다 --- */}
         <div className={styles.banner}>

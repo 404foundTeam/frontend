@@ -1,7 +1,5 @@
 footer {
   width: 100%;
-  /* 고민... */
-  /* max-width: 1440px; */
   height: 306px;
 
   margin: 0 auto;
@@ -128,13 +126,13 @@ footer {
   .logoText {
     padding-top: 0;
     padding-left: 24px;
-    font-size: 0.8rem;
+    font-size: 0.6rem;
   }
   .header .headerBox {
     padding-top: 22px;
-    padding-left: 46px;
+    padding-left: 60px;
     gap: 18px;
-    font-size: 0.6rem;
+    font-size: 0.4rem;
   }
   .content {
     padding-top: 4px;
@@ -149,12 +147,12 @@ footer {
     flex-wrap: wrap;
   }
   .aboutContent {
-    font-size: 0.6rem;
+    font-size: 0.4rem;
     line-height: 1.1rem;
   }
   .footer {
     padding-top: 4px;
-    font-size: 0.5rem;
+    font-size: 0.4rem;
     line-height: 1rem;
   }
 }

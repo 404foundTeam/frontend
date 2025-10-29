@@ -1,9 +1,9 @@
 .list {
-  height: 113px;
+  height: 100px;
 
   display: flex;
   align-items: center;
-  gap: 58px;
+  gap: 48px;
 
   border-bottom: 3px solid #d9d9d9;
 
@@ -23,15 +23,15 @@
 }
 
 .icon {
-  width: 39px;
-  height: 49px;
+  width: 29px;
+  height: 39px;
 
   margin-left: 62px;
 }
 
 .store .name {
   font-weight: 700;
-  font-size: 20px;
+  font-size: 1.4rem;
   line-height: 36px;
   letter-spacing: -0.025em;
 
@@ -42,7 +42,7 @@
   margin-top: 8px;
 
   font-weight: 500;
-  font-size: 16px;
+  font-size: 0.9rem;
   line-height: 19px;
   letter-spacing: -0.025em;
 
