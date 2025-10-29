@@ -8,7 +8,7 @@
 
 .label {
   font-weight: 500;
-  font-size: 14px;
+  font-size: 18px;
   line-height: 17px;
 
   color: #acacac;
@@ -16,14 +16,14 @@
 
 .input {
   margin-top: 8px;
-  padding: 20px 24px;
+  padding: 10px 12px;
 
   outline: none;
   border: 2px solid #d9d9d9;
   border-radius: 10px;
 
   font-weight: 500;
-  font-size: 18px;
+  font-size: 14px;
   line-height: 21px;
 
   color: #797979;
@@ -36,18 +36,18 @@
 
 .input::placeholder {
   font-weight: 500;
-  font-size: 18px;
+  font-size: 14px;
   line-height: 21px;
 
   color: #acacac;
 }
 
 .inputImg {
-  width: 53px;
-  height: 53px;
+  width: 30px;
+  height: 30px;
 
   position: absolute;
-  top: 30px;
+  top: 33px;
   right: 8px;
 
   background-image: url("../../assets/reset.png");

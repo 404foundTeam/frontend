@@ -9,7 +9,7 @@
 }
 
 .form {
-  width: 540px;
+  width: 400px;
 
   margin-top: 38px;
   padding: 3rem;
@@ -17,7 +17,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
+  gap: 2rem;
 
   background: #ffffff;
   border: 1px solid #d9d9d9;
@@ -26,16 +26,16 @@
 }
 
 .btn {
-  width: 240px;
+  width: 400px;
 
   margin-bottom: 16px;
-  padding: 18px 16px;
+  padding: 8px 16px;
 
   background: #f0f0f0;
   border-radius: 20px;
 
   font-weight: 500;
-  font-size: 25px;
+  font-size: 18px;
   line-height: 30px;
 
   color: #acacac;
@@ -49,8 +49,11 @@
 .authFooter {
   margin-top: 24px;
 
+  display: flex;
+  gap: 1rem;
+
   font-weight: 500;
-  font-size: 20px;
+  font-size: 16px;
   line-height: 36px;
 
   color: #acacac;

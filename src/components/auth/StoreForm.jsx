@@ -54,12 +54,6 @@ function StoreForm({ store, setStore }) {
           onClick={toggleMap}
         />
         <FormLine />
-        <StoreInfo label="업장 대표자" value={false} width="240px" />
-        <FormLine />
-        <StoreInfo label="사업자등록번호" value="21651321565" />
-        <FormLine />
-        <StoreInfo label="개업일자" value="20251029" />
-        <FormLine />
         <div className={styles.box}>
           <label className={styles.label}>
             사업자등록증<span>*</span>
@@ -72,6 +66,13 @@ function StoreForm({ store, setStore }) {
             파일 첨부하기
           </button>
         </div>
+        <FormLine />
+        <StoreInfo label="업장 대표자" value={false} width="240px" />
+        <FormLine />
+        {/* 3-2-5 */}
+        <StoreInfo label="사업자등록번호" value="216-51-32155" />
+        <FormLine />
+        <StoreInfo label="개업일자" value="2025-10-29" />
       </FormLayout>
     </>
   );
