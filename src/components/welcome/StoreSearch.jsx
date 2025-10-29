@@ -1,18 +1,10 @@
 import styles from "../../styles/welcome/StoreSearch.module.css";
 import SearchImg from "../../assets/search.png";
 
-function StoreSearch({
-  focusRef,
-  placeholder,
-  value,
-  onChange,
-  onClick,
-  onKeyDown,
-}) {
+function StoreSearch({ placeholder, value, onChange, onClick, onKeyDown }) {
   return (
     <div className={styles.container}>
       <input
-        ref={focusRef}
         className={styles.search}
         type="text"
         placeholder={placeholder}

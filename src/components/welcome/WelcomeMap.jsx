@@ -1,8 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { fetchStoresByCoord, matchStore } from "../../api/index.js";
+import { fetchStoresByCoord } from "../../api/index.js";
 import styles from "../../styles/welcome/WelcomeMap.module.css";
-import useUuidStore from "../../store/useUuidStore.js";
 import close from "../../assets/welcomeMap/close.png";
 import listTitle from "../../assets/welcomeMap/list.png";
 import MarkerImg from "../../assets/welcomeMap/marker.png";
@@ -12,8 +10,7 @@ import SearchList from "./SearchList.jsx";
 
 // const { kakao } = window;
 
-function WelcomeMap({ focusRef, onClick }) {
-  const navigate = useNavigate();
+function WelcomeMap({ focusRef, onClick, handleSelect }) {
   // SearchList DOM 접근용 ref 배열
   const searchListRefs = useRef([]);
   const infoWindowRef = useRef(null);
@@ -21,14 +18,20 @@ function WelcomeMap({ focusRef, onClick }) {
   const mapRef = useRef(null);
   const markerRef = useRef([]);
 
-  const setUuid = useUuidStore((state) => state.setUuid);
-
   const [stores, setStores] = useState([]);
   const [search, setSearch] = useState("");
   const [isClick, setIsClick] = useState(false);
   const [selectStore, setSelectStore] = useState(null);
 
   const [fail, setFail] = useState(false);
+
+  const handleConfirm = () => {
+    if (!selectStore) {
+      alert("업장을 선택해주세요.");
+      return;
+    }
+    handleSelect(selectStore);
+  };
 
   // 맵은 최초 1회만 생성
   useEffect(() => {
@@ -104,8 +107,7 @@ function WelcomeMap({ focusRef, onClick }) {
   }, [stores, selectStore]);
 
   const searchAddr = (address) => {
-    console.log("업장 검색 시작");
-    if (!address.trim()) return;
+    if (!address) return;
 
     const geocoder = new window.kakao.maps.services.Geocoder();
     geocoder.addressSearch(address, async function (result, status) {
@@ -147,21 +149,6 @@ function WelcomeMap({ focusRef, onClick }) {
     });
   };
 
-  const postStoreInfo = async () => {
-    if (!selectStore) return;
-
-    try {
-      const result = await matchStore(selectStore);
-      setUuid(result);
-      alert("업장 등록 완료!");
-      navigate("/main");
-    } catch (error) {
-      setFail(true);
-      console.log("업장 등록 실패", error);
-      alert("업장 등록에 실패했습니다.");
-    }
-  };
-
   const onChange = (e) => {
     setSearch(e.target.value);
   };
@@ -179,17 +166,19 @@ function WelcomeMap({ focusRef, onClick }) {
           어렵고 복잡한 마케팅과 운영전략을 한번에
         </p>
         <StoreSearch
-          focusRef={focusRef}
           placeholder="주소를 입력해주세요."
           value={search}
           onChange={onChange}
           onClick={() => searchAddr(search)}
           onKeyDown={(e) => {
-            if (e.key === "Enter") searchAddr(search);
+            if (e.key === "Enter") {
+              e.preventDefault();
+              searchAddr(search);
+            }
           }}
         />
       </div>
-      <div className={styles.mapBox}>
+      <div className={styles.mapBox} focusRef={focusRef}>
         <div
           className={styles.map}
           ref={container}
@@ -230,8 +219,9 @@ function WelcomeMap({ focusRef, onClick }) {
       </div>
       <div>
         <button
+          type="button"
           className={`${styles.mapButton} ${isClick ? styles.select : ""}`}
-          onClick={postStoreInfo}
+          onClick={handleConfirm}
         >
           업장 등록
         </button>

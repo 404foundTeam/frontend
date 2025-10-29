@@ -1,16 +1,15 @@
 // src/layouts/MyLayout.js
-
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
 // import SideBar from "../components/layout/SideBar";
 import WelcomeMap from "../components/welcome/WelcomeMap";
 import Blur from "../components/welcome/Blur";
 import styles from "../styles/my/MyLayout.module.css";
-import useUuidStore from "../store/useUuidStore";
+import useAuthStore from "../store/useAuthStore";
 
 function MyLayout() {
-  const storeName = useUuidStore((state) => state.storeName);
-  const roadAddress = useUuidStore((state) => state.roadAddress);
+  const storeName = useAuthStore((state) => state.storeName);
+  const roadAddress = useAuthStore((state) => state.roadAddress);
 
   const [showMap, setShowMap] = useState(false);
 

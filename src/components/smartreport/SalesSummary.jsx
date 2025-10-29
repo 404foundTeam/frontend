@@ -13,7 +13,7 @@ import {
   Filler,
 } from "chart.js";
 import axios from "axios";
-import useUuidStore from "../../store/useUuidStore";
+import useAuthStore from "../../store/useAuthStore";
 import styles from "../../styles/smartreport/SalesSummary.module.css";
 import swapIcon from "../../assets/report/swap-icon.png";
 
@@ -41,9 +41,9 @@ const formatGrowthPercentage = (percentage) => {
 
 // --- 메인 컴포넌트 ---
 function SalesSummary() {
-  const storeUuid = useUuidStore((state) => state.storeUuid);
-  const storeName = useUuidStore((state) => state.storeName);
-  const dataVersion = useUuidStore((state) => state.dataVersion);
+  const storeUuid = useAuthStore((state) => state.storeUuid);
+  const storeName = useAuthStore((state) => state.storeName);
+  const dataVersion = useAuthStore((state) => state.dataVersion);
 
   // --- 1. API 데이터를 위한 상태 관리 ---
   const [salesApiData, setSalesApiData] = useState({

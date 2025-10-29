@@ -14,7 +14,7 @@ function HeaderSection({ onClick }) {
             AI가 어렵고 복잡한 마케팅과 운영전략을 한번에
           </p>
           <button onClick={onClick} className={styles.signButton}>
-            업장 등록하기
+            로그인
           </button>
         </div>
         <div className={`${styles.headerImg} ${styles.bee}`}></div>

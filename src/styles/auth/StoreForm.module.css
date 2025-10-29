@@ -1,0 +1,60 @@
+.box {
+  margin-top: 40px;
+
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.label {
+  width: 20%;
+
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+
+  color: #333333;
+}
+
+.label span {
+  color: #febf22;
+}
+
+.storeName {
+  min-height: 24px;
+  flex: 1;
+
+  padding: 1rem;
+
+  outline: none;
+  border: 2px solid #d9d9d9;
+  border-radius: 10px;
+
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+
+  color: #333333;
+}
+
+.storeName.active {
+  border-color: #febf22;
+}
+
+.btn {
+  padding: 0.5rem 1.5rem;
+
+  border-radius: 10px;
+
+  background: #6d3737;
+
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 30px;
+
+  color: #ffffff;
+}
+
+.btn.active {
+  background: #d9d9d9;
+}

@@ -1,7 +1,7 @@
-import useUuidStore from "../../store/useUuidStore";
+import useAuthStore from "../../store/useAuthStore";
 
 function CoaSection({ title, list, Component }) {
-  const storeName = useUuidStore((state) => state.storeName);
+  const storeName = useAuthStore((state) => state.storeName);
 
   return (
     <div>

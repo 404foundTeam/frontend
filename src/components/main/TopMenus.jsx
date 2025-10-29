@@ -1,14 +1,13 @@
 // src/components/TopMenus.jsx
 
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import useUuidStore from '../../store/useUuidStore';
-import styles from '../../styles/main/Dashboard.module.css'; 
-
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import useAuthStore from "../../store/useAuthStore";
+import styles from "../../styles/main/Dashboard.module.css";
 
 function TopMenus() {
-  const storeUuid = useUuidStore((state) => state.storeUuid);
-  const dataVersion = useUuidStore((state) => state.dataVersion);
+  const storeUuid = useAuthStore((state) => state.storeUuid);
+  const dataVersion = useAuthStore((state) => state.dataVersion);
   const [menuData, setMenuData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -23,8 +22,10 @@ function TopMenus() {
     const fetchTopMenus = async () => {
       try {
         setIsLoading(true);
-        const response = await axios.get(`http://13.209.239.240/api/v1/report/${storeUuid}/product-ranking`);
-        
+        const response = await axios.get(
+          `http://13.209.239.240/api/v1/report/${storeUuid}/product-ranking`
+        );
+
         const chartData = response.data.salesDistributionChart || [];
 
         const formattedData = chartData.map((item, index) => ({
@@ -36,11 +37,11 @@ function TopMenus() {
         setMenuData(formattedData);
       } catch (err) {
         setError(
-        <>
-        메뉴 순위 정보를 확인하려면
-        <br />
-        엑셀 파일을 업로드해주세요.
-        </>
+          <>
+            메뉴 순위 정보를 확인하려면
+            <br />
+            엑셀 파일을 업로드해주세요.
+          </>
         );
         console.error("API Error:", err);
       } finally {
@@ -93,7 +94,6 @@ function TopMenus() {
         ))}
       </ul>
       <p className={styles.feedback}>
-
         가장 많이 판매된 상품은 {menuData[0].name} 입니다.
       </p>
     </div>

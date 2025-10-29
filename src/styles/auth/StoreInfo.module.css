@@ -1,22 +1,6 @@
-.inputBox {
+.container {
   margin-top: 40px;
-}
 
-.helper {
-  padding-left: 180px;
-  padding-bottom: 4px;
-
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 17px;
-
-  color: #acacac;
-}
-.helper.red {
-  color: #f83434;
-}
-
-.inputs {
   display: flex;
   align-items: center;
   gap: 2rem;
@@ -36,8 +20,10 @@
   color: #febf22;
 }
 
-.input {
+.box {
+  min-height: 24px;
   flex: 1;
+
   padding: 1rem;
 
   outline: none;
@@ -51,21 +37,16 @@
   color: #333333;
 }
 
-.input:focus,
-.input.active {
+.box.active {
   border-color: #febf22;
 }
 
-.input.error {
-  border-color: #f83434;
-}
-
-.storeBtn {
+.btn {
   padding: 0.5rem 1.5rem;
 
   border-radius: 10px;
 
-  background: #d9d9d9;
+  background: #6d3737;
 
   font-weight: 700;
   font-size: 18px;
@@ -74,6 +55,6 @@
   color: #ffffff;
 }
 
-.storeBtn.active {
-  background: #6d3737;
+.btn.active {
+  background: #d9d9d9;
 }
