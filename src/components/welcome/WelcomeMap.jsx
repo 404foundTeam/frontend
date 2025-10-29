@@ -26,7 +26,10 @@ function WelcomeMap({ focusRef, onClick, handleSelect }) {
   const [fail, setFail] = useState(false);
 
   const handleConfirm = () => {
-    if (!selectStore) alert("업장을 선택해주세요.");
+    if (!selectStore) {
+      alert("업장을 선택해주세요.");
+      return;
+    }
     handleSelect(selectStore);
   };
 
@@ -104,8 +107,7 @@ function WelcomeMap({ focusRef, onClick, handleSelect }) {
   }, [stores, selectStore]);
 
   const searchAddr = (address) => {
-    console.log("업장 검색 시작");
-    if (!address.trim()) return;
+    if (!address) return;
 
     const geocoder = new window.kakao.maps.services.Geocoder();
     geocoder.addressSearch(address, async function (result, status) {
@@ -169,7 +171,10 @@ function WelcomeMap({ focusRef, onClick, handleSelect }) {
           onChange={onChange}
           onClick={() => searchAddr(search)}
           onKeyDown={(e) => {
-            if (e.key === "Enter") searchAddr(search);
+            if (e.key === "Enter") {
+              e.preventDefault();
+              searchAddr(search);
+            }
           }}
         />
       </div>
@@ -214,6 +219,7 @@ function WelcomeMap({ focusRef, onClick, handleSelect }) {
       </div>
       <div>
         <button
+          type="button"
           className={`${styles.mapButton} ${isClick ? styles.select : ""}`}
           onClick={handleConfirm}
         >

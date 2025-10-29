@@ -34,7 +34,7 @@ function LoginPage() {
           getAuth.roadAddress
         );
         alert(getAuth.message);
-        // Navigate("/main");
+        // navigate("/main");
       } else {
         alert(getAuth.message);
       }
