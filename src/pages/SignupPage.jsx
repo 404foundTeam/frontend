@@ -66,6 +66,7 @@ function SignupPage() {
         account={account}
         setAccount={setAccount}
         handleAccount={handleAccount}
+        isStore={formValidity.store}
       />
       <StoreForm store={store} setStore={setStore} handleStore={handleStore} />
       <SignupAgreement handleAgreement={handleAgreement} />

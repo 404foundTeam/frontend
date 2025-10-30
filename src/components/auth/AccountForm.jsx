@@ -6,7 +6,7 @@ import FormTitle from "./FormTitle";
 import SignInput from "./SignInput";
 import { exists } from "../../api";
 
-function AccountForm({ account, setAccount, handleAccount }) {
+function AccountForm({ account, setAccount, handleAccount, isStore }) {
   const [emailError, setEmailError] = useState(false);
   const [idCheck, setIdCheck] = useState({
     available: true,
@@ -97,7 +97,7 @@ function AccountForm({ account, setAccount, handleAccount }) {
 
   return (
     <FormLayout>
-      <FormTitle label="계정 정보" />
+      <FormTitle label="계정 정보" isStore={isStore} />
       <SignInput
         label="이름"
         name="userName"

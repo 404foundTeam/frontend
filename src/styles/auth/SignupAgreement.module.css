@@ -7,6 +7,8 @@
 }
 
 .header {
+  padding-left: 1rem;
+
   display: flex;
   align-items: center;
   gap: 20px;
@@ -18,4 +20,8 @@
   line-height: 36px;
 
   color: #333333;
+}
+
+.agreementBox {
+  padding-left: 1rem;
 }
