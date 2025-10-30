@@ -4,7 +4,7 @@ import Agreement from "./Agreement";
 import CheckBox from "./CheckBox";
 import FormLine from "./FormLine";
 
-function SignupAgreement() {
+function SignupAgreement({ isAgreement }) {
   const [agreements, setAgreements] = useState({
     all: false,
     service: false,
@@ -38,6 +38,8 @@ function SignupAgreement() {
       setAgreements((prev) => ({ ...prev, all: allChecked }));
     }
   }, [agreements]);
+
+
 
   return (
     <div className={styles.container}>

@@ -63,8 +63,10 @@ function StoreForm({ store, setStore }) {
       } else {
         alert("진위여부 확인이 완료되었습니다.");
       }
+      setStore((prev) => ({ ...prev, verified: res.verified }));
     } catch (error) {
       alert("진위여부 확인 중 오류가 발생했습니다.");
+      setStore((prev) => ({ ...prev, verified: false }));
       console.log(error);
     }
   };

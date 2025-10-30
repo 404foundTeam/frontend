@@ -38,7 +38,9 @@ function SignupPage() {
       <TitleBox isShow={true} />
       <AccountForm account={account} setAccount={setAccount} />
       <StoreForm store={store} setStore={setStore} />
-      <SignupAgreement active={active.agreement} />
+      <SignupAgreement
+        isAgreement={active.agreement}
+      />
       <button type="submit" className={styles.btn}>
         가입하기
       </button>
