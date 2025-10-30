@@ -4,6 +4,8 @@
 }
 
 .helper {
+  height: 14.5px;
+
   padding-left: 150px;
   /* padding-left: 180px; */
   padding-bottom: 4px;
@@ -15,6 +17,7 @@
 
   color: #acacac;
 }
+
 .helper.red {
   color: #f83434;
 }

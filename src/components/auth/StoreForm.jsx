@@ -7,7 +7,7 @@ import { WelcomeMap } from "../welcome";
 import StoreInfo from "./StoreInfo";
 import { extractStoreOcr, verifyStoreLicense } from "../../api";
 
-function StoreForm({ store, setStore }) {
+function StoreForm({ store, setStore, handleStore }) {
   const mapRef = useRef();
   const fileInputRef = useRef(); // 파일 입력 참조
   const [showMap, setShowMap] = useState(false); // 모달 표시
@@ -27,7 +27,7 @@ function StoreForm({ store, setStore }) {
   };
 
   // file 상태 변경
-  const handleFile = (e) => {
+  const handleChangeFile = (e) => {
     const selected = e.target.files[0];
 
     if (selected) {
@@ -70,7 +70,7 @@ function StoreForm({ store, setStore }) {
       console.log(error);
     }
   };
-
+  // 파일 입력 시 ocr 추출
   useEffect(() => {
     if (file) {
       const getOcr = async () => {
@@ -99,6 +99,16 @@ function StoreForm({ store, setStore }) {
   useEffect(() => {
     mapRef.current?.focus();
   }, [showMap]);
+
+  // 스토어 폼 상태 페이지로 전달
+  useEffect(() => {
+    const isStoreNameValid = store.storeName.trim() !== "";
+    const isVerified = store.verified === true;
+
+    const isFormValid = isStoreNameValid && isVerified;
+
+    handleStore(isFormValid);
+  }, [store, handleStore]);
 
   // verify 하나라도 비어있으면 비활성화
   const isVerifyReady =
@@ -134,12 +144,12 @@ function StoreForm({ store, setStore }) {
             type="file"
             ref={fileInputRef}
             style={{ display: "none" }}
-            onChange={handleFile}
+            onChange={handleChangeFile}
             accept="image/png, image/jpeg"
           />
           <button
             type="button"
-            className={`${styles.btn} ${store.storeName ? styles.active : ""}`}
+            className={`${styles.btn} ${file ? styles.active : ""}`}
             onClick={handleFileInputClick}
           >
             파일 첨부하기

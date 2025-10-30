@@ -1,7 +1,7 @@
 .container {
   width: 780px;
   position: absolute;
-  top: 1600px;
+  top: 1200px;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 4;

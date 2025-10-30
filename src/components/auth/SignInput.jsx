@@ -13,6 +13,7 @@ function SignInput({
   onChange,
   onBlur,
   isStore = false,
+  autocomplete,
 }) {
   return (
     <div className={styles.inputBox}>
@@ -34,6 +35,7 @@ function SignInput({
           value={value}
           onChange={onChange}
           onBlur={onBlur}
+          autoComplete={autocomplete}
         ></input>
         {isStore && (
           <button

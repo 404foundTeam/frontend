@@ -6,7 +6,7 @@ import FormTitle from "./FormTitle";
 import SignInput from "./SignInput";
 import { exists } from "../../api";
 
-function AccountForm({ account, setAccount }) {
+function AccountForm({ account, setAccount, handleAccount }) {
   const [emailError, setEmailError] = useState(false);
   const [idCheck, setIdCheck] = useState({
     available: true,
@@ -16,23 +16,11 @@ function AccountForm({ account, setAccount }) {
   const [pwError, setPwError] = useState(false);
   const [isMismatch, setIsMismatch] = useState(false);
 
+  // 커스텀 훅 account 상태 변경
   const handleChange = (e) => {
     const { name, value } = e.target;
     setAccount((prev) => ({ ...prev, [name]: value }));
   };
-
-  // 이메일 유효성 검사
-  useEffect(() => {
-    if (account.email === "") {
-      setEmailError(false);
-      return;
-    }
-
-    // 이메일 정규식 (RFC 5322 기반)
-    const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
-
-    setEmailError(!emailRegex.test(account.email));
-  }, [account.email]);
 
   // 아이디 중복 검사
   const handleIdBlur = async () => {
@@ -51,6 +39,19 @@ function AccountForm({ account, setAccount }) {
       console.log(error);
     }
   };
+
+  // 이메일 유효성 검사
+  useEffect(() => {
+    if (account.email === "") {
+      setEmailError(false);
+      return;
+    }
+
+    // 이메일 정규식 (RFC 5322 기반)
+    const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+
+    setEmailError(!emailRegex.test(account.email));
+  }, [account.email]);
 
   // 비밀번호 유효성 검사
   useEffect(() => {
@@ -75,6 +76,24 @@ function AccountForm({ account, setAccount }) {
 
     setIsMismatch(pwCon !== account.password);
   }, [account.password, pwCon]);
+
+  // 계정 폼 상태 페이지로 전달
+  useEffect(() => {
+    const isUserNameValid = account.userName.trim() !== "";
+    const isEmailValid = !emailError;
+    const isIdValid = idCheck.available && account.userId.trim() !== "";
+    const isPasswordValid = !pwError && account.password.trim() !== "";
+    const isPwConValid = !isMismatch;
+
+    const isFormValid =
+      isUserNameValid &&
+      isEmailValid &&
+      isIdValid &&
+      isPasswordValid &&
+      isPwConValid;
+
+    handleAccount(isFormValid);
+  }, [account, emailError, idCheck, pwError, isMismatch, handleAccount]);
 
   return (
     <FormLayout>
@@ -109,18 +128,20 @@ function AccountForm({ account, setAccount }) {
         hasError={!idCheck.available}
         onChange={handleChange}
         onBlur={handleIdBlur}
+        autocomplete="username"
       />
       <FormLine />
       <div className={styles.pwBox}>
         <SignInput
           label="비밀번호"
-          helper="영문, 숫자, 특수문자 조합으로 6~20자를 입력해주세요."
+          helper="영문, 숫자, 특수문자 조합으로 6~20자"
           error="영문, 숫자, 특수문자 조합으로 6~20자로 입력해주세요."
           name="password"
           type="password"
           value={account.password}
           hasError={pwError}
           onChange={handleChange}
+          autocomplete="new-password"
         />
         <SignInput
           label="비밀번호 확인"
@@ -129,6 +150,7 @@ function AccountForm({ account, setAccount }) {
           value={pwCon}
           hasError={isMismatch}
           onChange={(e) => setPwCon(e.target.value)}
+          autocomplete="new-password"
         />
       </div>
     </FormLayout>
