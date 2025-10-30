@@ -1,6 +1,6 @@
-// src/components/SalesSummary.jsx
+// src/components/smartreport/SalesSummary.jsx
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Line } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -40,7 +40,7 @@ const formatGrowthPercentage = (percentage) => {
 };
 
 // --- 메인 컴포넌트 ---
-function SalesSummary() {
+function SalesSummary({ year, month }) { // 💡 1. props 받기
   const storeUuid = useAuthStore((state) => state.storeUuid);
   const storeName = useAuthStore((state) => state.storeName);
   const dataVersion = useAuthStore((state) => state.dataVersion);
@@ -59,7 +59,19 @@ function SalesSummary() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // --- 2. API 호출 로직 ---
+  // API URL을 동적으로 생성하는 헬퍼 함수
+  const getApiUrl = useCallback((endpoint) => {
+    const BASE_URL = "http://13.209.239.240";
+    if (year && month) {
+      // "월별 리포트"용 API 경로
+      return `${BASE_URL}/api/v1/monthly-report/${storeUuid}/${year}/${month}/${endpoint}`;
+    } else {
+      // "최신 리포트"용 API 경로 (기존 경로)
+      return `${BASE_URL}/api/v1/report/${storeUuid}/${endpoint}`;
+    }
+  }, [storeUuid, year, month]);
+
+  // --- API 호출 로직  ---
   useEffect(() => {
     if (!storeUuid) {
       setIsLoading(false);
@@ -72,27 +84,17 @@ function SalesSummary() {
         setIsLoading(true);
         setError(null);
 
-        // 여러 API를 동시에 호출합니다.
+        // 헬퍼 함수를 사용해 동적 URL로 API 동시 호출
         const [salesRes, receiptRes, rankingRes, ratingRes, keywordsRes] =
           await Promise.allSettled([
-            axios.get(
-              `http://13.209.239.240/api/v1/report/${storeUuid}/monthly-sales`
-            ),
-            axios.get(
-              `http://13.209.239.240/api/v1/report/${storeUuid}/receipt-count`
-            ),
-            axios.get(
-              `http://13.209.239.240/api/v1/report/${storeUuid}/product-ranking`
-            ),
-            axios.get(
-              `http://13.209.239.240/api/v1/report/${storeUuid}/rating`
-            ),
-            axios.get(
-              `http://13.209.239.240/api/v1/report/${storeUuid}/keywords`
-            ),
+            axios.get(getApiUrl("monthly-sales")),
+            axios.get(getApiUrl("receipt-count")),
+            axios.get(getApiUrl("product-ranking")),
+            axios.get(getApiUrl("rating")),
+            axios.get(getApiUrl("keywords")),
           ]);
 
-        // 각 API 응답을 성공/실패에 따라 처리합니다.
+        // 각 API 응답을 성공/실패에 따라 처리
         if (salesRes.status === "fulfilled") {
           const { currentMonthSales, growthPercentage } = salesRes.value.data;
           setSalesApiData({
@@ -150,6 +152,9 @@ function SalesSummary() {
                 ],
               },
             });
+          } else {
+             // 데이터가 비어있을 경우 (월별 리포트 등)
+             setRatingData({ average: 0, chartData: null });
           }
         } else {
           console.error("평점 API 호출 실패:", ratingRes.reason);
@@ -169,7 +174,7 @@ function SalesSummary() {
     };
 
     fetchAllSalesData();
-  }, [storeUuid, dataVersion]); // storeUuid 또는 dataVersion이 변경될 때마다 다시 호출
+  }, [storeUuid, dataVersion, getApiUrl]); 
 
   // --- 차트 옵션 ---
   const chartOptions = {
@@ -196,7 +201,8 @@ function SalesSummary() {
   if (error) {
     return (
       <div className={styles.summaryContainer}>
-        <p>{error}</p>
+        <p>데이터를 불러오는 중 오류가 발생했습니다.</p> 
+        {/* 💡 에러 메시지를 좀 더 범용적으로 수정 */}
       </div>
     );
   }
