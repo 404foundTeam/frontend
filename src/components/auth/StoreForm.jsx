@@ -102,7 +102,7 @@ function StoreForm({ store, setStore, handleStore }) {
 
   // 스토어 폼 상태 페이지로 전달
   useEffect(() => {
-    const isStoreNameValid = store.storeName.trim() !== "";
+    const isStoreNameValid = (store.storeName || "").trim() !== "";
     const isVerified = store.verified === true;
 
     const isFormValid = isStoreNameValid && isVerified;
