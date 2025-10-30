@@ -33,7 +33,11 @@ export const exists = async ({ userId }) => {
 
 // 회원가입 - ocr 추출
 export const extractStoreOcr = async (formData) => {
-  const res = await api.post("/stores/ocr", formData);
+  const res = await api.post("/stores/ocr", formData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
   return res.data;
 };
 
