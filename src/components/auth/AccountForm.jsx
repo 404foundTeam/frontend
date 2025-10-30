@@ -42,7 +42,7 @@ function AccountForm({ account, setAccount }) {
     }
 
     try {
-      const check = await exists(account.userId);
+      const check = await exists({ userId: account.userId });
       setIdCheck({
         available: check.available,
         message: check.message,

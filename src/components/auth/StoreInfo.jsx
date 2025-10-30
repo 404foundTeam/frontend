@@ -4,20 +4,35 @@ function StoreInfo({
   label,
   value,
   width = "300px",
+  isBlur,
   isName,
+  isReq = false,
   isFilled = false,
   onClick,
 }) {
+  let displayValue = value;
+
+  // 사업자등록번호 하이픈 추가
+  if (label === "사업자등록번호" && value) {
+    displayValue = `${value.substring(0, 3)}-${value.substring(
+      3,
+      5
+    )}-${value.substring(5, 10)}`;
+  }
+
   return (
     <div className={styles.container}>
-      <label className={styles.label}>{label}</label>
+      <label className={`${styles.label} ${isBlur ? styles.blur : ""}`}>
+        {label}
+        {isReq ? <span>*</span> : ""}
+      </label>
       <div
         className={`${styles.box} ${value ? styles.active : ""} ${
           isFilled ? styles.storeName : ""
-        }`}
+        } ${isBlur ? styles.blur : ""}`}
         style={{ maxWidth: width }}
       >
-        {value}
+        {displayValue}
       </div>
       {isName && (
         <button

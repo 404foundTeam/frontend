@@ -7,6 +7,17 @@
   gap: 2rem;
 }
 
+/* .blur {
+  width: 660px;
+  height: 570px;
+
+  position: absolute;
+  z-index: 1;
+
+  background-color: #ffffff;
+  opacity: 0.6;
+} */
+
 .label {
   width: 20%;
 
@@ -16,6 +27,10 @@
   line-height: 24px;
 
   color: #333333;
+}
+
+.label.blur {
+  color: #d9d9d9;
 }
 
 .label span {
@@ -39,6 +54,10 @@
   line-height: 24px;
 
   color: #333333;
+}
+
+.box.blur {
+  border: 2px solid #f0efef;
 }
 
 .box.active {

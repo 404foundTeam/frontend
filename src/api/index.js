@@ -24,9 +24,33 @@ export const login = async ({ userId, password }) => {
 
 // 회원가입 -아이디 중복 확인
 export const exists = async ({ userId }) => {
-  const res = await api.get("/users/exists", { userId });
+  const res = await api.get("/users/exists", {
+    params: { userId },
+  });
   return res.data;
 };
+//
+
+// 회원가입 - ocr 추출
+export const extractStoreOcr = async (formData) => {
+  const res = await api.post("/stores/ocr", formData);
+  return res.data;
+};
+
+// 회원가입 - 진위여부
+export const verifyStoreLicense = async ({
+  storeNumber,
+  representativeName,
+  openDate,
+}) => {
+  const res = await api.post("/stores/verify", {
+    storeNumber,
+    representativeName,
+    openDate,
+  });
+  return res.data;
+};
+
 // 회원가입 - 서버에 등록
 export const signup = async (payload) => {
   const res = await api.post("/auth/signup", payload);
