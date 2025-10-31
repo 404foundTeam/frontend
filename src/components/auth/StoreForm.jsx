@@ -47,7 +47,7 @@ function StoreForm({ store, setStore, handleStore }) {
       ...prev,
       placeId: selectedStore.placeId,
       // store or place
-      storeName: selectedStore.storeName,
+      storeName: selectedStore.placeName,
       roadAddress: selectedStore.roadAddress,
       longitude: selectedStore.longitude,
       latitude: selectedStore.latitude,
@@ -155,12 +155,6 @@ function StoreForm({ store, setStore, handleStore }) {
     handleStore(isFormValid);
   }, [store, handleStore]);
 
-  // verify 하나라도 비어있으면 비활성화
-  const isVerifyReady =
-    verify.storeNumber !== "" &&
-    verify.representativeName !== "" &&
-    verify.openDate !== "";
-
   return (
     <>
       {showMap && (
@@ -231,10 +225,10 @@ function StoreForm({ store, setStore, handleStore }) {
           <button
             type="button"
             className={styles.confirmBtn}
-            disabled={!isVerifyReady} // verify 하나라도 비어있으면 비활성화
+            disabled={store.verified}
             onClick={handleVerify}
           >
-            진위여부 확인하기
+            {store.verified ? "진위여부 확인 완료" : "진위여부 확인하기"}
           </button>
         </div>
       </FormLayout>
