@@ -4,7 +4,7 @@ import FormLayout from "./FormLayout";
 import FormLine from "./FormLine";
 import FormTitle from "./FormTitle";
 import SignInput from "./SignInput";
-import { exists } from "../../api";
+import { exists } from "../../api/auth";
 
 function AccountForm({ account, setAccount, handleAccount, isStore }) {
   const [emailError, setEmailError] = useState(false);

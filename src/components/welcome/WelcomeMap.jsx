@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { fetchStoresByCoord } from "../../api/index.js";
+import { fetchStoresByCoord } from "../../api/auth.js";
 import styles from "../../styles/welcome/WelcomeMap.module.css";
 import close from "../../assets/welcomeMap/close.png";
 import listTitle from "../../assets/welcomeMap/list.png";

@@ -5,7 +5,7 @@ import FormLine from "./FormLine";
 import FormTitle from "./FormTitle";
 import { WelcomeMap } from "../welcome";
 import StoreInfo from "./StoreInfo";
-import { extractStoreOcr, verifyStoreLicense } from "../../api";
+import { extractStoreOcr, verifyStoreLicense } from "../../api/auth";
 import ShowStoreInfo from "./ShowStoreInfo";
 import { toast } from "react-toastify";
 
@@ -46,6 +46,7 @@ function StoreForm({ store, setStore, handleStore }) {
     setStore((prev) => ({
       ...prev,
       placeId: selectedStore.placeId,
+      // store or place
       storeName: selectedStore.storeName,
       roadAddress: selectedStore.roadAddress,
       longitude: selectedStore.longitude,

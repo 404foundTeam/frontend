@@ -1,4 +1,4 @@
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import styles from "../../styles/layout/Header.module.css";
 import logoImg from "../../assets/logo.png";
 import up from "../../assets/menu_up.png";
@@ -10,7 +10,12 @@ import ProfileMenu from "./ProfileMenu";
 function Header({ isWelcome }) {
   const [showMarketing, setShowMarketing] = useState(false); // 홍보 메뉴 제어
   const [showProfile, setShowProfile] = useState(false); // 프로필 메뉴 제어
-  const loaction = useLocation();
+  const navigate = useNavigate();
+  const loaction = useLocation(); // 메뉴 제거
+
+  const goToMain = () => {
+    navigate("/main");
+  };
 
   // 페이지 이동 시 모든 메뉴 제거
   useEffect(() => {
@@ -20,11 +25,9 @@ function Header({ isWelcome }) {
 
   return (
     <header>
-      <div className={styles.titleBox}>
+      <div className={styles.titleBox} onClick={goToMain}>
         <img src={logoImg} className={styles.logoImg}></img>
-        <NavLink to={!isWelcome ? "/main" : "/"} className={styles.text}>
-          market BEE
-        </NavLink>
+        <div className={styles.text}>market BEE</div>
       </div>
       <div className={styles.links}>
         {!isWelcome && (
