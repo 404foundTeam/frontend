@@ -1,13 +1,41 @@
 .menuBox {
+  width: 124px;
+
   position: absolute;
   z-index: 10;
   top: 50px;
   left: 88px;
 
-  padding: 1.5rem 1rem;
+  /* padding: 1.5rem 1rem; */
 
   border-radius: 10px;
   box-shadow: 1px 4px 30px 10px rgba(0, 0, 0, 0.05);
 
   background: #ffffff;
+}
+
+.content {
+  padding: 0.5rem 1rem;
+}
+
+.content div {
+  font-weight: 500;
+  font-size: 15px;
+  letter-spacing: -0.025em;
+
+  color: #000000;
+}
+
+.line {
+  border: 1px solid #e5e5e5;
+}
+
+.logout {
+  padding: 0.5rem 1rem;
+
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: -0.025em;
+
+  color: #7b7b7b;
 }
