@@ -6,6 +6,7 @@ const useAuthStore = create(
   persist(
     (set) => ({
       accessToken: "",
+      storeUuid: "",
       storeName: "",
       roadAddress: "",
       dataVersion: 1,

@@ -27,7 +27,7 @@ ChartJS.register(
 // 요일을 정렬하기 위한 순서 객체
 const dayOrder = { 월: 1, 화: 2, 수: 3, 목: 4, 금: 5, 토: 6, 일: 7 };
 
-function TotalVisitors() {
+function TotalVisitors({ year, month }) {
   const storeUuid = useAuthStore((state) => state.storeUuid);
   const dataVersion = useAuthStore((state) => state.dataVersion);
   const [chartData, setChartData] = useState(null);
@@ -45,10 +45,15 @@ function TotalVisitors() {
     const fetchVisitorStats = async () => {
       try {
         setIsLoading(true);
-        const response = await axios.get(
-          `http://13.209.239.240/api/v1/report/${storeUuid}/visitor-stats`
-        );
-
+        let apiUrl;
+        if (year && month) {
+          apiUrl = `http://13.209.239.240/api/v1/monthly-report/${storeUuid}/${year}/${month}/visitor-stats`;
+        } else {
+          apiUrl = `http://13.209.239.240/api/v1/report/${storeUuid}/visitor-stats`;
+        }
+        
+        const response = await axios.get(apiUrl);
+        
         const rankData = response.data.dailyVisitorRank || [];
 
         if (rankData.length > 0) {
@@ -93,7 +98,7 @@ function TotalVisitors() {
     };
 
     fetchVisitorStats();
-  }, [storeUuid, dataVersion]);
+  }, [storeUuid, dataVersion, year, month]);
 
   const options = {
     responsive: true,

@@ -1,11 +1,22 @@
 /* 페이지 전체 배경 스타일 */
 .container {
   width: 100%;
-  max-width: 1920px;
-  min-height: 864px;
+  /* max-width: 1920px; */
+  /* min-height: 864px; */
   position: relative;
 
   margin: 0 auto;
+}
+
+.line {
+  width: 100%;
+  max-width: 1440px;
+
+  margin: 0 auto;
+  /* position: absolute; */
+  /* top: 0; */
+
+  border-top: 3px solid #d9d9d9;
 }
 
 @media (max-width: 430px) {

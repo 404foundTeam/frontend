@@ -6,11 +6,11 @@ import useAuthStore from "../../store/useAuthStore";
 import styles from "../../styles/smartreport/ImprovementTips.module.css";
 import tipIcon from "../../assets/report/tip-icon.png";
 
-function ImprovementTips() {
+function ImprovementTips({ year, month }) {
   const storeUuid = useAuthStore((state) => state.storeUuid);
   const dataVersion = useAuthStore((state) => state.dataVersion); // 데이터 새로고침 감지
-
-  const [tipsText, setTipsText] = useState("");
+  
+  const [tipsText, setTipsText] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -25,10 +25,15 @@ function ImprovementTips() {
       try {
         setIsLoading(true);
         setError(null);
-        const response = await axios.get(
-          `http://13.209.239.240/api/v1/report/${storeUuid}/improvement-tip`
-        );
+        let apiUrl;
+        if (year && month) {
+          apiUrl = `http://13.209.239.240/api/v1/monthly-report/${storeUuid}/${year}/${month}/improvement-tip`;
+        } else {
+          apiUrl = `http://13.209.239.240/api/v1/report/${storeUuid}/improvement-tip`;
+        }
 
+        const response = await axios.get(apiUrl);
+        
         // API 응답에서 combinedTips 텍스트를 상태에 저장
         setTipsText(response.data.combinedTips || "");
       } catch (err) {
@@ -40,7 +45,7 @@ function ImprovementTips() {
     };
 
     fetchTips();
-  }, [storeUuid, dataVersion]); // storeUuid나 dataVersion이 바뀌면 데이터를 다시 불러옴
+  }, [storeUuid, dataVersion, year, month]); // storeUuid나 dataVersion이 바뀌면 데이터를 다시 불러옴
 
   const renderContent = () => {
     if (isLoading) {

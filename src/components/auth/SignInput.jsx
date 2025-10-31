@@ -7,11 +7,13 @@ function SignInput({
   name,
   isReq = true,
   type,
-  width = "480px",
+  width = "300px",
   value,
   hasError = false,
   onChange,
+  onBlur,
   isStore = false,
+  autocomplete,
 }) {
   return (
     <div className={styles.inputBox}>
@@ -32,6 +34,8 @@ function SignInput({
           style={{ maxWidth: width }}
           value={value}
           onChange={onChange}
+          onBlur={onBlur}
+          autoComplete={autocomplete}
         ></input>
         {isStore && (
           <button

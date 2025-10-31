@@ -1,11 +1,14 @@
 .container {
-  width: 720px;
+  width: 560px;
 
-  margin-top: 56px;
+  margin-top: 3rem;
+  /* margin-top: 56px; */
   padding: 2rem;
 }
 
 .header {
+  padding-left: 1rem;
+
   display: flex;
   align-items: center;
   gap: 20px;
@@ -17,4 +20,8 @@
   line-height: 36px;
 
   color: #333333;
+}
+
+.agreementBox {
+  padding-left: 1rem;
 }

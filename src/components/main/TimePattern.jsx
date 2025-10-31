@@ -16,11 +16,11 @@ import styles from "../../styles/main/Dashboard.module.css";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip);
 
-function TimePattern() {
+function TimePattern({ year, month }) {
   const storeUuid = useAuthStore((state) => state.storeUuid);
-  const dataVersion = useAuthStore((state) => state.dataVersion);
-  const [chartData, setChartData] = useState(null);
-  const [summary, setSummary] = useState("");
+  const dataVersion = useAuthStore((state) => state.dataVersion); 
+  const [chartData, setChartData] = useState(null); 
+  const [summary, setSummary] = useState(''); 
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -34,10 +34,15 @@ function TimePattern() {
     const fetchTimePattern = async () => {
       try {
         setIsLoading(true);
-        const response = await axios.get(
-          `http://13.209.239.240/api/v1/report/${storeUuid}/visitor-stats`
-        );
-
+        let apiUrl;
+        if (year && month) {
+          apiUrl = `http://13.209.239.240/api/v1/monthly-report/${storeUuid}/${year}/${month}/visitor-stats`;
+        } else {
+          apiUrl = `http://13.209.239.240/api/v1/report/${storeUuid}/visitor-stats`;
+        }
+        
+        const response = await axios.get(apiUrl);
+        
         const mostVisited = response.data.mostVisitedHours || [];
 
         if (mostVisited.length > 0) {
@@ -79,7 +84,7 @@ function TimePattern() {
     };
 
     fetchTimePattern();
-  }, [storeUuid, dataVersion]);
+  }, [storeUuid, dataVersion, year, month]);
 
   // 차트 옵션
   const options = {

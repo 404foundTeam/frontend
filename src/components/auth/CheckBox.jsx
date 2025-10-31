@@ -1,6 +1,6 @@
 import styles from "../../styles/auth/CheckBox.module.css";
 
-function CheckBox({ size = "20px", isSelected, onClick }) {
+function CheckBox({ size = "15px", isSelected, onClick }) {
   return (
     <div
       style={{ width: size, height: size }}

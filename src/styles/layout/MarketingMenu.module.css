@@ -1,0 +1,41 @@
+.menuBox {
+  position: absolute;
+  z-index: 10;
+  top: 50px;
+  left: 88px;
+
+  padding: 1.5rem 1rem;
+
+  border-radius: 10px;
+  box-shadow: 1px 4px 30px 10px rgba(0, 0, 0, 0.05);
+
+  background: #ffffff;
+}
+
+.menuTitle {
+  padding-bottom: 0.5rem;
+
+  font-weight: 500;
+  font-size: 15px;
+  letter-spacing: -0.025em;
+
+  color: #989898;
+
+  border-bottom: 2px solid #acacac;
+}
+
+.navs {
+  margin-top: 0.5rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.navs a {
+  font-weight: 500;
+  font-size: 15px;
+  letter-spacing: -0.025em;
+
+  color: #333333;
+}

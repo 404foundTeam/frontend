@@ -20,7 +20,8 @@ function Toast({ message }) {
   return <div className={styles.toast}>{message}</div>;
 }
 
-function ReportContent() {
+
+function ReportContent({ year, month }) {
   const storeUuid = useAuthStore((state) => state.storeUuid);
   const storeName = useAuthStore((state) => state.storeName);
   const incrementDataVersion = useAuthStore(
@@ -29,11 +30,11 @@ function ReportContent() {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   // const [toastMessage, setToastMessage] = useState('');
+  const isMonthlyReport = year && month;
 
   // --- API 호출 로직 ---
   useEffect(() => {
-    // 가게 정보가 없으면 API를 호출하지 않음
-    if (!storeUuid || !storeName) {
+    if (isMonthlyReport || !storeUuid || !storeName) {
       return;
     }
 
@@ -44,7 +45,7 @@ function ReportContent() {
       axios
         .post("http://13.209.239.240/api/v1/report", {
           storeUuid: storeUuid,
-          placeName: storeName,
+          storeName: storeName,
         })
         .then((response) => {
           const { status, message } = response.data;
@@ -69,7 +70,7 @@ function ReportContent() {
     };
 
     triggerCrawl();
-  }, [storeUuid, storeName, incrementDataVersion]); // 의존성 배열에 함수도 포함
+  }, [storeUuid, storeName, incrementDataVersion, isMonthlyReport]); // 의존성 배열에 함수도 포함
 
   return (
     <>
@@ -90,7 +91,12 @@ function ReportContent() {
                     </span>
                     님의 스마트 리포트
                   </h2>
-                  <p>이번달 스마트 리포트를 확인해보세요!</p>
+                  <p>
+                    {isMonthlyReport 
+                      ? `${year}년 ${month}월 리포트를 확인해보세요!`
+                      : "이번달 스마트 리포트를 확인해보세요!"
+                    }
+                  </p>
                 </div>
                 <img
                   src={illustration}
@@ -103,28 +109,30 @@ function ReportContent() {
             {/* 오른쪽 컬럼: 카드 그리드와 버튼 */}
             <div className={styles.rightColumn}>
               <div className={styles.dashboardGrid}>
-                <TopMenus />
-                <TimePattern />
-                <DayPattern />
-                <TotalVisitors />
+                <TopMenus year={year} month={month} />
+                <TimePattern year={year} month={month} />
+                <DayPattern year={year} month={month} />
+                <TotalVisitors year={year} month={month} />
               </div>
-              <div className={styles.actionButtons}>
-                <button
-                  className={styles.updateButton}
-                  onClick={() => setIsModalOpen(true)}
-                >
-                  데이터 업데이트
-                </button>
-                <button className={styles.posButton}>포스 연동</button>
-              </div>
+              {!isMonthlyReport && (
+                <div className={styles.actionButtons}>
+                  <button
+                    className={styles.updateButton}
+                    onClick={() => setIsModalOpen(true)}
+                  >
+                    데이터 업데이트
+                  </button>
+                  <button className={styles.posButton}>포스 연동</button>
+                </div>
+              )}
             </div>
           </div>
 
           <div className={styles.summarySection}>
-            <SalesSummary />
+            <SalesSummary year={year} month={month}/>
           </div>
           <div className={styles.tipsSection}>
-            <ImprovementTips />
+            <ImprovementTips year={year} month={month}/>
           </div>
         </div>
       </div>
