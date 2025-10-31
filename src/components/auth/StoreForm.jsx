@@ -6,6 +6,7 @@ import FormTitle from "./FormTitle";
 import { WelcomeMap } from "../welcome";
 import StoreInfo from "./StoreInfo";
 import { extractStoreOcr, verifyStoreLicense } from "../../api";
+import ShowStoreInfo from "./ShowStoreInfo";
 
 function StoreForm({ store, setStore, handleStore }) {
   const mapRef = useRef();
@@ -18,6 +19,10 @@ function StoreForm({ store, setStore, handleStore }) {
     representativeName: "",
     openDate: "",
   });
+
+  const [ocrModal, setOcrModal] = useState(false); // ocr 추출 모달창
+  // 임시 상태 저장
+  const [ocrData, setOcrData] = useState(null);
 
   const toggleMap = () => setShowMap((prev) => !prev);
 
@@ -49,6 +54,24 @@ function StoreForm({ store, setStore, handleStore }) {
     toggleMap();
   };
 
+  const handleAccept = () => {
+    setVerify(ocrData);
+    setBlur(false);
+    setOcrModal(false);
+    setOcrData(null);
+  };
+
+  const handleCancel = () => {
+    setOcrModal(false);
+    setOcrData(null);
+
+    // 초기화
+    setFile(null);
+    if (fileInputRef.current) {
+      fileInputRef.current.value = null;
+    }
+  };
+
   // 진위여부 확인
   const handleVerify = async () => {
     const { storeNumber, representativeName, openDate } = verify;
@@ -70,7 +93,8 @@ function StoreForm({ store, setStore, handleStore }) {
       console.log(error);
     }
   };
-  // 파일 입력 시 ocr 추출
+
+  // 파일 입력 시 ocr 추출 후 모달 표시
   useEffect(() => {
     if (file) {
       const getOcr = async () => {
@@ -79,16 +103,23 @@ function StoreForm({ store, setStore, handleStore }) {
           formData.append("storeLicense", file);
 
           const ocr = await extractStoreOcr(formData);
-          setVerify({
+          setOcrData({
             storeNumber: ocr.storeNumber,
             representativeName: ocr.representativeName,
             openDate: ocr.openDate,
           });
+          setOcrModal(true);
           alert(ocr.message);
-          setBlur(false);
+          // setBlur(false);
         } catch (error) {
           alert("파일 분석에 실패했습니다.");
           console.log(error);
+
+          // 초기화
+          setFile(null);
+          if (fileInputRef.current) {
+            fileInputRef.current.value = null;
+          }
         }
       };
 
@@ -127,6 +158,17 @@ function StoreForm({ store, setStore, handleStore }) {
       )}
       <FormLayout>
         <FormTitle label="업장 정보" isShow={true} />
+        {ocrModal && (
+          <div className={styles.modal}>
+            <ShowStoreInfo
+              representativeName={ocrData.representativeName}
+              storeNumber={ocrData.storeNumber}
+              openDate={ocrData.openDate}
+              onCancel={handleCancel}
+              onAccept={handleAccept}
+            />
+          </div>
+        )}
         <StoreInfo
           label="업장명"
           value={store.storeName}
