@@ -46,7 +46,7 @@ function StoreForm({ store, setStore, handleStore }) {
     setStore((prev) => ({
       ...prev,
       placeId: selectedStore.placeId,
-      storeName: selectedStore.storeName,
+      storeName: selectedStore.placeName,
       roadAddress: selectedStore.roadAddress,
       longitude: selectedStore.longitude,
       latitude: selectedStore.latitude,
@@ -170,7 +170,7 @@ function StoreForm({ store, setStore, handleStore }) {
         />
       )}
       <FormLayout>
-        <FormTitle label="업장 정보" isShow={true} />
+        <FormTitle label="업장 정보" isShow={true} isStore={store.verified} />
         {ocrModal && (
           <div className={styles.modal}>
             <ShowStoreInfo

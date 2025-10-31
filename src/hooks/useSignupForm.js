@@ -12,7 +12,7 @@ export function useSignForm() {
     placeId: "",
     storeName: "",
     roadAddress: "",
-    verified: null,
+    verified: false,
     longitude: "",
     latitude: "",
   });
