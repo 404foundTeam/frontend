@@ -21,7 +21,7 @@ function HeaderSection({ onClick }) {
         <div className={`${styles.headerImg} ${styles.bee}`}></div>
         <div className={`${styles.headerImg} ${styles.hive}`}></div>
       </div>
-      <div className={styles.headrBottomBox}></div>
+      {/* <div className={styles.headrBottomBox}></div> */}
     </div>
   );
 }

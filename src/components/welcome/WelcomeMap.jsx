@@ -88,7 +88,7 @@ function WelcomeMap({ focusRef, onClick, handleSelect }) {
         }
         // 인포윈도우 생성
         const infoWindow = new window.kakao.maps.InfoWindow({
-          content: `<div style='padding:5px;font-size:14px;'>${store.placeName}</div>`,
+          content: `<div style='padding:5px;font-size:14px;'>${store.storeName}</div>`,
         });
         infoWindow.open(mapRef.current, marker);
         infoWindowRef.current = infoWindow;
@@ -205,7 +205,7 @@ function WelcomeMap({ focusRef, onClick, handleSelect }) {
                     }
                     // 인포윈도우 생성
                     const infoWindow = new window.kakao.maps.InfoWindow({
-                      content: `<div style='padding:5px;font-size:14px;'>${store.placeName}</div>`,
+                      content: `<div style='padding:5px;font-size:14px;'>${store.storeName}</div>`,
                     });
                     infoWindow.open(mapRef.current, markerRef.current[idx]);
                     infoWindowRef.current = infoWindow;

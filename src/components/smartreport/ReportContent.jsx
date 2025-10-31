@@ -45,7 +45,7 @@ function ReportContent({ year, month }) {
       axios
         .post("http://13.209.239.240/api/v1/report", {
           storeUuid: storeUuid,
-          placeName: storeName,
+          storeName: storeName,
         })
         .then((response) => {
           const { status, message } = response.data;

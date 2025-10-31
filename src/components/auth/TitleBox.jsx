@@ -1,14 +1,22 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "../../styles/auth/TitleBox.module.css";
 import titleImg from "../../assets/titleImg.png";
 
 function TitleBox({ isShow = false }) {
+  const navigate = useNavigate();
+
+  const goToHome = () => {
+    navigate("/");
+  };
+
   return (
     <div className={styles.titleBox}>
-      <div className={styles.titleNav}>
-        <Link to="/">market BEE 홈</Link> |<Link to="/login">로그인</Link>
-      </div>
-      <div className={styles.titleHeader}>
+      {isShow && (
+        <div className={styles.titleNav}>
+          <Link to="/login">로그인</Link>
+        </div>
+      )}
+      <div className={styles.titleHeader} onClick={goToHome}>
         <img src={titleImg} className={styles.titleImg} />
         <span className={styles.titleText}>market BEE</span>
       </div>

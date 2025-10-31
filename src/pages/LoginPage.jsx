@@ -9,7 +9,7 @@ import LoginInput from "../components/auth/LoginInput";
 function LoginPage() {
   const [auth, setAuth] = useState({ userId: "", password: "" });
   const [isActive, setIsActive] = useState(false);
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const setAuthStore = useAuthStore((state) => state.setAuthStore);
 
   // 커스텀 훅 auth 업데이트
@@ -34,7 +34,7 @@ function LoginPage() {
           getAuth.roadAddress
         );
         alert(getAuth.message);
-        // navigate("/main");
+        navigate("/main");
       } else {
         alert(getAuth.message);
       }

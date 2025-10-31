@@ -1,5 +1,6 @@
 .line {
-  margin-top: 32px;
+  margin-top: 0.75rem;
+  /* margin-top: 2rem; */
 
   border: 1px solid #d9d9d9;
 }

@@ -6,7 +6,7 @@ import FormTitle from "./FormTitle";
 import SignInput from "./SignInput";
 import { exists } from "../../api";
 
-function AccountForm({ account, setAccount }) {
+function AccountForm({ account, setAccount, handleAccount, isStore }) {
   const [emailError, setEmailError] = useState(false);
   const [idCheck, setIdCheck] = useState({
     available: true,
@@ -16,9 +16,28 @@ function AccountForm({ account, setAccount }) {
   const [pwError, setPwError] = useState(false);
   const [isMismatch, setIsMismatch] = useState(false);
 
+  // 커스텀 훅 account 상태 변경
   const handleChange = (e) => {
     const { name, value } = e.target;
     setAccount((prev) => ({ ...prev, [name]: value }));
+  };
+
+  // 아이디 중복 검사
+  const handleIdBlur = async () => {
+    if (!account.userId) {
+      setIdCheck({ available: true, message: "" });
+      return;
+    }
+
+    try {
+      const check = await exists({ userId: account.userId });
+      setIdCheck({
+        available: check.available,
+        message: check.message,
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   // 이메일 유효성 검사
@@ -33,29 +52,6 @@ function AccountForm({ account, setAccount }) {
 
     setEmailError(!emailRegex.test(account.email));
   }, [account.email]);
-
-  // 아이디 중복 검사
-  useEffect(() => {
-    if (!account.userId) {
-      setIdCheck({ available: true, message: "" });
-      return;
-    }
-
-    const checkId = async () => {
-      try {
-        const check = await exists(account.userId);
-        setIdCheck({
-          available: check.available,
-          message: check.message,
-        });
-      } catch (error) {
-        alert("아이디 중복 확인 실패");
-        console.log(error);
-      }
-    };
-
-    checkId();
-  }, [account.userId]);
 
   // 비밀번호 유효성 검사
   useEffect(() => {
@@ -81,14 +77,32 @@ function AccountForm({ account, setAccount }) {
     setIsMismatch(pwCon !== account.password);
   }, [account.password, pwCon]);
 
+  // 계정 폼 상태 페이지로 전달
+  useEffect(() => {
+    const isUserNameValid = account.userName.trim() !== "";
+    const isEmailValid = !emailError;
+    const isIdValid = idCheck.available && account.userId.trim() !== "";
+    const isPasswordValid = !pwError && account.password.trim() !== "";
+    const isPwConValid = !isMismatch;
+
+    const isFormValid =
+      isUserNameValid &&
+      isEmailValid &&
+      isIdValid &&
+      isPasswordValid &&
+      isPwConValid;
+
+    handleAccount(isFormValid);
+  }, [account, emailError, idCheck, pwError, isMismatch, handleAccount]);
+
   return (
     <FormLayout>
-      <FormTitle label="계정 정보" />
+      <FormTitle label="계정 정보" isStore={isStore} />
       <SignInput
         label="이름"
         name="userName"
         type="text"
-        width="240px"
+        width="200px"
         value={account.userName}
         onChange={handleChange}
       />
@@ -113,18 +127,21 @@ function AccountForm({ account, setAccount }) {
         value={account.userId}
         hasError={!idCheck.available}
         onChange={handleChange}
+        onBlur={handleIdBlur}
+        autocomplete="username"
       />
       <FormLine />
       <div className={styles.pwBox}>
         <SignInput
           label="비밀번호"
-          helper="영문, 숫자, 특수문자 조합으로 6~20자를 입력해주세요."
+          helper="영문, 숫자, 특수문자 조합으로 6~20자"
           error="영문, 숫자, 특수문자 조합으로 6~20자로 입력해주세요."
           name="password"
           type="password"
           value={account.password}
           hasError={pwError}
           onChange={handleChange}
+          autocomplete="new-password"
         />
         <SignInput
           label="비밀번호 확인"
@@ -133,6 +150,7 @@ function AccountForm({ account, setAccount }) {
           value={pwCon}
           hasError={isMismatch}
           onChange={(e) => setPwCon(e.target.value)}
+          autocomplete="new-password"
         />
       </div>
     </FormLayout>

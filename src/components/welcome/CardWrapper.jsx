@@ -58,7 +58,7 @@ function CardWrapper() {
         className={`${styles.cardBox} ${styles.report}`}
         ref={(el) => (cardRefs.current[0] = el)}
       >
-        <div className={styles.line}></div>
+        {/* <div className={styles.line}></div> */}
         <div className={`${styles.textBox} ${styles.report}`}>
           <p className={styles.mini}>업장 운영 전략</p>
           <h1 className={styles.title}>스마트 리포트 생성</h1>
@@ -110,7 +110,7 @@ function CardWrapper() {
           <img src={cardImg02} className={styles.cardImg} />
           <img src={cardImg03} className={styles.cardImg} />
         </div>
-        <div className={styles.line}></div>
+        {/* <div className={styles.line}></div> */}
       </div>
     </div>
   );

@@ -1,9 +1,13 @@
 header {
   max-width: 1440px;
   height: 68px;
-  position: relative;
 
   margin: 0 auto;
+  padding-inline: 6rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   font-style: normal;
   font-weight: 500;
@@ -14,50 +18,91 @@ header {
   color: #333333;
 }
 
-.img {
-  width: 75px;
-  height: 54px;
-  position: absolute;
-  top: 3px;
-  left: 153px;
+.titleBox {
+  display: flex;
+  align-items: center;
 }
 
-.tags {
+.img {
+  width: 84px;
+  height: 54px;
+  /* position: absolute; */
+  /* top: 3px;
+  left: 153px; */
+}
+
+.text {
+  /* padding-top: 0.5rem; */
+  color: #febf22;
+}
+
+/* .tags {
   height: 100%;
   display: flex;
   align-items: center;
   gap: 45px;
   padding-left: 216px;
-}
+} */
 
 .links {
+  margin-left: 6rem;
+
   flex: 1;
   display: flex;
   justify-content: space-between;
-  padding-right: 120px;
+  /* padding-right: 120px; */
 }
 .linkBox {
+  position: relative;
+
   display: flex;
   align-items: center;
-  gap: 56px;
-}
-.myBox {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-}
-.imgs {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  border: 1px solid #333333;
-}
-.text {
-  color: #febf22;
+  gap: 2rem;
 }
 
 .link {
+  padding: 0.5rem 1rem;
+
+  border-radius: 10px;
+
   color: #333333;
+}
+
+.marketingBox {
+  padding-inline: 0.5rem;
+
+  border-radius: 10px;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  cursor: pointer;
+}
+
+.marketingBox:hover {
+  background: #f2f2f2;
+}
+
+.img {
+  width: 24px;
+  height: 24px;
+}
+
+.myBox {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  /* gap: 1rem; */
+}
+.profileImg {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-image: url("../../assets/profile.png");
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 @media (max-width: 430px) {
