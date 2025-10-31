@@ -61,7 +61,7 @@ function StoreForm({ store, setStore, handleStore }) {
       ...prev,
       placeId: selectedStore.placeId,
       // store or place
-      storeName: selectedStore.placeName,
+      placeName: selectedStore.placeName,
       roadAddress: selectedStore.roadAddress,
       longitude: selectedStore.longitude,
       latitude: selectedStore.latitude,
@@ -197,7 +197,7 @@ function StoreForm({ store, setStore, handleStore }) {
         )}
         <StoreInfo
           label="업장명"
-          value={store.storeName}
+          value={store.placeName}
           width="200px"
           isName={true}
           isReq={true}
