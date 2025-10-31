@@ -18,7 +18,7 @@ const useAuthStore = create(
           roadAddress: roadAddress,
         }),
       clearAuthStore: () =>
-        set({ accessToken: "", storeName: "", roadAddress: "" }),
+        set({ accessToken: "", storeUuid: "", storeName: "", roadAddress: "" }),
       incrementDataVersion: () =>
         set((state) => ({ dataVersion: state.dataVersion + 1 })),
     }),

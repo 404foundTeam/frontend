@@ -1,6 +1,16 @@
+import { useNavigate } from "react-router-dom";
+import useAuthStore from "../../store/useAuthStore";
 import styles from "../../styles/layout/ProfileMenu.module.css";
 
 function ProfileMenu({ onMouseEnter, onMouseLeave }) {
+  const clearAuthStore = useAuthStore((state) => state.clearAuthStore);
+  const navigate = useNavigate();
+
+  const hanldeLogout = () => {
+    clearAuthStore();
+    navigate("/");
+  };
+
   return (
     <div
       className={styles.menuBox}
@@ -14,7 +24,9 @@ function ProfileMenu({ onMouseEnter, onMouseLeave }) {
         <div>비밀번호 변경</div>
       </div>
       <div className={styles.line}></div>
-      <div className={styles.logout}>로그아웃</div>
+      <div className={styles.logout} onClick={hanldeLogout}>
+        로그아웃
+      </div>
     </div>
   );
 }
