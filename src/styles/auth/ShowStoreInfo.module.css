@@ -4,13 +4,14 @@
 
   position: absolute;
   z-index: 2;
-  left: 46px;
+  left: 30px;
 
   display: flex;
   flex-direction: column;
   justify-content: center;
 
   padding: 1rem;
+  padding-inline: 2rem;
 
   background: #fff;
 
