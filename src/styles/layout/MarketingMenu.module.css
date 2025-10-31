@@ -39,3 +39,7 @@
 
   color: #333333;
 }
+
+.navs a:hover {
+  transform: scale(1.04);
+}

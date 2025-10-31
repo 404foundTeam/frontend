@@ -31,6 +31,8 @@
   letter-spacing: -0.025em;
 
   color: #717171;
+
+  white-space: nowrap;
 }
 
 @media (max-width: 430px) {
