@@ -43,7 +43,20 @@ function StoreForm({ store, setStore, handleStore }) {
   };
 
   // 모달로부터 업장 정보 가져와서 상태 변경
-  const handleSelect = (selectedStore) => {
+  const handleSelect = async (selectedStore) => {
+    const promise = new Promise((resolve) => setTimeout(resolve, 2000)); // 2초짜리 가짜 작업
+    toast.promise(promise, {
+      pending: "업장 정보 저장 중...", // 대기
+      icon: false,
+      success: {
+        render() {
+          return <ToastMessage>업장 등록 완료</ToastMessage>;
+        },
+      },
+      error: "업장 등록 실패",
+    });
+
+    await promise;
     setStore((prev) => ({
       ...prev,
       placeId: selectedStore.placeId,
@@ -55,20 +68,14 @@ function StoreForm({ store, setStore, handleStore }) {
     }));
     // alert("업장 선택 완료");
     // toast.success("업장 선택 완료");
-    toast(<ToastMessage>업장 선택 완료</ToastMessage>, {
-      position: "top-center",
-      autoClose: 3000,
-      hideProgressBar: true,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      theme: "light",
-    });
-    // const promise = new Promise((resolve) => setTimeout(resolve, 2000)); // 2초짜리 가짜 작업
-    // toast.promise(promise, {
-    //   pending: "업장 정보 저장 중...", // 대기
-    //   success: "저장 완료! 👌", // 성공
-    //   error: "저장 실패 🤯", // 실패
+    // toast(<ToastMessage>업장 선택 완료</ToastMessage>, {
+    //   position: "top-center",
+    //   autoClose: 3000,
+    //   hideProgressBar: true,
+    //   closeOnClick: true,
+    //   pauseOnHover: true,
+    //   draggable: true,
+    //   theme: "light",
     // });
     toggleMap();
   };
@@ -184,6 +191,7 @@ function StoreForm({ store, setStore, handleStore }) {
               openDate={ocrData.openDate}
               onCancel={handleCancel}
               onAccept={handleAccept}
+              isModal={true}
             />
           </div>
         )}

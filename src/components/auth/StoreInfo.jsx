@@ -9,6 +9,7 @@ function StoreInfo({
   isName,
   isReq = false,
   isFilled = false,
+  isModal,
   onClick,
 }) {
   let displayValue = value;
@@ -33,7 +34,7 @@ function StoreInfo({
       <div
         className={`${styles.box} ${value ? styles.active : ""} ${
           isFilled ? styles.storeName : ""
-        } ${isBlur ? styles.blur : ""}`}
+        } ${isBlur ? styles.blur : ""} ${isModal ? styles.modal : ""}`}
         style={{ maxWidth: width }}
       >
         {displayValue}

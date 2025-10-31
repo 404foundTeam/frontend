@@ -1,5 +1,5 @@
 .container {
-  /* margin-top: 16px; */
+  margin-top: 0.5rem;
   position: relative;
 }
 
@@ -31,7 +31,7 @@
   position: absolute;
   z-index: 14;
   right: 22px;
-  top: 22px;
+  top: 15px;
 
   cursor: pointer;
 }
