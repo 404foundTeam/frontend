@@ -8,6 +8,7 @@ import StoreInfo from "./StoreInfo";
 import { extractStoreOcr, verifyStoreLicense } from "../../api/auth";
 import ShowStoreInfo from "./ShowStoreInfo";
 import { toast } from "react-toastify";
+import ToastMessage from "../shared/ToastMessage";
 
 function StoreForm({ store, setStore, handleStore }) {
   const mapRef = useRef();
@@ -42,7 +43,20 @@ function StoreForm({ store, setStore, handleStore }) {
   };
 
   // 모달로부터 업장 정보 가져와서 상태 변경
-  const handleSelect = (selectedStore) => {
+  const handleSelect = async (selectedStore) => {
+    const promise = new Promise((resolve) => setTimeout(resolve, 2000)); // 2초짜리 가짜 작업
+    toast.promise(promise, {
+      pending: "업장 정보 저장 중...", // 대기
+      icon: false,
+      success: {
+        render() {
+          return <ToastMessage>업장 등록 완료</ToastMessage>;
+        },
+      },
+      error: "업장 등록 실패",
+    });
+
+    await promise;
     setStore((prev) => ({
       ...prev,
       placeId: selectedStore.placeId,
@@ -53,12 +67,15 @@ function StoreForm({ store, setStore, handleStore }) {
       latitude: selectedStore.latitude,
     }));
     // alert("업장 선택 완료");
-    toast.success("업장 선택 완료");
-    // const promise = new Promise((resolve) => setTimeout(resolve, 2000)); // 2초짜리 가짜 작업
-    // toast.promise(promise, {
-    //   pending: "업장 정보 저장 중...", // 대기
-    //   success: "저장 완료! 👌", // 성공
-    //   error: "저장 실패 🤯", // 실패
+    // toast.success("업장 선택 완료");
+    // toast(<ToastMessage>업장 선택 완료</ToastMessage>, {
+    //   position: "top-center",
+    //   autoClose: 3000,
+    //   hideProgressBar: true,
+    //   closeOnClick: true,
+    //   pauseOnHover: true,
+    //   draggable: true,
+    //   theme: "light",
     // });
     toggleMap();
   };
@@ -155,12 +172,6 @@ function StoreForm({ store, setStore, handleStore }) {
     handleStore(isFormValid);
   }, [store, handleStore]);
 
-  // verify 하나라도 비어있으면 비활성화
-  const isVerifyReady =
-    verify.storeNumber !== "" &&
-    verify.representativeName !== "" &&
-    verify.openDate !== "";
-
   return (
     <>
       {showMap && (
@@ -180,6 +191,7 @@ function StoreForm({ store, setStore, handleStore }) {
               openDate={ocrData.openDate}
               onCancel={handleCancel}
               onAccept={handleAccept}
+              isModal={true}
             />
           </div>
         )}
@@ -231,10 +243,10 @@ function StoreForm({ store, setStore, handleStore }) {
           <button
             type="button"
             className={styles.confirmBtn}
-            disabled={!isVerifyReady} // verify 하나라도 비어있으면 비활성화
+            disabled={store.verified}
             onClick={handleVerify}
           >
-            진위여부 확인하기
+            {store.verified ? "진위여부 확인 완료" : "진위여부 확인하기"}
           </button>
         </div>
       </FormLayout>

@@ -8,16 +8,27 @@ function ShowStoreInfo({
   openDate,
   onCancel,
   onAccept,
+  isModal,
 }) {
   return (
     <div className={styles.container}>
       <div className={styles.title}>파일 정보와 동일 여부를 확인해주세요</div>
       <div className={styles.contentBox}>
-        <StoreInfo label="업장 대표자" flex="30%" value={representativeName} />
+        <StoreInfo
+          label="업장 대표자"
+          flex="30%"
+          value={representativeName}
+          isModal
+        />
         <FormLine />
-        <StoreInfo label="사업자 등록번호" flex="30%" value={storeNumber} />
+        <StoreInfo
+          label="사업자 등록번호"
+          flex="30%"
+          value={storeNumber}
+          isModal
+        />
         <FormLine />
-        <StoreInfo label="개업 일자" flex="30%" value={openDate} />
+        <StoreInfo label="개업 일자" flex="30%" value={openDate} isModal />
       </div>
       <div className={styles.btnBox}>
         <button

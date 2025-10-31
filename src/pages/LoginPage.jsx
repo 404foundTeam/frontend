@@ -30,8 +30,8 @@ function LoginPage() {
       if (getAuth.success) {
         setAuthStore(
           getAuth.accessToken,
-          getAuth.placeName,
           getAuth.storeUuid,
+          getAuth.placeName,
           getAuth.roadAddress
         );
         alert(getAuth.message);

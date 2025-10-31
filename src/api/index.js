@@ -10,6 +10,7 @@ const api = axios.create({
     "Access-Control-Allow-Origin": "*", // 모든 출처 허용
   },
 });
+
 api.interceptors.request.use(
   (config) => {
     // Zustand 스토어에서 accessToken을 가져옴 getState() 사용

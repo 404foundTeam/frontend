@@ -164,9 +164,9 @@ function WelcomeMap({ focusRef, onClick, handleSelect }) {
       </div>
       <div className={styles.header}>
         <h2 className={styles.headerTitle}>업장 찾기</h2>
-        <p className={styles.headerContent}>
+        {/* <p className={styles.headerContent}>
           어렵고 복잡한 마케팅과 운영전략을 한번에
-        </p>
+        </p> */}
         <StoreSearch
           placeholder="주소를 입력해주세요."
           value={search}
@@ -184,7 +184,7 @@ function WelcomeMap({ focusRef, onClick, handleSelect }) {
         <div
           className={styles.map}
           ref={container}
-          style={{ width: "100%", height: "200px" }}
+          style={{ width: "100%", height: "180px" }}
         ></div>
         <div className={styles.searchLists}>
           <div className={styles.searchListTitle}>
