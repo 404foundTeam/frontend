@@ -32,7 +32,7 @@ function StoreInfo({
       </label>
       <div
         className={`${styles.box} ${value ? styles.active : ""} ${
-          isFilled ? styles.storeName : ""
+          isFilled ? styles.placeName : ""
         } ${isBlur ? styles.blur : ""}`}
         style={{ maxWidth: width }}
       >

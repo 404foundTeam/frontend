@@ -47,7 +47,7 @@ function StoreForm({ store, setStore, handleStore }) {
       ...prev,
       placeId: selectedStore.placeId,
       // store or place
-      storeName: selectedStore.placeName,
+      placeName: selectedStore.placeName,
       roadAddress: selectedStore.roadAddress,
       longitude: selectedStore.longitude,
       latitude: selectedStore.latitude,
@@ -147,7 +147,7 @@ function StoreForm({ store, setStore, handleStore }) {
 
   // 스토어 폼 상태 페이지로 전달
   useEffect(() => {
-    const isStoreNameValid = (store.storeName || "").trim() !== "";
+    const isStoreNameValid = (store.placeName || "").trim() !== "";
     const isVerified = store.verified === true;
 
     const isFormValid = isStoreNameValid && isVerified;
@@ -185,7 +185,7 @@ function StoreForm({ store, setStore, handleStore }) {
         )}
         <StoreInfo
           label="업장명"
-          value={store.storeName}
+          value={store.placeName}
           width="200px"
           isName={true}
           isReq={true}

@@ -7,7 +7,7 @@ import cardNewsPreview from "../assets/mainpage/image.png";
 import useAuthStore from "../store/useAuthStore";
 
 function MainLayout() {
-  const storeName = useAuthStore((state) => state.storeName);
+  const placeName = useAuthStore((state) => state.placeName);
 
   return (
     <div className={styles.layoutContainer}>
@@ -16,7 +16,7 @@ function MainLayout() {
         {/* --- 배너 코드 --- */}
         <div className={styles.welcomeBanner}>
           <div className={styles.bannerText}>
-            <h1 className={styles.welcomeTitle}>{storeName}님 반가워요!</h1>
+            <h1 className={styles.welcomeTitle}>{placeName}님 반가워요!</h1>
             <p className={styles.welcomeSubtitle}>
               이번주 스마트 리포트와 일정을 확인해보세요.
             </p>
