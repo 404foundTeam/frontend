@@ -26,6 +26,7 @@ import MyPage from "./pages/MyPage";
 import Error from "./components/shared/Error";
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
+import RequireAuth from "./components/auth/RequireAuth";
 
 function App() {
   // 새로고침 시 최상단 이동
@@ -45,6 +46,8 @@ function App() {
           <Route path="/" element={<WelcomeLayout />}>
             <Route index element={<WelcomePage />} />
           </Route>
+
+          {/* <Route element={<RequireAuth />}> */}
           <Route path="/" element={<Layout />}>
             <Route path="main" element={<MainLayout />}>
               <Route index element={<MainPage />} />
@@ -72,6 +75,8 @@ function App() {
               <Route index element={<MyPage />} />
             </Route>
           </Route>
+          {/* </Route> */}
+
           <Route path="*" element={<Error />} />
         </Routes>
       </BrowserRouter>
