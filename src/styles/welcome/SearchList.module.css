@@ -1,5 +1,5 @@
 .list {
-  height: 100px;
+  height: 80px;
 
   display: flex;
   align-items: center;
@@ -26,13 +26,12 @@
   width: 29px;
   height: 39px;
 
-  margin-left: 62px;
+  margin-left: 2rem;
 }
 
 .store .name {
   font-weight: 700;
-  font-size: 1.4rem;
-  line-height: 36px;
+  font-size: 1rem;
   letter-spacing: -0.025em;
 
   color: #413738;
@@ -43,7 +42,6 @@
 
   font-weight: 500;
   font-size: 0.9rem;
-  line-height: 19px;
   letter-spacing: -0.025em;
 
   color: #797979;

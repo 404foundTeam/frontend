@@ -6,6 +6,8 @@ import FormTitle from "./FormTitle";
 import { WelcomeMap } from "../welcome";
 import StoreInfo from "./StoreInfo";
 import { extractStoreOcr, verifyStoreLicense } from "../../api";
+import ShowStoreInfo from "./ShowStoreInfo";
+import { toast } from "react-toastify";
 
 function StoreForm({ store, setStore, handleStore }) {
   const mapRef = useRef();
@@ -18,6 +20,10 @@ function StoreForm({ store, setStore, handleStore }) {
     representativeName: "",
     openDate: "",
   });
+
+  const [ocrModal, setOcrModal] = useState(false); // ocr 추출 모달창
+  // 임시 상태 저장
+  const [ocrData, setOcrData] = useState(null);
 
   const toggleMap = () => setShowMap((prev) => !prev);
 
@@ -40,13 +46,38 @@ function StoreForm({ store, setStore, handleStore }) {
     setStore((prev) => ({
       ...prev,
       placeId: selectedStore.placeId,
-      storeName: selectedStore.placeName,
+      storeName: selectedStore.storeName,
       roadAddress: selectedStore.roadAddress,
       longitude: selectedStore.longitude,
       latitude: selectedStore.latitude,
     }));
-    alert("업장 선택 완료");
+    // alert("업장 선택 완료");
+    toast.success("업장 선택 완료");
+    // const promise = new Promise((resolve) => setTimeout(resolve, 2000)); // 2초짜리 가짜 작업
+    // toast.promise(promise, {
+    //   pending: "업장 정보 저장 중...", // 대기
+    //   success: "저장 완료! 👌", // 성공
+    //   error: "저장 실패 🤯", // 실패
+    // });
     toggleMap();
+  };
+
+  const handleAccept = () => {
+    setVerify(ocrData);
+    setBlur(false);
+    setOcrModal(false);
+    setOcrData(null);
+  };
+
+  const handleCancel = () => {
+    setOcrModal(false);
+    setOcrData(null);
+
+    // 초기화
+    setFile(null);
+    if (fileInputRef.current) {
+      fileInputRef.current.value = null;
+    }
   };
 
   // 진위여부 확인
@@ -59,18 +90,22 @@ function StoreForm({ store, setStore, handleStore }) {
         openDate,
       });
       if (res?.message) {
-        alert(res.message);
+        toast.success(res.message);
+        // alert(res.message);
       } else {
-        alert("진위여부 확인이 완료되었습니다.");
+        toast.success("진위여부 확인이 완료되었습니다.");
+        // alert("진위여부 확인이 완료되었습니다.");
       }
       setStore((prev) => ({ ...prev, verified: res.verified }));
     } catch (error) {
-      alert("진위여부 확인 중 오류가 발생했습니다.");
+      toast.error("진위여부 확인 중 오류가 발생했습니다.");
+      // alert("진위여부 확인 중 오류가 발생했습니다.");
       setStore((prev) => ({ ...prev, verified: false }));
       console.log(error);
     }
   };
-  // 파일 입력 시 ocr 추출
+
+  // 파일 입력 시 ocr 추출 후 모달 표시
   useEffect(() => {
     if (file) {
       const getOcr = async () => {
@@ -79,16 +114,25 @@ function StoreForm({ store, setStore, handleStore }) {
           formData.append("storeLicense", file);
 
           const ocr = await extractStoreOcr(formData);
-          setVerify({
+          setOcrData({
             storeNumber: ocr.storeNumber,
             representativeName: ocr.representativeName,
             openDate: ocr.openDate,
           });
-          alert(ocr.message);
-          setBlur(false);
+          setOcrModal(true);
+          toast.success(ocr.message);
+          // alert(ocr.message);
+          // setBlur(false);
         } catch (error) {
-          alert("파일 분석에 실패했습니다.");
+          toast.error("파일 분석에 실패했습니다.");
+          // alert("파일 분석에 실패했습니다.");
           console.log(error);
+
+          // 초기화
+          setFile(null);
+          if (fileInputRef.current) {
+            fileInputRef.current.value = null;
+          }
         }
       };
 
@@ -126,7 +170,18 @@ function StoreForm({ store, setStore, handleStore }) {
         />
       )}
       <FormLayout>
-        <FormTitle label="업장 정보" isShow={true} />
+        <FormTitle label="업장 정보" isShow={true} isStore={store.verified} />
+        {ocrModal && (
+          <div className={styles.modal}>
+            <ShowStoreInfo
+              representativeName={ocrData.representativeName}
+              storeNumber={ocrData.storeNumber}
+              openDate={ocrData.openDate}
+              onCancel={handleCancel}
+              onAccept={handleAccept}
+            />
+          </div>
+        )}
         <StoreInfo
           label="업장명"
           value={store.storeName}

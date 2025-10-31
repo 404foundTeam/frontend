@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { login } from "../api";
-import useAuthStore from "../store/useAuthStore";
 import styles from "../styles/LoginPage.module.css";
+import useAuthStore from "../store/useAuthStore";
 import TitleBox from "../components/auth/TitleBox";
 import LoginInput from "../components/auth/LoginInput";
 

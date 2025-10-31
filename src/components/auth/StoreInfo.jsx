@@ -2,6 +2,7 @@ import styles from "../../styles/auth/StoreInfo.module.css";
 
 function StoreInfo({
   label,
+  flex = "20%",
   value,
   width = "300px",
   isBlur,
@@ -22,7 +23,10 @@ function StoreInfo({
 
   return (
     <div className={styles.container}>
-      <label className={`${styles.label} ${isBlur ? styles.blur : ""}`}>
+      <label
+        className={`${styles.label} ${isBlur ? styles.blur : ""}`}
+        style={{ width: flex }}
+      >
         {label}
         {isReq ? <span>*</span> : ""}
       </label>

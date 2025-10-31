@@ -1,19 +1,27 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import styles from "../../styles/layout/Header.module.css";
 import logoImg from "../../assets/logo.png";
 import up from "../../assets/menu_up.png";
 import down from "../../assets/menu_down.png";
 import MarketingMenu from "./MarketingMenu";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ProfileMenu from "./ProfileMenu";
 
 function Header({ isWelcome }) {
-  const [showMenu, setShowMenu] = useState(false);
+  const [showMarketing, setShowMarketing] = useState(false); // 홍보 메뉴 제어
+  const [showProfile, setShowProfile] = useState(false); // 프로필 메뉴 제어
+  const loaction = useLocation();
+
+  // 페이지 이동 시 모든 메뉴 제거
+  useEffect(() => {
+    setShowMarketing(false);
+    setShowProfile(false);
+  }, [loaction]);
 
   return (
     <header>
       <div className={styles.titleBox}>
-        <img src={logoImg} className={styles.img}></img>
+        <img src={logoImg} className={styles.logoImg}></img>
         <NavLink to={!isWelcome ? "/main" : "/"} className={styles.text}>
           market BEE
         </NavLink>
@@ -28,21 +36,21 @@ function Header({ isWelcome }) {
               <div className={styles.marketingBox}>
                 <div
                   className={`${styles.link} ${styles.showMenu}`}
-                  onMouseEnter={() => setShowMenu(true)}
-                  onMouseLeave={() => setShowMenu(false)}
+                  onMouseEnter={() => setShowMarketing(true)}
+                  onMouseLeave={() => setShowMarketing(false)}
                 >
                   홍보
                 </div>
-                {showMenu ? (
+                {showMarketing ? (
                   <img src={down} className={styles.img} />
                 ) : (
                   <img src={up} className={styles.img} />
                 )}
               </div>
-              {showMenu && (
+              {showMarketing && (
                 <MarketingMenu
-                  onMouseEnter={() => setShowMenu(true)}
-                  onMouseLeave={() => setShowMenu(false)}
+                  onMouseEnter={() => setShowMarketing(true)}
+                  onMouseLeave={() => setShowMarketing(false)}
                 />
               )}
               <NavLink to="/smartreport" className={styles.link}>
@@ -53,8 +61,17 @@ function Header({ isWelcome }) {
               <NavLink to="/my" className={styles.link}>
                 마이 페이지
               </NavLink>
-              <div className={styles.profileImg}></div>
-              <ProfileMenu />
+              <div
+                className={styles.profileImg}
+                onMouseEnter={() => setShowProfile(true)}
+                onMouseLeave={() => setShowProfile(false)}
+              ></div>
+              {showProfile && (
+                <ProfileMenu
+                  onMouseEnter={() => setShowProfile(true)}
+                  onMouseLeave={() => setShowProfile(false)}
+                />
+              )}
             </div>
           </>
         )}

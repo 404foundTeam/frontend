@@ -7,6 +7,7 @@ import MarkerImg from "../../assets/welcomeMap/marker.png";
 import selectMarkerImg from "../../assets/welcomeMap/select_marker.png";
 import StoreSearch from "./StoreSearch.jsx";
 import SearchList from "./SearchList.jsx";
+import { toast } from "react-toastify";
 
 // const { kakao } = window;
 
@@ -27,7 +28,8 @@ function WelcomeMap({ focusRef, onClick, handleSelect }) {
 
   const handleConfirm = () => {
     if (!selectStore) {
-      alert("업장을 선택해주세요.");
+      toast.error("업장을 선택해주세요.");
+      // alert("업장을 선택해주세요.");
       return;
     }
     handleSelect(selectStore);
@@ -182,7 +184,7 @@ function WelcomeMap({ focusRef, onClick, handleSelect }) {
         <div
           className={styles.map}
           ref={container}
-          style={{ width: "100%", height: "250px" }}
+          style={{ width: "100%", height: "200px" }}
         ></div>
         <div className={styles.searchLists}>
           <div className={styles.searchListTitle}>
