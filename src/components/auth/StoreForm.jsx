@@ -61,7 +61,9 @@ function StoreForm({ store, setStore, handleStore }) {
       ...prev,
       placeId: selectedStore.placeId,
       // store or place
+
       placeName: selectedStore.placeName,
+
       roadAddress: selectedStore.roadAddress,
       longitude: selectedStore.longitude,
       latitude: selectedStore.latitude,

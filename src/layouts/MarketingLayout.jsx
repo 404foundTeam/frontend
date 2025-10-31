@@ -1,15 +1,13 @@
-// src/layouts/MarketingLayout.jsx
-
 import { Outlet, Link } from "react-router-dom";
 // import SideBar from "../components/layout/SideBar";
 import styles from "../styles/marketing/MarketingLayout.module.css";
 
 // 배너에 필요한 이미지들 import.
-import illustration from "../assets/marketingpage/img_cop_2.png";
-import btnCardNews from "../assets/marketingpage/image copy 3.png";
-import btnMap from "../assets/marketingpage/image copy 4.png";
-import btnPhoto from "../assets/marketingpage/image copy 5.png";
-import btnMain from "../assets/marketingpage/image copy 6.png";
+import illustration from "../assets/marketingpage/image copy 9.png";
+// import btnCardNews from "../assets/marketingpage/image copy 3.png";
+// import btnMap from "../assets/marketingpage/image copy 4.png";
+// import btnPhoto from "../assets/marketingpage/image copy 5.png";
+// import btnMain from "../assets/marketingpage/image copy 6.png";
 import partnershipIllustration from "../assets/marketingpage/image copy 8.png";
 
 function MarketingLayout() {
@@ -20,25 +18,32 @@ function MarketingLayout() {
         {/* --- 여기에 배너 코드를 추가합니다 --- */}
         <div className={styles.banner}>
           <div className={styles.bannerContentWrapper}>
-            {/* 배너 왼쪽 텍스트 및 일러스트 영역 */}
+            
+            {/* 배너 왼쪽 텍스트 영역 */}
             <div className={styles.bannerInfo}>
               <h1 className={styles.bannerTitle}>
-                AI 카드뉴스 제작부터
+                {/* 텍스트 수정: 'AI 카드뉴스' -> 'AI 카드 뉴스' (띄어쓰기) */}
+                AI 카드 뉴스 제작부터 
                 <br />
-                지도 이용 제휴, 사진 촬영 가이드까지
+                {/* 텍스트 수정: '지도 이용 제휴, 사진 촬영 가이드까지' -> '사진 촬영 가이드, 스마트 리포트까지' */}
+                사진 촬영 가이드, 스마트 리포트까지
               </h1>
               <p className={styles.bannerSubtitle}>
-                홍보에 필요한 모든 것을 한번에 제공해요.
+                {/* 텍스트 수정: '홍보에' -> '홍보와 관리에' */}
+                홍보와 관리에 필요한 모든 것을 한번에 제공해요.
               </p>
-              <img
-                src={illustration}
-                alt="홍보 일러스트"
-                className={styles.illustration}
-              />
+            
             </div>
 
+            {/* 배너 오른쪽 일러스트 영역 */}
+            <img
+              src={illustration}
+              alt="홍보 일러스트"
+              className={styles.illustration}
+            />
+
             {/* 배너 오른쪽 이미지 버튼 그리드 영역 */}
-            <div className={styles.buttonGrid}>
+            {/* <div className={styles.buttonGrid}>
               <Link to="/cardnews">
                 <img
                   src={btnCardNews}
@@ -67,12 +72,14 @@ function MarketingLayout() {
                   className={styles.imageButton}
                 />
               </Link>
-            </div>
+            </div> */}
           </div>
         </div>
         {/* --- 배너 코드 끝 --- */}
 
         <Outlet />
+
+        {/* --- 제휴 배너 코드 (이 부분은 수정하지 않았습니다) --- */}
         <div className={styles.partnershipBanner}>
           <div className={styles.bannerIllustrationContainer}>
             <img
@@ -81,8 +88,8 @@ function MarketingLayout() {
               className={styles.bannerIllustration}
             />
           </div>
-
           <div className={styles.bannerListContainer}>
+            {/* ... (이하 내용은 동일) ... */}
             <h2 className={styles.listTitle}>제휴를 원하는 상대 업체</h2>
             <div className={styles.partnerList}>
               {/* 파트너 카드 1 */}

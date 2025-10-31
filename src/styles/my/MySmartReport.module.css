@@ -1,0 +1,135 @@
+/* src/styles/my/MySmartReport.module.css */
+
+.container {
+  width: 100%;
+  max-width: 900px; /* 최대 너비 조절 */
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.mainTitle {
+  font-size: 25px;
+  color: #413738;
+}
+
+.yearSelector {
+  color: #555;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  min-width: 100px;
+}
+
+.reportList {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* 리포트 아이템 사이 간격 */
+}
+
+.reportItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.reportInfo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.reportIcon {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.reportIconImage {
+  width: 30px; 
+  height: 30px;
+  object-fit: contain; 
+}
+
+.reportText {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.reportTitle {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333333;
+}
+
+.reportPeriod {
+  font-size: 14px;
+  color: #ACACAC;
+}
+
+.viewButton {
+  padding: 5px 15px;
+  font-size: 14px;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  background-color: #D9D9D9; /* 비활성(회색) 버튼 - 이미지 참조 */
+  color: #555;
+  transition: background-color 0.2s;
+}
+
+/* 9월 리포트처럼 활성화된 버튼 스타일 (선택 사항) */
+.viewButton.active,
+.viewButton:hover {
+  background-color: #6D3737; /* 마켓비 메인 컬러 (추측) */
+  color: #FFFFFF;
+}
+
+/* 로딩, 에러, 빈 메시지 */
+.statusMessage,
+.emptyMessage {
+  text-align: center;
+  padding: 50px;
+  font-size: 16px;
+  color: #888;
+}
+
+/* 페이지네이션 */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.pageButton {
+  padding: 8px 12px;
+  margin: 0 5px;
+  border: none;
+  background-color: transparent;
+  color: #555;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.pageButton.active {
+  font-weight: bold;
+  color: #ffc107; /* 활성 페이지 번호 색상 */
+  text-decoration: underline;
+}

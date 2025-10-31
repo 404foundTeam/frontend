@@ -5,7 +5,7 @@ import axios from "axios";
 import useAuthStore from "../../store/useAuthStore";
 import styles from "../../styles/main/Dashboard.module.css";
 
-function TopMenus() {
+function TopMenus({ year, month }) {
   const storeUuid = useAuthStore((state) => state.storeUuid);
   const dataVersion = useAuthStore((state) => state.dataVersion);
   const [menuData, setMenuData] = useState([]);
@@ -22,10 +22,18 @@ function TopMenus() {
     const fetchTopMenus = async () => {
       try {
         setIsLoading(true);
-        const response = await axios.get(
-          `http://13.209.239.240/api/v1/report/${storeUuid}/product-ranking`
-        );
+        let apiUrl;
+        if (year && month) {
+          // 💡 "월별 리포트"용 API 경로
+          apiUrl = `http://13.209.239.240/api/v1/monthly-report/${storeUuid}/${year}/${month}/product-ranking`;
+        } else {
+          // 💡 "최신 리포트"용 API 경로 (기존 경로)
+          apiUrl = `http://13.209.239.240/api/v1/report/${storeUuid}/product-ranking`;
+        }
 
+        // 3. 동적으로 생성된 URL로 API 호출
+        const response = await axios.get(apiUrl);
+        
         const chartData = response.data.salesDistributionChart || [];
 
         const formattedData = chartData.map((item, index) => ({
@@ -50,7 +58,7 @@ function TopMenus() {
     };
 
     fetchTopMenus();
-  }, [storeUuid, dataVersion]);
+  }, [storeUuid, dataVersion, year, month]);
 
   // --- 상태에 따른 조건부 렌더링 ---
 

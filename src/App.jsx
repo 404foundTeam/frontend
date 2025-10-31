@@ -21,6 +21,7 @@ import MapCoaPage from "./pages/map/MapCoaPage";
 import MapCoaListPage from "./pages/map/MapCoaListPage";
 import SmartReportLayout from "./layouts/SmartReportLayout";
 import SmartReportPage from "./pages/SmartReportPage";
+import MySmartReportPage from "./components/my/MySmartReportPage";
 import MyLayout from "./layouts/MyLayout";
 import MyPage from "./pages/MyPage";
 import Error from "./components/shared/Error";
@@ -86,6 +87,9 @@ function App() {
             <Route path="smartreport" element={<SmartReportLayout />}>
               <Route index element={<SmartReportPage />} />
             </Route>
+            <Route path="mysmartreport" element={<SmartReportLayout />}>
+            <Route path=":year/:month" element={<MySmartReportPage />} />
+          </Route>
             <Route path="my" element={<MyLayout />}>
               <Route index element={<MyPage />} />
             </Route>
