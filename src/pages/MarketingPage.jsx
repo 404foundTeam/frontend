@@ -1,29 +1,30 @@
 // src/pages/MarketingPage.jsx
 
+import { Link } from "react-router-dom"; // [추가] Link 컴포넌트를 import 합니다.
 import styles from "../styles/marketing/MarketingPage.module.css";
 
 // 1. 페이지에 사용할 이미지들을 import 합니다.
-import cardNewsImage from "../assets/marketingpage/image.png";
-import templateImage from "../assets/marketingpage/image copy.png";
+import cardNewsImage from "../assets/marketingpage/image copy 10.png";
 import aiGuideImage from "../assets/marketingpage/image copy 2.png";
+import smartReportImage from "../assets/marketingpage/image copy 11.png";
 
 function MarketingPage() {
-  const cardNewsDesc = `AI가 생성한 문구를 활용하여 카드 뉴스를 생성해보세요.
-  디자인 전문가 없이 SNS 카드 뉴스를 클릭 몇 번으로 완성할 수 있어요.`;
+  const cardNewsDesc = `AI가 생성한 문구를 활용하여 카드 뉴스를 생성해보세요
+  디자인 전문가 없이 SNS 카드 뉴스를 클릭 몇 번으로 완성할 수 있어요`;
 
-  const templateDesc = `템플릿과 테마를 골라서 원하는 느낌으로 카드뉴스를 제작할 수 있어요.`;
-  const aiGuideDesc = `매장과 상품을 더욱 매력적으로 촬영하도록 구독, 조명, 연출 팁을 제공해요.
-누구나 쉽게 따라 할 수 있는 단계별 가이드로,
-홍보에 최적화된 사진을 완성하세요.`;
+  const aiGuideDesc = `매장과 상품을 더욱 매력적으로 촬영하도록 구도, 조명, 연출 팁을 제공해요
+   누구나 쉽게 따라 할 수 있는 단계별 가이드로 홍보에 최적화된 사진을 완성하세요`;
+
+  const smartReportDesc = `AI가 데이터를 자동으로 분석하여 매출, 메뉴별 판매 순위, 개선팁 등을 한눈에 보여줘요`;
+
 
   return (
     <div className={styles.pageContainer}>
-      {/* --- 첫 번째 섹션 (텍스트 좌, 이미지 우) --- */}
+      {/* --- 첫 번째 섹션  --- */}
       <div className={styles.section}>
         <div className={styles.textContainer}>
           <h2 className={styles.sectionTitle}>
-            다양한 테마와 판플렛으로 <br />
-            AI 카드뉴스를 생성해보세요
+            카드뉴스 제작
           </h2>
           <p className={styles.sectionDescription}>{cardNewsDesc}</p>
         </div>
@@ -34,27 +35,12 @@ function MarketingPage() {
             className={styles.sectionImage}
           />
         </div>
+        <Link to="/cardnews" className={styles.ctaButton}>
+          카드뉴스 제작하기
+        </Link>
       </div>
 
-      {/* --- 두 번째 섹션 (텍스트 우, 이미지 좌) --- */}
-      <div className={`${styles.section} ${styles.layoutRight}`}>
-        <div className={styles.textContainer}>
-          <h2 className={styles.sectionTitle}>
-            원하는 템플릿과 분위기를 <br />
-            선택할 수 있어요
-          </h2>
-          <p className={styles.sectionDescription}>{templateDesc}</p>
-        </div>
-        <div className={styles.imageContainer}>
-          <img
-            src={templateImage}
-            alt="템플릿 선택 예시"
-            className={styles.sectionImage}
-          />
-        </div>
-      </div>
-
-      {/* --- 세 번째 섹션 (텍스트 좌, 이미지 우) --- */}
+      {/* --- 두 번째 섹션 --- */}
       <div className={styles.section}>
         <div className={styles.textContainer}>
           <h2 className={styles.sectionTitle}>
@@ -66,7 +52,24 @@ function MarketingPage() {
         <div className={styles.imageContainer}>
           <img
             src={aiGuideImage}
-            alt="AI 사진 촬영 가이드 예시"
+            alt="사진 촬영 가이드"
+            className={styles.sectionImage}
+          />
+        </div>
+      </div>
+
+      {/* --- 세 번째 섹션  --- */}
+      <div className={styles.section}>
+        <div className={styles.textContainer}>
+          <h2 className={styles.sectionTitle}>
+            스마트 리포트
+          </h2>
+          <p className={styles.sectionDescription}>{smartReportDesc}</p>
+        </div>
+        <div className={styles.imageContainer}>
+          <img
+            src={smartReportImage}
+            alt="스마트리포트 예시"
             className={styles.sectionImage}
           />
         </div>

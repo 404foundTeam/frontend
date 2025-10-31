@@ -9,31 +9,31 @@
 
 .section {
   display: flex;
-  align-items: center;
-  /* gap: -10px; 텍스트와 이미지 사이 간격 */
+  flex-direction: column; 
+  align-items: center; 
+  
+  gap: 2rem; 
+  
   margin-top: 16px;
-  margin-bottom: 6rem; /* 섹션과 섹션 사이 간격 */
+  margin-bottom: 10rem; 
 }
 
-/* 텍스트가 오른쪽에 오는 레이아웃을 위한 클래스 */
-.section.layoutRight {
-  flex-direction: row-reverse; /* 이 속성 하나로 텍스트와 이미지 순서를 바꿈 */
-}
 
 .textContainer {
-  flex: 1; /* 남는 공간을 모두 차지 */
   text-align: center;
+  width: 100%; 
+  max-width: 800px; 
 }
 
 .imageContainer {
-  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 70%;
 }
 
 .sectionTitle {
-  font-size: 30px;
+  font-size: 40px;
   font-weight: bold;
   color: #413738;
   line-height: 1.4;
@@ -42,7 +42,7 @@
 }
 
 .sectionDescription {
-  font-size: 15px;
+  font-size: 18px;
   color: #797979;
   white-space: pre-wrap;
 }
@@ -54,8 +54,24 @@
   /* box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); */
 }
 
+.ctaButton {
+  padding: 14px 35px;
+  font-size: 15px;
+  font-weight: bold;
+  color: white;
+  background-color: #572C2C; 
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  text-decoration: none; 
+  transition: background-color 0.2s ease;
+}
+
+.ctaButton:hover {
+  background-color: #442b2b; 
+}
+
 /* 마지막 '지도 이용 제휴' 섹션을 위한 스타일 */
 .centeredSection {
   text-align: center;
-  padding: 4rem 0;
 }

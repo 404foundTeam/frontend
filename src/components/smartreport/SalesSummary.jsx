@@ -40,7 +40,7 @@ const formatGrowthPercentage = (percentage) => {
 };
 
 // --- 메인 컴포넌트 ---
-function SalesSummary({ year, month }) { // 💡 1. props 받기
+function SalesSummary({ year, month }) { 
   const storeUuid = useAuthStore((state) => state.storeUuid);
   const storeName = useAuthStore((state) => state.storeName);
   const dataVersion = useAuthStore((state) => state.dataVersion);
@@ -202,7 +202,6 @@ function SalesSummary({ year, month }) { // 💡 1. props 받기
     return (
       <div className={styles.summaryContainer}>
         <p>데이터를 불러오는 중 오류가 발생했습니다.</p> 
-        {/* 💡 에러 메시지를 좀 더 범용적으로 수정 */}
       </div>
     );
   }
