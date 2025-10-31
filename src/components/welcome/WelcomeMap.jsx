@@ -184,7 +184,7 @@ function WelcomeMap({ focusRef, onClick, handleSelect }) {
         <div
           className={styles.map}
           ref={container}
-          style={{ width: "100%", height: "200px" }}
+          style={{ width: "100%", height: "180px" }}
         ></div>
         <div className={styles.searchLists}>
           <div className={styles.searchListTitle}>
