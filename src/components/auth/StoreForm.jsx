@@ -8,6 +8,7 @@ import StoreInfo from "./StoreInfo";
 import { extractStoreOcr, verifyStoreLicense } from "../../api/auth";
 import ShowStoreInfo from "./ShowStoreInfo";
 import { toast } from "react-toastify";
+import ToastMessage from "../shared/ToastMessage";
 
 function StoreForm({ store, setStore, handleStore }) {
   const mapRef = useRef();
@@ -53,7 +54,16 @@ function StoreForm({ store, setStore, handleStore }) {
       latitude: selectedStore.latitude,
     }));
     // alert("업장 선택 완료");
-    toast.success("업장 선택 완료");
+    // toast.success("업장 선택 완료");
+    toast(<ToastMessage>업장 선택 완료</ToastMessage>, {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      theme: "light",
+    });
     // const promise = new Promise((resolve) => setTimeout(resolve, 2000)); // 2초짜리 가짜 작업
     // toast.promise(promise, {
     //   pending: "업장 정보 저장 중...", // 대기
