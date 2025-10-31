@@ -11,9 +11,10 @@ const useAuthStore = create(
       roadAddress: "",
       dataVersion: 1,
 
-      setAuthStore: (accessToken, storeName, roadAddress) =>
+      setAuthStore: (accessToken, storeUuid, storeName, roadAddress) =>
         set({
           accessToken: accessToken,
+          storeUuid: storeUuid,
           storeName: storeName,
           roadAddress: roadAddress,
         }),
