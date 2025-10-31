@@ -79,6 +79,8 @@ function MapPage() {
           >
             음식점
           </CategoryButton>
+          <CategoryButton></CategoryButton>
+          <CategoryButton></CategoryButton>
         </div>
       </div>
       <div className={styles.container}>
