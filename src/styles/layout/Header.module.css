@@ -1,9 +1,9 @@
 header {
-  max-width: 1440px;
+  max-width: 1200px;
   height: 68px;
 
   margin: 0 auto;
-  padding-inline: 6rem;
+  /* padding-inline: 6rem; */
 
   display: flex;
   justify-content: center;
