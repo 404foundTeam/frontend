@@ -12,7 +12,6 @@ header {
 
 .headerBox {
   width: 100%;
-  /* max-width: 1440px; */
   height: 68px;
 
   position: fixed;
@@ -34,6 +33,15 @@ header {
   letter-spacing: -0.025em;
 
   color: #333333;
+}
+
+.headerInner {
+  width: 100%;
+  max-width: 1440px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .titleBox {
@@ -65,7 +73,7 @@ header {
 
   flex: 1;
   display: flex;
-  /* justify-content: space-between; */
+  justify-content: space-between;
 }
 .linkBox {
   position: relative;
