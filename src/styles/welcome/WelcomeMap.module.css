@@ -1,12 +1,12 @@
 .container {
-  width: 780px;
+  width: 680px;
   position: absolute;
   top: 1200px;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 4;
 
-  padding-bottom: 48px;
+  padding: 2rem;
 
   border-radius: 30px;
 
@@ -21,15 +21,14 @@
 
 /* 닫기 버튼 스타일 */
 .closeButton {
-  padding-top: 2%;
-  padding-left: 90%;
+  padding-left: 95%;
 
   cursor: pointer;
 }
 
 .closeButton .closeImg {
-  width: 60px;
-  height: 60px;
+  width: 40px;
+  height: 40px;
 }
 
 .closeButton .closeImg:hover {
@@ -42,13 +41,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 0.5rem;
 }
 
 .header .headerTitle {
   font-weight: 600;
-  font-size: 2rem;
-  line-height: 60px;
+  font-size: 1.75rem;
   letter-spacing: -0.025em;
 
   color: #413738;
@@ -56,18 +54,17 @@
 
 .header .headerContent {
   font-weight: 500;
-  font-size: 1.5rem;
-  line-height: 24px;
+  font-size: 1.25rem;
   letter-spacing: -0.025em;
 
   color: #797979;
 }
 
 .mapBox {
-  width: 600px;
-  height: 700px;
+  width: 500px;
+  height: 400px;
 
-  margin-top: 32px;
+  margin-top: 1rem;
 
   overflow: hidden;
 
@@ -82,7 +79,7 @@
 
 /* 업장 검색 결과 리스트 */
 .searchListTitle {
-  height: 76px;
+  padding: 0.75rem 0.5rem;
 
   display: flex;
   align-items: center;
@@ -90,8 +87,7 @@
   gap: 24px;
 
   font-weight: 700;
-  font-size: 1.5rem;
-  line-height: 36px;
+  font-size: 1.25rem;
   letter-spacing: -0.025em;
 
   color: #ffffff;
@@ -100,13 +96,13 @@
 }
 
 .searchTitleIco {
-  width: 25px;
+  width: 20px;
   height: 13px;
 }
 
 /* 업장 목록 */
 .searchList {
-  height: 374px;
+  height: 166px;
 
   overflow: hidden;
   overflow-y: scroll;
@@ -116,16 +112,17 @@
 
 /* 등록 버튼 */
 .mapButton {
-  margin-top: 48px;
-  padding: 16px 80px;
+  width: 220px;
+
+  margin-top: 1.5rem;
+  padding: 0.5rem 3.25rem;
 
   border: none;
   border-radius: 60px;
   background-color: #e2d7d7;
 
   font-weight: 700;
-  font-size: 2.15rem;
-  line-height: 48px;
+  font-size: 1.5rem;
 
   color: #ffffff;
 

@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { login } from "../api";
-import useAuthStore from "../store/useAuthStore";
+import { login } from "../api/auth";
 import styles from "../styles/LoginPage.module.css";
+import useAuthStore from "../store/useAuthStore";
 import TitleBox from "../components/auth/TitleBox";
 import LoginInput from "../components/auth/LoginInput";
+import { toast } from "react-toastify";
 
 function LoginPage() {
   const [auth, setAuth] = useState({ userId: "", password: "" });
@@ -30,16 +31,20 @@ function LoginPage() {
       if (getAuth.success) {
         setAuthStore(
           getAuth.accessToken,
-          getAuth.storeName,
+          getAuth.placeName,
+          getAuth.storeUuid,
           getAuth.roadAddress
         );
-        alert(getAuth.message);
+        toast.success(getAuth.message);
+        // alert(getAuth.message);
         navigate("/main");
       } else {
-        alert(getAuth.message);
+        toast.info(getAuth.message);
+        // alert(getAuth.message);
       }
     } catch (error) {
-      alert("서버 오류");
+      toast.error("서버 오류");
+      // alert("서버 오류");
       console.log(error);
     }
   };

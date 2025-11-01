@@ -2,12 +2,14 @@ import styles from "../../styles/auth/StoreInfo.module.css";
 
 function StoreInfo({
   label,
+  flex = "20%",
   value,
   width = "300px",
   isBlur,
   isName,
   isReq = false,
   isFilled = false,
+  isModal,
   onClick,
 }) {
   let displayValue = value;
@@ -22,14 +24,17 @@ function StoreInfo({
 
   return (
     <div className={styles.container}>
-      <label className={`${styles.label} ${isBlur ? styles.blur : ""}`}>
+      <label
+        className={`${styles.label} ${isBlur ? styles.blur : ""}`}
+        style={{ width: flex }}
+      >
         {label}
         {isReq ? <span>*</span> : ""}
       </label>
       <div
         className={`${styles.box} ${value ? styles.active : ""} ${
           isFilled ? styles.storeName : ""
-        } ${isBlur ? styles.blur : ""}`}
+        } ${isBlur ? styles.blur : ""} ${isModal ? styles.modal : ""}`}
         style={{ maxWidth: width }}
       >
         {displayValue}

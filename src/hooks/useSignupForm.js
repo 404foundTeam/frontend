@@ -10,9 +10,9 @@ export function useSignForm() {
 
   const [store, setStore] = useState({
     placeId: "",
-    storeName: "",
+    placeName: "",
     roadAddress: "",
-    verified: null,
+    verified: false,
     longitude: "",
     latitude: "",
   });

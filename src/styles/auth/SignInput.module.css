@@ -1,19 +1,15 @@
 .inputBox {
   margin-top: 1rem;
-  /* margin-top: 1.5rem; */
 }
 
 .helper {
   height: 14.5px;
 
   padding-left: 150px;
-  /* padding-left: 180px; */
   padding-bottom: 4px;
 
   font-weight: 400;
   font-size: 12px;
-  /* font-size: 14px; */
-  /* line-height: 17px; */
 
   color: #acacac;
 }
@@ -32,7 +28,6 @@
   width: 20%;
 
   font-weight: 400;
-  /* font-size: 20px; */
   font-size: 18px;
   line-height: 24px;
 
@@ -45,7 +40,6 @@
 
 .input {
   flex: 1;
-  /* padding: 1rem; */
   padding: 0.5rem 1rem;
 
   outline: none;
@@ -54,7 +48,6 @@
 
   font-weight: 400;
   font-size: 16px;
-  /* font-size: 20px; */
   line-height: 24px;
 
   color: #333333;

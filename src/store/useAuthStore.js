@@ -6,19 +6,26 @@ const useAuthStore = create(
   persist(
     (set) => ({
       accessToken: "",
+      placeName: "",
       storeUuid: "",
-      storeName: "",
       roadAddress: "",
       dataVersion: 1,
 
-      setAuthStore: (accessToken, storeName, roadAddress) =>
+      setAuthStore: (accessToken, placeName, storeUuid, roadAddress) =>
         set({
           accessToken: accessToken,
-          storeName: storeName,
+          placeName: placeName,
+          storeUuid: storeUuid,
           roadAddress: roadAddress,
         }),
       clearAuthStore: () =>
-        set({ accessToken: "", storeName: "", roadAddress: "" }),
+        set({
+          accessToken: "",
+          storeUuid: "",
+          placeName: "",
+          roadAddress: "",
+          dataVersion: 1,
+        }),
       incrementDataVersion: () =>
         set((state) => ({ dataVersion: state.dataVersion + 1 })),
     }),

@@ -4,7 +4,7 @@
   top: 50px;
   left: 88px;
 
-  padding: 1.5rem 1rem;
+  padding: 1rem;
 
   border-radius: 10px;
   box-shadow: 1px 4px 30px 10px rgba(0, 0, 0, 0.05);
@@ -38,4 +38,8 @@
   letter-spacing: -0.025em;
 
   color: #333333;
+}
+
+.navs a:hover {
+  transform: scale(1.04);
 }

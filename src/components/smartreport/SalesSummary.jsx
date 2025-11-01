@@ -40,9 +40,9 @@ const formatGrowthPercentage = (percentage) => {
 };
 
 // --- 메인 컴포넌트 ---
-function SalesSummary({ year, month }) { // 💡 1. props 받기
+function SalesSummary({ year, month }) { 
   const storeUuid = useAuthStore((state) => state.storeUuid);
-  const storeName = useAuthStore((state) => state.storeName);
+  const placeName = useAuthStore((state) => state.placeName);
   const dataVersion = useAuthStore((state) => state.dataVersion);
 
   // --- 1. API 데이터를 위한 상태 관리 ---
@@ -202,7 +202,6 @@ function SalesSummary({ year, month }) { // 💡 1. props 받기
     return (
       <div className={styles.summaryContainer}>
         <p>데이터를 불러오는 중 오류가 발생했습니다.</p> 
-        {/* 💡 에러 메시지를 좀 더 범용적으로 수정 */}
       </div>
     );
   }
@@ -212,7 +211,7 @@ function SalesSummary({ year, month }) { // 💡 1. props 받기
       <div className={styles.contentWrapper}>
         {/* --- 왼쪽 컬럼 --- */}
         <div className={styles.leftColumn}>
-          <h2 className={styles.title}>{storeName || "가게"}님의 매출</h2>
+          <h2 className={styles.title}>{placeName || "가게"}님의 매출</h2>
           <ul className={styles.salesInfo}>
             <li>
               이번달 매출 현황: <strong>{salesApiData.monthlySales}</strong>
@@ -253,7 +252,7 @@ function SalesSummary({ year, month }) { // 💡 1. props 받기
         <div className={styles.rightColumn}>
           <div className={styles.ratingCard}>
             <div className={styles.ratingHeader}>
-              <p>{storeName || "가게"} 월별 평균 평점</p>
+              <p>{placeName || "가게"} 월별 평균 평점</p>
               <span>{ratingData.average}</span>
             </div>
             <div className={styles.chartContainer}>

@@ -1,8 +1,6 @@
 .titleBox {
   width: 100%;
 
-  /* margin-top: 24px; */
-
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -27,12 +25,11 @@
 
 .titleHeader {
   margin-top: 16px;
-  /* margin-right: 64px; */
+  padding-right: 18px;
 
   display: flex;
   justify-content: center;
   align-items: center;
-  /* gap: 1rem; */
 
   cursor: pointer;
 }
@@ -40,6 +37,7 @@
 .titleImg {
   width: 80px;
   height: 77px;
+
   transform: translateY(-12px);
 }
 
@@ -53,8 +51,6 @@
 }
 
 .content {
-  /* margin-top: 24px; */
-
   font-weight: 400;
   font-size: 19px;
   line-height: 33px;

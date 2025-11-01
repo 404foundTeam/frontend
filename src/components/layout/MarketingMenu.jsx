@@ -8,7 +8,7 @@ function MarketingMenu({ onMouseEnter, onMouseLeave }) {
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
-      <p className={styles.menuTitle}>홍보</p>
+      {/* <p className={styles.menuTitle}>홍보</p> */}
       <div className={styles.navs}>
         <NavLink to="/cardnews">카드뉴스 제작</NavLink>
         <NavLink to="/camera">사진 촬영 가이드</NavLink>

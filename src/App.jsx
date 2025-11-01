@@ -27,6 +27,10 @@ import MyPage from "./pages/MyPage";
 import Error from "./components/shared/Error";
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
+import RequireAuth from "./components/auth/RequireAuth";
+
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   // 새로고침 시 최상단 이동
@@ -40,12 +44,26 @@ function App() {
     <>
       <BrowserRouter>
         <ScrollToTop />
+        <ToastContainer
+          position="top-center"
+          autoClose={2000}
+          hideProgressBar={true}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
         <Routes>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/" element={<WelcomeLayout />}>
             <Route index element={<WelcomePage />} />
           </Route>
+
+          {/* <Route element={<RequireAuth />}> */}
           <Route path="/" element={<Layout />}>
             <Route path="main" element={<MainLayout />}>
               <Route index element={<MainPage />} />
@@ -70,12 +88,14 @@ function App() {
               <Route index element={<SmartReportPage />} />
             </Route>
             <Route path="mysmartreport" element={<SmartReportLayout />}>
-            <Route path=":year/:month" element={<MySmartReportPage />} />
-          </Route>
+              <Route path=":year/:month" element={<MySmartReportPage />} />
+            </Route>
             <Route path="my" element={<MyLayout />}>
               <Route index element={<MyPage />} />
             </Route>
           </Route>
+          {/* </Route> */}
+
           <Route path="*" element={<Error />} />
         </Routes>
       </BrowserRouter>

@@ -13,6 +13,7 @@ const SearchList = forwardRef(({ store, isSelected, onClick }, ref) => {
     >
       <img src={listIcon} className={styles.icon} />
       <div className={styles.store}>
+        {/* store or place */}
         <h1 className={styles.name}>{store.placeName}</h1>
         <p className={styles.addr}>{store.roadAddress}</p>
       </div>

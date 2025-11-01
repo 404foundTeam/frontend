@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { fetchStoresByCoord } from "../../api/index.js";
+import { fetchStoresByCoord } from "../../api/auth.js";
 import styles from "../../styles/welcome/WelcomeMap.module.css";
 import close from "../../assets/welcomeMap/close.png";
 import listTitle from "../../assets/welcomeMap/list.png";
@@ -7,6 +7,7 @@ import MarkerImg from "../../assets/welcomeMap/marker.png";
 import selectMarkerImg from "../../assets/welcomeMap/select_marker.png";
 import StoreSearch from "./StoreSearch.jsx";
 import SearchList from "./SearchList.jsx";
+import { toast } from "react-toastify";
 
 // const { kakao } = window;
 
@@ -27,7 +28,8 @@ function WelcomeMap({ focusRef, onClick, handleSelect }) {
 
   const handleConfirm = () => {
     if (!selectStore) {
-      alert("업장을 선택해주세요.");
+      toast.error("업장을 선택해주세요.");
+      // alert("업장을 선택해주세요.");
       return;
     }
     handleSelect(selectStore);
@@ -88,7 +90,7 @@ function WelcomeMap({ focusRef, onClick, handleSelect }) {
         }
         // 인포윈도우 생성
         const infoWindow = new window.kakao.maps.InfoWindow({
-          content: `<div style='padding:5px;font-size:14px;'>${store.storeName}</div>`,
+          content: `<div style='padding:5px;font-size:14px;'>${store.placeName}</div>`,
         });
         infoWindow.open(mapRef.current, marker);
         infoWindowRef.current = infoWindow;
@@ -162,9 +164,9 @@ function WelcomeMap({ focusRef, onClick, handleSelect }) {
       </div>
       <div className={styles.header}>
         <h2 className={styles.headerTitle}>업장 찾기</h2>
-        <p className={styles.headerContent}>
+        {/* <p className={styles.headerContent}>
           어렵고 복잡한 마케팅과 운영전략을 한번에
-        </p>
+        </p> */}
         <StoreSearch
           placeholder="주소를 입력해주세요."
           value={search}
@@ -182,7 +184,7 @@ function WelcomeMap({ focusRef, onClick, handleSelect }) {
         <div
           className={styles.map}
           ref={container}
-          style={{ width: "100%", height: "250px" }}
+          style={{ width: "100%", height: "180px" }}
         ></div>
         <div className={styles.searchLists}>
           <div className={styles.searchListTitle}>
@@ -205,7 +207,7 @@ function WelcomeMap({ focusRef, onClick, handleSelect }) {
                     }
                     // 인포윈도우 생성
                     const infoWindow = new window.kakao.maps.InfoWindow({
-                      content: `<div style='padding:5px;font-size:14px;'>${store.storeName}</div>`,
+                      content: `<div style='padding:5px;font-size:14px;'>${store.placeName}</div>`,
                     });
                     infoWindow.open(mapRef.current, markerRef.current[idx]);
                     infoWindowRef.current = infoWindow;
