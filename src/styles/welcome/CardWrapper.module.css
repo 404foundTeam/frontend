@@ -1,7 +1,6 @@
 /* 페이지 카드 래퍼 배경 스타일 */
 .cardWrapper {
   width: 100%;
-  /* max-width: 1440px; */
   margin: 0 auto;
 
   display: block;
@@ -66,16 +65,12 @@
 
 /* 스마트 리포트 스타일 */
 .cardBox.report {
-  /* height: 800px; */
-
-  /* display: flex; */
   gap: 4rem;
 }
 
 /* 텍스트 위치 조정 */
 .cardBox .textBox.report {
   padding-top: 199px;
-  /* margin-left: 122px; */
 }
 
 .cardBox .textBox.report .title {
@@ -86,18 +81,15 @@
   width: 494px;
 
   padding-top: 168px;
-  /* padding-right: 80px; */
 }
 
 /* 마케팅 스타일 */
 .cardBox.marketing {
-  /* height: 800px; */
+  margin-top: 2rem;
 }
 
 /* 마케팅 내부 박스 스타일 */
 .cardBox .marketingBoxes {
-  /* width: 840px; */
-  /* height: 760px; */
 
   display: flex;
   flex-direction: column;
@@ -151,23 +143,17 @@
   color: #717171;
 }
 
-.cardBox .textBox.marketing {
-  /* height: 800px; */
-  /* padding-top: 194px; */
-}
+/* .cardBox .textBox.marketing {
+} */
 
 /* 카드 뉴스 스타일 */
 .cardBox.sns {
-  /* height: 800px; */
-  /* padding-top: 199px; */
   gap: 5rem;
 }
 
 .cardBox .cardImgBox {
-  /* width: 840px; */
   width: 564px;
   height: 380px;
-  /* height: 760px; */
   position: relative;
 
   padding-left: 20px;
@@ -175,14 +161,12 @@
   display: flex;
 }
 
-.cardBox .textBox.sns {
-  /* padding-top: 66px; */
-  /* margin-left: 122px; */
-}
+/* .cardBox .textBox.sns {
+} */
 
-.cardBox.sns .textBox .content {
-  /* width: 548px; */
-}
+
+/* .cardBox.sns .textBox .content {
+} */
 
 .cardBox .cardImgBox .cardImg {
   width: 370px;

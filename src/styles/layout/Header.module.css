@@ -1,13 +1,26 @@
 header {
-  max-width: 1200px;
+  max-width: 1440px;
   height: 68px;
 
   margin: 0 auto;
-  /* padding-inline: 6rem; */
+}
+
+.headerBox {
+  width: 100%;
+  max-width: 1440px;
+  height: 68px;
+
+  position: fixed;
+  z-index: 100;
 
   display: flex;
   justify-content: center;
   align-items: center;
+
+  background: #ffffff;
+  opacity: 0.9;
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 
   font-style: normal;
   font-weight: 500;
@@ -19,6 +32,8 @@ header {
 }
 
 .titleBox {
+  margin-left: 3rem;
+
   display: flex;
   align-items: center;
 
@@ -30,31 +45,22 @@ header {
   height: 54px;
 
   padding-bottom: 12px;
-  /* position: absolute; */
-  /* top: 3px;
-  left: 153px; */
 }
 
 .text {
-  /* padding-top: 0.5rem; */
   color: #febf22;
 }
 
 /* .tags {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  gap: 45px;
-  padding-left: 216px;
 } */
 
 .links {
   margin-left: 6rem;
+  margin-right: 3rem;
 
   flex: 1;
   display: flex;
   justify-content: space-between;
-  /* padding-right: 120px; */
 }
 .linkBox {
   position: relative;
@@ -98,7 +104,6 @@ header {
 
   display: flex;
   align-items: center;
-  /* gap: 1rem; */
 }
 .profileImg {
   width: 60px;

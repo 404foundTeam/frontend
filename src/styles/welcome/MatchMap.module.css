@@ -1,10 +1,8 @@
 .signMap {
   width: 100%;
-  /* max-width: 1440px; */
-  /* height: 500px; */
 
   margin: 0 auto;
-  /* padding: 2rem; */
+  margin-top: 9rem;
 
   display: flex;
   flex-direction: column;
@@ -15,7 +13,6 @@
 
 .signMap .signTitle {
   padding-top: 2.5rem;
-  /* padding-top: 68px; */
 
   font-weight: 700;
   font-size: 38px;
@@ -27,7 +24,6 @@
 
 .signMap .signText {
   padding-top: 1.5rem;
-  /* padding-top: 32px; */
 
   font-weight: 500;
   font-size: 16px;
@@ -46,12 +42,9 @@
 
 .signMap .welcomeSign {
   width: 380px;
-  /* height: 93px; */
 
   margin-top: 1.5rem;
   margin-bottom: 2.5rem;
-  /* margin-top: 32px; */
-  /* margin-bottom: 141px; */
   padding: 1rem 2rem;
 
   border-radius: 73px;
@@ -59,7 +52,6 @@
 
   font-weight: 700;
   font-size: 24px;
-  /* line-height: 48px; */
   letter-spacing: -0.025em;
 
   color: #ffffff;

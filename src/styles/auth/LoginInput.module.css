@@ -8,7 +8,7 @@
 
 .label {
   font-weight: 500;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 17px;
 
   color: #acacac;
@@ -16,14 +16,14 @@
 
 .input {
   margin-top: 8px;
-  padding: 10px 12px;
+  padding: 1rem;
 
   outline: none;
   border: 2px solid #d9d9d9;
   border-radius: 10px;
 
   font-weight: 500;
-  font-size: 12px;
+  font-size: 16px;
   line-height: 21px;
 
   color: #797979;
@@ -32,22 +32,23 @@
 .input:focus,
 .input.active {
   border: 2px solid #febf22;
+  color: #333333;
 }
 
 .input::placeholder {
   font-weight: 500;
-  font-size: 12px;
+  font-size: 16px;
   line-height: 21px;
 
   color: #acacac;
 }
 
 .inputImg {
-  width: 30px;
-  height: 30px;
+  width: 35px;
+  height: 35px;
 
   position: absolute;
-  top: 32px;
+  top: 35px;
   right: 8px;
 
   background-image: url("../../assets/reset.png");

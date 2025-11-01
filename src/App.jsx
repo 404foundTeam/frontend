@@ -88,8 +88,8 @@ function App() {
               <Route index element={<SmartReportPage />} />
             </Route>
             <Route path="mysmartreport" element={<SmartReportLayout />}>
-            <Route path=":year/:month" element={<MySmartReportPage />} />
-          </Route>
+              <Route path=":year/:month" element={<MySmartReportPage />} />
+            </Route>
             <Route path="my" element={<MyLayout />}>
               <Route index element={<MyPage />} />
             </Route>
