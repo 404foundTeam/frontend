@@ -37,7 +37,9 @@ function LoginPage() {
         );
         toast.success(getAuth.message);
         // alert(getAuth.message);
-        navigate("/main");
+        setTimeout(() => {
+          navigate("/main");
+        }, 1500);
       } else {
         toast.info(getAuth.message);
         // alert(getAuth.message);
