@@ -16,7 +16,7 @@ function CardNewsPage() {
   const [userText, setUserText] = useState("");
   const navigate = useNavigate();
   const storeUuid = useAuthStore((state) => state.storeUuid);
-  const storeName = useAuthStore((state) => state.storeName);
+  const placeName = useAuthStore((state) => state.placeName);
   const setText = useTextStore((state) => state.setText);
   const setCard = useCardStore((state) => state.setCard);
 
@@ -60,7 +60,7 @@ function CardNewsPage() {
   const postCardNews = async () => {
     const payload = {
       storeUuid,
-      storeName,
+      placeName,
       ...cardData,
     };
 
@@ -84,7 +84,7 @@ function CardNewsPage() {
     <div className={styles.container}>
       <div className={styles.banner}>
         <img src={bannerImg} className={styles.img} />
-        <h1 className={styles.title}>{storeName}</h1>
+        <h1 className={styles.title}>{placeName}</h1>
         <p className={styles.content}>
           을 위한 SNS 카드 뉴스를 만들어드릴게요.
         </p>

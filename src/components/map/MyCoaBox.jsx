@@ -5,7 +5,7 @@ function MyCoaBox({ key, store }) {
     <div key={key} className={styles.myCoaBox}>
       <div className={styles.text}>
         <div className={styles.info}>
-          <p className={styles.name}>{store.storeName}</p>
+          <p className={styles.name}>{store.placeName}</p>
           <p className={styles.add}>{store.storeAddress}</p>
         </div>
         <div className={styles.date}>{store.date}</div>

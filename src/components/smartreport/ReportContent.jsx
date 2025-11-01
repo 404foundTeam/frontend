@@ -23,7 +23,7 @@ function Toast({ message }) {
 
 function ReportContent({ year, month }) {
   const storeUuid = useAuthStore((state) => state.storeUuid);
-  const storeName = useAuthStore((state) => state.storeName);
+  const placeName = useAuthStore((state) => state.placeName);
   const incrementDataVersion = useAuthStore(
     (state) => state.incrementDataVersion
   );
@@ -34,7 +34,7 @@ function ReportContent({ year, month }) {
 
   // --- API 호출 로직 ---
   useEffect(() => {
-    if (isMonthlyReport || !storeUuid || !storeName) {
+    if (isMonthlyReport || !storeUuid || !placeName) {
       return;
     }
 
@@ -45,7 +45,7 @@ function ReportContent({ year, month }) {
       axios
         .post("http://13.209.239.240/api/v1/report", {
           storeUuid: storeUuid,
-          storeName: storeName,
+          placeName: placeName,
         })
         .then((response) => {
           const { status, message } = response.data;
@@ -70,7 +70,7 @@ function ReportContent({ year, month }) {
     };
 
     triggerCrawl();
-  }, [storeUuid, storeName, incrementDataVersion, isMonthlyReport]); // 의존성 배열에 함수도 포함
+  }, [storeUuid, placeName, incrementDataVersion, isMonthlyReport]); // 의존성 배열에 함수도 포함
 
   return (
     <>
@@ -86,8 +86,8 @@ function ReportContent({ year, month }) {
               <div className={styles.reportHeader}>
                 <div className={styles.headerText}>
                   <h2>
-                    <span className={styles.storeName}>
-                      {storeName || "가게"}
+                    <span className={styles.placeName}>
+                      {placeName || "가게"}
                     </span>
                     님의 스마트 리포트
                   </h2>
