@@ -97,6 +97,15 @@ header {
 .img {
   width: 24px;
   height: 24px;
+
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  transform: rotate(0deg);
+  opacity: 1;
+}
+
+.img.active {
+  transform: rotate(180deg);
+  opacity: 1;
 }
 
 .myBox {

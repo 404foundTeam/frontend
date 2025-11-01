@@ -45,11 +45,12 @@ function Header({ isWelcome }) {
                   >
                     홍보
                   </div>
-                  {showMarketing ? (
-                    <img src={down} className={styles.img} />
-                  ) : (
-                    <img src={up} className={styles.img} />
-                  )}
+                  <img
+                    src={showMarketing ? down : up}
+                    className={`${styles.img} ${
+                      showMarketing ? styles.active : ""
+                    }`}
+                  />
                 </div>
                 {showMarketing && (
                   <MarketingMenu
