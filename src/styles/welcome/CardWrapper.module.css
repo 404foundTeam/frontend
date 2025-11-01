@@ -90,7 +90,6 @@
 
 /* 마케팅 내부 박스 스타일 */
 .cardBox .marketingBoxes {
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -99,8 +98,10 @@
 }
 
 .marketingBoxes .marketingBox {
-  width: 635px;
-  height: 114px;
+  width: 525px;
+  /* height: 114px; */
+
+  padding: 1.5rem;
 
   border-radius: 10px;
 
@@ -108,7 +109,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 14px;
+  gap: 0.5rem;
 
   background-color: #febf22;
 
@@ -128,16 +129,14 @@
 /* 마케팅 내부 박스 텍스트 스타일 */
 .marketingBox .marketingTitle {
   font-weight: 700;
-  font-size: 30px;
-  line-height: 36px;
+  font-size: 26px;
 
   color: #6d3737;
 }
 
 .marketingBox .marketingContent {
   font-weight: 500;
-  font-size: 18px;
-  line-height: 21px;
+  font-size: 14px;
   letter-spacing: -0.025em;
 
   color: #717171;
@@ -163,7 +162,6 @@
 
 /* .cardBox .textBox.sns {
 } */
-
 
 /* .cardBox.sns .textBox .content {
 } */
