@@ -1,10 +1,11 @@
 /* 검색 박스 스타일 */
 .search {
-  width: 1094px;
-  height: 66px;
+  /* width: 1094px; */
+  width: 600px;
+  /* height: 66px; */
   position: relative;
 
-  padding-left: 32px;
+  padding: 0.75rem 1rem;
 
   box-sizing: border-box;
   border: 3px solid #febf22;
@@ -20,10 +21,14 @@
   background-color: #fffaed;
   background-image: url("../../assets/search.png");
   background-repeat: no-repeat;
-  background-position: calc(100% - 32px) center;
+  background-position: calc(100% - 18px) center;
   background-size: 25px 25px;
 }
 
 .search:focus {
   outline: none;
+}
+
+.search::placeholder {
+  font-size: 14px;
 }

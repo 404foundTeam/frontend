@@ -56,22 +56,18 @@ function MapPage() {
 
   return (
     <>
+      <div className={styles.background}></div>
       <div className={styles.header}>
         <h2 className={styles.title}>업장 찾기</h2>
-        <p className={styles.content}>업장을 검색해서 제휴를 요청해보세요.</p>
-        <MapSearch placeholder="업장을 입력해주세요." />
+        {/* <p className={styles.content}>업장을 검색해서 제휴를 요청해보세요.</p> */}
+        <MapSearch placeholder="지도에서 제휴할 업장을 검색해보세요." />
         <div className={styles.buttonBox}>
+          {/* 음식점, 카페, 관광명소, 숙박, 주차장 */}
           <CategoryButton
-            isSelected={select === "유사 업종" ? true : false}
-            onClick={() => setSelect("유사 업종")}
+            isSelected={select === "유사업종" ? true : false}
+            onClick={() => setSelect("유사업종")}
           >
             유사 업종
-          </CategoryButton>
-          <CategoryButton
-            isSelected={select === "편의점" ? true : false}
-            onClick={() => setSelect("편의점")}
-          >
-            카페
           </CategoryButton>
           <CategoryButton
             isSelected={select === "음식점" ? true : false}
@@ -79,22 +75,38 @@ function MapPage() {
           >
             음식점
           </CategoryButton>
-          <CategoryButton></CategoryButton>
-          <CategoryButton></CategoryButton>
+          <CategoryButton
+            isSelected={select === "카페" ? true : false}
+            onClick={() => setSelect("카페")}
+          >
+            카페
+          </CategoryButton>
+          <CategoryButton
+            isSelected={select === "숙박" ? true : false}
+            onClick={() => setSelect("숙박")}
+          >
+            숙박
+          </CategoryButton>
+          <CategoryButton
+            isSelected={select === "주차장" ? true : false}
+            onClick={() => setSelect("주차장")}
+          >
+            주차장
+          </CategoryButton>
         </div>
       </div>
       <div className={styles.container}>
-        <div className={styles.mapList}>
-          {stores.map((store, index) => (
-            <CoaMapList key={index} name={store.name} addr={store.addr} />
-          ))}
-        </div>
         <div className={styles.mapBox}>
           <div
             className="map"
             ref={container}
             style={{ width: "100%", height: "100%" }}
           ></div>
+        </div>
+        <div className={styles.mapList}>
+          {stores.map((store, index) => (
+            <CoaMapList key={index} name={store.name} addr={store.addr} />
+          ))}
         </div>
       </div>
       <div className={styles.goMyCoa}>
