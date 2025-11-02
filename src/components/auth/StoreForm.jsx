@@ -9,7 +9,6 @@ import { extractStoreOcr, verifyStoreLicense } from "../../api/auth";
 import ShowStoreInfo from "./ShowStoreInfo";
 import { toast } from "react-toastify";
 import ToastMessage from "../shared/ToastMessage";
-import { data } from "react-router-dom";
 
 function StoreForm({ store, setStore, handleStore }) {
   const mapRef = useRef();
@@ -229,7 +228,7 @@ function StoreForm({ store, setStore, handleStore }) {
             type="button"
             className={`${styles.btn} ${file ? styles.active : ""}`}
             onClick={handleFileInputClick}
-            disabled={!isVerified}
+            disabled={isVerified}
           >
             파일 첨부하기
           </button>
