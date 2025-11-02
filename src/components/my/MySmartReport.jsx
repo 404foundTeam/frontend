@@ -1,13 +1,12 @@
 // src/components/my/MySmartReport.jsx
 
 import React, { useState, useEffect, useMemo } from "react";
-import axios from "axios";
+import { api } from "../../api/index";
 import { useNavigate } from "react-router-dom"; 
 import useAuthStore from "../../store/useAuthStore";
 import styles from "../../styles/my/MySmartReport.module.css"; 
 import reportIconImage from "../../assets/mypage/bee.png";
 
-const API_BASE_URL = "http://13.209.239.240";
 const ITEMS_PER_PAGE = 6; 
 
 function MySmartReport() {
@@ -31,8 +30,8 @@ function MySmartReport() {
       setIsLoading(true);
       setError(null);
       try {
-        const response = await axios.get(
-          `${API_BASE_URL}/api/v1/monthly-report/${storeUuid}` 
+        const response = await api.get(
+          `/monthly-report/${storeUuid}` 
         );
         
         // API 응답 데이터를 'year' 기준으로 내림차순(최신순) 정렬합니다.

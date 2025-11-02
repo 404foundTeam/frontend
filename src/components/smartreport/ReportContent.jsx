@@ -1,7 +1,7 @@
 // src/components/ReportContent.jsx
 
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import { api } from "../../api/index";
 import styles from "../../styles/smartreport/ReportContent.module.css";
 import useAuthStore from "../../store/useAuthStore";
 import TimePattern from "../main/TimePattern";
@@ -42,8 +42,8 @@ function ReportContent({ year, month }) {
       // 사용자에게 백그라운드 작업 시작을 알림
       // setToastMessage('최신 리포트를 확인하고 있습니다...');
 
-      axios
-        .post("http://13.209.239.240/api/v1/report", {
+      api
+        .post("/report", {
           storeUuid: storeUuid,
           placeName: placeName,
         })

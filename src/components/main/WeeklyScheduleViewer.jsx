@@ -1,7 +1,7 @@
 // src/components/WeeklyScheduleViewer.jsx
 
 import React, { useState, useEffect, useMemo } from "react";
-import axios from "axios";
+import { api } from "../../api/index";
 import styles from "../../styles/main/WeeklyScheduleViewer.module.css";
 import useAuthStore from "../../store/useAuthStore";
 import { useNavigate } from "react-router-dom";
@@ -35,8 +35,8 @@ function WeeklyScheduleViewer() {
         const year = currentDate.getFullYear();
         const month = currentDate.getMonth() + 1;
 
-        const response = await axios.get(
-          `http://13.209.239.240/api/v1/calendar/month`,
+        const response = await api.get(
+          `/calendar/month`,
           {
             params: { storeUuid, year, month },
           }
@@ -77,8 +77,8 @@ function WeeklyScheduleViewer() {
     });
     setWeekDates(week);
 
-    const year = startOfWeek.getFullYear();
-    const month = String(startOfWeek.getMonth() + 1).padStart(2, "0");
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, "0");
     setMonthYear(`${year}.${month}`);
   }, [currentDate]);
 

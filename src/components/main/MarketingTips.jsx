@@ -1,7 +1,7 @@
 // src/components/MarketingTips.jsx
 
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import { api } from "../../api/index";
 import useAuthStore from "../../store/useAuthStore";
 import styles from "../../styles/main/MarketingTips.module.css";
 
@@ -25,8 +25,8 @@ function MarketingTips() {
         setIsLoading(true);
         setError(null);
 
-        const response = await axios.get(
-          `http://13.209.239.240/api/v1/report/${storeUuid}/marketing`
+        const response = await api.get(
+          `/report/${storeUuid}/marketing`
         );
 
         setTips(response.data.marketingSuggestions || []);

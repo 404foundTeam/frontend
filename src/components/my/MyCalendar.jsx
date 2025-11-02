@@ -1,10 +1,8 @@
 import { useState, useEffect } from "react";
 import Calendar from "react-calendar";
-import axios from "axios";
+import { api } from "../../api/index";
 import styles from "../../styles/my/MyCalendar.module.css";
 import useAuthStore from "../../store/useAuthStore";
-
-const API_BASE_URL = "http://13.209.239.240";
 
 const formatDate = (date) => {
   const year = date.getFullYear();
@@ -29,8 +27,8 @@ function MyCalendar() {
   const fetchHolidays = async (date) => {
     try {
       const year = date.getFullYear();
-      const response = await axios.get(
-        `${API_BASE_URL}/api/v1/calendar/holidays`,
+      const response = await api.get(
+        `/calendar/holidays`,
         {
           params: { year },
         }
@@ -69,8 +67,8 @@ function MyCalendar() {
     try {
       const year = date.getFullYear();
       const month = date.getMonth() + 1;
-      const response = await axios.get(
-        `${API_BASE_URL}/api/v1/calendar/month`,
+      const response = await api.get(
+        `/calendar/month`,
         {
           params: { storeUuid, year, month },
         }
@@ -99,14 +97,14 @@ function MyCalendar() {
     const calendarDate = formatDate(selectedDate);
     try {
       if (currentEventId) {
-        await axios.patch(
-          `${API_BASE_URL}/api/v1/calendar/events/${currentEventId}`,
+        await api.patch(
+          `/calendar/events/${currentEventId}`,
           {
             title: currentEventText,
           }
         );
       } else {
-        await axios.post(`${API_BASE_URL}/api/v1/calendar/events`, {
+        await api.post(`/calendar/events`, {
           storeUuid,
           calendarDate,
           title: currentEventText,
@@ -123,8 +121,8 @@ function MyCalendar() {
   const handleDeleteEvent = async () => {
     if (!currentEventId) return;
     try {
-      await axios.delete(
-        `${API_BASE_URL}/api/v1/calendar/events/${currentEventId}`
+      await api.delete(
+        `/calendar/events/${currentEventId}`
       );
       await fetchEvents(activeMonth);
       setModalIsOpen(false);

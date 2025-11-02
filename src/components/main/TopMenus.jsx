@@ -1,7 +1,7 @@
 // src/components/TopMenus.jsx
 
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import { api } from "../../api/index";
 import useAuthStore from "../../store/useAuthStore";
 import styles from "../../styles/main/Dashboard.module.css";
 
@@ -24,15 +24,15 @@ function TopMenus({ year, month }) {
         setIsLoading(true);
         let apiUrl;
         if (year && month) {
-          // 💡 "월별 리포트"용 API 경로
-          apiUrl = `http://13.209.239.240/api/v1/monthly-report/${storeUuid}/${year}/${month}/product-ranking`;
+          // "월별 리포트"용 API 경로
+          apiUrl = `/monthly-report/${storeUuid}/${year}/${month}/product-ranking`;
         } else {
-          // 💡 "최신 리포트"용 API 경로 (기존 경로)
-          apiUrl = `http://13.209.239.240/api/v1/report/${storeUuid}/product-ranking`;
+          // "최신 리포트"용 API 경로 (기존 경로)
+          apiUrl = `/report/${storeUuid}/product-ranking`;
         }
 
         // 3. 동적으로 생성된 URL로 API 호출
-        const response = await axios.get(apiUrl);
+        const response = await api.get(apiUrl);
         
         const chartData = response.data.salesDistributionChart || [];
 

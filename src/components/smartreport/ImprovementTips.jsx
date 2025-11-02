@@ -1,7 +1,7 @@
 // src/components/ImprovementTips.jsx
 
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import { api } from "../../api/index";
 import useAuthStore from "../../store/useAuthStore";
 import styles from "../../styles/smartreport/ImprovementTips.module.css";
 import tipIcon from "../../assets/report/tip-icon.png";
@@ -27,12 +27,12 @@ function ImprovementTips({ year, month }) {
         setError(null);
         let apiUrl;
         if (year && month) {
-          apiUrl = `http://13.209.239.240/api/v1/monthly-report/${storeUuid}/${year}/${month}/improvement-tip`;
+          apiUrl = `/monthly-report/${storeUuid}/${year}/${month}/improvement-tip`;
         } else {
-          apiUrl = `http://13.209.239.240/api/v1/report/${storeUuid}/improvement-tip`;
+          apiUrl = `/report/${storeUuid}/improvement-tip`;
         }
 
-        const response = await axios.get(apiUrl);
+        const response = await api.get(apiUrl);
         
         // API 응답에서 combinedTips 텍스트를 상태에 저장
         setTipsText(response.data.combinedTips || "");
