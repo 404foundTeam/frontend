@@ -90,7 +90,7 @@ function StoreForm({ store, setStore, handleStore }) {
   // 진위여부 확인
   const handleVerify = async () => {
     if (!(verify.storeNumber && verify.representativeName && verify.openDate)) {
-      toast.error("업장 정보를 확인해주세요");
+      toast.error("업장 정보를 확인해주세요.");
       return;
     }
     const { storeNumber, representativeName, openDate } = verify;
@@ -149,7 +149,7 @@ function StoreForm({ store, setStore, handleStore }) {
             },
             error: {
               render() {
-                return toast.error("파일 분석에 실패했습니다");
+                return toast.error("파일 분석에 실패했습니다.");
               },
             },
           });

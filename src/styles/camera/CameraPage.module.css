@@ -8,21 +8,20 @@
 }
 
 .container .show {
-  width: 1018px;
-  height: 396px;
+  width: 820px;
+  height: 320px;
 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 60px;
+  gap: 2rem;
 
   background-color: #d9d9d9;
   border-radius: 10px;
 
   font-weight: 600;
   font-size: 1.875rem;
-  line-height: 36px;
   letter-spacing: -0.025em;
   color: #797979;
 
@@ -39,18 +38,17 @@
 
   font-weight: 600;
   font-size: 30px;
-  line-height: 36px;
   letter-spacing: -0.025em;
 
   color: #797979;
 }
 
 .buttonBox {
-  margin-top: 32px;
+  margin-top: 1.5rem;
 
   display: flex;
   justify-content: center;
-  gap: 137px;
+  gap: 3rem;
 }
 
 @media (max-width: 430px) {

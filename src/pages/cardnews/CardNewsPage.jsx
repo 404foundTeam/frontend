@@ -11,6 +11,8 @@ import SelectBox from "../../components/shared/SelectBox.jsx";
 import Loading from "../../components/shared/Loading.jsx";
 import Error from "../../components/shared/Error.jsx";
 import FinButton from "../../components/shared/FinButton.jsx";
+import { toast } from "react-toastify";
+import ToastMessage from "../../components/shared/ToastMessage.jsx";
 
 function CardNewsPage() {
   const [userText, setUserText] = useState("");
@@ -41,19 +43,51 @@ function CardNewsPage() {
   };
 
   const getGenerateText = async () => {
+    // 1. 유효성 검사
+    if (!userText) {
+      toast.error("텍스트를 입력해주세요.");
+      return;
+    }
+
     try {
-      const getText = await createSnsCardText({
-        type: cardData.cardType,
-        userText: userText,
-      });
+      const result = await toast.promise(
+        createSnsCardText({
+          type: cardData.cardType,
+          userText: userText,
+        }),
+        {
+          pending: "텍스트 생성 중...",
+
+          success: {
+            icon: false,
+            render({ data }) {
+              setCardData((prev) => ({
+                ...prev,
+                generatedText: data.generatedText,
+              }));
+              setText({ generatedText: data.generatedText });
+              return <ToastMessage>텍스트 생성이 완료됐습니다.</ToastMessage>;
+            },
+          },
+          error: {
+            render() {
+              return (
+                <ToastMessage isRed={true}>
+                  텍스트 생성에 실패했습니다.
+                </ToastMessage>
+              );
+            },
+          },
+        }
+      );
+
       setCardData((prev) => ({
         ...prev,
-        generatedText: getText.generatedText,
+        generatedText: result.generatedText,
       }));
-      setText({ generatedText: getText.generatedText });
-    } catch (error) {
-      console.log("데이터 요청 실패", error);
-      alert("텍스트 변환에 실패했습니다.");
+      setText({ generatedText: result.generatedText });
+    } catch (err) {
+      console.error("텍스트 생성 중 치명적인 오류:", err);
     }
   };
 

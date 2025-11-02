@@ -7,10 +7,12 @@
 /* 카드뉴스 배너 */
 .banner {
   width: 100%;
-  max-width: 1440px;
-  height: 212px;
+  /* max-width: 1440px; */
+  /* height: 212px; */
 
   margin: 0 auto;
+  padding-top: 3.25rem;
+  padding-bottom: 4rem;
 
   display: flex;
   align-items: center;
@@ -23,8 +25,8 @@
 }
 
 .banner .img {
-  width: 126px;
-  height: 114px;
+  width: 96px;
+  height: 94px;
 }
 
 .title {
@@ -32,7 +34,7 @@
   margin-left: 24px;
 
   font-weight: 700;
-  font-size: 3rem;
+  font-size: 2.5rem;
   line-height: 57px;
 
   color: #febf22;
@@ -43,7 +45,7 @@
   margin-left: 8px;
 
   font-weight: 500;
-  font-size: 1.875rem;
+  font-size: 1.5rem;
   line-height: 36px;
 
   color: #717171;
@@ -59,7 +61,12 @@
   flex-direction: column;
   align-items: center;
 
-  gap: 60px;
+  gap: 4rem;
+}
+
+/* 타입 스타일 */
+.cardNewsContainer .cardNewsType {
+  padding-top: 4rem;
 }
 
 /* 선택 박스 */
@@ -67,14 +74,9 @@
   width: 1113px;
 }
 
-/* 타입 스타일 */
-.cardNewsContainer .cardNewsType {
-  padding-top: 78px;
-}
-
 .cardNewsBox .selectBoxs {
-  margin-top: 49px;
-  margin-left: 114px;
+  margin-top: 2rem;
+  margin-left: 6rem;
 
   display: flex;
   gap: 270px;
@@ -91,16 +93,23 @@
 .textInput {
   width: 1096px;
 
-  padding: 28px 0 28px 19px;
-  margin-top: 70px;
-  margin-left: 45px;
+  padding: 1.25rem 1.5rem;
+  margin-top: 2rem;
+  margin-left: 2.75rem;
 
   border: 5px solid #d9d9d9;
   border-radius: 10px;
 
   font-weight: 500;
   font-size: 1.15rem;
-  line-height: 23px;
+  letter-spacing: -0.025em;
+
+  color: #717171;
+}
+
+.textInput::placeholder {
+  font-weight: 500;
+  font-size: 1.15rem;
   letter-spacing: -0.025em;
 
   color: #717171;
@@ -118,8 +127,8 @@
 }
 
 .textButton {
-  margin: 39px auto 0;
-  padding: 12px 24px;
+  margin: 2.5rem auto 0;
+  padding: 1rem 3rem;
 
   border: none;
   border-radius: 10px;
@@ -127,7 +136,6 @@
 
   font-weight: 700;
   font-size: 1.15rem;
-  line-height: 21px;
   letter-spacing: -0.025em;
 
   color: #7c7c7c;
@@ -153,16 +161,14 @@
   width: 1058px;
   height: 128px;
   padding: 28px;
-  margin-top: 28px;
-  margin-left: 40px;
+  margin-top: 3rem;
+  margin-left: 2.75rem;
 
   border: 5px solid #d9d9d9;
   border-radius: 10px;
 
   font-weight: 500;
-
   font-size: 1.2rem;
-  line-height: 28px;
   letter-spacing: -0.025em;
 
   color: #717171;
@@ -177,6 +183,8 @@
 .cardNewsTemplate > p {
   padding-top: 16px;
   padding-left: 50px;
+
+  color: #7c7c7c;
 }
 
 .templateList {
@@ -188,8 +196,8 @@
 }
 
 .templateList .templateBox {
-  width: 274px;
-  height: 274px;
+  width: 240px;
+  height: 240px;
 
   position: relative;
   text-align: center;
@@ -199,6 +207,7 @@
   border: 5px solid #acacac;
   border-radius: 10px;
 }
+
 .templateList .templateBoxs {
   display: flex;
   flex-direction: column;
@@ -219,11 +228,11 @@
 }
 
 .templateList .templateBox.select .text {
-  font-size: 30px;
+  font-size: 24px;
 }
 
 .templateList .templateBox.select .content {
-  font-size: 30px;
+  font-size: 1.5rem;
   background-color: #febf22;
 }
 
@@ -231,33 +240,32 @@
   position: absolute;
 
   font-weight: 600;
-  font-size: 1.6rem;
-  line-height: 36px;
+  font-size: 1.25rem;
   letter-spacing: -0.025em;
 
   color: #6d3737;
 }
 
 .templateBox .text.bottom {
-  top: 108px;
-  left: 104px;
+  top: 100px;
+  left: 100px;
 }
 
 .templateBox .text.right {
-  top: 135px;
+  top: 112px;
   left: 44px;
 }
 
 /* 스토어 박스 */
 .templateList .templateBox .content {
-  width: 230px;
-  height: 171px;
+  width: 220px;
+  height: 100px;
 
-  margin: 56px 24px;
+  margin: 70px auto;
 
   font-weight: 600;
   font-size: 1.25rem;
-  line-height: 171px;
+  line-height: 100px;
   letter-spacing: -0.025em;
 
   color: #6d3737;
@@ -274,28 +282,29 @@
 }
 
 .imgBox .templateBox .content.bottom {
-  width: 240px;
-  height: 69px;
+  width: 220px;
+  height: 60px;
 
-  line-height: 69px;
+  line-height: 60px;
 
-  margin: 190px 18px 18px;
+  margin-top: 160px;
 }
 
 .imgBox .templateBox .content.right {
   width: 96px;
   height: 200px;
 
+  margin: 0;
+  margin-top: 18px;
+  margin-left: 130px;
   font-size: 1.125rem;
   line-height: 200px;
-
-  margin-left: 168px;
 }
 
 /* 카드뉴스 테마 */
 .themeList {
-  margin-top: 70px;
-  margin-left: 50px;
+  margin-top: 3rem;
+  margin-left: 6rem;
 
   display: flex;
   gap: 98px;
@@ -304,7 +313,7 @@
 }
 
 .themeList .themeBox {
-  padding: 21px 63px;
+  padding: 1.5rem 3rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -314,8 +323,7 @@
   border-radius: 10px;
 
   font-weight: 800;
-  font-size: 1.2rem;
-  line-height: 21px;
+  font-size: 1rem;
   letter-spacing: -0.025em;
 
   color: #6d3737;
