@@ -5,10 +5,7 @@ function ToastMessage({ children, isRed = false }) {
   return (
     <div className={styles.container}>
       <img src={img} className={styles.img}></img>
-      <div className={`${isRed ? styles.red : styles.text}`}>
-        {children}
-        {isRed ? "!" : ""}
-      </div>
+      <div className={`${isRed ? styles.red : styles.text}`}>{children}</div>
     </div>
   );
 }
