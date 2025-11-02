@@ -113,10 +113,6 @@
   border: 3px solid #f4b731;
 }
 
-.searchList.closed {
-  max-height: 0;
-}
-
 /* 등록 버튼 */
 .mapButton {
   width: 220px;
