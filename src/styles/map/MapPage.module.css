@@ -83,10 +83,10 @@
 }
 
 .goMyCoa {
-  width: 100%;
+  /* width: 922px; */
 
   padding-top: 28px;
-  padding-left: 454px;
+  padding-left: 730px;
   padding-bottom: 199px;
 
   display: flex;
@@ -94,14 +94,15 @@
 }
 
 .goMyCoaButton {
-  width: 195px;
-  height: 44px;
+  /* width: 195px;
+  height: 44px; */
+
+  padding: 1rem 2rem;
 
   border-radius: 10px;
 
   font-weight: 700;
   font-size: 18px;
-  line-height: 21px;
   letter-spacing: -0.025em;
 
   color: #6d3737;
