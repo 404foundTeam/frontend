@@ -62,22 +62,22 @@ function Header({ isWelcome }) {
                   <NavLink to="/smartreport" className={styles.link}>
                     스마트 리포트
                   </NavLink>
-                  <div className={styles.myBox}>
-                    <NavLink to="/my" className={styles.link}>
-                      마이 페이지
-                    </NavLink>
-                    <div
-                      className={styles.profileImg}
+                </div>
+                <div className={styles.myBox}>
+                  <NavLink to="/my" className={styles.link}>
+                    마이 페이지
+                  </NavLink>
+                  <div
+                    className={styles.profileImg}
+                    onMouseEnter={() => setShowProfile(true)}
+                    onMouseLeave={() => setShowProfile(false)}
+                  ></div>
+                  {showProfile && (
+                    <ProfileMenu
                       onMouseEnter={() => setShowProfile(true)}
                       onMouseLeave={() => setShowProfile(false)}
-                    ></div>
-                    {showProfile && (
-                      <ProfileMenu
-                        onMouseEnter={() => setShowProfile(true)}
-                        onMouseLeave={() => setShowProfile(false)}
-                      />
-                    )}
-                  </div>
+                    />
+                  )}
                 </div>
               </>
             )}
