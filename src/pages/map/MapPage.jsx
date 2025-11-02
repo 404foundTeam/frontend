@@ -1,16 +1,23 @@
 import { useEffect, useRef, useState } from "react";
+import MapInfoWindow from "../../components/MapInfoWindow";
 import { useNavigate } from "react-router-dom";
+import ReactDOMServer from "react-dom/server";
 import styles from "../../styles/map/MapPage.module.css";
+import { fetchMyStore, searchPartnerStores } from "../../api";
 // import { MapSearch, CoaMapList } from "../../components/map";
 import MapSearch from "../../components/map/MapSearch";
 import CoaMapList from "../../components/map/CoaMapList";
 import CategoryButton from "../../components/map/CategoryButton";
-import { fetchMyStore, searchPartnerStores } from "../../api";
+import MarkerImg from "../../assets/welcomeMap/marker.png";
+import selectMarkerImg from "../../assets/welcomeMap/select_marker.png";
 
 // const { kakao } = window;
 
 function MapPage() {
   const container = useRef(null);
+  const mapRef = useRef(null);
+  const markerRef = useRef([]);
+  const infoWindowRef = useRef(null);
   const navigate = useNavigate();
   const [search, setSearch] = useState(""); // 키워드
   const [select, setSelect] = useState(""); // 카테고리
@@ -19,6 +26,7 @@ function MapPage() {
     latitude: "", // y
   });
   const [storeList, setStoreList] = useState([]);
+  const [selectStore, setSelectStore] = useState(null);
 
   // 미완성 목 데이터
   const stores = [
@@ -44,36 +52,6 @@ function MapPage() {
       latitude: 37.321488,
     },
   ];
-  // [
-  //   {
-  //     name: "브래드랩",
-  //     addr: "경기 용인시 기흥구 구갈로 55 JJ플라자 1층",
-  //   },
-  //   {
-  //     name: "파이슨 베이커리",
-  //     addr: "경기 용인시 기흥구 구갈동 352-4",
-  //   },
-  //   {
-  //     name: "브래드랩",
-  //     addr: "경기 용인시 기흥구 구갈로 55 JJ플라자 1층",
-  //   },
-  //   {
-  //     name: "파이슨 베이커리",
-  //     addr: "경기 용인시 기흥구 구갈동 352-4",
-  //   },
-  //   {
-  //     name: "올탑 스터디 카페",
-  //     addr: "경기 용인시 기흥구 기흥역로58번길 10 센트럴푸르지오 상가 1-107호",
-  //   },
-  //   {
-  //     name: "커피톤야",
-  //     addr: "경기 용인시 기흥구 구갈로 15 상가동 1층 프레쉬로스터커피톤야코리아",
-  //   },
-  //   {
-  //     name: "모리스하우스",
-  //     addr: "경기 용인시 기흥구 기흥역로 9 롯데캐슬 레이시티 B동 1층",
-  //   },
-  // ];
 
   const handleClick = async () => {
     const keyword = search;
@@ -124,6 +102,65 @@ function MapPage() {
 
     const map = new window.kakao.maps.Map(container.current, options);
   }, [myLocation]);
+
+  useEffect(() => {
+    if (!mapRef.current || !window.kakao || !window.kakao.maps) return;
+
+    // 기존 마커 제거
+    if (markerRef.current) {
+      markerRef.current.forEach((m) => m.setMap(null));
+    }
+
+    if (!storeList) return;
+
+    const newMarkers = stores.map((store, idx) => {
+      const markerPosition = new window.kakao.maps.LatLng(
+        store.latitude,
+        store.longitude
+      );
+      const imageSize = new window.kakao.maps.Size(24, 35);
+      const imageOption = { offset: new window.kakao.maps.Point(12, 35) };
+      const markerImage = new window.kakao.maps.MarkerImage(
+        MarkerImg,
+        imageSize,
+        imageOption
+      );
+      const selectMarkerImage = new window.kakao.maps.MarkerImage(
+        selectMarkerImg,
+        imageSize,
+        imageOption
+      );
+
+      const isSelected = selectStore?.placeId === store.placeId;
+      const marker = new window.kakao.maps.Marker({
+        position: markerPosition,
+        image: isSelected ? selectMarkerImage : markerImage,
+      });
+      marker.setMap(mapRef.current);
+
+      window.kakao.maps.event.addListener(marker, "click", function () {
+        setSelectStore(store);
+        // setIsClick(true);
+
+        // 기존 인포윈도우 제거
+        if (infoWindowRef.current) {
+          infoWindowRef.current.close();
+        }
+        // 인포윈도우 생성
+        const infoWindow = new window.kakao.maps.InfoWindow({
+          content: ReactDOMServer.renderToString(
+            <MapInfoWindow store={store} isShow={true} />
+          ),
+          zIndex: 100,
+          disableAutoPan: true,
+        });
+        infoWindow.open(mapRef.current, marker);
+        infoWindowRef.current = infoWindow;
+      });
+      return marker;
+    });
+    markerRef.current = newMarkers;
+  }, [selectStore]);
 
   return (
     <>

@@ -1,20 +1,39 @@
 .customInfoWindow {
+  /* width: 260px; */
   position: relative;
+
+  padding: 12px 16px;
+
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+
   background: #fff;
   border-radius: 12px;
-  padding: 12px 16px;
+
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
-  width: 260px;
 }
 
-.customInfoWindow .infoTitle {
+.infoTitle {
   font-weight: 700;
   font-size: 16px;
   color: #f9b000;
   margin-bottom: 6px;
 }
 
-.customInfoWindow .infoAddress {
+.infoAddress {
   font-size: 14px;
   color: #666;
+}
+
+.btn {
+  padding-inline: 1rem;
+  background: #febf22;
+  border-radius: 10px;
+
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: -0.025em;
+
+  color: #ffffff;
 }

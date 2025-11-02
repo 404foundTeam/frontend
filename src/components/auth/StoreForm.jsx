@@ -104,7 +104,6 @@ function StoreForm({ store, setStore, handleStore }) {
     const { storeNumber, representativeName, openDate } = verify;
     await toast.promise(
       verifyStoreLicense({
-
         storeNumber,
         representativeName,
         openDate,
@@ -180,6 +179,9 @@ function StoreForm({ store, setStore, handleStore }) {
     handleStore(isFormValid);
   }, [store, handleStore]);
 
+  const isVerified =
+    verify.storeNumber && verify.representativeName && verify.openDate;
+
   return (
     <>
       {showMap && (
@@ -227,6 +229,7 @@ function StoreForm({ store, setStore, handleStore }) {
             type="button"
             className={`${styles.btn} ${file ? styles.active : ""}`}
             onClick={handleFileInputClick}
+            disabled={!isVerified}
           >
             파일 첨부하기
           </button>
