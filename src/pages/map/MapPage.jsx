@@ -184,7 +184,8 @@ function MapPage() {
     if (!mapRef.current || !window.kakao || !window.kakao.maps) return;
 
     // 기존 마커 제거
-    if (markerRef.current) markerRef.current.forEach((m) => m.setMap(null));
+    markerRef.current.forEach((m) => m.setMap(null));
+    markerRef.current = [];
 
     if (!storeList) return;
 
@@ -193,6 +194,7 @@ function MapPage() {
         store.latitude,
         store.longitude
       );
+
       const imageSize = new window.kakao.maps.Size(24, 35);
       const imageOption = { offset: new window.kakao.maps.Point(12, 35) };
       const markerImage = new window.kakao.maps.MarkerImage(
