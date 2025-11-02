@@ -104,12 +104,17 @@
 
 /* 업장 목록 */
 .searchList {
-  height: 220px;
+  max-height: 220px;
+  /* height: 220px; */
 
   overflow: hidden;
   overflow-y: scroll;
 
   border: 3px solid #f4b731;
+}
+
+.searchList.closed {
+  max-height: 0;
 }
 
 /* 등록 버튼 */

@@ -1,5 +1,4 @@
 header {
-  /* max-width: 1440px; */
   height: 68px;
 
   position: relative;
@@ -12,7 +11,7 @@ header {
 
 .headerBox {
   width: 100%;
-  height: 68px;
+  height: 78px;
 
   position: fixed;
   z-index: 100;

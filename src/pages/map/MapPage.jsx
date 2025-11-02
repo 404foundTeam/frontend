@@ -250,7 +250,7 @@ function MapPage() {
     <>
       <div className={styles.background}></div>
       <div className={styles.header}>
-        <h2 className={styles.title}>업장 찾기</h2>
+        <h2 className={styles.title}>제휴업장 찾기</h2>
         {/* <p className={styles.content}>업장을 검색해서 제휴를 요청해보세요.</p> */}
         <MapSearch
           value={search}
@@ -258,42 +258,42 @@ function MapPage() {
           onClick={handleClick}
           onChange={(e) => setSearch(e.target.value)}
         />
-        <div className={styles.buttonBox}>
-          {/* 음식점, 카페, 관광명소, 숙박, 주차장 */}
-          <CategoryButton
-            isSelected={select === "유사업종" ? true : false}
-            onClick={() => setSelect("유사업종")}
-          >
-            유사 업종
-          </CategoryButton>
-          <CategoryButton
-            isSelected={select === "음식점" ? true : false}
-            onClick={() => setSelect("음식점")}
-          >
-            음식점
-          </CategoryButton>
-          <CategoryButton
-            isSelected={select === "카페" ? true : false}
-            onClick={() => setSelect("카페")}
-          >
-            카페
-          </CategoryButton>
-          <CategoryButton
-            isSelected={select === "숙박" ? true : false}
-            onClick={() => setSelect("숙박")}
-          >
-            숙박
-          </CategoryButton>
-          <CategoryButton
-            isSelected={select === "주차장" ? true : false}
-            onClick={() => setSelect("주차장")}
-          >
-            주차장
-          </CategoryButton>
-        </div>
       </div>
       <div className={styles.container}>
         <div className={styles.mapBox}>
+          <div className={styles.buttonBox}>
+            {/* 음식점, 카페, 관광명소, 숙박, 주차장 */}
+            <CategoryButton
+              isSelected={select === "유사업종" ? true : false}
+              onClick={() => setSelect(select === "유사업종" ? "" : "유사업종")}
+            >
+              유사 업종
+            </CategoryButton>
+            <CategoryButton
+              isSelected={select === "음식점" ? true : false}
+              onClick={() => setSelect(select === "음식점" ? "" : "음식점")}
+            >
+              음식점
+            </CategoryButton>
+            <CategoryButton
+              isSelected={select === "카페" ? true : false}
+              onClick={() => setSelect(select === "카페" ? "" : "카페")}
+            >
+              카페
+            </CategoryButton>
+            <CategoryButton
+              isSelected={select === "숙박" ? true : false}
+              onClick={() => setSelect(select === "숙박" ? "" : "숙박")}
+            >
+              숙박
+            </CategoryButton>
+            <CategoryButton
+              isSelected={select === "주차장" ? true : false}
+              onClick={() => setSelect(select === "주차장" ? "" : "주차장")}
+            >
+              주차장
+            </CategoryButton>
+          </div>
           <div
             className="map"
             ref={container}
@@ -319,7 +319,7 @@ function MapPage() {
           ))} */}
         </div>
       </div>
-      <div className={styles.goMyCoa}>
+      {/* <div className={styles.goMyCoa}>
         <button
           className={styles.goMyCoaButton}
           onClick={() => {
@@ -328,7 +328,7 @@ function MapPage() {
         >
           나의 제휴 보러가기
         </button>
-      </div>
+      </div> */}
     </>
   );
 }

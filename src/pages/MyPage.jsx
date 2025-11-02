@@ -3,8 +3,8 @@
 import styles from "../styles/my/MyPage.module.css";
 import MyScrap from "../components/my/MyScrap";
 import MyCalendar from "../components/my/MyCalendar";
-import MySmartReport from "../components/my/MySmartReport"; 
-import useActiveStore from "../store/useActiveStore"; 
+import MySmartReport from "../components/my/MySmartReport";
+import useActiveStore from "../store/useActiveStore";
 
 function MyPage() {
   const activeTab = useActiveStore((state) => state.activeTab);
@@ -29,7 +29,7 @@ function MyPage() {
         >
           캘린더
         </button>
-        
+
         <button
           className={`${styles.tabButton} ${
             activeTab === "REPORT" ? styles.active : ""
@@ -38,7 +38,6 @@ function MyPage() {
         >
           스마트 리포트
         </button>
-
       </div>
       <div className={styles.content}>
         {activeTab === "MY" && <MyScrap />}
