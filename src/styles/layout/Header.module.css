@@ -1,13 +1,17 @@
 header {
-  max-width: 1440px;
+  /* max-width: 1440px; */
   height: 68px;
 
+  position: relative;
+
   margin: 0 auto;
+
+  display: flex;
+  justify-content: center;
 }
 
 .headerBox {
   width: 100%;
-  max-width: 1440px;
   height: 68px;
 
   position: fixed;
@@ -29,6 +33,15 @@ header {
   letter-spacing: -0.025em;
 
   color: #333333;
+}
+
+.headerInner {
+  width: 100%;
+  max-width: 1440px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .titleBox {
