@@ -13,7 +13,7 @@ footer {
 }
 
 .header {
-  height: 69px;
+  height: 58px;
   position: relative;
 
   padding-top: 14px;
@@ -23,7 +23,11 @@ footer {
   display: flex;
 }
 
-.header .logo img {
+.logo {
+  cursor: pointer;
+}
+
+.logo img {
   width: 74px;
   height: 54px;
   position: absolute;
@@ -41,7 +45,7 @@ footer {
   color: #febf22;
 }
 
-.header .headerBox {
+.headerBox {
   padding-top: 20px;
   padding-left: 481px;
 
@@ -56,6 +60,10 @@ footer {
   color: #797979;
 }
 
+.headerBox a {
+  color: #797979;
+}
+
 .content {
   padding-top: 16px;
   padding-left: 6px;
@@ -65,8 +73,6 @@ footer {
 
   font-weight: 500;
   font-size: 15px;
-  line-height: 120%;
-  /* 또는 18px */
   letter-spacing: -0.025em;
 
   color: #acacac;
@@ -89,6 +95,10 @@ footer {
   /* 또는 26px */
   letter-spacing: -0.025em;
 
+  color: #797979;
+}
+
+.aboutContent a {
   color: #797979;
 }
 
