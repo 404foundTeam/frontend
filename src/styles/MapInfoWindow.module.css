@@ -1,0 +1,20 @@
+.customInfoWindow {
+  position: relative;
+  background: #fff;
+  border-radius: 12px;
+  padding: 12px 16px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+  width: 260px;
+}
+
+.customInfoWindow .infoTitle {
+  font-weight: 700;
+  font-size: 16px;
+  color: #f9b000;
+  margin-bottom: 6px;
+}
+
+.customInfoWindow .infoAddress {
+  font-size: 14px;
+  color: #666;
+}

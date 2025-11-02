@@ -46,12 +46,12 @@ function Header({ isWelcome }) {
                     >
                       홍보
                     </div>
-                    {showMarketing ? (
-                      <img src={down} className={styles.img} />
-                    ) : (
-                      <img src={up} className={styles.img} />
-                    )}
-                  </div>
+                    <img
+                      src={showMarketing ? down : up}
+                      className={`${styles.img} ${
+                        showMarketing ? styles.active : ""
+                     }`}
+                    />
                   {showMarketing && (
                     <MarketingMenu
                       onMouseEnter={() => setShowMarketing(true)}
@@ -61,6 +61,7 @@ function Header({ isWelcome }) {
                   <NavLink to="/smartreport" className={styles.link}>
                     스마트 리포트
                   </NavLink>
+
                 </div>
                 <div className={styles.myBox}>
                   <NavLink to="/my" className={styles.link}>

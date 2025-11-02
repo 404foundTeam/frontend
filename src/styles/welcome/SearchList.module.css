@@ -1,9 +1,12 @@
 .list {
-  height: 80px;
+  /* height: 70px; */
+  padding-block: 1rem;
+  padding-left: 0.5rem;
+  /* padding: 1rem 2rem; */
 
   display: flex;
   align-items: center;
-  gap: 48px;
+  gap: 3rem;
 
   border-bottom: 3px solid #d9d9d9;
 
@@ -38,7 +41,7 @@
 }
 
 .store .addr {
-  margin-top: 8px;
+  margin-top: 0.5rem;
 
   font-weight: 500;
   font-size: 0.9rem;

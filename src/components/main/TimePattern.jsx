@@ -1,25 +1,13 @@
-// src/components/TimePattern.jsx
-
 import React, { useState, useEffect } from "react";
-import { Bar } from "react-chartjs-2";
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-} from "chart.js";
 import axios from "axios";
 import useAuthStore from "../../store/useAuthStore";
 import styles from "../../styles/main/Dashboard.module.css";
 
-ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip);
-
 function TimePattern({ year, month }) {
   const storeUuid = useAuthStore((state) => state.storeUuid);
-  const dataVersion = useAuthStore((state) => state.dataVersion); 
-  const [chartData, setChartData] = useState(null); 
+  const dataVersion = useAuthStore((state) => state.dataVersion);
+  
+  const [visitData, setVisitData] = useState([]); 
   const [summary, setSummary] = useState(''); 
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -44,28 +32,27 @@ function TimePattern({ year, month }) {
         const response = await axios.get(apiUrl);
         
         const mostVisited = response.data.mostVisitedHours || [];
+        const leastVisited = response.data.leastVisitedHours || [];
 
-        if (mostVisited.length > 0) {
-          const labels = mostVisited.map((item) => `${item.hour}시`);
-          const dataPoints = mostVisited.map((item) => item.totalCustomers);
+        const taggedMost = mostVisited.map(item => ({ ...item, type: 'most' }));
+        const taggedLeast = leastVisited.map(item => ({ ...item, type: 'least' }));
+        
+        const allVisitData = [...taggedMost, ...taggedLeast];
 
-          setChartData({
-            labels: labels,
-            datasets: [
-              {
-                label: "방문객 수",
-                data: dataPoints,
-                backgroundColor: "#6D3737",
-                borderRadius: 4,
-              },
-            ],
-          });
+        if (allVisitData.length > 0) {
+          setVisitData(allVisitData); 
 
-          const topHours = mostVisited
-            .slice(0, 2)
-            .map((item) => `${item.hour}시`)
-            .join("와 ");
-          const summaryText = `이번주는 손님들이 주로 ${topHours}에 많이 방문했어요.`;
+          let summaryText = "";
+          if (mostVisited.length > 0 && leastVisited.length > 0) {
+            const mostHour = mostVisited[0].hour;
+            const leastHour = leastVisited[0].hour; 
+            summaryText = `이번달은 ${mostHour}시에 사람들이 많이 방문하고 ${leastHour}시에 적게 방문했어요.`;
+          } else if (mostVisited.length > 0) {
+            summaryText = `이번달은 ${mostVisited[0].hour}시에 사람들이 가장 많이 방문했어요.`;
+          } else if (leastVisited.length > 0) {
+            summaryText = `이번달은 ${leastVisited[0].hour}시에 사람들이 가장 적게 방문했어요.`;
+          }
+          
           setSummary(summaryText);
         }
       } catch (err) {
@@ -76,7 +63,6 @@ function TimePattern({ year, month }) {
             엑셀 파일을 업로드해주세요.
           </>
         );
-
         console.error("API Error:", err);
       } finally {
         setIsLoading(false);
@@ -86,27 +72,6 @@ function TimePattern({ year, month }) {
     fetchTimePattern();
   }, [storeUuid, dataVersion, year, month]);
 
-  // 차트 옵션
-  const options = {
-    responsive: true,
-    plugins: {
-      legend: {
-        display: false,
-      },
-    },
-    scales: {
-      x: {
-        grid: {
-          display: false, // 세로선 숨기기
-        },
-      },
-      y: {
-        beginAtZero: true, // y축 0부터 시작
-      },
-    },
-  };
-
-  // --- 상태에 따른 조건부 렌더링 ---
 
   if (isLoading) {
     return (
@@ -124,7 +89,7 @@ function TimePattern({ year, month }) {
     );
   }
 
-  if (!chartData || chartData.datasets[0].data.length === 0) {
+  if (visitData.length === 0) {
     return (
       <div className={styles.card}>
         <p>분석할 방문객 데이터가 없습니다.</p>
@@ -132,14 +97,46 @@ function TimePattern({ year, month }) {
     );
   }
 
+  // 방문객 수(totalCustomers)의 최대값을 찾습니다 (버블 크기 비율 계산용)
+  const maxCustomers = Math.max(...visitData.map(item => item.totalCustomers));
+  const MIN_BUBBLE_SIZE = 35; // 최소 버블 크기 (px)
+  const MAX_BUBBLE_SIZE = 110; // 최대 버블 크기 (px)
+
   return (
     <div className={`${styles.card} ${styles.timePatternCard}`}>
       <h3 className={styles.cardTitle}>
-        가장 바쁜 시간대 TOP {chartData.labels.length}
+        시간대별 방문 패턴
       </h3>
-      <div className={styles.chartContainer}>
-        <Bar options={options} data={chartData} />
+
+      <div className={styles.bubbleChartContainer}>
+        {visitData.slice(0, 4).map((item) => { 
+          
+          // 방문객 수에 따라 버블 크기 계산
+          const scale = (Math.max(item.totalCustomers, 0.1) / maxCustomers);
+          const bubbleSize = (scale * (MAX_BUBBLE_SIZE - MIN_BUBBLE_SIZE)) + MIN_BUBBLE_SIZE;
+          
+          // 폰트 크기도 버블 크기에 비례하여 조절
+          const fontSize = Math.max(bubbleSize / 7, 14); // 최소 14px
+
+          // [수정] 'index < 2' 대신 item.type으로 상위/하위 구분
+          const isTopTier = item.type === 'most'; 
+
+          return (
+            <div 
+              key={`${item.hour}-${item.type}`} 
+              className={`${styles.bubble} ${isTopTier ? styles.topBubble : styles.otherBubble}`}
+              style={{ 
+                width: `${bubbleSize}px`,
+                height: `${bubbleSize}px`,
+                fontSize: `${fontSize}px`
+              }}
+            >
+              {item.hour}시
+            </div>
+          );
+        })}
       </div>
+
       <p className={styles.cardDescription}>{summary}</p>
     </div>
   );

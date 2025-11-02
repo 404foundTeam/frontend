@@ -9,6 +9,7 @@ import { extractStoreOcr, verifyStoreLicense } from "../../api/auth";
 import ShowStoreInfo from "./ShowStoreInfo";
 import { toast } from "react-toastify";
 import ToastMessage from "../shared/ToastMessage";
+import { data } from "react-router-dom";
 
 function StoreForm({ store, setStore, handleStore }) {
   const mapRef = useRef();
@@ -101,58 +102,64 @@ function StoreForm({ store, setStore, handleStore }) {
   // 진위여부 확인
   const handleVerify = async () => {
     const { storeNumber, representativeName, openDate } = verify;
+    await toast.promise(
+      verifyStoreLicense({
 
-    try {
-      const res = await verifyStoreLicense({
         storeNumber,
         representativeName,
         openDate,
-      });
-      if (res?.message) {
-        toast.success(res.message);
-        // alert(res.message);
-      } else {
-        toast.success("진위여부 확인이 완료되었습니다.");
-        // alert("진위여부 확인이 완료되었습니다.");
+      }),
+      {
+        pending: "진위여부 확인 중...",
+        success: {
+          render({ data }) {
+            setStore((prev) => ({ ...prev, verified: data.verified }));
+            return <ToastMessage>{data.message}</ToastMessage>;
+          },
+        },
+        error: {
+          render() {
+            setStore((prev) => ({ ...prev, verified: false }));
+            return (
+              <ToastMessage>진위여부 확인 중 오류가 발생했습니다.</ToastMessage>
+            );
+          },
+        },
       }
-      setStore((prev) => ({ ...prev, verified: res.verified }));
-    } catch (error) {
-      toast.error("진위여부 확인 중 오류가 발생했습니다.");
-      // alert("진위여부 확인 중 오류가 발생했습니다.");
-      setStore((prev) => ({ ...prev, verified: false }));
-      console.log(error);
-    }
+    );
   };
 
   // 파일 입력 시 ocr 추출 후 모달 표시
   useEffect(() => {
     if (file) {
       const getOcr = async () => {
-        try {
-          const formData = new FormData();
-          formData.append("storeLicense", file);
+        const formData = new FormData();
+        formData.append("storeLicense", file);
 
-          const ocr = await extractStoreOcr(formData);
-          setOcrData({
-            storeNumber: ocr.storeNumber,
-            representativeName: ocr.representativeName,
-            openDate: ocr.openDate,
-          });
-          setOcrModal(true);
-          toast.success(ocr.message);
-          // alert(ocr.message);
-          // setBlur(false);
-        } catch (error) {
-          toast.error("파일 분석에 실패했습니다.");
-          // alert("파일 분석에 실패했습니다.");
-          console.log(error);
+        await toast.promise(extractStoreOcr(formData), {
+          pending: "사업자등록증 분석 중입니다...",
+          success: {
+            render({ data }) {
+              setOcrData({
+                storeNumber: data.storeNumber,
+                representativeName: data.representativeName,
+                openDate: data.openDate,
+              });
+              setOcrModal(true);
 
-          // 초기화
-          setFile(null);
-          if (fileInputRef.current) {
-            fileInputRef.current.value = null;
-          }
-        }
+              return <ToastMessage>{data.message}</ToastMessage>;
+            },
+          },
+          error: {
+            render() {
+              setFile(null);
+              if (fileInputRef.current) {
+                fileInputRef.current.value = null;
+              }
+              return toast.error("파일 분석에 실패했습니다");
+            },
+          },
+        });
       };
 
       getOcr();

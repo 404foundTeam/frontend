@@ -14,7 +14,7 @@ import Blur from "./welcome/Blur"; // 블러 효과 컴포넌트 import
 import useAuthStore from "../store/useAuthStore";
 
 function ReportContent() {
-  const storeName = useAuthStore((state) => state.storeName);
+  const placeName = useAuthStore((state) => state.placeName);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
@@ -31,7 +31,7 @@ function ReportContent() {
               <div className={styles.reportHeader}>
                 <div className={styles.headerText}>
                   <h2>
-                    <span className={styles.storeName}>{storeName}</span>님의
+                    <span className={styles.placeName}>{placeName}</span>님의
                     스마트 리포트
                   </h2>
                   <p>이번달 스마트 리포트를 확인해보세요!</p>

@@ -8,7 +8,7 @@ import styles from "../styles/my/MyLayout.module.css";
 import useAuthStore from "../store/useAuthStore";
 
 function MyLayout() {
-  const storeName = useAuthStore((state) => state.storeName);
+  const placeName = useAuthStore((state) => state.placeName);
   const roadAddress = useAuthStore((state) => state.roadAddress);
 
   const [showMap, setShowMap] = useState(false);
@@ -32,7 +32,7 @@ function MyLayout() {
           <div className={styles.bannerWrapper}>
             <div className={styles.banner}>
               <div className={styles.userInfo}>
-                <h2 className={styles.userName}>{storeName}님</h2>
+                <h2 className={styles.userName}>{placeName}님</h2>
                 <p className={styles.userAddress}>
                   {roadAddress || "등록된 주소가 없습니다."}
                 </p>
