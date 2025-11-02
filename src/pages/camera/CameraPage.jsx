@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { guideFile } from "../../api";
+import { uploadGuideFile } from "../../api";
 import dragImg from "../../assets/camera/drag_img.png";
 import styles from "../../styles/camera/CameraPage.module.css";
 import useGuideStore from "../../store/useGuideStore";
@@ -39,7 +39,7 @@ function CameraPage() {
 
     try {
       setLoading(true);
-      const res = await guideFile(data);
+      const res = await uploadGuideFile(data);
       setGuide({ guideImg: preview, guideText: res.guideText });
       navigate("/camera/result");
     } catch (error) {

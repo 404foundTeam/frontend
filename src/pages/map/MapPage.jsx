@@ -5,13 +5,20 @@ import styles from "../../styles/map/MapPage.module.css";
 import MapSearch from "../../components/map/MapSearch";
 import CoaMapList from "../../components/map/CoaMapList";
 import CategoryButton from "../../components/map/CategoryButton";
+import { fetchMyStore, searchPartnerStores } from "../../api";
 
 // const { kakao } = window;
 
 function MapPage() {
   const container = useRef(null);
   const navigate = useNavigate();
-  const [select, setSelect] = useState("");
+  const [search, setSearch] = useState(""); // 키워드
+  const [select, setSelect] = useState(""); // 카테고리
+  const [myLocation, setMyLocation] = useState({
+    longitude: "", // x
+    latitude: "", // y
+  });
+  const [storeList, setStoreList] = useState([]);
 
   // 미완성 목 데이터
   const stores = [
@@ -45,14 +52,55 @@ function MapPage() {
     },
   ];
 
+  const handleClick = async () => {
+    const keyword = search;
+    const category = select;
+    const { longitude, latitude } = myLocation;
+
+    try {
+      const res = await searchPartnerStores({
+        keyword,
+        category,
+        longitude,
+        latitude,
+      });
+
+      setStoreList(res);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
+    const fetchStores = async () => {
+      try {
+        const res = await fetchMyStore();
+        setMyLocation({
+          longitude: res.longitude,
+          latitude: res.latitude,
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchStores();
+  }, []);
+
+  // 지도 생성
+  useEffect(() => {
+    // if (!myLocation.latitude || !myLocation.longitude) return;
+
     const options = {
       center: new window.kakao.maps.LatLng(37.2756, 127.116),
+      // center: new window.kakao.maps.LatLng(
+      //   myLocation.latitude,
+      //   myLocation.longitude
+      // ),
       level: 3,
     };
 
     const map = new window.kakao.maps.Map(container.current, options);
-  }, []);
+  }, [myLocation]);
 
   return (
     <>
@@ -60,7 +108,12 @@ function MapPage() {
       <div className={styles.header}>
         <h2 className={styles.title}>업장 찾기</h2>
         {/* <p className={styles.content}>업장을 검색해서 제휴를 요청해보세요.</p> */}
-        <MapSearch placeholder="지도에서 제휴할 업장을 검색해보세요." />
+        <MapSearch
+          value={search}
+          placeholder="지도에서 제휴할 업장을 검색해보세요."
+          onClick={handleClick}
+          onChange={(e) => setSearch(e.target.value)}
+        />
         <div className={styles.buttonBox}>
           {/* 음식점, 카페, 관광명소, 숙박, 주차장 */}
           <CategoryButton
@@ -104,9 +157,9 @@ function MapPage() {
           ></div>
         </div>
         <div className={styles.mapList}>
-          {stores.map((store, index) => (
+          {/* {stores.map((store, index) => (
             <CoaMapList key={index} name={store.name} addr={store.addr} />
-          ))}
+          ))} */}
         </div>
       </div>
       <div className={styles.goMyCoa}>
