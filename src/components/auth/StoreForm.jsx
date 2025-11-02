@@ -100,6 +100,10 @@ function StoreForm({ store, setStore, handleStore }) {
 
   // 진위여부 확인
   const handleVerify = async () => {
+    if (!(verify.storeNumber && verify.representativeName && verify.openDate)) {
+      toast.error("업장 정보를 확인해주세요");
+      return;
+    }
     const { storeNumber, representativeName, openDate } = verify;
     await toast.promise(
       verifyStoreLicense({
