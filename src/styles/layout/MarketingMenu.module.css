@@ -32,14 +32,18 @@
   gap: 0.25rem;
 }
 
-.navs a {
+.navs a,
+.navs div {
   font-weight: 500;
   font-size: 15px;
   letter-spacing: -0.025em;
 
   color: #333333;
+
+  cursor: pointer;
 }
 
-.navs a:hover {
+.navs a:hover,
+.navs div:hover {
   transform: scale(1.04);
 }

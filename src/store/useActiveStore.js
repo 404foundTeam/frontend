@@ -1,8 +1,10 @@
 import { create } from "zustand";
 
 const useActiveStroe = create((set) => ({
-  activeTab: "MY",
-  setActive: (activeTab) => set({ activeTab }),
+  myActive: "MY",
+  smartActive: "report",
+  setMyActive: (myActive) => set({ myActive }),
+  setSmartActive: (smartActive) => set({ smartActive }),
 }));
 
 export default useActiveStroe;
