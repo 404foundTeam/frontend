@@ -135,77 +135,49 @@ function MapPage() {
     );
   };
 
-  // 마운트 되면 내 좌표 가져오기
+  // 마운트 되면 내 좌표 가져오기 와서 센터 처리
   useEffect(() => {
-    const fetchStores = async () => {
+    const initMap = async () => {
       try {
         const res = await fetchMyStore();
         setMyLocation({
           longitude: res.longitude,
           latitude: res.latitude,
         });
+        // 지도 중심을 내 업장 위치로 설정
+        if (window.kakao && window.kakao.maps && container.current) {
+          const centerPos = new window.kakao.maps.LatLng(
+            res.latitude,
+            res.longitude
+          );
+          const options = { center: centerPos, level: 3 };
+          const map = new window.kakao.maps.Map(container.current, options);
+          mapRef.current = map;
+
+          const imageSize = new window.kakao.maps.Size(24, 35);
+          const imageOption = { offset: new window.kakao.maps.Point(12, 35) };
+          const markerImage = new window.kakao.maps.MarkerImage(
+            selectMarkerImg,
+            imageSize,
+            imageOption
+          );
+
+          const myMarker = new window.kakao.maps.Marker({
+            position: centerPos,
+            image: markerImage,
+          });
+
+          myMarker.setMap(map);
+        }
       } catch (error) {
-        console.log(error);
+        console.log("내 업장 위치 로딩 실패:", error);
       }
     };
-    fetchStores();
+
+    if (window.kakao && window.kakao.maps) {
+      initMap();
+    }
   }, []);
-
-  // 지도 생성
-  useEffect(() => {
-    // if (!myLocation.latitude || !myLocation.longitude) return;
-
-    const options = {
-      center: new window.kakao.maps.LatLng(37.2756, 127.116),
-      // center: new window.kakao.maps.LatLng(
-      //   myLocation.latitude,
-      //   myLocation.longitude
-      // ),
-      level: 3,
-    };
-
-    const map = new window.kakao.maps.Map(container.current, options);
-  }, [myLocation]);
-
-  // 마운트 되면 내 좌표 가져오기 와서 센터 처리
-  // useEffect(() => {
-  //   const initMap = async () => {
-  //     try {
-  //       const res = await fetchMyStore();
-  //       setMyLocation({
-  //         longitude: res.longitude,
-  //         latitude: res.latitude,
-  //       });
-  //       // 지도 중심을 내 업장 위치로 설정
-  //       if (window.kakao && window.kakao.maps && container.current) {
-  //         const centerPos = new window.kakao.maps.LatLng(
-  //           res.latitude,
-  //           res.longitude
-  //         );
-  //         const options = { center: centerPos, level: 3 };
-  //         mapRef.current = new window.kakao.maps.Map(
-  //           container.current,
-  //           options
-  //         );
-  //       }
-  //     } catch (error) {
-  //       console.log("내 업장 위치 로딩 실패:", error);
-  //     } finally {
-  //       // 지도 생성
-  //       const options = {
-  //         center: centerPosition,
-  //         level: 4,
-  //       };
-  //       const map = new window.kakao.maps.Map(container.current, options);
-  //       mapRef.current = map; // map 인스턴스를 ref에 저장!
-  //     }
-  //   };
-  //   // };
-
-  //   if (window.kakao && window.kakao.maps) {
-  //     initMap();
-  //   }
-  // }, []);
 
   // 검색, 선택했을때 마커/인포윈도우
   useEffect(() => {
@@ -278,6 +250,9 @@ function MapPage() {
           placeholder="지도에서 제휴할 업장을 검색해보세요."
           onClick={handleClick}
           onChange={(e) => setSearch(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") handleClick();
+          }}
         />
       </div>
       <div className={styles.container}>
@@ -285,32 +260,52 @@ function MapPage() {
           <div className={styles.buttonBox}>
             {/* 음식점, 카페, 관광명소, 숙박, 주차장 */}
             <CategoryButton
-              isSelected={select === "유사업종" ? true : false}
-              onClick={() => setSelect(select === "유사업종" ? "" : "유사업종")}
+              isSelected={select === "same" ? true : false}
+              onClick={() => {
+                const newSelect = select === "same" ? "" : "same";
+                setSelect(newSelect);
+                handleClick();
+              }}
             >
               유사 업종
             </CategoryButton>
             <CategoryButton
-              isSelected={select === "음식점" ? true : false}
-              onClick={() => setSelect(select === "음식점" ? "" : "음식점")}
+              isSelected={select === "FD6" ? true : false}
+              onClick={() => {
+                const newSelect = select === "FD6" ? "" : "FD6";
+                setSelect(newSelect);
+                handleClick();
+              }}
             >
               음식점
             </CategoryButton>
             <CategoryButton
-              isSelected={select === "카페" ? true : false}
-              onClick={() => setSelect(select === "카페" ? "" : "카페")}
+              isSelected={select === "CE7" ? true : false}
+              onClick={() => {
+                const newSelect = select === "CE7" ? "" : "CE7";
+                setSelect(newSelect);
+                handleClick();
+              }}
             >
               카페
             </CategoryButton>
             <CategoryButton
               isSelected={select === "숙박" ? true : false}
-              onClick={() => setSelect(select === "숙박" ? "" : "숙박")}
+              onClick={() => {
+                const newSelect = select === "숙박" ? "" : "숙박";
+                setSelect(newSelect);
+                handleClick();
+              }}
             >
               숙박
             </CategoryButton>
             <CategoryButton
               isSelected={select === "주차장" ? true : false}
-              onClick={() => setSelect(select === "주차장" ? "" : "주차장")}
+              onClick={() => {
+                const newSelect = select === "주차장" ? "" : "주차장";
+                setSelect(newSelect);
+                handleClick();
+              }}
             >
               주차장
             </CategoryButton>
