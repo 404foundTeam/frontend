@@ -10,6 +10,7 @@ import CoaMapList from "../../components/map/CoaMapList";
 import CategoryButton from "../../components/map/CategoryButton";
 import MarkerImg from "../../assets/welcomeMap/marker.png";
 import selectMarkerImg from "../../assets/welcomeMap/select_marker.png";
+import { toast } from "react-toastify";
 
 // const { kakao } = window;
 
@@ -18,6 +19,8 @@ function MapPage() {
   const mapRef = useRef(null);
   const markerRef = useRef([]);
   const infoWindowRef = useRef(null);
+  const selectStoreRef = useRef([]);
+
   const navigate = useNavigate();
   const [search, setSearch] = useState(""); // 키워드
   const [select, setSelect] = useState(""); // 카테고리
@@ -53,25 +56,65 @@ function MapPage() {
     },
   ];
 
+  // 키워드/업종 검색 클릭
   const handleClick = async () => {
-    const keyword = search;
-    const category = select;
-    const { longitude, latitude } = myLocation;
+    if (!myLocation.latitude || !myLocation.longitude) {
+      toast.error("업장 정보가 없습니다");
+      return;
+    }
 
     try {
       const res = await searchPartnerStores({
-        keyword,
-        category,
-        longitude,
-        latitude,
+        keyword: search,
+        category: select,
+        longitude: myLocation.longitude,
+        latitude: myLocation.latitude,
       });
-
       setStoreList(res);
+      setSelectStore([]);
     } catch (error) {
       console.log(error);
+      setStoreList([]);
     }
   };
 
+  const handleSelectStore = (store, idx) => {
+    setSelectStore(store);
+
+    if (!mapRef.current || !window.kakao || !window.kakao.maps) return;
+
+    // 기존 InfoWindow 제거
+    if (infoWindowRef.current) infoWindowRef.current.close();
+
+    // InfoWindow 생성
+    const marker = markerRef.current[idx];
+    const infoWindow = new window.kakao.maps.InfoWindow({
+      content: ReactDOMServer.renderToString(
+        <MapInfoWindow store={store} isShow={true} />
+      ),
+      zIndex: 100,
+      disableAutoPan: true,
+    });
+    infoWindow.open(mapRef.current, marker);
+    infoWindowRef.current = infoWindow;
+
+    // 마커 이미지 갱신
+    markerRef.current.forEach((m, i) => {
+      const image = new window.kakao.maps.MarkerImage(
+        i === idx ? selectMarkerImg : MarkerImg,
+        new window.kakao.maps.Size(24, 35),
+        { offset: new window.kakao.maps.Point(12, 35) }
+      );
+      m.setImage(image);
+    });
+
+    // 지도 중심 이동
+    mapRef.current.setCenter(
+      new window.kakao.maps.LatLng(store.latitude, store.longitude)
+    );
+  };
+
+  // 마운트 되면 내 좌표 가져오기
   useEffect(() => {
     const fetchStores = async () => {
       try {
@@ -103,17 +146,56 @@ function MapPage() {
     const map = new window.kakao.maps.Map(container.current, options);
   }, [myLocation]);
 
+  // 마운트 되면 내 좌표 가져오기 와서 센터 처리
+  // useEffect(() => {
+  //   const initMap = async () => {
+  //     try {
+  //       const res = await fetchMyStore();
+  //       setMyLocation({
+  //         longitude: res.longitude,
+  //         latitude: res.latitude,
+  //       });
+  //       // 지도 중심을 내 업장 위치로 설정
+  //       if (window.kakao && window.kakao.maps && container.current) {
+  //         const centerPos = new window.kakao.maps.LatLng(
+  //           res.latitude,
+  //           res.longitude
+  //         );
+  //         const options = { center: centerPos, level: 3 };
+  //         mapRef.current = new window.kakao.maps.Map(
+  //           container.current,
+  //           options
+  //         );
+  //       }
+  //     } catch (error) {
+  //       console.log("내 업장 위치 로딩 실패:", error);
+  //     } finally {
+  //       // 지도 생성
+  //       const options = {
+  //         center: centerPosition,
+  //         level: 4,
+  //       };
+  //       const map = new window.kakao.maps.Map(container.current, options);
+  //       mapRef.current = map; // map 인스턴스를 ref에 저장!
+  //     }
+  //   };
+  //   // };
+
+  //   if (window.kakao && window.kakao.maps) {
+  //     initMap();
+  //   }
+  // }, []);
+
+  // 검색, 선택했을때 마커/인포윈도우
   useEffect(() => {
     if (!mapRef.current || !window.kakao || !window.kakao.maps) return;
 
     // 기존 마커 제거
-    if (markerRef.current) {
-      markerRef.current.forEach((m) => m.setMap(null));
-    }
+    if (markerRef.current) markerRef.current.forEach((m) => m.setMap(null));
 
     if (!storeList) return;
 
-    const newMarkers = stores.map((store, idx) => {
+    const newMarkers = storeList.map((store) => {
       const markerPosition = new window.kakao.maps.LatLng(
         store.latitude,
         store.longitude
@@ -132,6 +214,7 @@ function MapPage() {
       );
 
       const isSelected = selectStore?.placeId === store.placeId;
+
       const marker = new window.kakao.maps.Marker({
         position: markerPosition,
         image: isSelected ? selectMarkerImage : markerImage,
@@ -159,8 +242,9 @@ function MapPage() {
       });
       return marker;
     });
+
     markerRef.current = newMarkers;
-  }, [selectStore]);
+  }, [storeList, selectStore]);
 
   return (
     <>
@@ -227,8 +311,10 @@ function MapPage() {
           {/* {storeList.map((store) => (
             <CoaMapList
               key={store.id}
+              ref={(el) => (listRefs.current[idx] = el)}
               placeName={store.placeName}
               roadAddress={store.roadAddress}
+              onClick={handleSelectStore(store,idx)}
             />
           ))} */}
         </div>

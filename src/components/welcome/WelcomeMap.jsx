@@ -15,11 +15,11 @@ import MapInfoWindow from "../MapInfoWindow.jsx";
 
 function WelcomeMap({ focusRef, onClick, handleSelect }) {
   // SearchList DOM 접근용 ref 배열
-  const searchListRefs = useRef([]);
-  const infoWindowRef = useRef(null);
   const container = useRef(null);
   const mapRef = useRef(null);
   const markerRef = useRef([]);
+  const searchListRefs = useRef([]);
+  const infoWindowRef = useRef(null);
 
   const [stores, setStores] = useState([]);
   const [search, setSearch] = useState("");
