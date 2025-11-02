@@ -1,13 +1,13 @@
 .button {
-  width: 72px;
+  width: 60px;
   /* height: 35px; */
 
-  padding: 0.5rem 0.75rem;
+  padding: 0.4rem 0.4rem;
 
   border-radius: 10px;
 
   font-weight: 700;
-  font-size: 13px;
+  font-size: 12px;
   letter-spacing: -0.025em;
 
   color: #ffffff;

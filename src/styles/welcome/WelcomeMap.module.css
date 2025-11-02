@@ -104,7 +104,8 @@
 
 /* 업장 목록 */
 .searchList {
-  height: 220px;
+  max-height: 220px;
+  /* height: 220px; */
 
   overflow: hidden;
   overflow-y: scroll;

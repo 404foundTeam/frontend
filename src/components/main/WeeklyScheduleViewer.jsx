@@ -17,7 +17,7 @@ function WeeklyScheduleViewer() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const setActive = useActiveStroe((state) => state.setActive);
+  const setActive = useActiveStroe((state) => state.setMyActive);
   const navigate = useNavigate();
 
   useEffect(() => {

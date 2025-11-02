@@ -1,17 +1,24 @@
 import styles from "../../styles/layout/Footer.module.css";
-
 import logoImg from "../../assets/logo.png";
+import { NavLink, useNavigate } from "react-router-dom";
 
 function Footer() {
+  const navigate = useNavigate();
+
   return (
     <footer>
       <div className={styles.header}>
-        <div className={styles.logo}>
+        <div
+          className={styles.logo}
+          onClick={() => {
+            navigate("/main");
+          }}
+        >
           <img src={logoImg} />
           <p className={styles.logoText}>market BEE</p>
         </div>
         <div className={styles.headerBox}>
-          <p>ABOUT</p>
+          <NavLink to="marketing">ABOUT</NavLink>
           <p>SEARCH</p>
           <p>RECRUIT</p>
           <p>CONTACT</p>
@@ -23,13 +30,12 @@ function Footer() {
         <p>광고 운영정책</p>
         <div className={styles.contentBox}>
           <div className={styles.aboutContent}>
-            <p>메인</p>
-            <p>홍보</p>
-            <p>지도이용제휴</p>
-            <p>카드뉴스생성</p>
-            <p>사진촬영가이드</p>
+            <NavLink to="main">메인</NavLink>
+            <NavLink to="map">지도이용제휴</NavLink>
+            <NavLink to="cardnews">카드뉴스생성</NavLink>
+            <NavLink to="camera">사진촬영가이드</NavLink>
           </div>
-          <p className={styles.aboutContent}>업장등록</p>
+          <div className={styles.aboutContent}>업장등록</div>
         </div>
       </div>
       <div className={styles.footer}>
