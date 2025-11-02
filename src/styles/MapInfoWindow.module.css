@@ -22,6 +22,8 @@
 }
 
 .infoAddress {
+  width: 220.73px;
+  max-width: 220.73px;
   font-size: 14px;
   color: #666;
 }
