@@ -54,6 +54,27 @@ function MapPage() {
       longitude: 127.110019,
       latitude: 37.321488,
     },
+    {
+      id: 14,
+      placeName: "이프아이엔지",
+      roadAddress: "경기 용인시 기흥구 죽전로15번길 11-2",
+      longitude: 127.109997,
+      latitude: 37.321722,
+    },
+    {
+      id: 15,
+      placeName: "카페양",
+      roadAddress: "경기 용인시 기흥구 죽전로15번길 10",
+      longitude: 127.110222,
+      latitude: 37.321506,
+    },
+    {
+      id: 16,
+      placeName: "에코의서재",
+      roadAddress: "경기 용인시 기흥구 죽전로15번길 11-3",
+      longitude: 127.110019,
+      latitude: 37.321488,
+    },
   ];
 
   // 키워드/업종 검색 클릭
