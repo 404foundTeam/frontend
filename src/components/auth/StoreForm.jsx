@@ -47,8 +47,8 @@ function StoreForm({ store, setStore, handleStore }) {
     const promise = new Promise((resolve) => setTimeout(resolve, 2000)); // 2초짜리 가짜 작업
     toast.promise(promise, {
       pending: "업장 정보 저장 중...", // 대기
-      icon: false,
       success: {
+        icon: false,
         render() {
           return <ToastMessage>업장 등록 완료</ToastMessage>;
         },
@@ -60,23 +60,12 @@ function StoreForm({ store, setStore, handleStore }) {
     setStore((prev) => ({
       ...prev,
       placeId: selectedStore.placeId,
-      // store or place
       placeName: selectedStore.placeName,
       roadAddress: selectedStore.roadAddress,
       longitude: selectedStore.longitude,
       latitude: selectedStore.latitude,
     }));
-    // alert("업장 선택 완료");
-    // toast.success("업장 선택 완료");
-    // toast(<ToastMessage>업장 선택 완료</ToastMessage>, {
-    //   position: "top-center",
-    //   autoClose: 3000,
-    //   hideProgressBar: true,
-    //   closeOnClick: true,
-    //   pauseOnHover: true,
-    //   draggable: true,
-    //   theme: "light",
-    // });
+
     toggleMap();
   };
 
@@ -114,6 +103,7 @@ function StoreForm({ store, setStore, handleStore }) {
       {
         pending: "진위여부 확인 중...",
         success: {
+          icon: false,
           render({ data }) {
             setStore((prev) => ({ ...prev, verified: data.verified }));
             return <ToastMessage>{data.message}</ToastMessage>;
@@ -137,31 +127,46 @@ function StoreForm({ store, setStore, handleStore }) {
       const getOcr = async () => {
         const formData = new FormData();
         formData.append("storeLicense", file);
-
-        await toast.promise(extractStoreOcr(formData), {
-          pending: "사업자등록증 분석 중입니다...",
-          success: {
-            render({ data }) {
-              setOcrData({
-                storeNumber: data.storeNumber,
-                representativeName: data.representativeName,
-                openDate: data.openDate,
-              });
-              setOcrModal(true);
-
-              return <ToastMessage>{data.message}</ToastMessage>;
+        try {
+          const res = await toast.promise(extractStoreOcr(formData), {
+            pending: "사업자등록증 분석 중입니다...",
+            success: {
+              icon: false,
+              render({ data }) {
+                // 추후에 다시
+                if (
+                  data.message ===
+                  "OCR 인식에 실패했습니다. 이미지를 다시 업로드해주세요."
+                ) {
+                  console.log("red");
+                  return (
+                    <ToastMessage isRed={true}>{data.message}</ToastMessage>
+                  );
+                } else {
+                  return <ToastMessage>{data.message}</ToastMessage>;
+                }
+              },
             },
-          },
-          error: {
-            render() {
-              setFile(null);
-              if (fileInputRef.current) {
-                fileInputRef.current.value = null;
-              }
-              return toast.error("파일 분석에 실패했습니다");
+            error: {
+              render() {
+                return toast.error("파일 분석에 실패했습니다");
+              },
             },
-          },
-        });
+          });
+
+          setOcrData({
+            storeNumber: res.storeNumber,
+            representativeName: res.representativeName,
+            openDate: res.openDate,
+          });
+          setOcrModal(true);
+        } catch (error) {
+          console.log(error);
+          setFile(null);
+          if (fileInputRef.current) {
+            fileInputRef.current.value = null;
+          }
+        }
       };
 
       getOcr();

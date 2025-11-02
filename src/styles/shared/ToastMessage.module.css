@@ -10,3 +10,9 @@
 .text {
   padding-top: 0.75rem;
 }
+
+.red {
+  padding-top: 0.75rem;
+
+  color: #f83434;
+}
