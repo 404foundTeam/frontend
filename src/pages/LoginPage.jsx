@@ -49,7 +49,8 @@ function LoginPage() {
         // alert(getAuth.message);
         setTimeout(() => {
           navigate("/main");
-        }, 1000);
+        }, 1500);
+
       } else {
         toast.info(getAuth.message);
         // alert(getAuth.message);
