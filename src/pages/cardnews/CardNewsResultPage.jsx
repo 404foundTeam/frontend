@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { postCard, postPresignedUrl } from "../../api";
+import { uploadFinalSnsCard, getPresignedUrlForCard } from "../../api";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import styles from "../../styles/cardnews/CardNewsResultPage.module.css";
@@ -183,7 +183,7 @@ function CardNewsResultPage() {
     let fileUrl;
 
     try {
-      const getUrl = await postPresignedUrl(storeUuid);
+      const getUrl = await getPresignedUrlForCard(storeUuid);
       fileUrl = getUrl.fileUrl;
       const uploadUrl = getUrl.uploadUrl;
       await axios.put(uploadUrl, blob, {
@@ -196,7 +196,10 @@ function CardNewsResultPage() {
     }
 
     try {
-      const postImg = await postCard({ storeUuid, finalUrl: fileUrl });
+      const postImg = await uploadFinalSnsCard({
+        storeUuid,
+        finalUrl: fileUrl,
+      });
       alert("저장이 완료됐습니다.");
       return postImg;
     } catch (error) {

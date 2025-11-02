@@ -1,5 +1,6 @@
 import axios from "axios";
 import useAuthStore from "../store/useAuthStore";
+import { redirect } from "react-router-dom";
 
 const BASE_URL = "http://13.209.239.240/api/v1";
 
@@ -29,13 +30,13 @@ api.interceptors.request.use(
 );
 
 // 카드 뉴스 페이지 -/api/v1/sns-cards/generate
-export const generateText = async ({ type, userText }) => {
+export const createSnsCardText = async ({ type, userText }) => {
   const res = await api.post("/sns-cards/generate", { type, userText });
   return res.data;
 };
 
 // 카드 뉴스 페이지 - /api/v1/sns-cards/background POST
-export const backgroundImg = async (payload) => {
+export const createSnsCardBackground = async (payload) => {
   const res = await api.post("/sns-cards/background", payload);
   return res.data;
 };
@@ -64,21 +65,22 @@ export const backgroundImg2 = async ({
 };
 
 // 카드 뉴스 페이지
-export const postPresignedUrl = async (storeUuid) => {
+export const getPresignedUrlForCard = async (storeUuid) => {
   // post(파라미터 포함) 요청
   const res = await api.post("/sns-cards/final/presigned-url", null, {
     params: { storeUuid },
   });
   return res.data;
 };
+
 // 카드 뉴스 페이지 - 카드 등록
-export const postCard = async ({ storeUuid, finalUrl }) => {
+export const uploadFinalSnsCard = async ({ storeUuid, finalUrl }) => {
   const res = await api.post("/sns-cards/final", { storeUuid, finalUrl });
   return res.data;
 };
 
 // 카메라 페이지 - /api/v1/photo/guide-file
-export const guideFile = async (file) => {
+export const uploadGuideFile = async (file) => {
   const formData = new FormData();
   formData.append("file", file);
 
@@ -89,3 +91,32 @@ export const guideFile = async (file) => {
   });
   return res.data;
 };
+
+// 지도 - 나의 업장 위치 조회
+export const fetchMyStore = async () => {
+  const res = await api.get("/partnership");
+  return res.data;
+};
+
+// 지도 - 키워드/업종 검색
+export const searchPartnerStores = async ({
+  keyword = "",
+  category = "",
+  longitude,
+  latitude,
+}) => {
+  const res = await api.get("/partnership/search", {
+    params: {
+      keyword,
+      category,
+      longitude,
+      latitude,
+    },
+  });
+  return res.data;
+};
+
+// 지도 - 제휴 요청
+// export requestPartnership = async() =>{
+
+// }

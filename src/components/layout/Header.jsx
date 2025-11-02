@@ -26,60 +26,62 @@ function Header({ isWelcome }) {
   return (
     <header>
       <div className={styles.headerBox}>
-        <div className={styles.titleBox} onClick={goToMain}>
-          <img src={logoImg} className={styles.logoImg}></img>
-          <div className={styles.text}>market BEE</div>
-        </div>
-        <div className={styles.links}>
-          {!isWelcome && (
-            <>
-              <div className={styles.linkBox}>
-                <NavLink to="/marketing" className={styles.link}>
-                  소개
-                </NavLink>
-                <div className={styles.marketingBox}>
-                  <div
-                    className={`${styles.link} ${styles.showMenu}`}
-                    onMouseEnter={() => setShowMarketing(true)}
-                    onMouseLeave={() => setShowMarketing(false)}
-                  >
-                    홍보
+        <div className={styles.headerInner}>
+          <div className={styles.titleBox} onClick={goToMain}>
+            <img src={logoImg} className={styles.logoImg}></img>
+            <div className={styles.text}>market BEE</div>
+          </div>
+          <div className={styles.links}>
+            {!isWelcome && (
+              <>
+                <div className={styles.linkBox}>
+                  <NavLink to="/marketing" className={styles.link}>
+                    소개
+                  </NavLink>
+                  <div className={styles.marketingBox}>
+                    <div
+                      className={`${styles.link} ${styles.showMenu}`}
+                      onMouseEnter={() => setShowMarketing(true)}
+                      onMouseLeave={() => setShowMarketing(false)}
+                    >
+                      홍보
+                    </div>
+                    <img
+                      src={showMarketing ? down : up}
+                      className={`${styles.img} ${
+                        showMarketing ? styles.active : ""
+                      }`}
+                    />
                   </div>
-                  <img
-                    src={showMarketing ? down : up}
-                    className={`${styles.img} ${
-                      showMarketing ? styles.active : ""
-                    }`}
-                  />
+                  {showMarketing && (
+                    <MarketingMenu
+                      onMouseEnter={() => setShowMarketing(true)}
+                      onMouseLeave={() => setShowMarketing(false)}
+                    />
+                  )}
+                  <NavLink to="/smartreport" className={styles.link}>
+                    스마트 리포트
+                  </NavLink>
                 </div>
-                {showMarketing && (
-                  <MarketingMenu
-                    onMouseEnter={() => setShowMarketing(true)}
-                    onMouseLeave={() => setShowMarketing(false)}
-                  />
-                )}
-                <NavLink to="/smartreport" className={styles.link}>
-                  스마트 리포트
-                </NavLink>
-              </div>
-              <div className={styles.myBox}>
-                <NavLink to="/my" className={styles.link}>
-                  마이 페이지
-                </NavLink>
-                <div
-                  className={styles.profileImg}
-                  onMouseEnter={() => setShowProfile(true)}
-                  onMouseLeave={() => setShowProfile(false)}
-                ></div>
-                {showProfile && (
-                  <ProfileMenu
+                <div className={styles.myBox}>
+                  <NavLink to="/my" className={styles.link}>
+                    마이 페이지
+                  </NavLink>
+                  <div
+                    className={styles.profileImg}
                     onMouseEnter={() => setShowProfile(true)}
                     onMouseLeave={() => setShowProfile(false)}
-                  />
-                )}
-              </div>
-            </>
-          )}
+                  ></div>
+                  {showProfile && (
+                    <ProfileMenu
+                      onMouseEnter={() => setShowProfile(true)}
+                      onMouseLeave={() => setShowProfile(false)}
+                    />
+                  )}
+                </div>
+              </>
+            )}
+          </div>
         </div>
       </div>
     </header>

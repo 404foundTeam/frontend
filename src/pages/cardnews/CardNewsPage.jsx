@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { backgroundImg, generateText } from "../../api/index.js";
+import { createSnsCardBackground, createSnsCardText } from "../../api/index.js";
 import styles from "../../styles/cardnews/CardNewsPage.module.css";
 import bannerImg from "../../assets/cardnews/banner_img.png";
 import useAuthStore from "../../store/useAuthStore.js";
@@ -42,7 +42,7 @@ function CardNewsPage() {
 
   const getGenerateText = async () => {
     try {
-      const getText = await generateText({
+      const getText = await createSnsCardText({
         type: cardData.cardType,
         userText: userText,
       });
@@ -66,7 +66,7 @@ function CardNewsPage() {
 
     try {
       setLoading(true);
-      const getCard = await backgroundImg(payload);
+      const getCard = await createSnsCardBackground(payload);
       setCard(getCard);
       navigate("/cardnews/result");
     } catch (error) {
