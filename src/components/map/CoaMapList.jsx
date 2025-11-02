@@ -1,11 +1,11 @@
 import styles from "../../styles/map/CoaMapList.module.css";
 
-function CoaMapList({ name, addr }) {
+function CoaMapList({ key, placeName, roadAddress }) {
   return (
     <>
-      <div className={styles.container}>
-        <h2 className={styles.name}>{name}</h2>
-        <p className={styles.addr}>{addr}</p>
+      <div className={styles.container} key={key}>
+        <h2 className={styles.name}>{placeName}</h2>
+        <p className={styles.addr}>{roadAddress}</p>
       </div>
     </>
   );
