@@ -5,10 +5,13 @@
 
 .search {
   width: 500px;
-  height: 56px;
+  /* height: 56px; */
   position: relative;
 
-  padding-left: 24px;
+  padding-block: 0.9rem;
+  /* padding: 1rem; */
+  padding-inline: 1.5rem;
+  /* padding-left: 24px; */
 
   box-sizing: border-box;
   border: 3px solid #febf22;

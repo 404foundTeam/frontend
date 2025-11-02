@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import ReactDOMServer from "react-dom/server";
 import { fetchStoresByCoord } from "../../api/auth.js";
 import styles from "../../styles/welcome/WelcomeMap.module.css";
 import close from "../../assets/welcomeMap/close.png";
@@ -8,6 +9,7 @@ import selectMarkerImg from "../../assets/welcomeMap/select_marker.png";
 import StoreSearch from "./StoreSearch.jsx";
 import SearchList from "./SearchList.jsx";
 import { toast } from "react-toastify";
+import MapInfoWindow from "../MapInfoWindow.jsx";
 
 // const { kakao } = window;
 
@@ -84,16 +86,23 @@ function WelcomeMap({ focusRef, onClick, handleSelect }) {
       window.kakao.maps.event.addListener(marker, "click", function () {
         setSelectStore(store);
         setIsClick(true);
+
         // 기존 인포윈도우 제거
         if (infoWindowRef.current) {
           infoWindowRef.current.close();
         }
+
         // 인포윈도우 생성
         const infoWindow = new window.kakao.maps.InfoWindow({
-          content: `<div style='padding:5px;font-size:14px;'>${store.placeName}</div>`,
+          content: ReactDOMServer.renderToString(
+            <MapInfoWindow store={store} />
+          ),
+          zIndex: 100,
+          disableAutoPan: true,
         });
         infoWindow.open(mapRef.current, marker);
         infoWindowRef.current = infoWindow;
+
         // SearchList 자동 스크롤 및 포커스
         if (searchListRefs.current[idx]) {
           searchListRefs.current[idx].scrollIntoView({
@@ -207,7 +216,11 @@ function WelcomeMap({ focusRef, onClick, handleSelect }) {
                     }
                     // 인포윈도우 생성
                     const infoWindow = new window.kakao.maps.InfoWindow({
-                      content: `<div style='padding:5px;font-size:14px;'>${store.placeName}</div>`,
+                      content: ReactDOMServer.renderToString(
+                        <MapInfoWindow store={store} />
+                      ),
+                      zIndex: 100,
+                      disableAutoPan: true,
                     });
                     infoWindow.open(mapRef.current, markerRef.current[idx]);
                     infoWindowRef.current = infoWindow;
