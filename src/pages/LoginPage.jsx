@@ -6,6 +6,7 @@ import useAuthStore from "../store/useAuthStore";
 import TitleBox from "../components/auth/TitleBox";
 import LoginInput from "../components/auth/LoginInput";
 import { toast } from "react-toastify";
+import ToastMessage from "../components/shared/ToastMessage";
 
 function LoginPage() {
   const [auth, setAuth] = useState({ userId: "", password: "" });
@@ -35,11 +36,21 @@ function LoginPage() {
           getAuth.storeUuid,
           getAuth.roadAddress
         );
-        toast.success(getAuth.message);
+
+        toast(<ToastMessage>{getAuth.message}</ToastMessage>, {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          theme: "light",
+        });
         // alert(getAuth.message);
         setTimeout(() => {
           navigate("/main");
         }, 1500);
+
       } else {
         toast.info(getAuth.message);
         // alert(getAuth.message);
