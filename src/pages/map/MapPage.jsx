@@ -1,7 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import MapInfoWindow from "../../components/MapInfoWindow";
 import { useNavigate } from "react-router-dom";
-import ReactDOMServer from "react-dom/server";
 import styles from "../../styles/map/MapPage.module.css";
 import { fetchMyStore, searchPartnerStores } from "../../api";
 // import { MapSearch, CoaMapList } from "../../components/map";

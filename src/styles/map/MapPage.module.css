@@ -40,7 +40,6 @@
   position: absolute;
   width: 600px;
   top: 6px;
-  left: 254px;
 
   z-index: 10;
   margin-left: 0.5rem;
@@ -76,6 +75,7 @@
 
 .container .mapBox {
   width: 700px;
+  position: relative;
 
   background-color: #797979;
 }
