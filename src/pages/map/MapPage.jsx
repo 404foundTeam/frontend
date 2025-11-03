@@ -144,17 +144,19 @@ function MapPage() {
   // 마운트 되면 내 좌표 가져오기 와서 센터 처리
   useEffect(() => {
     const initMap = async () => {
+      let myStoreRes;
+
       try {
-        const res = await fetchMyStore();
+        myStoreRes = await fetchMyStore();
         setMyLocation({
-          longitude: res.longitude,
-          latitude: res.latitude,
+          longitude: myStoreRes.longitude,
+          latitude: myStoreRes.latitude,
         });
         // 지도 중심을 내 업장 위치로 설정
         if (window.kakao && window.kakao.maps && container.current) {
           const centerPos = new window.kakao.maps.LatLng(
-            res.latitude,
-            res.longitude
+            myStoreRes.latitude,
+            myStoreRes.longitude
           );
           const options = { center: centerPos, level: 3 };
           const map = new window.kakao.maps.Map(container.current, options);
@@ -177,6 +179,22 @@ function MapPage() {
         }
       } catch (error) {
         console.log("내 업장 위치 로딩 실패:", error);
+        return;
+      }
+
+      if (myStoreRes) {
+        try {
+          const partnerRes = await searchPartnerStores({
+            keyword: "",
+            category: "",
+            longitude: myStoreRes.longitude,
+            latitude: myStoreRes.latitude,
+          });
+
+          setStoreList(partnerRes);
+        } catch (error) {
+          console.log("초기 제휴 업장 검색 실패:", error);
+        }
       }
     };
 

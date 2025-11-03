@@ -11,7 +11,7 @@ function MapBanner() {
       <div className={styles.banner}>
         <img src={img} />
         <h1 className={styles.title}>{placeName}</h1>
-        <p className={styles.content}>와 제휴를 맺을 업장을 찾아보세요.</p>
+        <p className={styles.content}> 와 제휴를 맺을 업장을 찾아보세요.</p>
       </div>
     </>
   );

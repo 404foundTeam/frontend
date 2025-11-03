@@ -1,20 +1,24 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "../../styles/map/MapCoaPage.module.css";
 import MapBanner from "../../components/map/MapBanner";
 import SelectHeader from "../../components/shared/SelectHeader";
 import SelectBox from "../../components/shared/SelectBox";
 import FinButton from "../../components/shared/FinButton";
 import { useParams } from "react-router-dom";
+import DateInput from "../../components/map/DateInput";
+import { requestPartnership } from "../../api";
+import { toast } from "react-toastify";
 
 function MapCoaPage() {
-  const { partnerStoreId } = useParams();
+  const { storeId } = useParams();
 
   // 리퀘스트 바디 데이터
   const [coa, setCoa] = useState({
-    partnerStoreId: partnerStoreId,
-    purpose: null,
-    details: null,
-    date: null,
+    partnerStoreId: null,
+    purpose: "",
+    details: "",
+    startDate: "",
+    endDate: "",
   });
 
   const handleSelect = (current, value) => {
@@ -24,6 +28,30 @@ function MapCoaPage() {
     }));
   };
 
+  const handleDateChange = (e) => {
+    const { name, value } = e.target;
+    setCoa((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleClick = async () => {
+    try {
+      const res = requestPartnership(coa);
+      toast.success(res.message);
+    } catch (error) {
+      console.log(error);
+      toast.error("제휴 요청에 실패했습니다.");
+    }
+  };
+
+  useEffect(() => {
+    setCoa((prev) => ({ ...prev, partnerStoreId: storeId }));
+  }, [storeId]);
+
+  const isActive = coa.purpose && coa.details && coa.startDate && coa.endDate;
+
   return (
     <>
       <MapBanner />
@@ -32,21 +60,21 @@ function MapCoaPage() {
           <SelectHeader text={"제휴맺는 목적이 무엇인가요?"} />
           <div className={styles.selectBoxs}>
             <SelectBox
-              value="inter"
-              selected={coa.purpose === "inter"}
-              onClick={() => handleSelect("purpose", "inter")}
+              value="매장간 상호 홍보"
+              selected={coa.purpose === "매장간 상호 홍보"}
+              onClick={() => handleSelect("purpose", "매장간 상호 홍보")}
               label="매장간 상호 홍보"
             />
             <SelectBox
-              value="fest"
-              selected={coa.purpose === "fest"}
-              onClick={() => handleSelect("purpose", "fest")}
+              value="지역행사 및 캠페인 협력"
+              selected={coa.purpose === "지역행사 및 캠페인 협력"}
+              onClick={() => handleSelect("purpose", "지역행사 및 캠페인 협력")}
               label="지역행사 및 캠페인 협력"
             />
             <SelectBox
-              value="part"
-              selected={coa.purpose === "part"}
-              onClick={() => handleSelect("purpose", "part")}
+              value="공동 프로모션"
+              selected={coa.purpose === "공동 프로모션"}
+              onClick={() => handleSelect("purpose", "공동 프로모션")}
               label="공동 프로모션"
             />
           </div>
@@ -65,39 +93,36 @@ function MapCoaPage() {
                 setCoa((prev) => ({ ...prev, details: e.target.value }));
               }}
             />
-            <button
+            {/* <button
               className={`${styles.textButton} ${styles.contentTextButton} ${
                 coa.details ? styles.select : ""
               }`}
             >
               완료
-            </button>
+            </button> */}
           </div>
         </div>
         <div className={styles.date}>
           <SelectHeader text={"제휴 희망 기간을 선택하세요."} />
           <div className={styles.selectBoxs}>
-            <SelectBox
-              value="seven"
-              selected={coa.date === "seven"}
-              onClick={() => handleSelect("date", "seven")}
-              label="7일"
+            <DateInput
+              name="startDate"
+              value={coa.startDate}
+              onChange={handleDateChange}
+              placeholder="시작일"
             />
-            <SelectBox
-              value="thrid"
-              selected={coa.date === "thrid"}
-              onClick={() => handleSelect("date", "thrid")}
-              label="3개월"
-            />
-            <SelectBox
-              value="six"
-              selected={coa.date === "six"}
-              onClick={() => handleSelect("date", "six")}
-              label="6개월"
+            <span className={styles.dateSeparator}>~</span>{" "}
+            <DateInput
+              name="endDate"
+              value={coa.endDate}
+              onChange={handleDateChange}
+              placeholder="종료일"
             />
           </div>
         </div>
-        <FinButton>제휴 요청하기</FinButton>
+        <FinButton isActive={isActive} onClick={handleClick}>
+          제휴 요청하기
+        </FinButton>
       </div>
     </>
   );

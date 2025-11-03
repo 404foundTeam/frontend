@@ -117,6 +117,7 @@ export const searchPartnerStores = async ({
 };
 
 // 지도 - 제휴 요청
-// export requestPartnership = async() =>{
-
-// }
+export const requestPartnership = async (payload) => {
+  const res = await api.post("/partnership/request", payload);
+  return res.data;
+};
