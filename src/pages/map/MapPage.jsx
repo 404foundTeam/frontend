@@ -19,7 +19,7 @@ function MapPage() {
   const mapRef = useRef(null);
   const markerRef = useRef([]);
   const infoWindowRef = useRef(null);
-  const selectStoreRef = useRef([]);
+  // const selectStoreRef = useRef([]);
 
   const navigate = useNavigate();
   const [search, setSearch] = useState(""); // 키워드
@@ -31,54 +31,8 @@ function MapPage() {
   const [storeList, setStoreList] = useState([]);
   const [selectStore, setSelectStore] = useState(null);
 
-  // 미완성 목 데이터
-  const stores = [
-    {
-      id: 14,
-      placeName: "이프아이엔지",
-      roadAddress: "경기 용인시 기흥구 죽전로15번길 11-2",
-      longitude: 127.109997,
-      latitude: 37.321722,
-    },
-    {
-      id: 15,
-      placeName: "카페양",
-      roadAddress: "경기 용인시 기흥구 죽전로15번길 10",
-      longitude: 127.110222,
-      latitude: 37.321506,
-    },
-    {
-      id: 16,
-      placeName: "에코의서재",
-      roadAddress: "경기 용인시 기흥구 죽전로15번길 11-3",
-      longitude: 127.110019,
-      latitude: 37.321488,
-    },
-    {
-      id: 14,
-      placeName: "이프아이엔지",
-      roadAddress: "경기 용인시 기흥구 죽전로15번길 11-2",
-      longitude: 127.109997,
-      latitude: 37.321722,
-    },
-    {
-      id: 15,
-      placeName: "카페양",
-      roadAddress: "경기 용인시 기흥구 죽전로15번길 10",
-      longitude: 127.110222,
-      latitude: 37.321506,
-    },
-    {
-      id: 16,
-      placeName: "에코의서재",
-      roadAddress: "경기 용인시 기흥구 죽전로15번길 11-3",
-      longitude: 127.110019,
-      latitude: 37.321488,
-    },
-  ];
-
-  // 키워드/업종 검색 클릭
-  const handleClick = async () => {
+  // 검색 전용 - 키워드/업종 검색
+  const handleSearch = async () => {
     if (!myLocation.latitude || !myLocation.longitude) {
       toast.error("업장 정보가 없습니다");
       return;
@@ -92,7 +46,40 @@ function MapPage() {
         latitude: myLocation.latitude,
       });
       setStoreList(res);
-      setSelectStore([]);
+      setSelectStore(null);
+    } catch (error) {
+      console.log(error);
+      setStoreList([]);
+    }
+  };
+
+  // 카테고리 버튼 전용 - 키워드/업종 검색
+  const handleCategoryClick = async (categoryValue) => {
+    const newSelect = select === categoryValue ? "" : categoryValue;
+
+    setSelect(newSelect);
+
+    if (infoWindowRef.current) {
+      infoWindowRef.current.close();
+    }
+
+    // 값 없으면 리스트 리셋
+    if (newSelect === "") {
+      setStoreList([]);
+      setSelectStore(null);
+      return;
+    }
+
+    // 버튼 클릭 API 호출
+    try {
+      const res = await searchPartnerStores({
+        keyword: search,
+        category: newSelect,
+        longitude: myLocation.longitude,
+        latitude: myLocation.latitude,
+      });
+      setStoreList(res);
+      setSelectStore(null);
     } catch (error) {
       console.log(error);
       setStoreList([]);
@@ -109,10 +96,20 @@ function MapPage() {
 
     // InfoWindow 생성
     const marker = markerRef.current[idx];
+    if (!marker) return;
+
+    const infoHTML = `
+      <div class="customInfoWindow">
+        <div class="storeInfo">
+          <div class="infoTitle">${store.placeName}</div>
+          <div class="infoAddress">${store.roadAddress}</div>
+        </div>
+        <button type="button" id="infoWindowBtn-${idx}" class="btn">요청</button>
+      </div>
+    `;
+
     const infoWindow = new window.kakao.maps.InfoWindow({
-      content: ReactDOMServer.renderToString(
-        <MapInfoWindow store={store} isShow={true} />
-      ),
+      content: infoHTML,
       zIndex: 100,
       disableAutoPan: true,
     });
@@ -157,7 +154,7 @@ function MapPage() {
           const imageSize = new window.kakao.maps.Size(24, 35);
           const imageOption = { offset: new window.kakao.maps.Point(12, 35) };
           const markerImage = new window.kakao.maps.MarkerImage(
-            selectMarkerImg,
+            MarkerImg,
             imageSize,
             imageOption
           );
@@ -188,7 +185,7 @@ function MapPage() {
 
     if (!storeList) return;
 
-    const newMarkers = storeList.map((store) => {
+    const newMarkers = storeList.map((store, idx) => {
       const markerPosition = new window.kakao.maps.LatLng(
         store.latitude,
         store.longitude
@@ -222,16 +219,35 @@ function MapPage() {
         if (infoWindowRef.current) {
           infoWindowRef.current.close();
         }
+
+        const infoHTML = `
+        <div class=customInfoWindow>
+          <div class=storeInfo>
+            <div class=infoTitle>${store.placeName}</div>
+            <div class=infoAddress>${store.roadAddress}</div>
+          </div>
+          <button type="button" id="infoWindowBtn-${idx}" class="btn">요청</button>
+          </div>
+        </div>
+      `;
+
         // 인포윈도우 생성
         const infoWindow = new window.kakao.maps.InfoWindow({
-          content: ReactDOMServer.renderToString(
-            <MapInfoWindow store={store} isShow={true} />
-          ),
+          content: infoHTML,
           zIndex: 100,
           disableAutoPan: true,
         });
         infoWindow.open(mapRef.current, marker);
         infoWindowRef.current = infoWindow;
+
+        setTimeout(() => {
+          const btn = document.getElementById(`infoWindowBtn-${idx}`);
+          if (btn) {
+            btn.onclick = () => {
+              navigate("/map/coalition");
+            };
+          }
+        }, 0);
       });
       return marker;
     });
@@ -244,68 +260,56 @@ function MapPage() {
       <div className={styles.background}></div>
       <div className={styles.header}>
         <h2 className={styles.title}>제휴업장 찾기</h2>
-        {/* <p className={styles.content}>업장을 검색해서 제휴를 요청해보세요.</p> */}
         <MapSearch
           value={search}
           placeholder="지도에서 제휴할 업장을 검색해보세요."
-          onClick={handleClick}
+          // onClick={handleClick}
           onChange={(e) => setSearch(e.target.value)}
-          onKeyDown={(e) => {
-            if (e.key === "Enter") handleClick();
-          }}
+          // onKeyDown={(e) => {
+          //   if (e.key === "Enter") handleClick();
+          // }}
         />
       </div>
       <div className={styles.container}>
         <div className={styles.mapBox}>
           <div className={styles.buttonBox}>
-            {/* 음식점, 카페, 관광명소, 숙박, 주차장 */}
             <CategoryButton
-              isSelected={select === "same" ? true : false}
+              isSelected={select === "same"}
               onClick={() => {
-                const newSelect = select === "same" ? "" : "same";
-                setSelect(newSelect);
-                handleClick();
+                handleCategoryClick("same");
               }}
             >
-              유사 업종
+              동일 업종
             </CategoryButton>
             <CategoryButton
-              isSelected={select === "FD6" ? true : false}
+              isSelected={select === "FD6"}
               onClick={() => {
-                const newSelect = select === "FD6" ? "" : "FD6";
-                setSelect(newSelect);
-                handleClick();
+                handleCategoryClick("FD6");
               }}
             >
               음식점
             </CategoryButton>
             <CategoryButton
-              isSelected={select === "CE7" ? true : false}
+              isSelected={select === "CE7"}
               onClick={() => {
-                const newSelect = select === "CE7" ? "" : "CE7";
-                setSelect(newSelect);
-                handleClick();
+                handleCategoryClick("CE7");
               }}
             >
               카페
             </CategoryButton>
             <CategoryButton
-              isSelected={select === "숙박" ? true : false}
-              onClick={() => {
-                const newSelect = select === "숙박" ? "" : "숙박";
-                setSelect(newSelect);
-                handleClick();
-              }}
+            // isSelected={select === "same"}
+            // onClick={() => {
+            //   handleCategoryClick("same");
+            // }}
             >
               숙박
             </CategoryButton>
             <CategoryButton
-              isSelected={select === "주차장" ? true : false}
-              onClick={() => {
-                const newSelect = select === "주차장" ? "" : "주차장";
-                setSelect(newSelect);
-                handleClick();
-              }}
+            // isSelected={select === "same"}
+            // onClick={() => {
+            //   handleCategoryClick("same");
+            // }}
             >
               주차장
             </CategoryButton>
@@ -317,34 +321,17 @@ function MapPage() {
           ></div>
         </div>
         <div className={styles.mapList}>
-          {stores.map((store) => (
+          {storeList.map((store) => (
             <CoaMapList
               key={store.id}
+              // ref={(el) => (listRefs.current[idx] = el)}
               placeName={store.placeName}
               roadAddress={store.roadAddress}
+              // onClick={handleSelectStore(store,idx)}
             />
           ))}
-          {/* {storeList.map((store) => (
-            <CoaMapList
-              key={store.id}
-              ref={(el) => (listRefs.current[idx] = el)}
-              placeName={store.placeName}
-              roadAddress={store.roadAddress}
-              onClick={handleSelectStore(store,idx)}
-            />
-          ))} */}
         </div>
       </div>
-      {/* <div className={styles.goMyCoa}>
-        <button
-          className={styles.goMyCoaButton}
-          onClick={() => {
-            navigate("/map/coalition/list");
-          }}
-        >
-          나의 제휴 보러가기
-        </button>
-      </div> */}
     </>
   );
 }
