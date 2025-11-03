@@ -2,8 +2,9 @@
   /* width: 100%; */
   /* max-width: 1440px; */
   /* height: 198px; */
-  padding-top: 3.25rem;
-  padding-bottom: 4rem;
+  /* padding-top: 3.25rem;
+  padding-bottom: 4rem; */
+  padding: 3rem;
 
   margin: 0 auto;
 
@@ -14,8 +15,8 @@
 }
 
 .banner img {
-  width: 98px;
-  height: 94px;
+  width: 80px;
+  height: 74px;
 }
 
 .banner .title {

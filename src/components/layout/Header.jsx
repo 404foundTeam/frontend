@@ -65,7 +65,7 @@ function Header({ isWelcome }) {
                 </div>
                 <div className={styles.myBox}>
                   <NavLink to="/my" className={styles.link}>
-                    마이 페이지
+                    마이페이지
                   </NavLink>
                   <div
                     className={styles.profileImg}

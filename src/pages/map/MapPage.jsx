@@ -6,6 +6,7 @@ import { fetchMyStore, searchPartnerStores } from "../../api";
 import MapSearch from "../../components/map/MapSearch";
 import CoaMapList from "../../components/map/CoaMapList";
 import CategoryButton from "../../components/map/CategoryButton";
+import myMarkerImg from "../../assets/welcomeMap/my_marker.png";
 import MarkerImg from "../../assets/welcomeMap/marker.png";
 import selectMarkerImg from "../../assets/welcomeMap/select_marker.png";
 import { toast } from "react-toastify";
@@ -163,7 +164,7 @@ function MapPage() {
           const imageSize = new window.kakao.maps.Size(24, 35);
           const imageOption = { offset: new window.kakao.maps.Point(12, 35) };
           const markerImage = new window.kakao.maps.MarkerImage(
-            MarkerImg,
+            myMarkerImg,
             imageSize,
             imageOption
           );
@@ -284,7 +285,7 @@ function MapPage() {
     <>
       <div className={styles.background}></div>
       <div className={styles.header}>
-        <h2 className={styles.title}>제휴업장 찾기</h2>
+        <h2 className={styles.title}>제휴 업장 찾기</h2>
         <MapSearch
           value={search}
           placeholder="지도에서 제휴할 업장을 검색해보세요."
