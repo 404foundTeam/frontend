@@ -181,14 +181,14 @@
 
 .cardNewsTemplate > p {
   padding-top: 16px;
-  padding-left: 50px;
+  padding-left: 6rem;
 
   color: #7c7c7c;
 }
 
 .templateList {
   margin-top: 16px;
-  margin-left: 40px;
+  margin-left: 6rem;
 
   display: flex;
   gap: 140px;
@@ -226,12 +226,7 @@
   transform: scale(1.04);
 }
 
-.templateList .templateBox.select .text {
-  font-size: 24px;
-}
-
 .templateList .templateBox.select .content {
-  font-size: 1.5rem;
   background-color: #febf22;
 }
 
@@ -247,7 +242,7 @@
 
 .templateBox .text.bottom {
   top: 100px;
-  left: 100px;
+  left: 90px;
 }
 
 .templateBox .text.right {
