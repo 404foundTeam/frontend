@@ -4,13 +4,16 @@ import MapBanner from "../../components/map/MapBanner";
 import SelectHeader from "../../components/shared/SelectHeader";
 import SelectBox from "../../components/shared/SelectBox";
 import FinButton from "../../components/shared/FinButton";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import DateInput from "../../components/map/DateInput";
 import { requestPartnership } from "../../api";
 import { toast } from "react-toastify";
+import useActiveStroe from "../../store/useActiveStore";
 
 function MapCoaPage() {
   const { storeId } = useParams();
+  const navigate = useNavigate();
+  const setSmartActive = useActiveStroe((state) => state.setSmartActive);
 
   // 리퀘스트 바디 데이터
   const [coa, setCoa] = useState({
@@ -40,6 +43,8 @@ function MapCoaPage() {
     try {
       const res = requestPartnership(coa);
       toast.success(res.message);
+      // setSmartActive("");
+      navigate("/my");
     } catch (error) {
       console.log(error);
       toast.error("제휴 요청에 실패했습니다.");
