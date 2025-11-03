@@ -4,7 +4,7 @@ import { redirect } from "react-router-dom";
 
 const BASE_URL = "http://13.209.239.240/api/v1";
 
-const api = axios.create({
+export const api = axios.create({
   baseURL: BASE_URL,
   headers: {
     "Content-Type": "application/json", // 데이터 형식
@@ -117,6 +117,7 @@ export const searchPartnerStores = async ({
 };
 
 // 지도 - 제휴 요청
-// export requestPartnership = async() =>{
-
-// }
+export const requestPartnership = async (payload) => {
+  const res = await api.post("/partnership/request", payload);
+  return res.data;
+};

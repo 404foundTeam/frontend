@@ -225,7 +225,7 @@ function CardNewsResultPage() {
               type="new"
               onClick={() => navigate("/marketing")}
             >
-              홍보페이지로 돌아가기
+              메인페이지로 돌아가기
             </ResultButtonButton>
           </div>
           <ChanceText chance={imgData1.remainingFreeCount} />

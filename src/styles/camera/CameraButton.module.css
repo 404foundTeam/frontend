@@ -1,10 +1,9 @@
 .button {
-  padding: 16px 54px;
+  padding: 0.75rem 2rem;
   border-radius: 10px;
 
   font-weight: 700;
   font-size: 1.2rem;
-  line-height: 21px;
   letter-spacing: -0.025em;
 
   color: #6d3737;

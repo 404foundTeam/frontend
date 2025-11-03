@@ -12,7 +12,7 @@ import {
   Tooltip,
   Filler,
 } from "chart.js";
-import axios from "axios";
+import { api } from "../../api/index";
 import useAuthStore from "../../store/useAuthStore";
 import styles from "../../styles/smartreport/SalesSummary.module.css";
 import swapIcon from "../../assets/report/swap-icon.png";
@@ -61,13 +61,12 @@ function SalesSummary({ year, month }) {
 
   // API URL을 동적으로 생성하는 헬퍼 함수
   const getApiUrl = useCallback((endpoint) => {
-    const BASE_URL = "http://13.209.239.240";
     if (year && month) {
       // "월별 리포트"용 API 경로
-      return `${BASE_URL}/api/v1/monthly-report/${storeUuid}/${year}/${month}/${endpoint}`;
+      return `/monthly-report/${storeUuid}/${year}/${month}/${endpoint}`;
     } else {
       // "최신 리포트"용 API 경로 (기존 경로)
-      return `${BASE_URL}/api/v1/report/${storeUuid}/${endpoint}`;
+      return `/report/${storeUuid}/${endpoint}`;
     }
   }, [storeUuid, year, month]);
 
@@ -87,11 +86,11 @@ function SalesSummary({ year, month }) {
         // 헬퍼 함수를 사용해 동적 URL로 API 동시 호출
         const [salesRes, receiptRes, rankingRes, ratingRes, keywordsRes] =
           await Promise.allSettled([
-            axios.get(getApiUrl("monthly-sales")),
-            axios.get(getApiUrl("receipt-count")),
-            axios.get(getApiUrl("product-ranking")),
-            axios.get(getApiUrl("rating")),
-            axios.get(getApiUrl("keywords")),
+            api.get(getApiUrl("monthly-sales")),
+            api.get(getApiUrl("receipt-count")),
+            api.get(getApiUrl("product-ranking")),
+            api.get(getApiUrl("rating")),
+            api.get(getApiUrl("keywords")),
           ]);
 
         // 각 API 응답을 성공/실패에 따라 처리

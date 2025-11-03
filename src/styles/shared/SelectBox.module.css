@@ -12,14 +12,14 @@
 }
 
 .box {
-  width: 35px;
-  height: 35px;
+  width: 30px;
+  height: 30px;
   border: 4px solid #d9d9d9;
 }
 
 .box.select {
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   border: none;
   background-color: #febf22;
 }
@@ -27,7 +27,6 @@
 .title {
   font-weight: 500;
   font-size: 1.15rem;
-  line-height: 21px;
   letter-spacing: -0.025em;
 
   color: #717171;

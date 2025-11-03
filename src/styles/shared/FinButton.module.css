@@ -4,7 +4,8 @@
 
   border: none;
   border-radius: 10px;
-  background-color: #febf22;
+
+  background: #e2d7d7;
 
   font-weight: 700;
   font-size: 1.875rem;
@@ -12,6 +13,10 @@
   letter-spacing: -0.025em;
 
   color: #6d3737;
+}
+
+.finButton.active {
+  background: #febf22;
 }
 
 @media (max-width: 430px) {

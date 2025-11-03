@@ -1,7 +1,7 @@
 // src/components/MarketingContent.jsx
 
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import { api } from "../../api/index";
 import useAuthStore from "../../store/useAuthStore";
 import styles from "../../styles/smartreport/MarketingContent.module.css";
 
@@ -26,8 +26,8 @@ function MarketingContent() {
         setIsLoading(true);
         setError(null);
 
-        const response = await axios.get(
-          `http://13.209.239.240/api/v1/report/${storeUuid}/marketing`
+        const response = await api.get(
+          `/report/${storeUuid}/marketing`
         );
 
         // API 응답 데이터 형식에 맞게 변환
@@ -72,8 +72,8 @@ function MarketingContent() {
       setEvents(updatedEvents);
 
       try {
-        await axios.delete(
-          `http://13.209.239.240/api/v1/report/${storeUuid}/marketing/${idToDelete}`
+        await api.delete(
+          `/report/${storeUuid}/marketing/${idToDelete}`
         );
         // 성공 시 아무것도 안함 (이미 UI에 반영됨)
         console.log(`Suggestion with id ${idToDelete} deleted successfully.`);

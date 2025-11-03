@@ -1,0 +1,49 @@
+.dateInputContainer {
+  min-width: 120px;
+  position: relative;
+}
+
+.dateInput {
+  width: 180px;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.9rem;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: #fff;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.dateInput::placeholder {
+  color: #aaa;
+  font-size: 0.9rem;
+}
+
+.dateInput::-webkit-calendar-picker-indicator {
+  position: absolute;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 1.5rem;
+  height: 1.5rem;
+
+  opacity: 0;
+
+  z-index: 3;
+  cursor: pointer;
+}
+
+.calendarIcon {
+  position: absolute;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888;
+  pointer-events: none;
+  font-size: 0.9rem;
+}

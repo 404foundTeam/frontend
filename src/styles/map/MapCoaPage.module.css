@@ -17,11 +17,18 @@
 }
 
 .container .selectBoxs {
-  margin-top: 49px;
-  margin-left: 114px;
+  margin-top: 2rem;
+  margin-left: 6rem;
 
   display: flex;
   gap: 200px;
+}
+
+.date .selectBoxs {
+  margin-left: 0;
+
+  justify-content: center;
+  gap: 4rem;
 }
 
 .content .contentTextBox {
@@ -32,16 +39,15 @@
 .content .contentTextInput {
   width: 1058px;
 
-  margin-top: 70px;
-  margin-left: 45px;
-  padding: 28px;
+  margin-top: 2rem;
+  margin-left: 2.75rem;
+  padding: 1.25rem 1.5rem;
 
   border: 5px solid #d9d9d9;
   border-radius: 10px;
 
   font-weight: 500;
   font-size: 19px;
-  line-height: 23px;
   letter-spacing: -0.025em;
 
   color: #717171;
@@ -58,11 +64,12 @@
 }
 
 .content .textButton {
-  width: 153px;
-  height: 43px;
+  width: 140px;
 
   margin-top: 39px;
   margin-left: 473px;
+
+  padding: 1rem 3rem;
 
   border: none;
   border-radius: 10px;

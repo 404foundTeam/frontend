@@ -2,7 +2,7 @@
 
 import { useState, useCallback } from "react";
 import { useDropzone } from "react-dropzone";
-import axios from "axios";
+import { api } from "../../api/index";
 import styles from "../../styles/smartreport/FileUploadModal.module.css";
 import useAuthStore from "../../store/useAuthStore";
 
@@ -59,8 +59,8 @@ function FileUploadModal({ onClose }) {
     formData.append("storeUuid", storeUuid);
 
     try {
-      const response = await axios.post(
-        "http://13.209.239.240/api/v1/report/upload",
+      const response = await api.post(
+        "/report/upload",
         formData,
         {
           headers: { "Content-Type": "multipart/form-data" },

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import { api } from "../../api/index";
 import useAuthStore from "../../store/useAuthStore";
 import styles from "../../styles/main/Dashboard.module.css";
 
@@ -24,12 +24,12 @@ function TimePattern({ year, month }) {
         setIsLoading(true);
         let apiUrl;
         if (year && month) {
-          apiUrl = `http://13.209.239.240/api/v1/monthly-report/${storeUuid}/${year}/${month}/visitor-stats`;
+          apiUrl = `/monthly-report/${storeUuid}/${year}/${month}/visitor-stats`;
         } else {
-          apiUrl = `http://13.209.239.240/api/v1/report/${storeUuid}/visitor-stats`;
+          apiUrl = `/report/${storeUuid}/visitor-stats`;
         }
         
-        const response = await axios.get(apiUrl);
+        const response = await api.get(apiUrl);
         
         const mostVisited = response.data.mostVisitedHours || [];
         const leastVisited = response.data.leastVisitedHours || [];

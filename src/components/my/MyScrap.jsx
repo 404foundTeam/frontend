@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
+import { api } from "../../api/index";
 import styles from "../../styles/my/MyScrap.module.css";
 import useAuthStore from "../../store/useAuthStore";
 
@@ -23,8 +23,8 @@ function MyScrap() {
       setIsLoading(true);
       setError(null);
       try {
-        const response = await axios.get(
-          "http://13.209.239.240/api/v1/sns-cards/final",
+        const response = await api.get(
+          "/sns-cards/final",
           {
             params: {
               storeUuid: storeUuid,
