@@ -8,12 +8,12 @@ import { useNavigate, useParams } from "react-router-dom";
 import DateInput from "../../components/map/DateInput";
 import { requestPartnership } from "../../api";
 import { toast } from "react-toastify";
-import useActiveStroe from "../../store/useActiveStore";
+// import useActiveStroe from "../../store/useActiveStore";
 
 function MapCoaPage() {
   const { storeId } = useParams();
   const navigate = useNavigate();
-  const setSmartActive = useActiveStroe((state) => state.setSmartActive);
+  // const setSmartActive = useActiveStroe((state) => state.setSmartActive);
 
   // 리퀘스트 바디 데이터
   const [coa, setCoa] = useState({

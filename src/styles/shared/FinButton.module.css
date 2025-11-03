@@ -1,6 +1,6 @@
 .finButton {
   margin-bottom: 199px;
-  padding: 16px 96px;
+  padding: 1rem 4rem;
 
   border: none;
   border-radius: 10px;
@@ -8,8 +8,7 @@
   background: #e2d7d7;
 
   font-weight: 700;
-  font-size: 1.875rem;
-  line-height: 36px;
+  font-size: 1.5rem;
   letter-spacing: -0.025em;
 
   color: #6d3737;

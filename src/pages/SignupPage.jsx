@@ -7,6 +7,7 @@ import SignupAgreement from "../components/auth/SignupAgreement";
 import { useSignForm } from "../hooks/useSignupForm";
 import { signup } from "../api/auth";
 import { useCallback, useState } from "react";
+import { toast } from "react-toastify";
 
 function SignupPage() {
   const { account, setAccount, store, setStore } = useSignForm();
@@ -32,15 +33,15 @@ function SignupPage() {
     e.preventDefault();
 
     if (formValidity.account === false) {
-      alert("계정 정보를 올바르게 입력해주세요");
+      toast.error("계정 정보를 올바르게 입력해주세요");
       return;
     }
     if (formValidity.store === false) {
-      alert("업장 정보를 올바르게 입력해주세요");
+      toast.error("업장 정보를 올바르게 입력해주세요");
       return;
     }
     if (formValidity.agreement === false) {
-      alert("약관 동의를 확인해주세요");
+      toast.error("약관 동의를 확인해주세요");
       return;
     }
 
@@ -48,11 +49,20 @@ function SignupPage() {
 
     try {
       const res = await signup(payload);
-      alert(res.message);
+
+      toast(<ToastMessage>{res.message}</ToastMessage>, {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "light",
+      });
       navigate("/login");
     } catch (error) {
       console.log(error);
-      alert("회원가입 실패");
+      toast.error("회원가입 실패");
     }
   };
 
