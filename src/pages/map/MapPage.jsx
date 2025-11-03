@@ -116,6 +116,15 @@ function MapPage() {
     infoWindow.open(mapRef.current, marker);
     infoWindowRef.current = infoWindow;
 
+    setTimeout(() => {
+      const btn = document.getElementById(`infoWindowBtn-${idx}`);
+      if (btn) {
+        btn.onclick = () => {
+          navigate(`/map/coalition/${store.id}`);
+        };
+      }
+    }, 0);
+
     // 마커 이미지 갱신
     markerRef.current.forEach((m, i) => {
       const image = new window.kakao.maps.MarkerImage(
@@ -203,7 +212,7 @@ function MapPage() {
         imageOption
       );
 
-      const isSelected = selectStore?.placeId === store.placeId;
+      const isSelected = selectStore?.id === store.id;
 
       const marker = new window.kakao.maps.Marker({
         position: markerPosition,
@@ -212,42 +221,42 @@ function MapPage() {
       marker.setMap(mapRef.current);
 
       window.kakao.maps.event.addListener(marker, "click", function () {
-        setSelectStore(store);
+        handleSelectStore(store, idx);
+
+        // setSelectStore(store);
         // setIsClick(true);
-
         // 기존 인포윈도우 제거
-        if (infoWindowRef.current) {
-          infoWindowRef.current.close();
-        }
+        // if (infoWindowRef.current) {
+        //   infoWindowRef.current.close();
+        // }
+        //   const infoHTML = `
+        //   <div class=customInfoWindow>
+        //     <div class=storeInfo>
+        //       <div class=infoTitle>${store.placeName}</div>
+        //       <div class=infoAddress>${store.roadAddress}</div>
+        //     </div>
+        //     <button type="button" id="infoWindowBtn-${idx}" class="btn">요청</button>
+        //     </div>
+        //   </div>
+        // `;
+        //   // 인포윈도우 생성
+        //   const infoWindow = new window.kakao.maps.InfoWindow({
+        //     content: infoHTML,
+        //     zIndex: 100,
+        //     disableAutoPan: true,
+        //   });
+        //   infoWindow.open(mapRef.current, marker);
+        //   infoWindowRef.current = infoWindow;
 
-        const infoHTML = `
-        <div class=customInfoWindow>
-          <div class=storeInfo>
-            <div class=infoTitle>${store.placeName}</div>
-            <div class=infoAddress>${store.roadAddress}</div>
-          </div>
-          <button type="button" id="infoWindowBtn-${idx}" class="btn">요청</button>
-          </div>
-        </div>
-      `;
-
-        // 인포윈도우 생성
-        const infoWindow = new window.kakao.maps.InfoWindow({
-          content: infoHTML,
-          zIndex: 100,
-          disableAutoPan: true,
-        });
-        infoWindow.open(mapRef.current, marker);
-        infoWindowRef.current = infoWindow;
-
-        setTimeout(() => {
-          const btn = document.getElementById(`infoWindowBtn-${idx}`);
-          if (btn) {
-            btn.onclick = () => {
-              navigate("/map/coalition");
-            };
-          }
-        }, 0);
+        // setTimeout(() => {
+        //   const btn = document.getElementById(`infoWindowBtn-${idx}`);
+        //   const storeId = selectStore.id;
+        //   if (btn) {
+        //     btn.onclick = () => {
+        //       navigate(`/map/coalition/${storeId}`);
+        //     };
+        //   }
+        // }, 0);
       });
       return marker;
     });
@@ -263,11 +272,11 @@ function MapPage() {
         <MapSearch
           value={search}
           placeholder="지도에서 제휴할 업장을 검색해보세요."
-          // onClick={handleClick}
+          onClick={handleSearch}
           onChange={(e) => setSearch(e.target.value)}
-          // onKeyDown={(e) => {
-          //   if (e.key === "Enter") handleClick();
-          // }}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") handleSearch();
+          }}
         />
       </div>
       <div className={styles.container}>
@@ -321,13 +330,16 @@ function MapPage() {
           ></div>
         </div>
         <div className={styles.mapList}>
-          {storeList.map((store) => (
+          {storeList.map((store, idx) => (
             <CoaMapList
               key={store.id}
               // ref={(el) => (listRefs.current[idx] = el)}
               placeName={store.placeName}
               roadAddress={store.roadAddress}
-              // onClick={handleSelectStore(store,idx)}
+              onClick={() => {
+                handleSelectStore(store, idx);
+              }}
+              isSelected={selectStore?.id === store.id}
             />
           ))}
         </div>

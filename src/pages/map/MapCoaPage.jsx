@@ -4,12 +4,16 @@ import MapBanner from "../../components/map/MapBanner";
 import SelectHeader from "../../components/shared/SelectHeader";
 import SelectBox from "../../components/shared/SelectBox";
 import FinButton from "../../components/shared/FinButton";
+import { useParams } from "react-router-dom";
 
 function MapCoaPage() {
+  const { partnerStoreId } = useParams();
+
   // 리퀘스트 바디 데이터
   const [coa, setCoa] = useState({
-    text: null,
-    goal: null,
+    partnerStoreId: partnerStoreId,
+    purpose: null,
+    details: null,
     date: null,
   });
 
@@ -24,25 +28,25 @@ function MapCoaPage() {
     <>
       <MapBanner />
       <div className={styles.container}>
-        <div className="goal">
+        <div className="purpose">
           <SelectHeader text={"제휴맺는 목적이 무엇인가요?"} />
           <div className={styles.selectBoxs}>
             <SelectBox
               value="inter"
-              selected={coa.goal === "inter"}
-              onClick={() => handleSelect("goal", "inter")}
+              selected={coa.purpose === "inter"}
+              onClick={() => handleSelect("purpose", "inter")}
               label="매장간 상호 홍보"
             />
             <SelectBox
               value="fest"
-              selected={coa.goal === "fest"}
-              onClick={() => handleSelect("goal", "fest")}
+              selected={coa.purpose === "fest"}
+              onClick={() => handleSelect("purpose", "fest")}
               label="지역행사 및 캠페인 협력"
             />
             <SelectBox
               value="part"
-              selected={coa.goal === "part"}
-              onClick={() => handleSelect("goal", "part")}
+              selected={coa.purpose === "part"}
+              onClick={() => handleSelect("purpose", "part")}
               label="공동 프로모션"
             />
           </div>
@@ -52,18 +56,18 @@ function MapCoaPage() {
           <div className={styles.contentTextBox}>
             <input
               className={`${styles.contentTextInput} ${
-                coa.text ? styles.select : ""
+                coa.details ? styles.select : ""
               }`}
               type="text"
               placeholder="텍스트를 입력하세요."
-              value={coa.text}
+              value={coa.details}
               onChange={(e) => {
-                setCoa((prev) => ({ ...prev, text: e.target.value }));
+                setCoa((prev) => ({ ...prev, details: e.target.value }));
               }}
             />
             <button
               className={`${styles.textButton} ${styles.contentTextButton} ${
-                coa.text ? styles.select : ""
+                coa.details ? styles.select : ""
               }`}
             >
               완료
