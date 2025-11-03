@@ -8,6 +8,7 @@ import { FaCalendarAlt } from "react-icons/fa"; // react-icons에서 아이콘 �
  * @param {string} name - input의 name 속성 (e.g., "startDate")
  * @param {string} placeholder - 커스텀 플레이스홀더 텍스트
  */
+
 function DateInput({ value, onChange, name, placeholder }) {
   return (
     <div className={styles.dateInputContainer}>

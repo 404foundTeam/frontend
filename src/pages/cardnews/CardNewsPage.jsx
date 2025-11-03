@@ -188,26 +188,28 @@ function CardNewsPage() {
           </div>
         </div>
         {/* 변환 결과 */}
-        <div className={styles.cardNewsBox}>
-          <SelectHeader text="변환 결과" />
-          <div className={styles.textResultBox}>
-            <div
-              className={`${styles.showResult} ${
-                cardData.generatedText ? styles.select : ""
-              }`}
-            >
-              {cardData.generatedText && cardData.generatedText}
+        {cardData.generatedText && (
+          <div className={styles.cardNewsBox}>
+            <SelectHeader text="변환 결과" />
+            <div className={styles.textResultBox}>
+              <div
+                className={`${styles.showResult} ${
+                  cardData.generatedText ? styles.select : ""
+                }`}
+              >
+                {cardData.generatedText && cardData.generatedText}
+              </div>
+              <button
+                className={`${styles.textButton} ${
+                  styles.cardNewsTextResultButton
+                } ${cardData.generatedText ? styles.select : ""}`}
+                onClick={getGenerateText}
+              >
+                재생성하기
+              </button>
             </div>
-            <button
-              className={`${styles.textButton} ${
-                styles.cardNewsTextResultButton
-              } ${cardData.generatedText ? styles.select : ""}`}
-              onClick={getGenerateText}
-            >
-              재생성하기
-            </button>
           </div>
-        </div>
+        )}
         {/* 템플릿 선택 */}
         <div className={`${styles.cardNewsBox} ${styles.cardNewsTemplate}`}>
           <SelectHeader text="원하는 템플릿을 선택해주세요." />
