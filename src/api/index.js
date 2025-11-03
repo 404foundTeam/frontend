@@ -121,3 +121,51 @@ export const requestPartnership = async (payload) => {
   const res = await api.post("/partnership/request", payload);
   return res.data;
 };
+
+// 제휴 관리 - 제휴 맺은 업장
+export const getPartnerList = async () => {
+  const res = await api.get("/partnership/active");
+  return res.data; 
+};
+
+// 제휴 관리 - 제휴 상세 내용 조회 (GET)
+export const getPartnerDetails = async (partnershipId) => {
+  const res = await api.get(`/partnership/content/${partnershipId}`);
+  return res.data; 
+};
+
+// 제휴 관리 - 제휴 숨기기 (DELETE)
+export const hidePartnership = async (partnershipId) => {
+  const res = await api.delete(`/partnership/hide/${partnershipId}`);
+  return res.data;
+};
+
+// 제휴 관리 - 내가 요청 보낸 목록 (GET)
+export const getSentRequests = async () => {
+  const res = await api.get("/partnership/request/sent");
+  return res.data; 
+};
+
+// 제휴 관리 - 제휴 요청 삭제 (DELETE)
+export const deletePartnership = async (partnershipId) => {
+  const res = await api.delete(`/partnership/delete/${partnershipId}`);
+  return res.data; 
+};
+
+// 제휴 관리 - 내가 받은 요청 목록 (GET)
+export const getReceivedRequests = async () => {
+  const res = await api.get("/partnership/request/received");
+  return res.data; // 서버에서 받은 배열 [ { partnershipId, ... }, ... ]
+};
+
+// 제휴 관리 - 요청 수락 (POST)
+export const acceptPartnership = async (partnershipId) => {
+  const res = await api.post(`/partnership/accept/${partnershipId}`);
+  return res.data;
+};
+
+// 제휴 관리 - 요청 거절 (POST)
+export const rejectPartnership = async (partnershipId) => {
+  const res = await api.post(`/partnership/reject/${partnershipId}`);
+  return res.data;
+};

@@ -1,0 +1,129 @@
+/* src/styles/my/MyPartnership.module.css */
+
+.listContainer {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.mainTitle {
+  font-size: 26px;
+  font-weight: 550;
+  color: #413738;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+}
+.placeName {
+  color: #FEBF22; 
+}
+
+.partnerList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.partnerCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 30px;
+  border: 1px solid #D9D9D9;
+  border-radius: 12px;
+}
+
+.partnerInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.partnerName {
+  font-size: 18px;
+  font-weight: 600;
+  color: #FEBF22;
+}
+
+.partnerAddress {
+  font-size: 15px;
+  color: #797979;
+}
+
+.partnerActions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  position: relative;
+  margin-right: 20px;
+}
+
+/* 회색 버튼 (만료하기) */
+.actionButtonGray {
+  padding: 6px 0px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #797979;
+  background-color: #D9D9D9;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  width: 120px;
+}
+.actionButtonGray:hover {
+  background-color: #e0e0e0;
+}
+
+/* 노란색 버튼 (제휴 내용 보기) */
+.actionButtonYellow {
+  padding: 6px 0px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #6D3737;
+  background-color: #FEBF22; 
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  width: 120px;
+
+}
+.actionButtonYellow:hover {
+  background-color: #f0b93a;
+}
+
+/* X 버튼 */
+.deleteButton {
+  position: absolute;     
+  top: -30px;             /* 2. partnerActions 블록 상단에서 위로 이동 */
+  right: -40px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  font-weight: 600;
+  color: #ACACAC;
+  cursor: pointer;
+  padding: 0 5px;
+  margin-left: -5px; /* 회색 버튼과의 간격 조정 */
+}
+.deleteButton:hover {
+  color: #333;
+}
+
+/* 만료된 날짜 표시 */
+.dateDisplay {
+  position: absolute;
+  top: 120%; /* 버튼 하단에 표시 */
+  right: 0;
+  font-size: 13px;
+  color: #797979;
+  white-space: nowrap;
+}
+
+/* 로딩/에러/빈 메시지 */
+.statusMessage {
+  text-align: center;
+  padding: 40px;
+  font-size: 16px;
+  color: #888;
+}
