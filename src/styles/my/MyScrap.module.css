@@ -76,3 +76,36 @@
   color: #797979;
   padding: 150px 0; 
 }
+
+.deleteButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: none;
+  
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  
+  font-size: 22px;
+  font-weight: bold;
+  line-height: 30px; /* '×' 기호 세로 중앙 정렬 */
+  text-align: center;
+  
+  cursor: pointer;
+  opacity: 0; 
+  transition: opacity 0.2s ease, background-color 0.2s ease;
+}
+
+/* 카드에 마우스를 올렸을 때만 버튼 표시 */
+.card:hover .deleteButton {
+  opacity: 1;
+}
+
+/* 버튼에 마우스를 올렸을 때 (더 진하게) */
+.deleteButton:hover {
+  background-color: rgba(211, 47, 47, 0.9); /* 빨간색 배경 */
+}
