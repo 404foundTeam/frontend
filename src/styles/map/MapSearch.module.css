@@ -1,4 +1,8 @@
 /* 검색 박스 스타일 */
+.container {
+  position: relative;
+}
+
 .search {
   /* width: 1094px; */
   width: 600px;
@@ -13,16 +17,15 @@
 
   font-weight: 500;
   font-size: 16px;
-  line-height: 19px;
   letter-spacing: -0.025em;
 
   color: #797979;
 
   background-color: #fffaed;
-  background-image: url("../../assets/search.png");
+  /* background-image: url("../../assets/search.png");
   background-repeat: no-repeat;
   background-position: calc(100% - 18px) center;
-  background-size: 25px 25px;
+  background-size: 25px 25px; */
 }
 
 .search:focus {
@@ -31,4 +34,14 @@
 
 .search::placeholder {
   font-size: 14px;
+}
+
+.icon {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  right: 18px;
+  top: 11px;
+
+  cursor: pointer;
 }

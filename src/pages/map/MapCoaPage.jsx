@@ -8,12 +8,12 @@ import { useNavigate, useParams } from "react-router-dom";
 import DateInput from "../../components/map/DateInput";
 import { requestPartnership } from "../../api";
 import { toast } from "react-toastify";
-// import useActiveStroe from "../../store/useActiveStore";
+import useActiveStroe from "../../store/useActiveStore";
 
 function MapCoaPage() {
   const { placeName, storeId } = useParams();
   const navigate = useNavigate();
-  // const setSmartActive = useActiveStroe((state) => state.setSmartActive);
+  const setMyActive = useActiveStroe((state) => state.setMyActive);
 
   // 리퀘스트 바디 데이터
   const [coa, setCoa] = useState({
@@ -43,7 +43,7 @@ function MapCoaPage() {
     try {
       const res = requestPartnership(coa);
       toast.success(res.message);
-      // setSmartActive("");
+      setMyActive("PARTNERSHIP_SENT");
       navigate("/my");
     } catch (error) {
       console.log(error);

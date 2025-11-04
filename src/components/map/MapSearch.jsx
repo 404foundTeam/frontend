@@ -1,4 +1,5 @@
 import styles from "../../styles/map/MapSearch.module.css";
+import img from "../../assets/search.png";
 
 function MapSearch({
   focusRef,
@@ -16,10 +17,10 @@ function MapSearch({
         type="text"
         value={value}
         placeholder={placeholder}
-        onClick={onClick}
         onChange={onChange}
         onKeyDown={onKeyDown}
       />
+      <img src={img} className={styles.icon} onClick={onClick} />
     </div>
   );
 }

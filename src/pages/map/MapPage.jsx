@@ -56,6 +56,9 @@ function MapPage() {
   const handleCategoryClick = async (categoryValue) => {
     const newSelect = select === categoryValue ? "" : categoryValue;
 
+    setStoreList([]);
+    setSelectStore(null);
+
     setSelect(newSelect);
 
     if (infoWindowRef.current) {
@@ -63,11 +66,11 @@ function MapPage() {
     }
 
     // 값 없으면 리스트 리셋
-    if (newSelect === "") {
-      setStoreList([]);
-      setSelectStore(null);
-      return;
-    }
+    // if (newSelect === "") {
+    //   setStoreList([]);
+    //   setSelectStore(null);
+    //   return;
+    // }
 
     // 버튼 클릭 API 호출
     try {
