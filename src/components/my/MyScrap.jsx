@@ -59,7 +59,6 @@ function MyScrap() {
       
       alert("카드뉴스가 삭제되었습니다.");
       
-      // [수정] 4. 삭제 후 목록 새로고침
       // 만약 마지막 페이지의 마지막 항목을 삭제했다면, 이전 페이지로 이동
       if (cards.length === 1 && currentPage > 1) {
         setCurrentPage(currentPage - 1);
