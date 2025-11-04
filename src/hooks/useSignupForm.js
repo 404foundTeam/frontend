@@ -15,6 +15,7 @@ export function useSignForm() {
     verified: false,
     longitude: "",
     latitude: "",
+    category: "",
   });
 
   return {

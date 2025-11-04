@@ -8,6 +8,8 @@ import useCardStore from "../../store/useCardStore";
 import useAuthStore from "../../store/useAuthStore";
 import ResultButtonButton from "../../components/cardnews/ResultButton";
 import ChanceText from "../../components/cardnews/ChanceText";
+import { toast } from "react-toastify";
+import ToastMessage from "../../components/shared/ToastMessage";
 
 // 텍스트 조정 함수
 function drawWrappedText(ctx, text, x, y, maxWidth, lineHeight) {
@@ -200,7 +202,15 @@ function CardNewsResultPage() {
         storeUuid,
         finalUrl: fileUrl,
       });
-      alert("저장이 완료됐습니다.");
+      toast(<ToastMessage>"저장이 완료됐습니다.</ToastMessage>, {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "light",
+      });
       return postImg;
     } catch (error) {
       console.log(error);

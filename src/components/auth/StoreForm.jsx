@@ -64,6 +64,7 @@ function StoreForm({ store, setStore, handleStore }) {
       roadAddress: selectedStore.roadAddress,
       longitude: selectedStore.longitude,
       latitude: selectedStore.latitude,
+      category: selectedStore.category,
     }));
 
     toggleMap();
