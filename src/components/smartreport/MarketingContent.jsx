@@ -26,9 +26,7 @@ function MarketingContent() {
         setIsLoading(true);
         setError(null);
 
-        const response = await api.get(
-          `/report/${storeUuid}/marketing`
-        );
+        const response = await api.get(`/report/${storeUuid}/marketing`);
 
         // API 응답 데이터 형식에 맞게 변환
         const formattedEvents = response.data.marketingSuggestions.map(
@@ -72,9 +70,7 @@ function MarketingContent() {
       setEvents(updatedEvents);
 
       try {
-        await api.delete(
-          `/report/${storeUuid}/marketing/${idToDelete}`
-        );
+        await api.delete(`/report/${storeUuid}/marketing/${idToDelete}`);
         // 성공 시 아무것도 안함 (이미 UI에 반영됨)
         console.log(`Suggestion with id ${idToDelete} deleted successfully.`);
       } catch (err) {

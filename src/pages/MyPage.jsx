@@ -1,5 +1,5 @@
 // src/pages/MyPage.jsx
-import { useState } from "react"; 
+import { useEffect, useState } from "react";
 import styles from "../styles/my/MyPage.module.css";
 
 import MyScrap from "../components/my/MyScrap";
@@ -13,11 +13,18 @@ import useActiveStore from "../store/useActiveStore";
 
 function MyPage() {
   const activeTab = useActiveStore((state) => state.myActive);
-  const setActive = useActiveStore((state) => state.setMyActive);
+  const setMyActive = useActiveStore((state) => state.setMyActive);
 
   const [isPartnerDropdownOpen, setIsPartnerDropdownOpen] = useState(false);
 
   const isPartnershipActive = activeTab.startsWith("PARTNERSHIP");
+
+  // 컴포넌트 언마운트 시 탭 상태 초기화
+  useEffect(() => {
+    return () => {
+      setMyActive("MY");
+    };
+  }, [setMyActive]);
 
   return (
     <div className={styles.container}>
@@ -28,7 +35,7 @@ function MyPage() {
             activeTab === "MY" ? styles.active : ""
           }`}
           onClick={() => {
-            setActive("MY");
+            setMyActive("MY");
             setIsPartnerDropdownOpen(false); // 다른 탭 누르면 드롭다운 닫기
           }}
         >
@@ -41,7 +48,7 @@ function MyPage() {
             activeTab === "CALENDAR" ? styles.active : ""
           }`}
           onClick={() => {
-            setActive("CALENDAR");
+            setMyActive("CALENDAR");
             setIsPartnerDropdownOpen(false); // 다른 탭 누르면 드롭다운 닫기
           }}
         >
@@ -54,7 +61,7 @@ function MyPage() {
             activeTab === "REPORT" ? styles.active : ""
           }`}
           onClick={() => {
-            setActive("REPORT");
+            setMyActive("REPORT");
             setIsPartnerDropdownOpen(false); // 다른 탭 누르면 드롭다운 닫기
           }}
         >
@@ -69,8 +76,10 @@ function MyPage() {
             }`}
             onClick={() => setIsPartnerDropdownOpen((prev) => !prev)} // 클릭 시 토글
           >
-            제휴 관리 
-            <span className={styles.dropdownArrow}>{isPartnerDropdownOpen ? "▲" : "▼"}</span>
+            제휴 관리
+            <span className={styles.dropdownArrow}>
+              {isPartnerDropdownOpen ? "▲" : "▼"}
+            </span>
           </button>
 
           {/* 드롭다운 메뉴 */}
@@ -79,7 +88,7 @@ function MyPage() {
               <button
                 className={styles.dropdownItem}
                 onClick={() => {
-                  setActive("PARTNERSHIP_LIST");
+                  setMyActive("PARTNERSHIP_LIST");
                   setIsPartnerDropdownOpen(false);
                 }}
               >
@@ -88,7 +97,7 @@ function MyPage() {
               <button
                 className={styles.dropdownItem}
                 onClick={() => {
-                  setActive("PARTNERSHIP_SENT");
+                  setMyActive("PARTNERSHIP_SENT");
                   setIsPartnerDropdownOpen(false);
                 }}
               >
@@ -97,7 +106,7 @@ function MyPage() {
               <button
                 className={styles.dropdownItem}
                 onClick={() => {
-                  setActive("PARTNERSHIP_RECEIVED");
+                  setMyActive("PARTNERSHIP_RECEIVED");
                   setIsPartnerDropdownOpen(false);
                 }}
               >
@@ -107,7 +116,6 @@ function MyPage() {
           )}
         </div>
         {/* --- 제휴 관리 탭 끝 --- */}
-        
       </div>
 
       {/* [수정] 6. 하단 컨텐츠 렌더링 로직 수정 */}
@@ -115,7 +123,7 @@ function MyPage() {
         {activeTab === "MY" && <MyScrap />}
         {activeTab === "CALENDAR" && <MyCalendar />}
         {activeTab === "REPORT" && <MySmartReport />}
-        
+
         {/* 제휴 관리 3개 탭 */}
         {activeTab === "PARTNERSHIP_LIST" && <MyPartnerList />}
         {activeTab === "PARTNERSHIP_SENT" && <MyPartnerSent />}

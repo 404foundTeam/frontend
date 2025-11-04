@@ -3,10 +3,18 @@ import styles from "../styles/smartreport/SmartReport.module.css";
 import ReportContent from "../components/smartreport/ReportContent";
 import MarketingContent from "../components/smartreport/MarketingContent";
 import useActiveStroe from "../store/useActiveStore";
+import { useEffect } from "react";
 
 function SmartReportPage() {
   const activeTab = useActiveStroe((state) => state.smartActive);
-  const setActiveTab = useActiveStroe((state) => state.setSmartActive);
+  const setSmartActive = useActiveStroe((state) => state.setSmartActive);
+
+  // 컴포넌트 언마운트시 탭 상태 초기화
+  useEffect(() => {
+    return () => {
+      setSmartActive("report");
+    };
+  }, [setSmartActive]);
 
   return (
     <div className={styles.pageContainer}>
@@ -15,7 +23,7 @@ function SmartReportPage() {
           className={`${styles.tabButton} ${
             activeTab === "report" ? styles.active : ""
           }`}
-          onClick={() => setActiveTab("report")}
+          onClick={() => setSmartActive("report")}
         >
           AI 스마트 리포트
         </button>
@@ -23,7 +31,7 @@ function SmartReportPage() {
           className={`${styles.tabButton} ${
             activeTab === "marketing" ? styles.active : ""
           }`}
-          onClick={() => setActiveTab("marketing")}
+          onClick={() => setSmartActive("marketing")}
         >
           맞춤형 마케팅
         </button>
