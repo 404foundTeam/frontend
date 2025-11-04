@@ -119,7 +119,7 @@ function MapPage() {
       const btn = document.getElementById(`infoWindowBtn-${idx}`);
       if (btn) {
         btn.onclick = () => {
-          navigate(`/map/coalition/${store.id}`);
+          navigate(`/map/coalition/${store.placeName}/${store.id}`);
         };
       }
     }, 0);
