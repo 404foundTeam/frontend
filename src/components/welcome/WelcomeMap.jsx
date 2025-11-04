@@ -117,7 +117,10 @@ function WelcomeMap({ focusRef, onClick, handleSelect }) {
   }, [stores, selectStore]);
 
   const searchAddr = (address) => {
-    if (!address) return;
+    if (!address) {
+      toast.info("주소를 입력해주세요.");
+      return;
+    }
 
     const geocoder = new window.kakao.maps.services.Geocoder();
     geocoder.addressSearch(address, async function (result, status) {
@@ -145,8 +148,6 @@ function WelcomeMap({ focusRef, onClick, handleSelect }) {
         });
         marker.setMap(mapRef.current);
         // 검색 마커만 잠깐 보여주고, 리스트 마커는 stores useEffect에서 관리
-      } else {
-        toast.error("오류 발생");
       }
       try {
         const storeList = await fetchStoresByCoord(result[0].x, result[0].y);
