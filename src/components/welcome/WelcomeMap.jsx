@@ -31,7 +31,6 @@ function WelcomeMap({ focusRef, onClick, handleSelect }) {
   const handleConfirm = () => {
     if (!selectStore) {
       toast.error("업장을 선택해주세요.");
-      // alert("업장을 선택해주세요.");
       return;
     }
     handleSelect(selectStore);
@@ -147,7 +146,7 @@ function WelcomeMap({ focusRef, onClick, handleSelect }) {
         marker.setMap(mapRef.current);
         // 검색 마커만 잠깐 보여주고, 리스트 마커는 stores useEffect에서 관리
       } else {
-        alert("오류 발생");
+        toast.error("오류 발생");
       }
       try {
         const storeList = await fetchStoresByCoord(result[0].x, result[0].y);
@@ -155,7 +154,7 @@ function WelcomeMap({ focusRef, onClick, handleSelect }) {
         setStores(storeList.items);
       } catch (error) {
         console.log("요청 에러", error);
-        alert("데이터 요청에 실패했습니다.");
+        toast.error("데이터 요청에 실패했습니다.");
       }
     });
   };
