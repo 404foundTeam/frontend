@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { api } from "../../api/index";
+import { api, deleteCard } from "../../api/index";
 import styles from "../../styles/my/MyScrap.module.css";
 import useAuthStore from "../../store/useAuthStore";
 
@@ -14,42 +14,68 @@ function MyScrap() {
 
   const storeUuid = useAuthStore((state) => state.storeUuid);
 
-  useEffect(() => {
-    if (!storeUuid) {
-      return;
+  const fetchCards = async (page) => {
+    if (!storeUuid) return;
+
+    setIsLoading(true);
+    setError(null);
+    try {
+      const response = await api.get(
+        "/sns-cards/final",
+        {
+          params: {
+            storeUuid: storeUuid,
+            page: page - 1, 
+            size: itemsPerPage,
+          },
+        }
+      );
+
+      setCards(response.data.items);
+      setTotalItems(response.data.total);
+    } catch (err) {
+      console.error("API Error:", err);
+      setError("카드 목록을 불러오는 데 실패했습니다.");
+    } finally {
+      setIsLoading(false);
     }
+  };
 
-    const fetchCards = async () => {
-      setIsLoading(true);
-      setError(null);
-      try {
-        const response = await api.get(
-          "/sns-cards/final",
-          {
-            params: {
-              storeUuid: storeUuid,
-              page: currentPage - 1,
-              size: itemsPerPage,
-            },
-          }
-        );
-
-        setCards(response.data.items);
-        setTotalItems(response.data.total);
-      } catch (err) {
-        console.error("API Error:", err);
-        setError("카드 목록을 불러오는 데 실패했습니다.");
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchCards();
+  // useEffect는 currentPage나 storeUuid가 바뀔 때 fetchCards를 호출
+  useEffect(() => {
+    fetchCards(currentPage);
   }, [currentPage, storeUuid]);
 
   const totalPages = Math.ceil(totalItems / itemsPerPage);
 
-  // 로딩 중이거나 에러가 발생했을 때의 UI는 그대로 유지.
+  const handleDelete = async (id) => {
+    if (!window.confirm("이 카드뉴스를 정말 삭제하시겠습니까?")) {
+      return;
+    }
+
+    try {
+      // API 호출
+      await deleteCard(id);
+      
+      alert("카드뉴스가 삭제되었습니다.");
+      
+      // 만약 마지막 페이지의 마지막 항목을 삭제했다면, 이전 페이지로 이동
+      if (cards.length === 1 && currentPage > 1) {
+        setCurrentPage(currentPage - 1);
+      } else {
+        // 현재 페이지 목록을 다시 불러옴
+        fetchCards(currentPage);
+      }
+
+    } catch (err) {
+      console.error("Delete API Error:", err);
+      alert("카드 삭제에 실패했습니다.");
+    }
+  };
+
+
+  // --- 렌더링 로직 ---
+
   if (isLoading) return <div className={styles.statusMessage}>로딩 중...</div>;
   if (error) return <div className={styles.statusMessage}>{error}</div>;
 
@@ -64,7 +90,6 @@ function MyScrap() {
 
       <div className={styles.cardGrid}>
         {cards.length > 0 ? (
-          // cards 배열에 아이템이 있으면 기존처럼 목록을 렌더링
           cards.map((item) => (
             <div key={item.id}>
               <div className={styles.card}>
@@ -73,11 +98,19 @@ function MyScrap() {
                   alt={`Card ${item.id}`}
                   className={styles.cardImage}
                 />
+                
+                <button 
+                  className={styles.deleteButton} 
+                  onClick={() => handleDelete(item.id)}
+                  title="삭제하기"
+                >
+                  &times;
+                </button>
+                
               </div>
             </div>
           ))
         ) : (
-          // cards 배열이 비어있으면 "작성한 카드 뉴스가 없습니다." 메시지를 표시
           <p className={styles.emptyMessage}>작성한 카드 뉴스가 없습니다.</p>
         )}
       </div>

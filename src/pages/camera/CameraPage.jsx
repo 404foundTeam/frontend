@@ -8,6 +8,7 @@ import Loading from "../../components/shared/Loading";
 import CameraBanner from "../../components/camera/CameraBanner";
 import Error from "../../components/shared/Error";
 import CameraButton from "../../components/camera/CameraButton";
+import { toast } from "react-toastify";
 
 function CameraPage() {
   const navigate = useNavigate();
@@ -33,7 +34,7 @@ function CameraPage() {
 
   const goToResult = async () => {
     if (!data) {
-      alert("이미지를 업로드 해주세요.");
+      toast.info("이미지를 업로드 해주세요.");
       return;
     }
 

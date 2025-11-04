@@ -11,7 +11,7 @@ import { toast } from "react-toastify";
 // import useActiveStroe from "../../store/useActiveStore";
 
 function MapCoaPage() {
-  const { storeId } = useParams();
+  const { placeName, storeId } = useParams();
   const navigate = useNavigate();
   // const setSmartActive = useActiveStroe((state) => state.setSmartActive);
 
@@ -59,7 +59,7 @@ function MapCoaPage() {
 
   return (
     <>
-      <MapBanner />
+      <MapBanner label={placeName} />
       <div className={styles.container}>
         <div className="purpose">
           <SelectHeader text={"제휴맺는 목적이 무엇인가요?"} />

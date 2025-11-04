@@ -81,7 +81,10 @@ function App() {
             </Route>
             <Route path="map" element={<MapLayout />}>
               <Route index element={<MapPage />} />
-              <Route path="coalition/:storeId" element={<MapCoaPage />} />
+              <Route
+                path="coalition/:placeName/:storeId"
+                element={<MapCoaPage />}
+              />
               <Route path="coalition/list" element={<MapCoaListPage />} />
             </Route>
             <Route path="smartreport" element={<SmartReportLayout />}>

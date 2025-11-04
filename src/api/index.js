@@ -169,3 +169,9 @@ export const rejectPartnership = async (partnershipId) => {
   const res = await api.post(`/partnership/reject/${partnershipId}`);
   return res.data;
 };
+
+// 카드 뉴스 페이지 - 카드 삭제 (DELETE)
+export const deleteCard = async (id) => {
+  const res = await api.delete(`/sns-cards/final/${id}`);
+  return res.data; 
+};

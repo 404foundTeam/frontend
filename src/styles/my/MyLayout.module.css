@@ -8,15 +8,16 @@
 
 .banner {
   max-width: 1440px;
-  width: 100%;
+  width: 80%;
   margin: 0 auto;
   padding: 20px;
   display: flex;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
   gap: 45%;
 }
 .userInfo {
+  margin-left: 150px;
   white-space: nowrap; /* 줄바꿈을 방지하는 핵심 속성 */
 }
 .userName {
@@ -32,23 +33,6 @@
   color: #797979;
 }
 
-.reregisterButton {
-  white-space: nowrap;
-  background-color: #6d3737;
-  color: white;
-  padding: 12px 25px; 
-  font-size: 13px; 
-  font-weight: bold; 
-
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  transition: opacity 0.2s;
-}
-
-.reregisterButton:hover {
-  opacity: 0.9;
-}
 .layoutContainer {
   display: flex; /* 자식 요소들을 가로로 배치 */
 }

@@ -46,17 +46,14 @@ function LoginPage() {
           draggable: true,
           theme: "light",
         });
-        // alert(getAuth.message);
         setTimeout(() => {
           navigate("/main");
         }, 1500);
       } else {
         toast.info(getAuth.message);
-        // alert(getAuth.message);
       }
     } catch (error) {
       toast.error("서버 오류");
-      // alert("서버 오류");
       console.log(error);
     }
   };

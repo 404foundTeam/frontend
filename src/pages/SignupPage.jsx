@@ -8,6 +8,7 @@ import { useSignForm } from "../hooks/useSignupForm";
 import { signup } from "../api/auth";
 import { useCallback, useState } from "react";
 import { toast } from "react-toastify";
+import ToastMessage from "../components/shared/ToastMessage";
 
 function SignupPage() {
   const { account, setAccount, store, setStore } = useSignForm();
