@@ -23,14 +23,14 @@ function MyPage() {
     setIsPartnerDropdownOpen(false);
   };
 
-  // '제휴 관리' 메인 탭 클릭 시 드롭다운 토글
-  const togglePartnerDropdown = () => {
-    setIsPartnerDropdownOpen((prev) => !prev);
-    // 드롭다운을 열 때, 하위 탭이 선택 안되어있으면 제휴 맺은 업장으로 설정
-    if (!isPartnershipActive) {
-      setSearchParams({ tab: "PARTNERSHIP_LIST" });
-    }
-  };
+  // // '제휴 관리' 메인 탭 클릭 시 드롭다운 토글
+  // const togglePartnerDropdown = () => {
+  //   setIsPartnerDropdownOpen((prev) => !prev);
+  //   // 드롭다운을 열 때, 하위 탭이 선택 안되어있으면 제휴 맺은 업장으로 설정
+  //   if (!isPartnershipActive) {
+  //     setSearchParams({ tab: "PARTNERSHIP_LIST" });
+  //   }
+  // };
 
   return (
     <div className={styles.container}>
@@ -66,12 +66,13 @@ function MyPage() {
           </button>
 
           {/* '제휴 관리' 탭 (드롭다운 컨테이너) */}
-          <div className={styles.tabButtonContainer}>
+          <div className={styles.tabButtonContainer}
+          onMouseEnter={() => setIsPartnerDropdownOpen(true)}
+          onMouseLeave={() => setIsPartnerDropdownOpen(false)}>
             <button
               className={`${styles.tabButton} ${
                 isPartnershipActive ? styles.active : ""
               }`}
-              onClick={togglePartnerDropdown} // onClick 수정
             >
               제휴 관리
               <span className={styles.dropdownArrow}>
