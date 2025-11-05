@@ -66,7 +66,7 @@ function DayPattern({ year, month }) {
             top3Data
               .map((item, index) => `${index + 1}위: ${item.dayOfWeek}요일`)
               .join(", ") +
-            "입니다.";
+            "이에요.";
           setSummary(summaryText);
         }
       } catch (err) {

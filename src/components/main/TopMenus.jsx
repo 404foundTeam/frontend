@@ -102,7 +102,7 @@ function TopMenus({ year, month }) {
         ))}
       </ul>
       <p className={styles.feedback}>
-        가장 많이 판매된 상품은 {menuData[0].name} 입니다.
+        가장 많이 판매된 상품은 {menuData[0].name} 이에요.
       </p>
     </div>
   );
