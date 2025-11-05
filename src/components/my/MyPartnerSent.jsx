@@ -106,10 +106,8 @@ function MyPartnerSent() {
     }
   };
 
-  // '나의 제휴 보러가기' 버튼 클릭
   const handleNavigateToList = () => {
-    // setMyActiveTab("PARTNERSHIP_LIST"); // 6. 기존 코드 제거
-    navigate("/map"); // 7. URL을 직접 변경하는 코드로 수정
+    navigate("/map"); 
   };
 
   // --- 렌더링 로직 ---

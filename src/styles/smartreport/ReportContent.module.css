@@ -1,7 +1,5 @@
 /* src/styles/ReportContent.module.css */
 
-
-/* --- 전체 페이지 레이아웃 및 중앙 정렬 --- */
 .reportContainer {
   width: 100%;
   max-width: 1400px; 
@@ -9,48 +7,61 @@
 }
 
 .pageLayout {
-  display: flex;
-  flex-wrap: wrap; 
+  display: block; 
   padding: 2rem; 
   background-color: #FFE5A7;
   width: 100vw;   
   margin-left: calc(-50vw + 50%); 
   border-bottom-left-radius: 500px; 
-  align-items: center; 
+}
+
+.contentWrapper {
+  display: flex;
+  flex-wrap: wrap; 
+  gap: 5rem; 
+  max-width: 1200px; 
+  margin: 0 auto; 
+  width: 100%;
 }
 
 .leftColumn, .rightColumn {
-  flex-grow: 1; 
+  flex: 1; 
   flex-basis: 350px; 
   display: flex;
   flex-direction: column;
-  align-items: center; 
+}
+
+.leftColumn {
+  align-items: flex-end;
+}
+.rightColumn {
+  align-items: flex-start;
 }
 
 
-
-/* --- 헤더 스타일 --- */
 .reportHeader {
-  text-align: left; /* 텍스트를 중앙 정렬 */
+  text-align: left; 
   padding: 20px;
-  margin-left: 10%;
-
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .headerText h2 {
-  font-size: 26px; /* 화면 크기에 따라 글자 크기 조절 */
+  font-size: 26px; 
   color: #413738;
   margin-bottom: 20px;
+  white-space: nowrap; 
 }
 
 .placeName {
   color: #6D3737;
-  font-size: 35px; /* 화면 크기에 따라 글자 크기 조절 */
+  font-size: 35px; 
 }
 
 .headerText p {
   font-size: 18px;
   color: #717171;
+  word-break: keep-all; 
 }
 
 .headerIllustration {
@@ -60,13 +71,12 @@
   margin-top: 2rem;
 }
 
-/* --- 반응형 그리드 레이아웃 --- */
 .dashboardGrid {
   display: grid;
   grid-template-columns: repeat(2, 300px);
   gap: 1.5rem;
   width: 100%;
-  justify-content: start; 
+  justify-content: flex-start; 
 }
 
 .card {
@@ -75,18 +85,16 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
-  height: 200px; 
-  overflow: hidden; /* 내용이 넘치면 잘림 */
+  min-height: 200px; 
 }
 
 /* --- 하단 버튼 --- */
 .actionButtons {
   display: flex;
-  justify-content: left; /* 버튼들을 중앙 정렬 */
+  justify-content: center; 
   gap: 1rem;
   margin-top: 2.5rem;
   width: 100%;
-  margin-left: 290px;
 }
 
 .updateButton, .posButton {
@@ -96,20 +104,16 @@
   font-size: 1rem;
   font-weight: bold;
   cursor: pointer;
-  width: 160px; /* 버튼 크기 약간 축소 */
+  width: 160px;
 }
-
 .updateButton {
   background-color: #FEBF22;
   color: #6D3737;
 }
-
 .posButton {
   background-color: #FEBF22;
   color: #6D3737;
 }
-
-/* --- 하단 추가 섹션 --- */
 .summarySection, .tipsSection {
   margin-top: 3rem;
   padding: 1rem;

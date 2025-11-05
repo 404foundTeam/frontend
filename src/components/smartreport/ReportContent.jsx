@@ -81,6 +81,7 @@ function ReportContent({ year, month }) {
       <div className={styles.backgroundWrapper}>
         <div className={styles.reportContainer}>
           <div className={styles.pageLayout}>
+           <div className={styles.contentWrapper}>
             {/* 왼쪽 컬럼: 헤더 */}
             <div className={styles.leftColumn}>
               <div className={styles.reportHeader}>
@@ -126,6 +127,8 @@ function ReportContent({ year, month }) {
                 </div>
               )}
             </div>
+           </div>
+
           </div>
 
           <div className={styles.summarySection}>
