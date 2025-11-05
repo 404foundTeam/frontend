@@ -11,7 +11,7 @@
   text-align: center;
   font-size: 20px;
   color: #797979;
-  margin-bottom: 5.5rem; /* 제목과 목록 사이 간격 */
+  margin-bottom: 3rem; /* 제목과 목록 사이 간격 */
 }
 
 .eventList {
@@ -21,11 +21,17 @@
 }
 
 .eventCard {
+  /* width: 810px; */
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #FEBF22; /* 노란색/주황색 배경 */
-  padding: 30px 30px;
+  background-color: #febf22; /* 노란색/주황색 배경 */
+  /* padding: 30px 30px; */
+  /* padding-block: 2rem; */
+  /* padding-top: 2rem;
+  padding-bottom: 1.5rem;
+  padding-inline: 1.5rem; */
+  padding: 1.5rem;
   border-radius: 12px;
   text-align: left;
 }
@@ -37,19 +43,23 @@
 .eventTitle {
   font-size: 20px;
   font-weight: bold;
-  color: #6D3737;
+  color: #6d3737;
   margin: 0 0 5px 0;
 }
 
 .eventDesc {
-  font-size: 16px;
+  padding-left: 0.5rem;
+
+  font-size: 15px;
   color: #717171;
   margin: 0;
+
+  /* white-space: nowrap; */
 }
 
 .deleteButton {
-  background-color: #6D3737; /* 어두운 갈색 */
-  color: #FFFFFF;
+  background-color: #6d3737; /* 어두운 갈색 */
+  color: #ffffff;
   border: none;
   border-radius: 8px;
   padding: 6px 25px;
@@ -62,7 +72,7 @@
 }
 
 .deleteButton:hover {
-    background-color: #572c2c; /* 호버 시 더 진한 색 */
+  background-color: #572c2c; /* 호버 시 더 진한 색 */
 }
 
 .error {
