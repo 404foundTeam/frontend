@@ -2,26 +2,28 @@
 
 .mainPageContainer {
   width: 80%;
-  max-width: 1200px; 
+  max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
   padding-top: 58px;
   display: flex;
   flex-direction: column;
-  gap: 2rem; 
+  gap: 2rem;
 }
 
-
 .dashboardLayout {
-  width: 100%; 
-  display: flex; 
+  width: 100%;
+  display: flex;
   justify-content: center;
-  gap: 2rem; 
+  gap: 2rem;
   align-items: flex-start;
-  
 }
 
 .flexChild {
   flex: 1; /* 1:1 비율로 공간을 나눠 가짐 */
   min-width: 0;
+}
+
+.week {
+  padding-top: 24px;
 }

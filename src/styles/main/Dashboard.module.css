@@ -78,38 +78,63 @@
   margin-top: 32px;
 }
 
-
-
 .bubbleChartContainer {
+  position: relative;
+
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap; 
-  gap: 13px; 
+  flex-wrap: wrap;
+  gap: 13px;
   min-height: 150px; /* 데이터가 없을 때도 최소 높이 유지 */
 }
 
 .bubble {
-  border-radius: 50%; 
+  /* border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   font-weight: bold;
-  transition: transform 0.2s ease; 
+  transition: transform 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); */
+  position: absolute;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  transition: transform 0.2s ease;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .bubble:hover {
-  transform: scale(1.05); 
+  transform: scale(1.05);
 }
 
 /* 상위 버블 (이미지의 어두운 색) */
 .topBubble {
-  background-color: #6D3737;
+  background-color: #6d3737;
   color: white;
 }
 
 .otherBubble {
   background-color: #e0e0e0;
-  color: #413738; 
+  color: #413738;
+}
+
+.bubble:nth-child(1) {
+  top: -7%;
+  left: 12%;
+}
+.bubble:nth-child(2) {
+  top: 40%;
+  left: 51%;
+}
+.bubble:nth-child(3) {
+  top: 66%;
+  left: 28%;
+}
+.bubble:nth-child(4) {
+  top: -8%;
+  left: 47%;
 }
