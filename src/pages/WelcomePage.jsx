@@ -31,7 +31,7 @@ function WelcomePage() {
       <TextBox
         title={"소상공인을 위한 쉽고 빠른 플랫폼, market BEE"}
         content={
-          "클릭 몇 번으로 가게 홍보에 필요한 모든 콘텐츠와 운영을 자동으로 관리해보세요."
+          "매출, 방문 패턴, 고객 리뷰 등 복잡한 영업 데이터를 AI가 자동으로 분석하여 \n효율적인 홍보 전략과 맞춤형 리포트를 제공합니다."
         }
       />
       {/* <div className={styles.line}></div> */}

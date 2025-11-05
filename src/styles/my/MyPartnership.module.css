@@ -4,6 +4,7 @@
   width: 100%;
   max-width: 900px;
   margin: 0 auto;
+  margin-bottom: 100px;
 }
 
 .mainTitle {
@@ -112,9 +113,6 @@
 
 /* 만료된 날짜 표시 */
 .dateDisplay {
-  position: absolute;
-  top: 120%; /* 버튼 하단에 표시 */
-  right: 0;
   font-size: 13px;
   color: #797979;
   white-space: nowrap;

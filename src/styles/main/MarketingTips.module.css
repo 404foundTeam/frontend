@@ -2,13 +2,12 @@
 
 .container {
   position: relative;
-  max-width: 500px;
+  max-width: 600px;
   min-height: 198px;
   margin: 5%;
-  margin-top: 0;
+  margin-top: 25px;
   margin-bottom: 2.5%;
   border-radius: 20px;
-  padding: 25px;
   padding-top: 40px; /* 헤더가 올라오는 만큼 공간 확보 */
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   font-family: sans-serif;

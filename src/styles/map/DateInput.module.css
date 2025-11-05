@@ -1,49 +1,58 @@
 .dateInputContainer {
-  min-width: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.label {
+  font-size: 1.15rem;
+
+  color: #717171;
+}
+
+.cal {
   position: relative;
+
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
 }
 
 .dateInput {
-  width: 180px;
-  padding: 0.75rem 2rem;
-  font-size: 0.9rem;
+  padding: 1rem;
+  font-size: 1.2rem;
   color: #333;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+  border: 3px solid #d9d9d9;
+  border-radius: 10px;
   cursor: pointer;
   background-color: #fff;
-
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
 }
 
 .dateInput::placeholder {
-  color: #aaa;
-  font-size: 0.9rem;
+  font-size: 1.2rem;
 }
 
-.dateInput::-webkit-calendar-picker-indicator {
-  position: absolute;
-  right: 24px;
-  top: 50%;
-  transform: translateY(-50%);
-
-  width: 1.5rem;
-  height: 1.5rem;
-
-  opacity: 0;
-
-  z-index: 3;
-  cursor: pointer;
+.dateInput:focus {
+  border-color: #d4b575;
+  outline: none;
 }
 
 .calendarIcon {
+  color: #f5b800;
+  font-size: 3rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.calendarIcon:hover {
+  color: #b8860b;
+}
+
+.hiddenDateInput {
   position: absolute;
-  right: 24px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #888;
+  opacity: 0;
   pointer-events: none;
-  font-size: 0.9rem;
+  width: 0;
+  height: 0;
 }

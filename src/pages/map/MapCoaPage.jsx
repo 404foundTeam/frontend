@@ -8,12 +8,12 @@ import { useNavigate, useParams } from "react-router-dom";
 import DateInput from "../../components/map/DateInput";
 import { requestPartnership } from "../../api";
 import { toast } from "react-toastify";
-import useActiveStroe from "../../store/useActiveStore";
+// import useActiveStroe from "../../store/useActiveStore";
 
 function MapCoaPage() {
   const { placeName, storeId } = useParams();
   const navigate = useNavigate();
-  const setMyActive = useActiveStroe((state) => state.setMyActive);
+  // const setMyActive = useActiveStroe((state) => state.setMyActive);
 
   // 리퀘스트 바디 데이터
   const [coa, setCoa] = useState({
@@ -40,11 +40,15 @@ function MapCoaPage() {
   };
 
   const handleClick = async () => {
+    if (coa.startDate && coa.endDate && coa.endDate < coa.startDate) {
+      toast.error("종료일은 시작일보다 이후여야 합니다.");
+      return;
+    }
+
     try {
       const res = requestPartnership(coa);
       toast.success(res.message);
-      setMyActive("PARTNERSHIP_SENT");
-      navigate("/my");
+      navigate("/my?tab=PARTNERSHIP_SENT");
     } catch (error) {
       console.log(error);
       toast.error("제휴 요청에 실패했습니다.");
@@ -57,6 +61,13 @@ function MapCoaPage() {
 
   const isActive = coa.purpose && coa.details && coa.startDate && coa.endDate;
 
+  const startForMin =
+    coa.startDate && coa.startDate.length === 8
+      ? `${coa.startDate.slice(0, 4)}-${coa.startDate.slice(
+          4,
+          6
+        )}-${coa.startDate.slice(6, 8)}`
+      : undefined;
   return (
     <>
       <MapBanner label={placeName} />
@@ -98,13 +109,6 @@ function MapCoaPage() {
                 setCoa((prev) => ({ ...prev, details: e.target.value }));
               }}
             />
-            {/* <button
-              className={`${styles.textButton} ${styles.contentTextButton} ${
-                coa.details ? styles.select : ""
-              }`}
-            >
-              완료
-            </button> */}
           </div>
         </div>
         <div className={styles.date}>
@@ -114,14 +118,15 @@ function MapCoaPage() {
               name="startDate"
               value={coa.startDate}
               onChange={handleDateChange}
-              placeholder="시작일"
+              label="시작일"
             />
             <span className={styles.dateSeparator}>~</span>{" "}
             <DateInput
               name="endDate"
               value={coa.endDate}
               onChange={handleDateChange}
-              placeholder="종료일"
+              label="종료일"
+              minDate={startForMin}
             />
           </div>
         </div>

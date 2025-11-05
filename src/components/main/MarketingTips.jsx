@@ -25,9 +25,7 @@ function MarketingTips() {
         setIsLoading(true);
         setError(null);
 
-        const response = await api.get(
-          `/report/${storeUuid}/marketing`
-        );
+        const response = await api.get(`/report/${storeUuid}/marketing`);
 
         setTips(response.data.marketingSuggestions || []);
       } catch (err) {

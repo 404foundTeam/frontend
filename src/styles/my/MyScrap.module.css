@@ -1,7 +1,10 @@
+.ScrapContainer{
+  margin-bottom: 100px;
+}
+
 .header {
     text-align: center;
-    margin: 30px;
-
+    margin: 15px;
 }
 
 .mainTitle{

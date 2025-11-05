@@ -1,7 +1,7 @@
 // src/pages/MarketingPage.jsx
 
 import { Link } from "react-router-dom"; // [추가] Link 컴포넌트를 import 합니다.
-import styles from "../styles/marketing/MarketingPage.module.css";
+import styles from "../styles/about/AboutPage.module.css";
 
 // 1. 페이지에 사용할 이미지들을 import 합니다.
 import cardNewsImage from "../assets/marketingpage/image copy 10.png";
@@ -17,15 +17,12 @@ function MarketingPage() {
 
   const smartReportDesc = `AI가 데이터를 자동으로 분석하여 매출, 메뉴별 판매 순위, 개선팁 등을 한눈에 보여줘요`;
 
-
   return (
     <div className={styles.pageContainer}>
       {/* --- 첫 번째 섹션  --- */}
       <div className={styles.section}>
         <div className={styles.textContainer}>
-          <h2 className={styles.sectionTitle}>
-            카드뉴스 제작
-          </h2>
+          <h2 className={styles.sectionTitle}>카드뉴스 제작</h2>
           <p className={styles.sectionDescription}>{cardNewsDesc}</p>
         </div>
         <div className={styles.imageContainer}>
@@ -61,9 +58,7 @@ function MarketingPage() {
       {/* --- 세 번째 섹션  --- */}
       <div className={styles.section}>
         <div className={styles.textContainer}>
-          <h2 className={styles.sectionTitle}>
-            스마트 리포트
-          </h2>
+          <h2 className={styles.sectionTitle}>스마트 리포트</h2>
           <p className={styles.sectionDescription}>{smartReportDesc}</p>
         </div>
         <div className={styles.imageContainer}>

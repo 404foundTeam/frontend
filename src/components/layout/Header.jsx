@@ -35,7 +35,7 @@ function Header({ isWelcome }) {
             {!isWelcome && (
               <>
                 <div className={styles.linkBox}>
-                  <NavLink to="/marketing" className={styles.link}>
+                  <NavLink to="/about" className={styles.link}>
                     소개
                   </NavLink>
                   <div className={styles.marketingBox}>

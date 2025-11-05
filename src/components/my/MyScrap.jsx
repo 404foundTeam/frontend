@@ -80,7 +80,7 @@ function MyScrap() {
   if (error) return <div className={styles.statusMessage}>{error}</div>;
 
   return (
-    <>
+    <div className={styles.ScrapContainer}>
       <div className={styles.header}>
         <h1 className={styles.mainTitle}>나의 카드뉴스</h1>
         <p className={styles.subtitle}>
@@ -130,7 +130,7 @@ function MyScrap() {
           ))}
         </div>
       )}
-    </>
+    </div>
   );
 }
 

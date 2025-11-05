@@ -5,6 +5,7 @@
   max-width: 900px; /* 최대 너비 조절 */
   margin: 0 auto;
   padding: 20px;
+  margin-bottom: 100px;
 }
 
 .header {
@@ -25,7 +26,7 @@
   border: 1px solid #ccc;
   border-radius: 6px;
   font-size: 16px;
-  min-width: 100px;
+  min-width: 80px;
 }
 
 .reportList {

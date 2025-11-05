@@ -13,7 +13,7 @@
   padding: 60px; 
   margin: 0 auto;
   position: relative; 
-  border-bottom-left-radius: 430px;
+  border-bottom-left-radius: 350px;
   overflow: hidden; /* 내부 요소가 넘칠 경우를 대비 */
 }
 
@@ -34,7 +34,7 @@
 }
 
 .bannerTitle {
-  font-size: 40px;
+  font-size: 38px;
   font-weight: bold;
   color: #413738;
   margin: 0 0 15px 0;
@@ -47,10 +47,10 @@
 
 
 .illustration {
-  width: 500px; 
+  width: 400px; 
   height: auto; 
   max-width: 45%;
-  transform: translate(-100px, 130px);
+  transform: translate(-200px, 120px);
 }
 
 .buttonGrid {
