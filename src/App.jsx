@@ -7,8 +7,8 @@ import WelcomePage from "./pages/WelcomePage";
 import Layout from "./layouts/Layout";
 import MainLayout from "./layouts/MainLayout";
 import MainPage from "./pages/MainPage";
-import MarketingLayout from "./layouts/MarketingLayout";
-import MarketingPage from "./pages/MarketingPage";
+import AboutLayout from "./layouts/AboutLayout";
+import AboutPage from "./pages/AboutPage";
 import CardNewsLayout from "./layouts/CardNewsLayout";
 import CardNewsPage from "./pages/cardnews/CardNewsPage";
 import CardNewsResultPage from "./pages/cardnews/CardNewsResultPage";
@@ -63,41 +63,41 @@ function App() {
             <Route index element={<WelcomePage />} />
           </Route>
 
-          {/* <Route element={<RequireAuth />}> */}
-          <Route path="/" element={<Layout />}>
-            <Route path="main" element={<MainLayout />}>
-              <Route index element={<MainPage />} />
-            </Route>
-            <Route path="about" element={<MarketingLayout />}>
-              <Route index element={<MarketingPage />} />
-            </Route>
-            <Route path="cardnews" element={<CardNewsLayout />}>
-              <Route index element={<CardNewsPage />} />
-              <Route path="result" element={<CardNewsResultPage />} />
-            </Route>
-            <Route path="camera" element={<CameraLayout />}>
-              <Route index element={<CameraPage />} />
-              <Route path="result" element={<CameraResultPage />} />
-            </Route>
-            <Route path="map" element={<MapLayout />}>
-              <Route index element={<MapPage />} />
-              <Route
-                path="coalition/:placeName/:storeId"
-                element={<MapCoaPage />}
-              />
-              <Route path="coalition/list" element={<MapCoaListPage />} />
-            </Route>
-            <Route path="smartreport" element={<SmartReportLayout />}>
-              <Route index element={<SmartReportPage />} />
-            </Route>
-            <Route path="mysmartreport" element={<SmartReportLayout />}>
-              <Route path=":year/:month" element={<MySmartReportPage />} />
-            </Route>
-            <Route path="my" element={<MyLayout />}>
-              <Route index element={<MyPage />} />
+          <Route element={<RequireAuth />}>
+            <Route path="/" element={<Layout />}>
+              <Route path="main" element={<MainLayout />}>
+                <Route index element={<MainPage />} />
+              </Route>
+              <Route path="about" element={<AboutLayout />}>
+                <Route index element={<AboutPage />} />
+              </Route>
+              <Route path="cardnews" element={<CardNewsLayout />}>
+                <Route index element={<CardNewsPage />} />
+                <Route path="result" element={<CardNewsResultPage />} />
+              </Route>
+              <Route path="camera" element={<CameraLayout />}>
+                <Route index element={<CameraPage />} />
+                <Route path="result" element={<CameraResultPage />} />
+              </Route>
+              <Route path="map" element={<MapLayout />}>
+                <Route index element={<MapPage />} />
+                <Route
+                  path="coalition/:placeName/:storeId"
+                  element={<MapCoaPage />}
+                />
+                <Route path="coalition/list" element={<MapCoaListPage />} />
+              </Route>
+              <Route path="smartreport" element={<SmartReportLayout />}>
+                <Route index element={<SmartReportPage />} />
+              </Route>
+              <Route path="mysmartreport" element={<SmartReportLayout />}>
+                <Route path=":year/:month" element={<MySmartReportPage />} />
+              </Route>
+              <Route path="my" element={<MyLayout />}>
+                <Route index element={<MyPage />} />
+              </Route>
             </Route>
           </Route>
-          {/* </Route> */}
 
           <Route path="*" element={<Error />} />
         </Routes>
