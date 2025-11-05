@@ -3,6 +3,7 @@ import Calendar from "react-calendar";
 import { api } from "../../api/index";
 import styles from "../../styles/my/MyCalendar.module.css";
 import useAuthStore from "../../store/useAuthStore";
+import { toast } from "react-toastify";
 
 const formatDate = (date) => {
   const year = date.getFullYear();
@@ -27,12 +28,9 @@ function MyCalendar() {
   const fetchHolidays = async (date) => {
     try {
       const year = date.getFullYear();
-      const response = await api.get(
-        `/calendar/holidays`,
-        {
-          params: { year },
-        }
-      );
+      const response = await api.get(`/calendar/holidays`, {
+        params: { year },
+      });
       const holidaysData = response.data.reduce((acc, holiday) => {
         if (acc[holiday.calendarDate]) {
           acc[holiday.calendarDate].title += `, ${holiday.title}`;
@@ -67,12 +65,9 @@ function MyCalendar() {
     try {
       const year = date.getFullYear();
       const month = date.getMonth() + 1;
-      const response = await api.get(
-        `/calendar/month`,
-        {
-          params: { storeUuid, year, month },
-        }
-      );
+      const response = await api.get(`/calendar/month`, {
+        params: { storeUuid, year, month },
+      });
       const eventsData = response.data.reduce((acc, event) => {
         acc[event.calendarDate] = {
           eventId: event.eventId,
@@ -97,12 +92,9 @@ function MyCalendar() {
     const calendarDate = formatDate(selectedDate);
     try {
       if (currentEventId) {
-        await api.patch(
-          `/calendar/events/${currentEventId}`,
-          {
-            title: currentEventText,
-          }
-        );
+        await api.patch(`/calendar/events/${currentEventId}`, {
+          title: currentEventText,
+        });
       } else {
         await api.post(`/calendar/events`, {
           storeUuid,
@@ -114,21 +106,19 @@ function MyCalendar() {
       setModalIsOpen(false);
     } catch (err) {
       console.error("이벤트 저장/수정 실패:", err);
-      alert("일정 처리에 실패했습니다.");
+      toast.error("일정 처리에 실패했습니다.");
     }
   };
 
   const handleDeleteEvent = async () => {
     if (!currentEventId) return;
     try {
-      await api.delete(
-        `/calendar/events/${currentEventId}`
-      );
+      await api.delete(`/calendar/events/${currentEventId}`);
       await fetchEvents(activeMonth);
       setModalIsOpen(false);
     } catch (err) {
       console.error("이벤트 삭제 실패:", err);
-      alert("일정 삭제에 실패했습니다.");
+      toast.error("일정 삭제에 실패했습니다.");
     }
   };
 
@@ -224,19 +214,26 @@ function MyCalendar() {
               placeholder="일정을 입력하세요"
             />
             <div className={styles.modalButtons}>
-              <button onClick={handleSaveEvent} className={styles.saveButton}>저장</button>
-              
+              <button onClick={handleSaveEvent} className={styles.saveButton}>
+                저장
+              </button>
+
               {/* currentEventId가 존재할 때만 삭제 버튼을 렌더링 */}
               {currentEventId && (
-                <button 
-                  onClick={handleDeleteEvent} 
-                  className={styles.deleteButton} 
+                <button
+                  onClick={handleDeleteEvent}
+                  className={styles.deleteButton}
                 >
                   삭제
                 </button>
               )}
-              
-              <button onClick={() => setModalIsOpen(false)} className={styles.closeButton}>닫기</button>
+
+              <button
+                onClick={() => setModalIsOpen(false)}
+                className={styles.closeButton}
+              >
+                닫기
+              </button>
             </div>
           </div>
         </div>

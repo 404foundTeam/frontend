@@ -31,13 +31,14 @@
 
 .content {
   text-align: center;
+  height: 468px;
 }
 
 .summary {
   font-size: 1rem;
   color: #797979;
   line-height: 1.6;
-  margin-bottom: 30px;
+  /* margin-bottom: 1rem; */
   white-space: nowrap;
 }
 
@@ -47,11 +48,14 @@
 }
 
 .tipsList {
+  padding: 2rem;
+  padding-bottom: 1rem;
+
   display: flex;
   flex-direction: column;
   gap: 25px;
   text-align: left;
-  max-height: 410px; /* 목록의 최대 높이를 지정 (원하는 높이로 조절) */
+  max-height: 356px; /* 목록의 최대 높이를 지정 (원하는 높이로 조절) */
   overflow-y: auto; /* 내용이 최대 높이를 넘어가면 세로 스크롤바를 표시 */
   padding-right: 10px; /* 스크롤바와 내용이 겹치지 않도록 여백 추가 */
 }
@@ -67,7 +71,7 @@
   height: 10px;
   background-color: #ffc107;
   border-radius: 50%;
-  margin-top: 8px;
+  margin-top: 4px;
   flex-shrink: 0;
 }
 

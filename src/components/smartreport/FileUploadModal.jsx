@@ -5,6 +5,7 @@ import { useDropzone } from "react-dropzone";
 import { api } from "../../api/index";
 import styles from "../../styles/smartreport/FileUploadModal.module.css";
 import useAuthStore from "../../store/useAuthStore";
+import { toast } from "react-toastify";
 
 function FileUploadModal({ onClose }) {
   const [selectedFiles, setSelectedFiles] = useState([]);
@@ -43,11 +44,11 @@ function FileUploadModal({ onClose }) {
 
   const handleUpload = async () => {
     if (selectedFiles.length === 0) {
-      alert("파일을 선택해주세요.");
+      toast.info("파일을 선택해주세요.");
       return;
     }
     if (!storeUuid) {
-      alert("가게 정보(UUID)를 찾을 수 없습니다.");
+      toast.error("가게 정보(UUID)를 찾을 수 없습니다.");
       return;
     }
 
@@ -59,20 +60,24 @@ function FileUploadModal({ onClose }) {
     formData.append("storeUuid", storeUuid);
 
     try {
-      const response = await api.post(
-        "/report/upload",
-        formData,
-        {
-          headers: { "Content-Type": "multipart/form-data" },
-        }
-      );
+      const response = await api.post("/report/upload", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
 
-      alert("파일이 성공적으로 업로드되었습니다.");
+      toast(<ToastMessage>파일이 성공적으로 업로드되었습니다.</ToastMessage>, {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "light",
+      });
       console.log("Upload Success:", response.data);
       incrementDataVersion();
       onClose();
     } catch (error) {
-      alert("파일 업로드에 실패했습니다. 파일명을 확인해주세요.");
+      toast.error("파일 업로드에 실패했습니다. 파일명을 확인해주세요.");
       console.error(
         "Upload error:",
         error.response ? error.response.data : error.message

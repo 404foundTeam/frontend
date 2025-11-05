@@ -1,9 +1,7 @@
 .bannerWrapper {
-  background-color: #E2D7D7; 
+  background-color: #e2d7d7;
   width: 100vw; /* 뷰포트 전체 너비 */
-  margin-left: calc(
-    -50vw + 50%
-  );
+  margin-left: calc(-50vw + 50%);
 }
 
 .banner {
@@ -27,7 +25,7 @@
 }
 
 .userAddress {
-  font-weight: 500; 
+  font-weight: 500;
   font-size: 15px;
 
   color: #797979;
@@ -38,7 +36,7 @@
 }
 
 .mainContent {
-  max-width: 1440px;
+  /* max-width: 1440px; */
   width: 100%;
   margin: 0 auto;
   /* height: 495px; 나중에 수정 */

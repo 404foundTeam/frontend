@@ -10,7 +10,6 @@ function StoreSearch({ placeholder, value, onChange, onClick, onKeyDown }) {
         placeholder={placeholder}
         value={value}
         onChange={onChange}
-        onClick={onClick}
         onKeyDown={onKeyDown}
       />
       <img src={SearchImg} className={styles.searchIcon} onClick={onClick} />

@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { api } from "../../api/index";
 import useAuthStore from "../../store/useAuthStore";
 import styles from "../../styles/smartreport/MarketingContent.module.css";
+import { toast } from "react-toastify";
 
 function MarketingContent() {
   const storeUuid = useAuthStore((state) => state.storeUuid);
@@ -75,7 +76,7 @@ function MarketingContent() {
         console.log(`Suggestion with id ${idToDelete} deleted successfully.`);
       } catch (err) {
         // API 호출 실패 시 UI를 원래 상태로 되돌리고 에러 메시지 표시
-        alert("삭제에 실패했습니다. 다시 시도해주세요.");
+        toast.error("삭제에 실패했습니다. 다시 시도해주세요.");
         setEvents(originalEvents);
         console.error("Delete Error:", err);
       }

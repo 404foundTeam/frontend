@@ -29,9 +29,8 @@ function WelcomePage() {
     <div className={styles.container}>
       <HeaderSection onClick={goToLogin} />
       <TextBox
-        title={"소상공인을 위한 쉽고 빠른 플랫폼, market BEE"}
-        content={
-          "매출, 방문 패턴, 고객 리뷰 등 복잡한 영업 데이터를 AI가 자동으로 분석하여 \n효율적인 홍보 전략과 맞춤형 리포트를 제공합니다."
+        title={
+          "복잡한 매출과 리뷰, 방문 데이터를 \nAI가 자동으로 분석합니다. \nmarketBEE와 함께라면, 홍보는 쉬워지고 \n성장은 빨라집니다."
         }
       />
       {/* <div className={styles.line}></div> */}

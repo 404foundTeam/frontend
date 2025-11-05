@@ -45,8 +45,22 @@ function MapCoaPage() {
       return;
     }
 
+    const formatDate = (dateStr) => {
+      if (!dateStr || dateStr.length !== 8) return dateStr;
+      return `${dateStr.slice(0, 4)}-${dateStr.slice(4, 6)}-${dateStr.slice(
+        6,
+        8
+      )}`;
+    };
+
+    const formattedCoa = {
+      ...coa,
+      startDate: formatDate(coa.startDate),
+      endDate: formatDate(coa.endDate),
+    };
+
     try {
-      const res = requestPartnership(coa);
+      const res = requestPartnership(formattedCoa);
       toast.success(res.message);
       navigate("/my?tab=PARTNERSHIP_SENT");
     } catch (error) {

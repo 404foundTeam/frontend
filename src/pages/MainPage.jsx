@@ -1,21 +1,19 @@
 // src/pages/MainPage.jsx
 
-import styles from '../styles/main/Main.module.css';
-import WeeklyScheduleViewer from '../components/main/WeeklyScheduleViewer';
-import MarketingTips from '../components/main/MarketingTips';
-import ReportSummary from '../components/main/ReportSummary'; 
-import DashboardPage from '../components/main/DashboardPage';
+import styles from "../styles/main/Main.module.css";
+import WeeklyScheduleViewer from "../components/main/WeeklyScheduleViewer";
+import MarketingTips from "../components/main/MarketingTips";
+import ReportSummary from "../components/main/ReportSummary";
+import DashboardPage from "../components/main/DashboardPage";
 
 function MainPage() {
   return (
     <div className={styles.mainPageContainer}>
-      
       <div className={styles.dashboardLayout}>
-        
-        <div className={styles.flexChild}>
+        <div className={`${styles.flexChild} ${styles.week}`}>
           <WeeklyScheduleViewer />
         </div>
-        
+
         <div className={styles.flexChild}>
           <MarketingTips />
         </div>

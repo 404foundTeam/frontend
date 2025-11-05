@@ -1,5 +1,6 @@
 .container {
   display: flex;
+  justify-content: center;
   align-items: center;
 }
 
@@ -9,10 +10,14 @@
 
 .text {
   padding-top: 0.75rem;
+
+  /* text-align: center; */
 }
 
 .red {
   padding-top: 0.75rem;
 
-  color: #f83434;
+  color: #f83434 !important;
+
+  /* text-align: center; */
 }
