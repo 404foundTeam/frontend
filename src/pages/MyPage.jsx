@@ -1,8 +1,7 @@
 // src/pages/MyPage.jsx
 import { useState } from "react";
-import { useSearchParams } from "react-router-dom"; 
+import { useSearchParams } from "react-router-dom";
 import styles from "../styles/my/MyPage.module.css";
-
 import MyScrap from "../components/my/MyScrap";
 import MyCalendar from "../components/my/MyCalendar";
 import MySmartReport from "../components/my/MySmartReport";
@@ -21,7 +20,7 @@ function MyPage() {
   const handleTabClick = (tabName) => {
     setSearchParams({ tab: tabName });
     // 제휴 관리 탭이 아닌 다른 탭을 누르면 드롭다운을 닫습니다.
-      setIsPartnerDropdownOpen(false);
+    setIsPartnerDropdownOpen(false);
   };
 
   // '제휴 관리' 메인 탭 클릭 시 드롭다운 토글
@@ -32,7 +31,6 @@ function MyPage() {
       setSearchParams({ tab: "PARTNERSHIP_LIST" });
     }
   };
-
 
   return (
     <div className={styles.container}>
