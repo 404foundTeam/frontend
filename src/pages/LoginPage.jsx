@@ -39,7 +39,7 @@ function LoginPage() {
 
         toast(<ToastMessage>{getAuth.message}</ToastMessage>, {
           position: "top-center",
-          autoClose: 3000,
+          autoClose: 2000,
           hideProgressBar: true,
           closeOnClick: true,
           pauseOnHover: true,
