@@ -5,15 +5,18 @@ import {
   getPartnerDetails,
   deletePartnership,
 } from "../../api/index";
+import { useNavigate } from "react-router-dom"; // 1. useNavigate 임포트
 import PartnerDetailModal from "./PartnerDetailModal";
 import useAuthStore from "../../store/useAuthStore";
 import styles from "../../styles/my/MyPartnerSent.module.css";
-import useActiveStore from "../../store/useActiveStore";
 import { toast } from "react-toastify";
+import arrowIcon from "../../assets/mypage/arrowIcon.png";
+
 
 // 2. 목업 데이터 모두 삭제
 
 function MyPartnerSent() {
+  const navigate = useNavigate();
   const [requests, setRequests] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -23,7 +26,6 @@ function MyPartnerSent() {
   const [isDetailLoading, setIsDetailLoading] = useState(false);
 
   const placeName = useAuthStore((state) => state.placeName);
-  const setMyActiveTab = useActiveStore((state) => state.setMyActive);
 
   useEffect(() => {
     const fetchSentRequests = async () => {
@@ -104,9 +106,8 @@ function MyPartnerSent() {
     }
   };
 
-  // '나의 제휴 보러가기' 버튼 클릭
   const handleNavigateToList = () => {
-    setMyActiveTab("PARTNERSHIP_LIST");
+    navigate("/map"); 
   };
 
   // --- 렌더링 로직 ---
@@ -122,11 +123,16 @@ function MyPartnerSent() {
             <span className={styles.placeName}>{placeName || "사장"}</span>님이
             제휴 요청한 업장
           </h2>
-          <button
+          <button 
             className={styles.headerButton}
             onClick={handleNavigateToList}
           >
-            나의 제휴 보러가기
+            제휴 요청하러가기
+            <img 
+              src={arrowIcon} 
+              alt="이동" 
+              className={styles.headerArrowIcon}
+            />
           </button>
         </div>
 

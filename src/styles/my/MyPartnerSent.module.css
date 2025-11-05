@@ -34,15 +34,24 @@
   font-size: 14px;
   font-weight: 600;
   color: #6D3737;
-  background-color: #FEBF22;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.2s;
   white-space: nowrap;
+  display: flex;
+  align-items: center; 
+  justify-content: center; 
+  gap: 5px; 
 }
 .headerButton:hover {
-  background-color: #f0b93a;
+  transform: scale(1.05);
+}
+
+.headerArrowIcon {
+  width: 20px;  
+  height: 20px; 
+  object-fit: contain; 
 }
 
 .partnerList {
