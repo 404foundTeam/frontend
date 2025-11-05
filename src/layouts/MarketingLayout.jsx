@@ -22,14 +22,11 @@ function MarketingLayout() {
             {/* 배너 왼쪽 텍스트 영역 */}
             <div className={styles.bannerInfo}>
               <h1 className={styles.bannerTitle}>
-                {/* 텍스트 수정: 'AI 카드뉴스' -> 'AI 카드 뉴스' (띄어쓰기) */}
                 AI 카드 뉴스 제작부터 
                 <br />
-                {/* 텍스트 수정: '지도 이용 제휴, 사진 촬영 가이드까지' -> '사진 촬영 가이드, 스마트 리포트까지' */}
                 사진 촬영 가이드, 스마트 리포트까지
               </h1>
               <p className={styles.bannerSubtitle}>
-                {/* 텍스트 수정: '홍보에' -> '홍보와 관리에' */}
                 홍보와 관리에 필요한 모든 것을 한번에 제공해요.
               </p>
             
@@ -79,7 +76,7 @@ function MarketingLayout() {
 
         <Outlet />
 
-        {/* --- 제휴 배너 코드 (이 부분은 수정하지 않았습니다) --- */}
+        {/* --- 제휴 배너 코드  --- */}
         <div className={styles.partnershipBanner}>
           <div className={styles.bannerIllustrationContainer}>
             <img

@@ -123,13 +123,13 @@ function MyPartnerList() {
                 {/* === ACTIVE 카드 (활성 제휴) === */}
                 {partner.status === "ACTIVE" && (
                   <div className={styles.partnerActions}>
+                    <span className={styles.dateDisplay}>{partner.displayMessage}</span>
                     <button 
                       className={styles.actionButtonYellow}
                       onClick={() => handleViewDetails(partner.partnershipId)}
                     >
                       제휴 내용 보기
                     </button>
-                    <span className={styles.dateDisplay}>{partner.displayMessage}</span>
                   </div>
                 )}
                 

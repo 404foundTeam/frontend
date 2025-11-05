@@ -1,6 +1,6 @@
 .dashboardGrid {
   display: grid;
-  grid-template-columns: repeat(2, 480px);
+  grid-template-columns: repeat(2, 400px);
   justify-content: center;
   gap: 2rem;
   padding: 2rem;
@@ -13,13 +13,13 @@
   color: #413738;
   text-align: center;
   line-height: 1.8;
-  padding: 30px;
+  padding: 20px;
   border-radius: 50px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .cardTitle {
-  font-size: 1.5rem;
+  font-size: 20px;
   font-weight: bold;
   color: #6d3737;
   margin-bottom: 20px;
@@ -28,7 +28,7 @@
   padding-top: 48px;
 }
 .cardDescription {
-  font-size: 0.95rem;
+  font-size: 15px;
   color: #6d3737;
   line-height: 1.6;
   margin-top: 20px;
@@ -56,8 +56,8 @@
 .rankItem {
   display: flex;
   align-items: center;
-  margin-bottom: 15px;
-  font-size: 1.1rem;
+  margin-bottom: 13px;
+  font-size: 15px;
 }
 .rankNumber {
   font-weight: bold;
@@ -72,7 +72,7 @@
 }
 
 .feedback {
-  font-size: 0.95rem;
+  font-size: 15px;
   color: #6d3737;
   line-height: 1.6;
   margin-top: 32px;

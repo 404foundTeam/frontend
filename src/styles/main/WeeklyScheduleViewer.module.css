@@ -1,9 +1,9 @@
 /* src/styles/WeeklyScheduleViewer.module.css */
 
 .container {
-  max-width: 1400px;
+  max-width: 550px;
   border-radius: 20px;
-  padding: 25px;
+  padding: 0px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   font-family: sans-serif;
 }
@@ -25,7 +25,7 @@
 .dayHeaders,
 .dates {
   display: grid;
-  grid-template-columns: repeat(7, minmax(80px, 1fr)); /* 7개의 동일한 컬럼 */
+  grid-template-columns: repeat(7, minmax(40px, 1fr)); /* 7개의 동일한 컬럼 */
   text-align: center;
 }
 
@@ -49,6 +49,7 @@
 /* --- 하단: 일정 목록 --- */
 .scheduleListSection {
   padding-top: 20px;
+  margin-left: 20px;
 }
 
 .listHeader {

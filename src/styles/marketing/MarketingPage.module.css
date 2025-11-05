@@ -33,7 +33,7 @@
 }
 
 .sectionTitle {
-  font-size: 40px;
+  font-size: 35px;
   font-weight: bold;
   color: #413738;
   line-height: 1.4;
@@ -42,13 +42,13 @@
 }
 
 .sectionDescription {
-  font-size: 18px;
+  font-size: 16px;
   color: #797979;
   white-space: pre-wrap;
 }
 
 .sectionImage {
-  max-width: 90%;
+  max-width: 80%;
   height: auto;
   border-radius: 12px;
   /* box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); */

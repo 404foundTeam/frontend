@@ -4,27 +4,27 @@
 /* --- 전체 페이지 레이아웃 및 중앙 정렬 --- */
 .reportContainer {
   width: 100%;
-  max-width: 1400px; /* 페이지의 최대 너비를 설정해 너무 넓어지는 것을 방지 */
-  margin: 0 auto;    /* 컨테이너 자체를 화면 중앙에 배치 */
+  max-width: 1400px; 
+  margin: 0 auto;    
 }
 
 .pageLayout {
   display: flex;
-  flex-wrap: wrap; /* 화면이 좁아지면 컬럼이 아래로 떨어지도록 설정 */
-  padding: 2rem; /* 내부 여백 */
+  flex-wrap: wrap; 
+  padding: 2rem; 
   background-color: #FFE5A7;
-  width: 100vw;   /* 뷰포트 전체 너비 */
-  margin-left: calc(-50vw + 50%); /* 부모 컨테이너 패딩/마진을 무시하고 화면 전체에 맞춤 */
+  width: 100vw;   
+  margin-left: calc(-50vw + 50%); 
   border-bottom-left-radius: 500px; 
-  align-items: center; /* 컬럼들을 세로 중앙에 정렬 */
+  align-items: center; 
 }
 
 .leftColumn, .rightColumn {
-  flex-grow: 1; /* 컬럼이 남는 공간을 차지하도록 설정 */
-  flex-basis: 350px; /* 컬럼의 최소 너비를 지정해 자동 줄바꿈 기준 생성 */
+  flex-grow: 1; 
+  flex-basis: 350px; 
   display: flex;
   flex-direction: column;
-  align-items: center; /* 자식 요소들을 가로 중앙에 배치 */
+  align-items: center; 
 }
 
 
@@ -33,29 +33,29 @@
 .reportHeader {
   text-align: left; /* 텍스트를 중앙 정렬 */
   padding: 20px;
-  margin-left: 20%;
+  margin-left: 10%;
 
 }
 
 .headerText h2 {
-  font-size: clamp(1.5rem, 4vw, 1.8rem); /* 화면 크기에 따라 글자 크기 조절 */
+  font-size: 26px; /* 화면 크기에 따라 글자 크기 조절 */
   color: #413738;
   margin-bottom: 20px;
 }
 
 .placeName {
   color: #6D3737;
-  font-size: clamp(1.8rem, 5vw, 2.5rem); /* 화면 크기에 따라 글자 크기 조절 */
+  font-size: 35px; /* 화면 크기에 따라 글자 크기 조절 */
 }
 
 .headerText p {
-  font-size: 1rem;
+  font-size: 18px;
   color: #717171;
 }
 
 .headerIllustration {
   width: 100%;
-  max-width: 400px; 
+  max-width: 350px; 
   height: auto;
   margin-top: 2rem;
 }
