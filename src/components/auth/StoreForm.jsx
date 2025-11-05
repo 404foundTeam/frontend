@@ -191,6 +191,18 @@ function StoreForm({ store, setStore, handleStore }) {
   const isVerified =
     verify.storeNumber && verify.representativeName && verify.openDate;
 
+  // const hanldeTest = () => {
+  //   toast(<ToastMessage isRed={true}>테스트</ToastMessage>, {
+  //     position: "top-center",
+  //     autoClose: 3000,
+  //     hideProgressBar: true,
+  //     closeOnClick: true,
+  //     pauseOnHover: true,
+  //     draggable: true,
+  //     theme: "light",
+  //   });
+  // };
+
   return (
     <>
       {showMap && (

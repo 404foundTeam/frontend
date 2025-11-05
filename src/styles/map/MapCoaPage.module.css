@@ -26,6 +26,7 @@
 
 .date .selectBoxs {
   margin-left: 0;
+  /* padding-left: 38px; */
   padding-left: 6rem;
   /* justify-content: center; */
   align-items: center;
@@ -39,7 +40,7 @@
 
 .dateSeparator {
   padding-top: 1rem;
-  font-size: 2rem;
+  font-size: 3rem;
 }
 
 .content .contentTextInput {

@@ -35,12 +35,9 @@ function WeeklyScheduleViewer() {
         const year = currentDate.getFullYear();
         const month = currentDate.getMonth() + 1;
 
-        const response = await api.get(
-          `/calendar/month`,
-          {
-            params: { storeUuid, year, month },
-          }
-        );
+        const response = await api.get(`/calendar/month`, {
+          params: { storeUuid, year, month },
+        });
 
         const formattedEvents = response.data.map((event) => ({
           id: event.eventId,
@@ -135,8 +132,7 @@ function WeeklyScheduleViewer() {
           <button
             className={styles.listButton}
             onClick={() => {
-              setActive("CALENDAR");
-              navigate("/my");
+              navigate("/my/?tab=CALENDAR");
             }}
           >
             일정 수정하기

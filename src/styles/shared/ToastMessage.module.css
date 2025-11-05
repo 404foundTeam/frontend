@@ -14,5 +14,5 @@
 .red {
   padding-top: 0.75rem;
 
-  color: #f83434;
+  color: #f83434 !important;
 }

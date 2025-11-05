@@ -35,73 +35,74 @@ function MyPage() {
   return (
     <div className={styles.container}>
       <div className={styles.tabContainer}>
-        {/* --- 카드뉴스 탭 --- */}
-        <button
-          className={`${styles.tabButton} ${
-            activeTab === "MY" ? styles.active : ""
-          }`}
-          onClick={() => handleTabClick("MY")} // onClick 수정
-        >
-          카드뉴스
-        </button>
-
-        {/* --- 캘린더 탭 --- */}
-        <button
-          className={`${styles.tabButton} ${
-            activeTab === "CALENDAR" ? styles.active : ""
-          }`}
-          onClick={() => handleTabClick("CALENDAR")} // onClick 수정
-        >
-          캘린더
-        </button>
-
-        {/* --- 스마트 리포트 탭 --- */}
-        <button
-          className={`${styles.tabButton} ${
-            activeTab === "REPORT" ? styles.active : ""
-          }`}
-          onClick={() => handleTabClick("REPORT")} // onClick 수정
-        >
-          스마트 리포트
-        </button>
-
-        {/* '제휴 관리' 탭 (드롭다운 컨테이너) */}
-        <div className={styles.tabButtonContainer}>
+        <div className={styles.tabInner}>
+          {/* --- 카드뉴스 탭 --- */}
           <button
             className={`${styles.tabButton} ${
-              isPartnershipActive ? styles.active : ""
+              activeTab === "MY" ? styles.active : ""
             }`}
-            onClick={togglePartnerDropdown} // onClick 수정
+            onClick={() => handleTabClick("MY")} // onClick 수정
           >
-            제휴 관리
-            <span className={styles.dropdownArrow}>
-              {isPartnerDropdownOpen ? "▲" : "▼"}
-            </span>
+            카드뉴스
           </button>
 
-          {/* 드롭다운 메뉴 */}
-          {isPartnerDropdownOpen && (
-            <div className={styles.dropdownMenu}>
-              <button
-                className={styles.dropdownItem}
-                onClick={() => handleTabClick("PARTNERSHIP_LIST")} // onClick 수정
-              >
-                제휴 맺은 업장
-              </button>
-              <button
-                className={styles.dropdownItem}
-                onClick={() => handleTabClick("PARTNERSHIP_SENT")} // onClick 수정
-              >
-                제휴 요청한 업장
-              </button>
-              <button
-                className={styles.dropdownItem}
-                onClick={() => handleTabClick("PARTNERSHIP_RECEIVED")} // onClick 수정
-              >
-                제휴 요청 받은 업장
-              </button>
-            </div>
-          )}
+          {/* --- 캘린더 탭 --- */}
+          <button
+            className={`${styles.tabButton} ${
+              activeTab === "CALENDAR" ? styles.active : ""
+            }`}
+            onClick={() => handleTabClick("CALENDAR")} // onClick 수정
+          >
+            캘린더
+          </button>
+          {/* --- 스마트 리포트 탭 --- */}
+          <button
+            className={`${styles.tabButton} ${
+              activeTab === "REPORT" ? styles.active : ""
+            }`}
+            onClick={() => handleTabClick("REPORT")} // onClick 수정
+          >
+            스마트 리포트
+          </button>
+
+          {/* '제휴 관리' 탭 (드롭다운 컨테이너) */}
+          <div className={styles.tabButtonContainer}>
+            <button
+              className={`${styles.tabButton} ${
+                isPartnershipActive ? styles.active : ""
+              }`}
+              onClick={togglePartnerDropdown} // onClick 수정
+            >
+              제휴 관리
+              <span className={styles.dropdownArrow}>
+                {isPartnerDropdownOpen ? "▲" : "▼"}
+              </span>
+            </button>
+
+            {/* 드롭다운 메뉴 */}
+            {isPartnerDropdownOpen && (
+              <div className={styles.dropdownMenu}>
+                <button
+                  className={styles.dropdownItem}
+                  onClick={() => handleTabClick("PARTNERSHIP_LIST")} // onClick 수정
+                >
+                  제휴 맺은 업장
+                </button>
+                <button
+                  className={styles.dropdownItem}
+                  onClick={() => handleTabClick("PARTNERSHIP_SENT")} // onClick 수정
+                >
+                  제휴 요청한 업장
+                </button>
+                <button
+                  className={styles.dropdownItem}
+                  onClick={() => handleTabClick("PARTNERSHIP_RECEIVED")} // onClick 수정
+                >
+                  제휴 요청 받은 업장
+                </button>
+              </div>
+            )}
+          </div>
         </div>
         {/* --- 제휴 관리 탭 끝 --- */}
       </div>
