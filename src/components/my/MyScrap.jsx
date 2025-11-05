@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { api, deleteCard } from "../../api/index";
 import styles from "../../styles/my/MyScrap.module.css";
 import useAuthStore from "../../store/useAuthStore";
+import { toast } from "react-toastify";
 
 function MyScrap() {
   const [cards, setCards] = useState([]);
@@ -20,16 +21,13 @@ function MyScrap() {
     setIsLoading(true);
     setError(null);
     try {
-      const response = await api.get(
-        "/sns-cards/final",
-        {
-          params: {
-            storeUuid: storeUuid,
-            page: page - 1, 
-            size: itemsPerPage,
-          },
-        }
-      );
+      const response = await api.get("/sns-cards/final", {
+        params: {
+          storeUuid: storeUuid,
+          page: page - 1,
+          size: itemsPerPage,
+        },
+      });
 
       setCards(response.data.items);
       setTotalItems(response.data.total);
@@ -56,9 +54,17 @@ function MyScrap() {
     try {
       // API 호출
       await deleteCard(id);
-      
-      alert("카드뉴스가 삭제되었습니다.");
-      
+
+      toast(<ToastMessage>카드뉴스가 삭제되었습니다.</ToastMessage>, {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "light",
+      });
+
       // 만약 마지막 페이지의 마지막 항목을 삭제했다면, 이전 페이지로 이동
       if (cards.length === 1 && currentPage > 1) {
         setCurrentPage(currentPage - 1);
@@ -66,13 +72,11 @@ function MyScrap() {
         // 현재 페이지 목록을 다시 불러옴
         fetchCards(currentPage);
       }
-
     } catch (err) {
       console.error("Delete API Error:", err);
-      alert("카드 삭제에 실패했습니다.");
+      toast.error("카드 삭제에 실패했습니다.");
     }
   };
-
 
   // --- 렌더링 로직 ---
 
@@ -98,15 +102,14 @@ function MyScrap() {
                   alt={`Card ${item.id}`}
                   className={styles.cardImage}
                 />
-                
-                <button 
-                  className={styles.deleteButton} 
+
+                <button
+                  className={styles.deleteButton}
                   onClick={() => handleDelete(item.id)}
                   title="삭제하기"
                 >
                   &times;
                 </button>
-                
               </div>
             </div>
           ))

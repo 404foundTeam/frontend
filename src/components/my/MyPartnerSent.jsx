@@ -9,6 +9,7 @@ import PartnerDetailModal from "./PartnerDetailModal";
 import useAuthStore from "../../store/useAuthStore";
 import styles from "../../styles/my/MyPartnerSent.module.css";
 import useActiveStore from "../../store/useActiveStore";
+import { toast } from "react-toastify";
 
 // 2. 목업 데이터 모두 삭제
 
@@ -63,7 +64,7 @@ function MyPartnerSent() {
       setSelectedPartnerDetails(details);
     } catch (err) {
       console.error("상세 내용 조회 실패:", err);
-      alert("제휴 상세 내용을 불러오는 데 실패했습니다.");
+      toast.error("제휴 상세 내용을 불러오는 데 실패했습니다.");
       setIsModalOpen(false); // 에러 시 모달 닫기
     } finally {
       setIsDetailLoading(false); // 로딩 끝
@@ -88,10 +89,18 @@ function MyPartnerSent() {
 
       // UI에서 즉시 반영
       setRequests(requests.filter((p) => p.partnershipId !== id));
-      alert("제휴 요청이 삭제되었습니다.");
+      toast(<ToastMessage>제휴 요청이 삭제되었습니다.</ToastMessage>, {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          theme: "light",
+        });
     } catch (err) {
       console.error("삭제 API 실패:", err);
-      alert("요청 삭제에 실패했습니다.");
+      toast.error("요청 삭제에 실패했습니다.");
     }
   };
 
