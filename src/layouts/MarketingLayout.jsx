@@ -18,18 +18,16 @@ function MarketingLayout() {
         {/* --- 여기에 배너 코드를 추가합니다 --- */}
         <div className={styles.banner}>
           <div className={styles.bannerContentWrapper}>
-            
             {/* 배너 왼쪽 텍스트 영역 */}
             <div className={styles.bannerInfo}>
               <h1 className={styles.bannerTitle}>
-                AI 카드 뉴스 제작부터 
+                AI 카드 뉴스 제작부터
                 <br />
                 사진 촬영 가이드, 스마트 리포트까지
               </h1>
               <p className={styles.bannerSubtitle}>
                 홍보와 관리에 필요한 모든 것을 한번에 제공해요.
               </p>
-            
             </div>
 
             {/* 배너 오른쪽 일러스트 영역 */}

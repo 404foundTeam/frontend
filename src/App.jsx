@@ -68,7 +68,7 @@ function App() {
             <Route path="main" element={<MainLayout />}>
               <Route index element={<MainPage />} />
             </Route>
-            <Route path="marketing" element={<MarketingLayout />}>
+            <Route path="about" element={<MarketingLayout />}>
               <Route index element={<MarketingPage />} />
             </Route>
             <Route path="cardnews" element={<CardNewsLayout />}>
