@@ -10,6 +10,7 @@ import useAuthStore from "../../store/useAuthStore";
 import useActiveStore from "../../store/useActiveStore";
 import styles from "../../styles/my/MyPartnership.module.css";
 import { toast } from "react-toastify";
+import ToastMessage from "../shared/ToastMessage";
 
 function MyPartnerReceived() {
   const [requests, setRequests] = useState([]);
