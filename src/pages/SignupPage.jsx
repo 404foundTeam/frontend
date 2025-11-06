@@ -33,18 +33,18 @@ function SignupPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (formValidity.account === false) {
-      toast.error("계정 정보를 올바르게 입력해주세요");
-      return;
-    }
-    if (formValidity.store === false) {
-      toast.error("업장 정보를 올바르게 입력해주세요");
-      return;
-    }
-    if (formValidity.agreement === false) {
-      toast.error("약관 동의를 확인해주세요");
-      return;
-    }
+    // if (formValidity.account === false) {
+    //   toast.error("계정 정보를 올바르게 입력해주세요");
+    //   return;
+    // }
+    // if (formValidity.store === false) {
+    //   toast.error("업장 정보를 올바르게 입력해주세요");
+    //   return;
+    // }
+    // if (formValidity.agreement === false) {
+    //   toast.error("약관 동의를 확인해주세요");
+    //   return;
+    // }
 
     const payload = { ...account, ...store };
 

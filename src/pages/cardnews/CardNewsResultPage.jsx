@@ -231,7 +231,7 @@ function CardNewsResultPage() {
             <ResultButtonButton type="save" onClick={saveCard}>
               저장하기
             </ResultButtonButton>
-            <ResultButtonButton type="new" onClick={() => navigate("/about")}>
+            <ResultButtonButton type="new" onClick={() => navigate("/main")}>
               메인페이지로 돌아가기
             </ResultButtonButton>
           </div>
