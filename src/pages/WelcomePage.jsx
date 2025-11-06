@@ -30,12 +30,10 @@ function WelcomePage() {
       <HeaderSection onClick={goToLogin} />
       <TextBox
         title={
-          "복잡한 매출과 리뷰, 방문 데이터를 \nAI가 자동으로 분석합니다. \nmarketBEE와 함께라면, 홍보는 쉬워지고 \n성장은 빨라집니다."
+          "매출과 리뷰 AI가 대신 분석해드려요. \n이제껏 없던 쉽고 스마트한 올인원 마케팅 플랫폼, \nmarketBEE와 함께라면 당신의 가게가 새로워질 거예요."
         }
       />
-      {/* <div className={styles.line}></div> */}
       <CardWrapper />
-      {/* <div className={styles.line}></div> */}
       <TextBox
         title={"가게 운영과 마케팅을 한 번에 잡는 스마트 솔루션"}
         content={"사장님을 위한 새로운 성장과 전략, 지금 시작하세요."}
