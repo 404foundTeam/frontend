@@ -119,14 +119,12 @@ function CardNewsPage() {
       <div className={styles.banner}>
         <img src={bannerImg} className={styles.img} />
         <h1 className={styles.title}>{placeName}</h1>
-        <p className={styles.content}>
-          을 위한 SNS 카드 뉴스를 만들어드릴게요.
-        </p>
+        <p className={styles.content}>을 위한 SNS 카드뉴스를 만들어드릴게요.</p>
       </div>
       <div className={styles.cardNewsContainer}>
         {/* 카드 타입 선택 */}
         <div className={`${styles.cardNewsBox} ${styles.cardNewsType}`}>
-          <SelectHeader text="어떤 SNS 카드 뉴스를 만들까요?" />
+          <SelectHeader text="어떤 SNS 카드뉴스를 만들까요?" />
           <div className={styles.selectBoxs}>
             <SelectBox
               value="NOTICE"
@@ -168,7 +166,7 @@ function CardNewsPage() {
         )}
         {/* 사용자 텍스트 입력 */}
         <div className={styles.cardNewsBox}>
-          <SelectHeader text="SNS 카드 뉴스에 넣고 싶은 텍스트를 입력하세요." />
+          <SelectHeader text="SNS 카드뉴스에 넣고 싶은 텍스트를 입력하세요." />
           <div className={styles.cardNewsTextBox}>
             <input
               className={`${styles.textInput} ${userText ? styles.select : ""}`}

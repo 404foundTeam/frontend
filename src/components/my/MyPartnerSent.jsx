@@ -12,7 +12,6 @@ import styles from "../../styles/my/MyPartnerSent.module.css";
 import { toast } from "react-toastify";
 import arrowIcon from "../../assets/mypage/arrowIcon.png";
 
-
 // 2. 목업 데이터 모두 삭제
 
 function MyPartnerSent() {
@@ -92,14 +91,14 @@ function MyPartnerSent() {
       // UI에서 즉시 반영
       setRequests(requests.filter((p) => p.partnershipId !== id));
       toast(<ToastMessage>제휴 요청이 삭제되었습니다.</ToastMessage>, {
-          position: "top-center",
-          autoClose: 3000,
-          hideProgressBar: true,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          theme: "light",
-        });
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "light",
+      });
     } catch (err) {
       console.error("삭제 API 실패:", err);
       toast.error("요청 삭제에 실패했습니다.");
@@ -107,7 +106,7 @@ function MyPartnerSent() {
   };
 
   const handleNavigateToList = () => {
-    navigate("/map"); 
+    navigate("/map");
   };
 
   // --- 렌더링 로직 ---
@@ -123,14 +122,14 @@ function MyPartnerSent() {
             <span className={styles.placeName}>{placeName || "사장"}</span>님이
             제휴 요청한 업장
           </h2>
-          <button 
+          <button
             className={styles.headerButton}
             onClick={handleNavigateToList}
           >
             제휴 요청하러가기
-            <img 
-              src={arrowIcon} 
-              alt="이동" 
+            <img
+              src={arrowIcon}
+              alt="이동"
               className={styles.headerArrowIcon}
             />
           </button>

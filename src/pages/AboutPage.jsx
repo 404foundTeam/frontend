@@ -9,8 +9,8 @@ import aiGuideImage from "../assets/marketingpage/image copy 2.png";
 import smartReportImage from "../assets/marketingpage/image copy 11.png";
 
 function MarketingPage() {
-  const cardNewsDesc = `AI가 생성한 문구를 활용하여 카드 뉴스를 생성해보세요
-  디자인 전문가 없이 SNS 카드 뉴스를 클릭 몇 번으로 완성할 수 있어요`;
+  const cardNewsDesc = `AI가 생성한 문구를 활용하여 카드뉴스를 생성해보세요
+  디자인 전문가 없이 SNS 카드뉴스를 클릭 몇 번으로 완성할 수 있어요`;
 
   const aiGuideDesc = `매장과 상품을 더욱 매력적으로 촬영하도록 구도, 조명, 연출 팁을 제공해요
    누구나 쉽게 따라 할 수 있는 단계별 가이드로 홍보에 최적화된 사진을 완성하세요`;

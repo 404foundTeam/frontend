@@ -6,6 +6,7 @@ import { api } from "../../api/index";
 import styles from "../../styles/smartreport/FileUploadModal.module.css";
 import useAuthStore from "../../store/useAuthStore";
 import { toast } from "react-toastify";
+import ToastMessage from "../shared/ToastMessage";
 
 function FileUploadModal({ onClose }) {
   const [selectedFiles, setSelectedFiles] = useState([]);
