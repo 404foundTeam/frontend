@@ -62,7 +62,6 @@ function App() {
           <Route path="/" element={<WelcomeLayout />}>
             <Route index element={<WelcomePage />} />
           </Route>
-
           <Route element={<RequireAuth />}>
             <Route path="/" element={<Layout />}>
               <Route path="main" element={<MainLayout />}>
@@ -98,7 +97,6 @@ function App() {
               </Route>
             </Route>
           </Route>
-
           <Route path="*" element={<Error />} />
         </Routes>
       </BrowserRouter>
